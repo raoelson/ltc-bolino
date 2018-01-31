@@ -52,3 +52,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+// 	Routage User 
+
+$route['user_login'] = 'user';
+$route['user_verify']['post']= 'user/login';
+$route['user_logout'] = 'user/logout';
+
+$route['user_listes'] = 'user/listes';
+$route['user_save'] = 'user/save';
+/* 
+$route['user_auth'] = 'user';
+$route['user_auth'] = 'user'; */
+
+// 	Routage Groupes
+
+$route['groupes'] = 'group';
+$route['groupes_save'] = 'group/save';
+
+
+// 	Routage Droit
+
+$route['droit_backend'] = 'droit';
+$route['droit_backend_save'] = 'droit/save';
+
+$route['droit_fronted'] = 'droit/front_office';
+
+
+// 	Routage Dashboard
+
+$route['dashboard'] = 'welcome';
+/* $route['user_auth'] = 'user';
+ $route['user_auth'] = 'user';
+ $route['user_auth'] = 'user'; */
+
+

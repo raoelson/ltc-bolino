@@ -1,68 +1,77 @@
-<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 /*
  |--------------------------------------------------------------------------
- | Active template
+ | Parser Enabled
  |--------------------------------------------------------------------------
  |
- | The $template['active_template'] setting lets you choose which template
- | group to make active.  By default there is only one group (the
- | "default" group).
+ | Should the Parser library be used for the entire page?
+ |
+ | Can be overridden with $this->template->enable_parser(TRUE/FALSE);
+ |
+ |   Default: TRUE
  |
  */
-$template['active_template'] = 'default';
+$config['parser_enabled'] = TRUE;
 /*
  |--------------------------------------------------------------------------
- | Explaination of template group variables
+ | Parser Enabled for Body
  |--------------------------------------------------------------------------
  |
- | ['template'] The filename of your master template file in the Views folder.
- |   Typically this file will contain a full XHTML skeleton that outputs your
- |   full template or region per region. Include the file extension if other
- |   than ".php"
- | ['regions'] Places within the template where your content may land.
- |   You may also include default markup, wrappers and attributes here
- |   (though not recommended). Region keys must be translatable into variables
- |   (no spaces or dashes, etc)
- | ['parser'] The parser class/library to use for the parse_view() method
- |   NOTE: See http://codeigniter.com/forums/viewthread/60050/P0/ for a good
- |   Smarty Parser that works perfectly with Template
- | ['parse_template'] FALSE (default) to treat master template as a View. TRUE
- |   to user parser (see above) on the master template
+ | If the parser is enabled, do you want it to parse the body or not?
  |
- | Region information can be extended by setting the following variables:
- | ['content'] Must be an array! Use to set default region content
- | ['name'] A string to identify the region beyond what it is defined by its key.
- | ['wrapper'] An HTML element to wrap the region contents in. (We
- |   recommend doing this in your template file.)
- | ['attributes'] Multidimensional array defining HTML attributes of the
- |   wrapper. (We recommend doing this in your template file.)
+ | Can be overridden with $this->template->enable_parser(TRUE/FALSE);
  |
- | Example:
- | $template['default']['regions'] = array(
- |    'header' => array(
- |       'content' => array('<h1>Welcome</h1>','<p>Hello World</p>'),
- |       'name' => 'Page Header',
- |       'wrapper' => '<div>',
- |       'attributes' => array('id' => 'header', 'class' => 'clearfix')
- |    )
- | );
+ |   Default: FALSE
  |
  */
+$config['parser_body_enabled'] = FALSE;
 /*
  |--------------------------------------------------------------------------
- | Default Template Configuration (adjust this or create your own)
+ | Title Separator
  |--------------------------------------------------------------------------
+ |
+ | What string should be used to separate title segments sent via $this->template->title('Foo', 'Bar');
+ |
+ |   Default: ' | '
+ |
  */
-$template['default']['template'] = 'template';
-$template['default']['regions'] = array(
-		'title',
-		'header',
-		'slider',
-		'content',
-		'footer',
+$config['title_separator'] = ' | ';
+/*
+ |--------------------------------------------------------------------------
+ | Layout
+ |--------------------------------------------------------------------------
+ |
+ | Which layout file should be used? When combined with theme it will be a layout file in that theme
+ |
+ | Change to 'main' to get /application/views/layouts/main.php
+ |
+ |   Default: 'default'
+ |
+ */
+$config['layout'] = 'default';
+/*
+ |--------------------------------------------------------------------------
+ | Theme
+ |--------------------------------------------------------------------------
+ |
+ | Which theme to use by default?
+ |
+ | Can be overriden with $this->template->set_theme('foo');
+ |
+ |   Default: ''
+ |
+ */
+$config['theme'] = '';
+/*
+ |--------------------------------------------------------------------------
+ | Theme Locations
+ |--------------------------------------------------------------------------
+ |
+ | Where should we expect to see themes?
+ |
+ |	Default: array(APPPATH.'themes/' => '../themes/')
+ |
+ */
+$config['theme_locations'] = array(
+		APPPATH.'themes/'
 );
-$template['default']['parser'] = 'parser';
-$template['default']['parser_method'] = 'parse';
-$template['default']['parse_template'] = FALSE;
-/* End of file template.php */
-/* Location: ./system/application/config/template.php *

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title><?php echo $title ?></title>
+    <title>LTC-BOLINO | <?php echo $template['title'] ;?></title>
     
     <!-- Bootstrap -->
     <link href="<?php echo base_url() ?>assets/backend/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,9 +24,44 @@
     <link href="<?php echo base_url() ?>assets/backend/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="<?php echo base_url() ?>assets/backend/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    
+    <link href="<?php echo base_url() ?>assets/backend/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/backend/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/backend/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/backend/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/backend/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 
+ 	<link href="<?php echo base_url() ?>assets/backend/css//notify/pnotify.custom.min.css" rel="stylesheet">	
+	<script src="<?php echo base_url() ?>assets/backend/vendors/validator/validator.js"></script>
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url() ?>assets/backend/css/custom.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="<?php echo base_url() ?>assets/backend/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="<?php echo base_url() ?>assets/backend/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    
+    <!-- Datatables -->
+    <script src="<?php echo base_url() ?>assets/backend/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/backend/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/backend/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/backend/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/backend/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/backend/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/backend/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/backend/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/backend/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/backend/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/backend/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="<?php echo base_url() ?>assets/backend/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/backend/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/backend/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/backend/vendors/pdfmake/build/vfs_fonts.js"></script>
+    
+    <script type="text/javascript">
+		var SITE_URL = "<?php echo base_url()?>";
+		var BASE_URL = "<?php echo base_url()?>admin.php/";
+	</script>
+	
   </head>
 
   <body class="nav-md">
@@ -35,7 +70,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span><?php echo $title ?></span></a>
+              <a href="index.html" class="site_title">LTC-BOLINO</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -46,12 +81,12 @@
                 <img src="<?php echo base_url() ?>assets/backend/images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <span>Bonjour,</span>
+                <h2><?php if($this->session->userdata('user'))
+                	print_r($this->session->userdata('user')['name']);?></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
-
             <br />
 
             <!-- sidebar menu -->
@@ -74,7 +109,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="<?php echo base_url() ?>admin.php/user_logout">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -105,7 +140,7 @@
                       </a>
                     </li>
                     <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="<?php echo base_url() ?>admin.php/user_logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
 
@@ -181,8 +216,8 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
-        	<!-- ************************CONTENT********************** -->
-        	<?php echo $content ?>
+        	<!-- ************************CONTENT********************** -->        	
+        	<?php echo $template['body'] ;?>
         </div>
         <!-- /page content -->
 
@@ -194,14 +229,13 @@
       </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="<?php echo base_url() ?>assets/backend/vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="<?php echo base_url() ?>assets/backend/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    
     <!-- FastClick -->
     <script src="<?php echo base_url() ?>assets/backend/vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="<?php echo base_url() ?>assets/backend/vendors/nprogress/nprogress.js"></script>
+    <!-- iCheck -->
+    <script src="<?php echo base_url() ?>assets/backend/vendors/iCheck/icheck.min.js"></script>
     <!-- Chart.js -->
     <script src="<?php echo base_url() ?>assets/backend/vendors/Chart.js/dist/Chart.min.js"></script>
     <!-- gauge.js -->
@@ -231,9 +265,15 @@
     <!-- bootstrap-daterangepicker -->
     <script src="<?php echo base_url() ?>assets/backend/vendors/moment/min/moment.min.js"></script>
     <script src="<?php echo base_url() ?>assets/backend/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-
+    
+    <script src="<?php echo base_url() ?>assets/backend/js/notify/pnotify.custom.min.js"></script>
+     <script src="<?php echo base_url() ?>assets/backend/js/sites/base.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url() ?>assets/backend/js/custom.js"></script>
-	
+    <script
+	src="<?php echo base_url() ?>assets/backend/vendors/switchery/dist/switchery.min.js"></script>
+    <script
+	src="<?php echo base_url() ?>assets/backend/vendors/validator/validator.js"></script>
+    <?php $this->load->view("message/flash_message");?>
   </body>
 </html>

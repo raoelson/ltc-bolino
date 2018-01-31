@@ -1,4 +1,4 @@
 <div class="pull-right">
-	Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+	<a href="<?php echo base_url()."admin.php" ?>">LTC-BOLINO </a> - <?php echo date('Y')?> 
 </div>
 <div class="clearfix"></div>
