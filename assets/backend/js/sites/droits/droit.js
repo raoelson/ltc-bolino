@@ -48,9 +48,10 @@ initCallBack = function(json) {
 
 	$('#btnsave').click(function() {
 		//JSON.stringify
-		var data = (parseData());
+		var data = (parseData());	
 		$.postJSON(BASE_URL + "droit/saveAndupdate/", {
-			'data' : data,
+			'data' : JSON.stringify(data),
+			'taille' : data.length,
 			'groupe' : $("#selectGroup").val()
 		}, saveCallBack);
 	});
@@ -86,17 +87,20 @@ initCallBack = function(json) {
 		var test = new Array();
 		var datatet = "";
 		$("#datatable-droits tbody tr").each(
-				function(i, v) {					
+				function(i, v) {			
+					var test_ = new Array();
 					$(this).closest('tr').find('input').each(
 					function(ii, vv) {
+						
 						if ($(this).attr('name') == "nameMenu") {
 							datatet = $(this).attr('name') + '"=>"'+ $(this).val();
 							
 						} else {
-							
+							datatet = $(this).attr('name') + '"=>"'+ $(this).is(':checked');	
 						}
+						test_.push(datatet);
 					});
-					test.push(datatet);
+					test.push(test_);
 				})
 				return(test);
 	}
