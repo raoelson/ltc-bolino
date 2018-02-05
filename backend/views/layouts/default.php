@@ -109,7 +109,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="<?php echo base_url() ?>admin.php/user_logout">
+              <a data-toggle="tooltip" data-placement="top" title="Déconnexion" href="<?php echo base_url() ?>admin.php/user_logout">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -128,19 +128,13 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="<?php echo base_url() ?>assets/backend/images/img.jpg" alt="">John Doe
+                    <img src="<?php echo base_url() ?>assets/backend/images/img.jpg" alt=""><?php if($this->session->userdata('user'))
+                	print_r($this->session->userdata('user')['name']);?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profile</a></li>
-                    <li>
-                      <a href="javascript:;">
-                        <span class="badge bg-red pull-right">50%</span>
-                        <span>Settings</span>
-                      </a>
-                    </li>
-                    <li><a href="javascript:;">Help</a></li>
-                    <li><a href="<?php echo base_url() ?>admin.php/user_logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="javascript:;"> Profile</a></li>                  
+                    <li><a href="<?php echo base_url() ?>admin.php/user_logout"><i class="fa fa-sign-out pull-right"></i> Déconnexion</a></li>
                   </ul>
                 </li>
 

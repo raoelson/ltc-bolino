@@ -8,7 +8,7 @@
 			<ul class="nav child_menu">
 				<li><a href="form.html">Listes des artisans</a></li>
 			</ul></li>
-		<li><a><i class="fa fa-user"></i> Gestions des Clients<span
+		<li><a href="#"><i class="fa fa-user"></i> Gestions des Clients<span
 				class="fa fa-chevron-down"></span></a>
 			<ul class="nav child_menu">
 				<li><a href="general_elements.html">General Elements</a></li>

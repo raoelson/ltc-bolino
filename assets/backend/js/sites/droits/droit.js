@@ -5,14 +5,14 @@ $(document).ready(function() {
 			$("#datatable-droits tbody").html("");
 			return;
 		}
-		init();
+		init($(this).val());
 	});
 
 });
 
-init = function() {
+init = function(id) {
 	$("#datatable-droits tbody").html("");
-	$.getJSON(BASE_URL + "droit/getWhere/" + 1, initCallBack);
+	$.getJSON(BASE_URL + "droit/getWhere/" + id, initCallBack);
 }
 initCallBack = function(json) {
 	var droits = json.data;
@@ -22,17 +22,17 @@ initCallBack = function(json) {
 			.each(
 					droits,
 					function(i, elt) {
-						tbody += "<tr id='tr_" + elt.id + "'>";
-						tbody += "<td> <input type='hidden' name='nameMenu' value='"
-								+ elt.name + "'>" + elt.name + "</td>";
-						tbody += '<td><label><input type="checkbox" name="actionvoir" class="js-switch" '
-								+ elt.actionvoir + ' /></td>';
-						tbody += '<td><label><input type="checkbox" name="actioncreer" class="js-switch" '
-								+ elt.actioncreer + ' /></td>';
-						tbody += '<td><label><input type="checkbox" name="actionmodifier" class="js-switch" '
-								+ elt.actionmodifier + ' /></td>';
-						tbody += '<td><input type="checkbox" name="actionsupprimer" class="js-switch" '
-								+ elt.actionsupprimer + ' /></td>';
+						tbody += "<tr id='tr_" + elt.iddroit + "'>";
+						tbody += "<td> <input type='hidden' name='nameMenu' id='nameMenu' value='"
+								+ elt.iddroit + "'>" + elt.menu + "</td>";
+						tbody += '<td><label><input type="checkbox" name="voir" class="js-switch" '
+								+ elt.voir + ' /></td>';
+						tbody += '<td><label><input type="checkbox" name="creer" class="js-switch" '
+								+ elt.creer + ' /></td>';
+						tbody += '<td><label><input type="checkbox" name="modifier" class="js-switch" '
+								+ elt.modifier + ' /></td>';
+						tbody += '<td><label><input type="checkbox" name="supprimer" class="js-switch" '
+								+ elt.supprimer + ' /></td>';
 						tbody += '</tr>';
 					});
 	$("#datatable-droits tbody").append(tbody);
@@ -46,66 +46,22 @@ initCallBack = function(json) {
 		});
 	}
 
-	$('#btnsave').click(function() {
-		//JSON.stringify
-		var data = (parseData());	
-		$.postJSON(BASE_URL + "droit/saveAndupdate/", {
-			'data' : JSON.stringify(data),
-			'taille' : data.length,
-			'groupe' : $("#selectGroup").val()
-		}, saveCallBack);
-	});
-	var parseData = function() {
-//		var data = "[";
-//		$("#datatable-droits tbody tr").each(
-//				function(i, v) {
-//					data += "{";
-//					$(this).closest('tr').find('input').each(
-//							function(ii, vv) {
-//								if ($(this).attr('name') == "nameMenu") {
-//									data += '"' + $(this).attr('name') + '"'
-//											+ ':"' + $(this).val() + '"';
-//									trans.push(data);
-//								} else {
-//									data += '"' + $(this).attr('name') + '"'
-//											+ ':"' + $(this).is(':checked')
-//											+ '"'
-//									trans.push(data);
-//								}
-//								if (ii < 4) {
-//									data += ',';
-//								}
-//							});
-//					data += "},";
-//				})
-//		var nbr = data.length;
-//		if (data.charAt(nbr - 1) == ',') {
-//			data = data.substring(0, nbr - 1);
-//		}
-//		data += "]";
-//		return (data);
-		var test = new Array();
-		var datatet = "";
-		$("#datatable-droits tbody tr").each(
-				function(i, v) {			
-					var test_ = new Array();
-					$(this).closest('tr').find('input').each(
-					function(ii, vv) {
-						
-						if ($(this).attr('name') == "nameMenu") {
-							datatet = $(this).attr('name') + '"=>"'+ $(this).val();
-							
-						} else {
-							datatet = $(this).attr('name') + '"=>"'+ $(this).is(':checked');	
-						}
-						test_.push(datatet);
-					});
-					test.push(test_);
-				})
-				return(test);
-	}
+	$('.js-switch').click(
+			function() {
+                 var id = "";
+				$.each($(this).closest("td").siblings("td").find(
+						'input[name="nameMenu"]'), function() {
+					id = ($(this).val());
+				});
+				$.postJSON(BASE_URL + "droit/saveAndupdate/", {
+					'data' : JSON.stringify($(this).is(':checked')),
+					'name' : ($(this).attr('name')),
+					'id' : id
+				}, saveCallBack);
+			})
 
+	//
 	saveCallBack = function(json) {
-		console.log(json);
+		//console.log(json);
 	}
 }

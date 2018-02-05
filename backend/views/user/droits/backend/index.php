@@ -58,7 +58,7 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="form-group">
+				<div class="form-group" style="display: none;">
                 	<div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-5">
                 	    <button type="reset" class="btn btn-primary">Annuler</button>
 	                    <button type="button" id="btnsave" class="btn btn-success">Sauvegarder</button>
