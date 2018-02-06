@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mar. 06 fév. 2018 à 08:57
+-- Généré le :  mar. 06 fév. 2018 à 16:02
 -- Version du serveur :  10.1.29-MariaDB
 -- Version de PHP :  7.2.0
 
@@ -223,35 +223,36 @@ CREATE TABLE `droits` (
   `idgroup` int(11) NOT NULL,
   `alias_menu` varchar(100) NOT NULL,
   `url_menu` varchar(260) NOT NULL,
-  `sous_menu` varchar(256) NOT NULL
+  `sous_menu` varchar(400) NOT NULL,
+  `iconmenu` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `droits`
 --
 
-INSERT INTO `droits` (`iddroit`, `menu`, `voir`, `creer`, `modifier`, `supprimer`, `idgroup`, `alias_menu`, `url_menu`, `sous_menu`) VALUES
-(88, 'Gestions des Artisans', 'Unchecked', 'Checked', 'Unchecked', 'Unchecked', 4, 'Gestions des Artisans', '#', 'a:1:{i:0;a:2:{s:7:\"nomMenu\";s:19:\"Listes des Artisans\";s:3:\"url\";s:47:\"http://localhost/ltc-botino/admin.php/dashboard\";}}'),
-(89, 'Gestions des Clients', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 4, 'Gestions des Clients', '#', 'a:1:{i:0;a:2:{s:7:\"nomMenu\";s:18:\"Listes des Clients\";s:3:\"url\";s:47:\"http://localhost/ltc-botino/admin.php/dashboard\";}}'),
-(90, 'Gestions des Tournées', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 4, 'Gestions des Tournées', '#', 'a:1:{i:0;a:2:{s:7:\"nomMenu\";s:20:\"Listes des Tournées\";s:3:\"url\";s:47:\"http://localhost/ltc-botino/admin.php/dashboard\";}}'),
-(91, 'Gestions des Diagnostics', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 4, 'Gestions des Diagnostics', '#', 'a:1:{i:0;a:2:{s:7:\"nomMenu\";s:22:\"Listes des Diagnostics\";s:3:\"url\";s:47:\"http://localhost/ltc-botino/admin.php/dashboard\";}}'),
-(92, 'Gestions des Attestations des Assurances des Artisans', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 4, 'Gestions des A-A-A', '#', 'a:1:{i:0;a:2:{s:7:\"nomMenu\";s:16:\"Listes des A-A-A\";s:3:\"url\";s:47:\"http://localhost/ltc-botino/admin.php/dashboard\";}}'),
-(93, 'Gestions des Devis', 'Unchecked', 'Checked', 'Unchecked', 'Checked', 4, 'Gestions des Devis', '#', 'a:1:{i:0;a:2:{s:7:\"nomMenu\";s:16:\"Listes des Devis\";s:3:\"url\";s:47:\"http://localhost/ltc-botino/admin.php/dashboard\";}}'),
-(94, 'Gestions des Users', 'Checked', 'Unchecked', 'Unchecked', 'Checked', 4, 'Gestions des Users', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:18:\"Gérer utilisateur\";s:3:\"url\";s:49:\"http://localhost/ltc-botino/admin.php/user_listes\";}i:1;a:2:{s:7:\"nomMenu\";s:13:\"Gérer Droits\";s:3:\"url\";s:47:\"http://localhost/ltc-botino/admin.php/dashboard\";}i:2;a:2:{s:7:\"nomMenu\";s:1'),
-(95, 'Gestions des Artisans', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 6, 'Gestions des Artisans', '#', 'a:1:{i:0;a:2:{s:7:\"nomMenu\";s:19:\"Listes des Artisans\";s:3:\"url\";s:47:\"http://localhost/ltc-botino/admin.php/dashboard\";}}'),
-(96, 'Gestions des Clients', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 6, 'Gestions des Clients', '#', 'a:1:{i:0;a:2:{s:7:\"nomMenu\";s:18:\"Listes des Clients\";s:3:\"url\";s:47:\"http://localhost/ltc-botino/admin.php/dashboard\";}}'),
-(97, 'Gestions des Tournées', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 6, 'Gestions des Tournées', '#', 'a:1:{i:0;a:2:{s:7:\"nomMenu\";s:20:\"Listes des Tournées\";s:3:\"url\";s:47:\"http://localhost/ltc-botino/admin.php/dashboard\";}}'),
-(98, 'Gestions des Diagnostics', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 6, 'Gestions des Diagnostics', '#', 'a:1:{i:0;a:2:{s:7:\"nomMenu\";s:22:\"Listes des Diagnostics\";s:3:\"url\";s:47:\"http://localhost/ltc-botino/admin.php/dashboard\";}}'),
-(99, 'Gestions des Attestations des Assurances des Artisans', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 6, 'Gestions des A-A-A', '#', 'a:1:{i:0;a:2:{s:7:\"nomMenu\";s:16:\"Listes des A-A-A\";s:3:\"url\";s:47:\"http://localhost/ltc-botino/admin.php/dashboard\";}}'),
-(100, 'Gestions des Devis', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 6, 'Gestions des Devis', '#', 'a:1:{i:0;a:2:{s:7:\"nomMenu\";s:16:\"Listes des Devis\";s:3:\"url\";s:47:\"http://localhost/ltc-botino/admin.php/dashboard\";}}'),
-(101, 'Gestions des Users', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 6, 'Gestions des Users', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:18:\"Gérer utilisateur\";s:3:\"url\";s:49:\"http://localhost/ltc-botino/admin.php/user_listes\";}i:1;a:2:{s:7:\"nomMenu\";s:13:\"Gérer Droits\";s:3:\"url\";s:47:\"http://localhost/ltc-botino/admin.php/dashboard\";}i:2;a:2:{s:7:\"nomMenu\";s:1'),
-(102, 'Gestions des Artisans', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 5, 'Gestions des Artisans', '#', 'a:1:{i:0;a:2:{s:7:\"nomMenu\";s:19:\"Listes des Artisans\";s:3:\"url\";s:47:\"http://localhost/ltc-botino/admin.php/dashboard\";}}'),
-(103, 'Gestions des Clients', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 5, 'Gestions des Clients', '#', 'a:1:{i:0;a:2:{s:7:\"nomMenu\";s:18:\"Listes des Clients\";s:3:\"url\";s:47:\"http://localhost/ltc-botino/admin.php/dashboard\";}}'),
-(104, 'Gestions des Tournées', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 5, 'Gestions des Tournées', '#', 'a:1:{i:0;a:2:{s:7:\"nomMenu\";s:20:\"Listes des Tournées\";s:3:\"url\";s:47:\"http://localhost/ltc-botino/admin.php/dashboard\";}}'),
-(105, 'Gestions des Diagnostics', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 5, 'Gestions des Diagnostics', '#', 'a:1:{i:0;a:2:{s:7:\"nomMenu\";s:22:\"Listes des Diagnostics\";s:3:\"url\";s:47:\"http://localhost/ltc-botino/admin.php/dashboard\";}}'),
-(106, 'Gestions des Attestations des Assurances des Artisans', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 5, 'Gestions des A-A-A', '#', 'a:1:{i:0;a:2:{s:7:\"nomMenu\";s:16:\"Listes des A-A-A\";s:3:\"url\";s:47:\"http://localhost/ltc-botino/admin.php/dashboard\";}}'),
-(107, 'Gestions des Devis', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 5, 'Gestions des Devis', '#', 'a:1:{i:0;a:2:{s:7:\"nomMenu\";s:16:\"Listes des Devis\";s:3:\"url\";s:47:\"http://localhost/ltc-botino/admin.php/dashboard\";}}'),
-(108, 'Gestions des Users', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 5, 'Gestions des Users', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:18:\"Gérer utilisateur\";s:3:\"url\";s:49:\"http://localhost/ltc-botino/admin.php/user_listes\";}i:1;a:2:{s:7:\"nomMenu\";s:13:\"Gérer Droits\";s:3:\"url\";s:47:\"http://localhost/ltc-botino/admin.php/dashboard\";}i:2;a:2:{s:7:\"nomMenu\";s:1');
+INSERT INTO `droits` (`iddroit`, `menu`, `voir`, `creer`, `modifier`, `supprimer`, `idgroup`, `alias_menu`, `url_menu`, `sous_menu`, `iconmenu`) VALUES
+(697, 'Gestions des Artisans', 'Checked', 'Unchecked', 'Unchecked', 'Unchecked', 4, 'Gestions des Artisans', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:19:\"Listes des Artisans\";s:3:\"url\";s:1:\"#\";}i:1;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}i:2;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}}', 'fa fa-edit'),
+(698, 'Gestions des Clients', 'Checked', 'Unchecked', 'Unchecked', 'Unchecked', 4, 'Gestions des Clients', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:18:\"Listes des Clients\";s:3:\"url\";s:1:\"#\";}i:1;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}i:2;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}}', 'fa fa-user'),
+(699, 'Gestions des Tournées', 'Checked', 'Unchecked', 'Unchecked', 'Unchecked', 4, 'Gestions des Tournées', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:20:\"Listes des Tournées\";s:3:\"url\";s:1:\"#\";}i:1;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}i:2;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}}', 'fa fa-refresh'),
+(700, 'Gestions des Diagnostics', 'Checked', 'Unchecked', 'Unchecked', 'Unchecked', 4, 'Gestions des Diagnostics', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:22:\"Listes des Diagnostics\";s:3:\"url\";s:0:\"\";}i:1;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}i:2;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}}', 'fa fa-cog'),
+(701, 'Gestions des Attestations des Assurances des Artisans', 'Checked', 'Unchecked', 'Unchecked', 'Unchecked', 4, 'Gestions des A-A-A', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:16:\"Listes des A-A-A\";s:3:\"url\";s:1:\"#\";}i:1;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}i:2;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}}', 'fa fa-list'),
+(702, 'Gestions des Devis', 'Checked', 'Unchecked', 'Unchecked', 'Unchecked', 4, 'Gestions des Devis', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:16:\"Listes des Devis\";s:3:\"url\";s:1:\"#\";}i:1;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}i:2;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}}', 'fa fa-money'),
+(703, 'Gestions des Users', 'Checked', 'Unchecked', 'Unchecked', 'Unchecked', 4, 'Gestions des Users', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:18:\"Gérer utilisateur\";s:3:\"url\";s:11:\"user_listes\";}i:1;a:2:{s:7:\"nomMenu\";s:12:\"Gérer droit\";s:3:\"url\";s:5:\"droit\";}i:2;a:2:{s:7:\"nomMenu\";s:13:\"Gérer groupe\";s:3:\"url\";s:7:\"groupes\";}}', 'fa fa-users'),
+(704, 'Gestions des Artisans', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 6, 'Gestions des Artisans', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:19:\"Listes des Artisans\";s:3:\"url\";s:1:\"#\";}i:1;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}i:2;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}}', 'fa fa-edit'),
+(705, 'Gestions des Clients', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 6, 'Gestions des Clients', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:18:\"Listes des Clients\";s:3:\"url\";s:1:\"#\";}i:1;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}i:2;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}}', 'fa fa-user'),
+(706, 'Gestions des Tournées', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 6, 'Gestions des Tournées', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:20:\"Listes des Tournées\";s:3:\"url\";s:1:\"#\";}i:1;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}i:2;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}}', 'fa fa-refresh'),
+(707, 'Gestions des Diagnostics', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 6, 'Gestions des Diagnostics', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:22:\"Listes des Diagnostics\";s:3:\"url\";s:0:\"\";}i:1;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}i:2;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}}', 'fa fa-cog'),
+(708, 'Gestions des Attestations des Assurances des Artisans', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 6, 'Gestions des A-A-A', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:16:\"Listes des A-A-A\";s:3:\"url\";s:1:\"#\";}i:1;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}i:2;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}}', 'fa fa-list'),
+(709, 'Gestions des Devis', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 6, 'Gestions des Devis', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:16:\"Listes des Devis\";s:3:\"url\";s:1:\"#\";}i:1;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}i:2;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}}', 'fa fa-money'),
+(710, 'Gestions des Users', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 6, 'Gestions des Users', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:18:\"Gérer utilisateur\";s:3:\"url\";s:11:\"user_listes\";}i:1;a:2:{s:7:\"nomMenu\";s:12:\"Gérer droit\";s:3:\"url\";s:5:\"droit\";}i:2;a:2:{s:7:\"nomMenu\";s:13:\"Gérer groupe\";s:3:\"url\";s:7:\"groupes\";}}', 'fa fa-users'),
+(711, 'Gestions des Artisans', 'Checked', 'Unchecked', 'Unchecked', 'Unchecked', 5, 'Gestions des Artisans', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:19:\"Listes des Artisans\";s:3:\"url\";s:1:\"#\";}i:1;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}i:2;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}}', 'fa fa-edit'),
+(712, 'Gestions des Clients', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 5, 'Gestions des Clients', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:18:\"Listes des Clients\";s:3:\"url\";s:1:\"#\";}i:1;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}i:2;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}}', 'fa fa-user'),
+(713, 'Gestions des Tournées', 'Checked', 'Unchecked', 'Unchecked', 'Unchecked', 5, 'Gestions des Tournées', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:20:\"Listes des Tournées\";s:3:\"url\";s:1:\"#\";}i:1;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}i:2;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}}', 'fa fa-refresh'),
+(714, 'Gestions des Diagnostics', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 5, 'Gestions des Diagnostics', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:22:\"Listes des Diagnostics\";s:3:\"url\";s:0:\"\";}i:1;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}i:2;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}}', 'fa fa-cog'),
+(715, 'Gestions des Attestations des Assurances des Artisans', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 5, 'Gestions des A-A-A', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:16:\"Listes des A-A-A\";s:3:\"url\";s:1:\"#\";}i:1;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}i:2;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}}', 'fa fa-list'),
+(716, 'Gestions des Devis', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 5, 'Gestions des Devis', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:16:\"Listes des Devis\";s:3:\"url\";s:1:\"#\";}i:1;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}i:2;a:2:{s:7:\"nomMenu\";s:0:\"\";s:3:\"url\";s:1:\"#\";}}', 'fa fa-money'),
+(717, 'Gestions des Users', 'Unchecked', 'Unchecked', 'Unchecked', 'Unchecked', 5, 'Gestions des Users', '#', 'a:3:{i:0;a:2:{s:7:\"nomMenu\";s:18:\"Gérer utilisateur\";s:3:\"url\";s:11:\"user_listes\";}i:1;a:2:{s:7:\"nomMenu\";s:12:\"Gérer droit\";s:3:\"url\";s:5:\"droit\";}i:2;a:2:{s:7:\"nomMenu\";s:13:\"Gérer groupe\";s:3:\"url\";s:7:\"groupes\";}}', 'fa fa-users');
 
 -- --------------------------------------------------------
 
@@ -302,7 +303,7 @@ CREATE TABLE `entity` (
 
 CREATE TABLE `group` (
   `idgrp` int(3) NOT NULL,
-  `name` varchar(25) NOT NULL,
+  `namegrp` varchar(25) NOT NULL,
   `user_has_group_user_id` int(5) DEFAULT NULL,
   `user_has_group_group_id` int(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -311,8 +312,8 @@ CREATE TABLE `group` (
 -- Déchargement des données de la table `group`
 --
 
-INSERT INTO `group` (`idgrp`, `name`, `user_has_group_user_id`, `user_has_group_group_id`) VALUES
-(4, 'Administateur', NULL, NULL),
+INSERT INTO `group` (`idgrp`, `namegrp`, `user_has_group_user_id`, `user_has_group_group_id`) VALUES
+(4, 'Administrateur', NULL, NULL),
 (5, 'Clients', NULL, NULL),
 (6, 'Artisans', NULL, NULL);
 
@@ -692,7 +693,7 @@ CREATE TABLE `type_travaux` (
 
 CREATE TABLE `user` (
   `idusr` int(5) NOT NULL,
-  `name` varchar(30) NOT NULL,
+  `nameuser` varchar(30) NOT NULL,
   `firstname` varchar(30) NOT NULL,
   `password` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -701,8 +702,9 @@ CREATE TABLE `user` (
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`idusr`, `name`, `firstname`, `password`) VALUES
-(2, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3');
+INSERT INTO `user` (`idusr`, `nameuser`, `firstname`, `password`) VALUES
+(2, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3'),
+(4, 'client', 'client', '62608e08adc29a8d6dbc9754e659f125');
 
 -- --------------------------------------------------------
 
@@ -721,7 +723,8 @@ CREATE TABLE `user_has_group` (
 --
 
 INSERT INTO `user_has_group` (`user_id`, `group_id`, `user_id1`) VALUES
-(2, 4, 2);
+(2, 4, 2),
+(4, 5, 4);
 
 --
 -- Index pour les tables déchargées
@@ -805,7 +808,8 @@ ALTER TABLE `devis`
 -- Index pour la table `droits`
 --
 ALTER TABLE `droits`
-  ADD PRIMARY KEY (`iddroit`);
+  ADD PRIMARY KEY (`iddroit`),
+  ADD KEY `idgroup` (`idgroup`);
 
 --
 -- Index pour la table `echanges`
@@ -1070,7 +1074,7 @@ ALTER TABLE `devis`
 -- AUTO_INCREMENT pour la table `droits`
 --
 ALTER TABLE `droits`
-  MODIFY `iddroit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `iddroit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=718;
 
 --
 -- AUTO_INCREMENT pour la table `echanges`
@@ -1094,7 +1098,7 @@ ALTER TABLE `entity`
 -- AUTO_INCREMENT pour la table `group`
 --
 ALTER TABLE `group`
-  MODIFY `idgrp` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idgrp` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `housing`
@@ -1214,7 +1218,7 @@ ALTER TABLE `type_travaux`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `idusr` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idusr` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Contraintes pour les tables déchargées
@@ -1267,6 +1271,12 @@ ALTER TABLE `detail_devis_valide`
 --
 ALTER TABLE `devis`
   ADD CONSTRAINT `fk_devis_type_travaux1` FOREIGN KEY (`type_travaux_id1`) REFERENCES `type_travaux` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Contraintes pour la table `droits`
+--
+ALTER TABLE `droits`
+  ADD CONSTRAINT `droits_ibfk_1` FOREIGN KEY (`idgroup`) REFERENCES `group` (`idgrp`);
 
 --
 -- Contraintes pour la table `echanges`

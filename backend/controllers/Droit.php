@@ -11,7 +11,7 @@ class Droit extends CI_Controller {
 	}
 	public function index() {
 		$data_group = $this->groupes->get_all ();
-		$this->template->title ( 'Gestions des groupes' )->build ( 'user/droits/backend/index',array('groupes'=>$data_group));
+		$this->template->title ( 'Gestions des groupes' )->build ( 'user/droits/index',array('groupes'=>$data_group));
 	}
 	
 	public function getWhere ($id){

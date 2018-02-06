@@ -213,7 +213,7 @@ class Cic_auth {
 								],
 								[
 										"nomMenu" => "Gérer droit",
-										"url" => "#"
+										"url" => "droit"
 // 										"sousNomMenu" => [
 // 												[
 // 														"nomMenu" => "Front office",

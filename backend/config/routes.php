@@ -73,10 +73,8 @@ $route['groupes_save'] = 'group/save';
 
 // 	Routage Droit
 
-$route['droit_backend'] = 'droit';
+$route['droit'] = 'droit';
 $route['droit_backend_save'] = 'droit/save';
-
-$route['droit_fronted'] = 'droit/front_office';
 
 
 // 	Routage Dashboard

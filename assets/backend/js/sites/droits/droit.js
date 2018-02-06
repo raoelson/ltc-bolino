@@ -27,12 +27,12 @@ initCallBack = function(json) {
 								+ elt.iddroit + "'>" + elt.menu + "</td>";
 						tbody += '<td><label><input type="checkbox" name="voir" class="js-switch" '
 								+ elt.voir + ' /></td>';
-						tbody += '<td><label><input type="checkbox" name="creer" class="js-switch" '
-								+ elt.creer + ' /></td>';
-						tbody += '<td><label><input type="checkbox" name="modifier" class="js-switch" '
-								+ elt.modifier + ' /></td>';
-						tbody += '<td><label><input type="checkbox" name="supprimer" class="js-switch" '
-								+ elt.supprimer + ' /></td>';
+//						tbody += '<td><label><input type="checkbox" name="creer" class="js-switch" '
+//								+ elt.creer + ' /></td>';
+//						tbody += '<td><label><input type="checkbox" name="modifier" class="js-switch" '
+//								+ elt.modifier + ' /></td>';
+//						tbody += '<td><label><input type="checkbox" name="supprimer" class="js-switch" '
+//								+ elt.supprimer + ' /></td>';
 						tbody += '</tr>';
 					});
 	$("#datatable-droits tbody").append(tbody);
