@@ -18,8 +18,8 @@ class User_model extends CI_Model {
 		$this->db->or_where ( array (
 				"firstname" => $login 
 		) );
-		$this->db->join("user_has_group","user_id1 = idusr","LEFT");
-		$this->db->join("group","idgrp = idgroup","LEFT");
+		//$this->db->join("user_has_group","user_id1 = idusr","LEFT");
+		//$this->db->join("group","idgrp = idgroup","LEFT");
 		$query = $this->db->get_where ( $this->table );
 		return $query->row_array ();
 	}
