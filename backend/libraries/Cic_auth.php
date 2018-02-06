@@ -27,7 +27,6 @@ class Cic_auth {
 	function login($login, $password) {
 		$message = "Login ou mot de passe incorrect";
 		$user = $this->ci->users->getAuth ( $login );
-		print_r($user);die();
 		if ($user) {
 			if ($user ["password"] == md5 ( $password )) {
 				$this->ci->session->set_userdata ( "user", $user );
@@ -49,59 +48,224 @@ class Cic_auth {
 		$this->ci->load->model ( 'droits_model', 'droits' );
 		$this->ci->load->model ( 'group_model', 'groupes' );
 		
-		$data = [
-				['name' => 'Gestions des Artisans','actionvoir'=>'Unchecked','actioncreer'=>'Unchecked','actionmodifier'=>'Unchecked','actionsupprimer'=>'Unchecked',
-						'alias'=>'Gestions des Artisans','url'=> '#','sous_menu'=>[["nomMenu"=>"Listes des Artisans","url"=>base_url('admin.php/dashboard')]]],
-				
-				['name' => 'Gestions des Clients','actionvoir'=>'Unchecked','actioncreer'=>'Unchecked','actionmodifier'=>'Unchecked','actionsupprimer'=>'Unchecked',
-						'alias'=>'Gestions des Clients','url'=>'#','sous_menu'=>[["nomMenu"=>"Listes des Clients","url"=>base_url('admin.php/dashboard')]]
+		$data = [ 
+				[ 
+						'name' => 'Gestions des Artisans',
+						'actionvoir' => 'Unchecked',
+						'actioncreer' => 'Unchecked',
+						'actionmodifier' => 'Unchecked',
+						'actionsupprimer' => 'Unchecked',
+						'alias' => 'Gestions des Artisans',
+						'url' => '#',
+						'icon' => 'fa fa-edit',
+						'sous_menu' => [ 
+								[ 
+										"nomMenu" => "Listes des Artisans",
+										"url" => "#" 
+								],
+								[
+										"nomMenu" => "",
+										"url" => "#"
+								],
+								[
+										"nomMenu" => "",
+										"url" => "#"
+								] 
+						] 
 				],
 				
-				['name' => 'Gestions des Tournées','actionvoir'=>'Unchecked','actioncreer'=>'Unchecked','actionmodifier'=>'Unchecked','actionsupprimer'=>'Unchecked',
-						'alias'=>'Gestions des Tournées','url'=> '#','sous_menu'=>[["nomMenu"=>"Listes des Tournées","url"=>base_url('admin.php/dashboard')]]
+				[ 
+						'name' => 'Gestions des Clients',
+						'actionvoir' => 'Unchecked',
+						'actioncreer' => 'Unchecked',
+						'actionmodifier' => 'Unchecked',
+						'actionsupprimer' => 'Unchecked',
+						'alias' => 'Gestions des Clients',
+						'url' => '#',
+						'icon' => 'fa fa-user',
+						'sous_menu' => [ 
+								[ 
+										"nomMenu" => "Listes des Clients",
+										"url" => "#" 
+								],
+								[
+										"nomMenu" => "",
+										"url" => "#"
+								],
+								[
+										"nomMenu" => "",
+										"url" => "#"
+								] 
+						] 
 				],
 				
-				['name' => 'Gestions des Diagnostics','actionvoir'=>'Unchecked','actioncreer'=>'Unchecked','actionmodifier'=>'Unchecked','actionsupprimer'=>'Unchecked',
-						'alias'=>'Gestions des Diagnostics','url'=>'#','sous_menu'=>[["nomMenu"=>"Listes des Diagnostics","url"=>base_url('admin.php/dashboard')]]
+				[ 
+						'name' => 'Gestions des Tournées',
+						'actionvoir' => 'Unchecked',
+						'actioncreer' => 'Unchecked',
+						'actionmodifier' => 'Unchecked',
+						'actionsupprimer' => 'Unchecked',
+						'alias' => 'Gestions des Tournées',
+						'url' => '#',
+						'icon' => 'fa fa-refresh',
+						'sous_menu' => [ 
+								[ 
+										"nomMenu" => "Listes des Tournées",
+										"url" => "#" 
+								],
+								[
+										"nomMenu" => "",
+										"url" => "#"
+								],
+								[
+										"nomMenu" => "",
+										"url" => "#"
+								] 
+						] 
 				],
 				
+				[ 
+						'name' => 'Gestions des Diagnostics',
+						'actionvoir' => 'Unchecked',
+						'actioncreer' => 'Unchecked',
+						'actionmodifier' => 'Unchecked',
+						'actionsupprimer' => 'Unchecked',
+						'alias' => 'Gestions des Diagnostics',
+						'url' => '#',
+						'icon' => 'fa fa-cog',
+						'sous_menu' => [ 
+								[ 
+										"nomMenu" => "Listes des Diagnostics",
+										"url" =>"" 
+								],
+								[
+										"nomMenu" => "",
+										"url" => "#"
+								],
+								[
+										"nomMenu" => "",
+										"url" => "#"
+								] 
+						] 
+				],
 				
-				['name' => 'Gestions des Attestations des Assurances des Artisans','actionvoir'=>'Unchecked','actioncreer'=>'Unchecked','actionmodifier'=>'Unchecked','actionsupprimer'=>'Unchecked',
-						'alias'=>'Gestions des A-A-A','url'=>'#','sous_menu'=>[["nomMenu"=>"Listes des A-A-A","url"=>base_url('admin.php/dashboard')]]
+				[ 
+						'name' => 'Gestions des Attestations des Assurances des Artisans',
+						'actionvoir' => 'Unchecked',
+						'actioncreer' => 'Unchecked',
+						'actionmodifier' => 'Unchecked',
+						'actionsupprimer' => 'Unchecked',
+						'alias' => 'Gestions des A-A-A',
+						'url' => '#',
+						'icon' => 'fa fa-list',
+						'sous_menu' => [ 
+								[ 
+										"nomMenu" => "Listes des A-A-A",
+										"url" => "#"
+								],
+								[
+										"nomMenu" => "",
+										"url" => "#"
+								],
+								[
+										"nomMenu" => "",
+										"url" => "#"
+								] 
+						] 
 				],
-				['name' => 'Gestions des Devis','actionvoir'=>'Unchecked','actioncreer'=>'Unchecked','actionmodifier'=>'Unchecked','actionsupprimer'=>'Unchecked',
-						'alias'=>'Gestions des Devis','url'=>'#','sous_menu'=>[["nomMenu"=>"Listes des Devis","url"=>base_url('admin.php/dashboard')]]
+				[ 
+						'name' => 'Gestions des Devis',
+						'actionvoir' => 'Unchecked',
+						'actioncreer' => 'Unchecked',
+						'actionmodifier' => 'Unchecked',
+						'actionsupprimer' => 'Unchecked',
+						'alias' => 'Gestions des Devis',
+						'url' => '#',
+						'icon' => 'fa fa-money',
+						'sous_menu' => [ 
+								[ 
+										"nomMenu" => "Listes des Devis",
+										"url" => "#"
+								],
+								[ 
+										"nomMenu" => "",
+										"url" => "#" 
+								],
+								[ 
+										"nomMenu" => "",
+										"url" => "#" 
+								] 
+						] 
 				],
-				['name' => 'Gestions des Users','actionvoir'=>'Unchecked','actioncreer'=>'Unchecked','actionmodifier'=>'Unchecked','actionsupprimer'=>'Unchecked',
-						'alias'=>'Gestions des Users','url'=>'#','sous_menu'=>[["nomMenu"=>"Gérer utilisateur","url"=>base_url('admin.php/user_listes')],
-								["nomMenu"=>"Gérer Droits","url"=>base_url('admin.php/dashboard')],
-								["nomMenu"=>"Gérer Groupes","url"=>base_url('admin.php/groupes')]
-						]
-				]
+				[ 
+						'name' => 'Gestions des Users',
+						'actionvoir' => 'Unchecked',
+						'actioncreer' => 'Unchecked',
+						'actionmodifier' => 'Unchecked',
+						'actionsupprimer' => 'Unchecked',
+						'alias' => 'Gestions des Users',
+						'url' => '#',
+						'icon' => 'fa fa-users',
+						'sous_menu' => [ 
+								[
+										"nomMenu" => "Gérer utilisateur",
+										"url" => "user_listes" 
+								],
+								[
+										"nomMenu" => "Gérer droit",
+										"url" => "#"
+// 										"sousNomMenu" => [
+// 												[
+// 														"nomMenu" => "Front office",
+// 														"url" => "droit_fronted"
+// 												],[
+// 														"nomMenu" => "Back office",
+// 														"url" => "droit_backend"
+// 												]
+// 										]
+								],
+								[
+										"nomMenu" => "Gérer groupe",
+										"url" =>"groupes"
+								] 
+						] 
+				] 
 		];
-		//print_r($data[0]['name']);die;
-		$dataGrp = $this->ci->groupes->get_all();		
-		$dataDroits = $this->ci->droits->get_all();
-		if(count($dataDroits) == 0){
-			foreach ($dataGrp as $grp){
-				foreach ($data as $value){
+		
+		$dataGrp = $this->ci->groupes->get_all ();
+		$dataDroits = $this->ci->droits->get_all ( "NULL" );
+		if (count ( $dataDroits ) == 0) {
+			foreach ( $dataGrp as $grp ) {
+				foreach ( $data as $value ) {
+					$actionvoir = $value ['actionvoir'];
+					if ($grp ['namegrp'] == 'Admin' || $grp ['namegrp'] == 'Administrateur' || $grp ['namegrp'] == 'admin' || $grp ['namegrp'] == 'administrateur') {
+						$actionvoir = "Checked";
+					}
 					$posts = array (
 							'menu' => $value ['name'],
-							'voir' =>$value ['actionvoir'],
-							'creer' =>$value ['actioncreer'],
-							'modifier' =>$value ['actionmodifier'],
-							'supprimer' =>$value ['actionsupprimer'],
-							'idgroup' =>$grp['idgrp'],
-							'alias_menu'  => $value ['alias'],
-							'url_menu'  => $value ['url'],
-							'sous_menu'  => serialize($value ['sous_menu'])
+							'voir' => $actionvoir,
+							'creer' => $value ['actioncreer'],
+							'modifier' => $value ['actionmodifier'],
+							'supprimer' => $value ['actionsupprimer'],
+							'idgroup' => $grp ['idgrp'],
+							'alias_menu' => $value ['alias'],
+							'url_menu' => $value ['url'],
+							'iconmenu' => $value ['icon'],
+							'sous_menu' => (serialize ( $value ['sous_menu'] )) 
 					);
-					//print_r(array($value ['sous_menu']));
 					$this->ci->droits->add ( $posts );
 				}
 			}
-			//die;
 			return $data;
 		}
+	}
+	public function getMenu() {
+		if ($this->ci->session->userdata ( 'user' )) {
+			$this->ci->load->model ( 'droits_model', 'droits' );
+			$id = $this->ci->session->userdata ( 'user' ) ['group_id'];
+			$dataMenu = $this->ci->droits->get_all ( $id );
+			return $dataMenu;
+		}
+		return;
 	}
 }

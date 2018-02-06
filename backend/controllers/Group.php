@@ -36,7 +36,7 @@ class Group extends CI_Controller {
 		$message = "";
 		$typeMessage = "success";
 		if ($posts["idgroupe"] ==""){			
-			$data = array('name'=>$posts['name']);
+			$data = array('namegrp'=>$posts['name']);
 			$rep = $this->groupes->add($data);
 			if($rep == 0){
 				$message = "Ce donnée existe déjà dans la base de données ";
@@ -46,7 +46,7 @@ class Group extends CI_Controller {
 			}
 		}
 		else{
-			$data = array('idgrp' =>$posts['idgroupe'],'name'=>$posts['name']);
+			$data = array('idgrp' =>$posts['idgroupe'],'namegrp'=>$posts['name']);
 			$this->groupes->update($data,$posts["idgroupe"]);
 			$message = "Votre donnée  a été bien modifiée !";
 		}

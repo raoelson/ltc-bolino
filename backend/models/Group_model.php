@@ -3,7 +3,7 @@ class Group_model extends CI_Model {
 	private $table = "group";
 	private $id = "idgrp";
 	public function get_all() {
-		$this->db->order_by ( 'name', 'asc' );
+		$this->db->order_by ( 'namegrp', 'asc' );
 		$query = $this->db->get ( $this->table );
 		return $query->result_array ();
 		;
@@ -34,7 +34,7 @@ class Group_model extends CI_Model {
 	}
 	public function getByName($name) {
 		$this->db->where ( array (
-				"name" => $name 
+				"namegrp" => $name 
 		) );
 		$query = $this->db->get_where ( $this->table );
 		return $query->row_array ();

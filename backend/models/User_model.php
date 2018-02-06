@@ -13,13 +13,12 @@ class User_model extends CI_Model {
 	 */
 	public function getAuth($login) {
 		$this->db->where ( array (
-				"name" => $login 
+				"nameuser" => $login 
 		) );
 		$this->db->or_where ( array (
 				"firstname" => $login 
 		) );
-		//$this->db->join("user_has_group","user_id1 = idusr","LEFT");
-		//$this->db->join("group","idgrp = idgroup","LEFT");
+		$this->db->join("user_has_group","user_id1 = idusr","LEFT");
 		$query = $this->db->get_where ( $this->table );
 		return $query->row_array ();
 	}
@@ -34,12 +33,12 @@ class User_model extends CI_Model {
 	public function update($posts, $id) {
 		if ($posts ['password'] == "") {
 			$data = array (
-					'name' => $posts ['name'],
+					'nameuser' => $posts ['name'],
 					'firstname' => $posts ['firstnameuser'] 
 			);
 		} else {
 			$data = array (
-					'name' => $posts ['name'],
+					'nameuser' => $posts ['name'],
 					'firstname' => $posts ['firstnameuser'],
 					'password' => md5 ( $posts ['password'] ) 
 			);
@@ -58,7 +57,7 @@ class User_model extends CI_Model {
 	
 	public function getByName($name, $first) {
 		$this->db->where ( array (
-				"name" => $name,
+				"nameuser" => $name,
 				"firstname" => $first 
 		) );
 		$query = $this->db->get_where ( $this->table );
@@ -70,7 +69,7 @@ class User_model extends CI_Model {
 			return 0;
 		} else {
 			$data = array (
-					'name' => $posts ['name'],
+					'nameuser' => $posts ['name'],
 					'firstname' => $posts ['firstnameuser'],
 					'password' => md5 ( $posts ['password'] ) 
 			);

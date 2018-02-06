@@ -83,7 +83,7 @@
               <div class="profile_info">
                 <span>Bonjour,</span>
                 <h2><?php if($this->session->userdata('user'))
-                	print_r($this->session->userdata('user')['name']);?></h2>
+                	print_r($this->session->userdata('user')['nameuser']);?></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -129,7 +129,7 @@
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <img src="<?php echo base_url() ?>assets/backend/images/img.jpg" alt=""><?php if($this->session->userdata('user'))
-                	print_r($this->session->userdata('user')['name']);?>
+                	print_r($this->session->userdata('user')['nameuser']);?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">

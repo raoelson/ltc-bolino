@@ -31,7 +31,7 @@
 						<tbody>
 					<?php foreach ($data as $val){ ?>
 						<tr id="<?php echo ($val['idgrp']) ;?>">
-								<td><?php echo ($val['name']) ;?></td>
+								<td><?php echo ($val['namegrp']) ;?></td>
 								<td><a href="#ancre" id="modifier" class="btn btn-round btn-warning">Modifier</a> <a
 									href="#" id="supprimer" class="btn btn-round btn-danger">Supprimer</a>
 								</td>

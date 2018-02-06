@@ -105,7 +105,7 @@
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<select id="idgroupe" name="idgroupe" class="form-control col-md-7 col-xs-12">								
 								<?php foreach ($groupes as $val){ ?>
-										<option value="<?php echo ($val['idgrp']) ;?>"><?php echo ($val['name']) ;?></option>
+										<option value="<?php echo ($val['idgrp']) ;?>"><?php echo ($val['namegrp']) ;?></option>
 								<?php } ?>
 								</select>
 							</div>

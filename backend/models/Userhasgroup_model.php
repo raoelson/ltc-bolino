@@ -3,7 +3,7 @@ class Userhasgroup_model extends CI_Model {
 	private $table = "user_has_group";
 	private $iduser= "user_id";
 	public function getWhere($array) {
-		$this->db->select ( 'group.name as groupename,user.name as username,user.firstname as firstname,user.password as 
+		$this->db->select ( 'group.namegrp as groupename,user.nameuser as username,user.firstname as firstname,user.password as 
 			password,user.idusr,group.idgrp,user_has_group.user_id as usrgrp' );
 		$this->db->join ( "user", "idusr = user_id1" );
 		$this->db->join ( "group", "idgrp = group_id" );

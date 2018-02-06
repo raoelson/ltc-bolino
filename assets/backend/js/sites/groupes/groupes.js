@@ -70,7 +70,7 @@ function() {
 	modifierCallBack = function(json){
 		var elt = json.data;
 		$("#idgroupe").val(elt.idgrp);
-		$("#namegroupe").val(elt.name);
+		$("#namegroupe").val(elt.namegrp);
 		$('#ancre').show();
 	}
 });

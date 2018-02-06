@@ -33,7 +33,7 @@
 								<option value="0">Veuillez choisir</option>
 								<?php foreach ($groupes as $val){
 									?>
-									<option value="<?php echo $val['idgrp']?>"><?php echo ($val['name']) ;?></option>
+									<option value="<?php echo $val['idgrp']?>"><?php echo ($val['namegrp']) ;?></option>
 								<?php }
 								?>
 							</select>
