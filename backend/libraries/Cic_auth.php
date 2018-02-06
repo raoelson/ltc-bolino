@@ -27,6 +27,7 @@ class Cic_auth {
 	function login($login, $password) {
 		$message = "Login ou mot de passe incorrect";
 		$user = $this->ci->users->getAuth ( $login );
+		print_r($user);die();
 		if ($user) {
 			if ($user ["password"] == md5 ( $password )) {
 				$this->ci->session->set_userdata ( "user", $user );
