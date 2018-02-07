@@ -62,9 +62,9 @@
 									<tr>
 										<th>Menu</th>
 										<th>Voir</th>
-<!-- 										<th>Créer</th> -->
-<!-- 										<th>Modifier</th> -->
-<!-- 										<th>Supprimer</th> -->
+										<th>Créer</th>
+										<th>Modifier</th>
+										<th>Supprimer</th>
 									</tr>
 								</thead>
 								<tbody>
