@@ -38,6 +38,6 @@ class Droit extends CI_Controller {
 		$this->template->title ( 'Gestions des groupes' )->build ( 'user/droits/fronted/index',array('groupes'=>$data_group));
 	}
 	
-	///maorus
+	///maorus + test
 			
 }
