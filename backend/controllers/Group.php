@@ -62,4 +62,6 @@ class Group extends CI_Controller {
 				'data' =>$posts['id']
 		) ) );
 	}
+	
+	//group
 }
