@@ -39,5 +39,6 @@ class Droit extends CI_Controller {
 	}
 	
 	///maorus + test
-			
+		
+	//sary
 }
