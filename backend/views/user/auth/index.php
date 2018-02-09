@@ -33,7 +33,8 @@
 <body class="login">
 	<div>
 		<a class="hiddenanchor" id="signup"></a> <a class="hiddenanchor"
-			id="signin"></a>
+			id="signin"></a><a class="hiddenanchor"
+			id="signin_"></a>
 
 		<div class="login_wrapper">
 			<div class="animate form login_form">
@@ -77,7 +78,7 @@
 				</section>
 			</div>
 
-			<div id="register" class="animate form registration_form">
+			<div id="register_" class="animate form registration_form">
 				<section class="login_content">
 					<form>
 						<h1>Nouvel utilisateur</h1>
@@ -104,6 +105,46 @@
 								<a href="#signin" class="to_register"><i
 									class="fa fa-arrow-left"></i> Retour à la page
 									d'authentification </a>
+							</p>
+
+							<div class="clearfix"></div>
+							<br />
+
+							<div>
+								<h1>LTC-BOLINO</h1>
+
+							</div>
+						</div>
+					</form>
+				</section>
+			</div>
+			
+			<div id="register" class="animate form registration_form">
+				<section class="login_content">
+					<form>
+						<h1>Nouvel utilisateur</h1>
+						<div>
+							<input type="text" class="form-control" placeholder="Username"
+								required="" />
+						</div>
+						<div>
+							<input type="email" class="form-control" placeholder="Email"
+								required="" />
+						</div>
+						<div>
+							<input type="password" class="form-control"
+								placeholder="Password" required="" />
+						</div>
+						<div>
+							<a class="btn btn-default submit" href="index.html">S'enregister</a>
+						</div>
+
+						<div class="clearfix"></div>
+
+						<div class="separator">
+							<p class="change_link">
+								<a href="#signin_" class="to_register"><i
+									class="fa fa-arrow-left"></i> fdsfdsf</a>
 							</p>
 
 							<div class="clearfix"></div>

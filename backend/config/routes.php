@@ -85,3 +85,8 @@ $route['dashboard'] = 'welcome';
  $route['user_auth'] = 'user'; */
 
 
+// 	Routage Clients
+
+$route['clients'] = 'clients';
+$route['clients_saves'] = 'clients/save';
+

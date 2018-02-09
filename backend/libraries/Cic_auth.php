@@ -86,7 +86,7 @@ class Cic_auth {
 						'sous_menu' => [ 
 								[ 
 										"nomMenu" => "Listes des Clients",
-										"url" => "#" 
+										"url" => "clients" 
 								],
 								[
 										"nomMenu" => "",
