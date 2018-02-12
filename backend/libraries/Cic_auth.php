@@ -50,79 +50,59 @@ class Cic_auth {
 		
 		$data = [ 
 				[ 
-						'name' => 'Gestions des Artisans',
+						'name' => 'Gestions principales',
 						'actionvoir' => 'Unchecked',
 						'actioncreer' => 'Unchecked',
 						'actionmodifier' => 'Unchecked',
 						'actionsupprimer' => 'Unchecked',
-						'alias' => 'Gestions des Artisans',
+						'alias' => 'Gestions principales',
 						'url' => '#',
 						'icon' => 'fa fa-edit',
 						'sous_menu' => [ 
 								[ 
-										"nomMenu" => "Listes des Artisans",
+										"nomMenu" => "Gestions des Propriétaires",
 										"url" => "#" 
 								],
 								[
-										"nomMenu" => "",
-										"url" => "#"
+										"nomMenu" => "Gestions des Demandes",
+										"url" => "Gestions des Demandes"
 								],
 								[
-										"nomMenu" => "",
+										"nomMenu" => "Gestions des Artisans",
 										"url" => "#"
 								] 
 						] 
 				],
 				
 				[ 
-						'name' => 'Gestions des Clients',
+						'name' => 'Gestion des Analyses',
 						'actionvoir' => 'Unchecked',
 						'actioncreer' => 'Unchecked',
 						'actionmodifier' => 'Unchecked',
 						'actionsupprimer' => 'Unchecked',
-						'alias' => 'Gestions des Clients',
+						'alias' => 'Gestions des Analyses',
 						'url' => '#',
-						'icon' => 'fa fa-user',
+						'icon' => 'fa fa-exchange',
 						'sous_menu' => [ 
 								[ 
-										"nomMenu" => "Listes des Clients",
+										"nomMenu" => "Gestions des échanges des Propriétaires",
 										"url" => "clients" 
 								],
 								[
-										"nomMenu" => "",
+										"nomMenu" => "Gestion des échanges des Artisans",
 										"url" => "#"
 								],
 								[
-										"nomMenu" => "",
+										"nomMenu" => "Gestion des rdv des Propriétaires",
 										"url" => "#"
-								] 
+								] ,
+								[
+										"nomMenu" => "Gestion des rdv des Artisans",
+										"url" => "#"
+								]
 						] 
 				],
 				
-				[ 
-						'name' => 'Gestions des Tournées',
-						'actionvoir' => 'Unchecked',
-						'actioncreer' => 'Unchecked',
-						'actionmodifier' => 'Unchecked',
-						'actionsupprimer' => 'Unchecked',
-						'alias' => 'Gestions des Tournées',
-						'url' => '#',
-						'icon' => 'fa fa-refresh',
-						'sous_menu' => [ 
-								[ 
-										"nomMenu" => "Listes des Tournées",
-										"url" => "#" 
-								],
-								[
-										"nomMenu" => "",
-										"url" => "#"
-								],
-								[
-										"nomMenu" => "",
-										"url" => "#"
-								] 
-						] 
-				],
 				
 				[ 
 						'name' => 'Gestions des Diagnostics',
@@ -150,53 +130,53 @@ class Cic_auth {
 				],
 				
 				[ 
-						'name' => 'Gestions des Attestations des Assurances des Artisans',
+						'name' => 'Gestions des Paiements ',
 						'actionvoir' => 'Unchecked',
 						'actioncreer' => 'Unchecked',
 						'actionmodifier' => 'Unchecked',
 						'actionsupprimer' => 'Unchecked',
-						'alias' => 'Gestions des A-A-A',
-						'url' => '#',
-						'icon' => 'fa fa-list',
-						'sous_menu' => [ 
-								[ 
-										"nomMenu" => "Listes des A-A-A",
-										"url" => "#"
-								],
-								[
-										"nomMenu" => "",
-										"url" => "#"
-								],
-								[
-										"nomMenu" => "",
-										"url" => "#"
-								] 
-						] 
-				],
-				[ 
-						'name' => 'Gestions des Devis',
-						'actionvoir' => 'Unchecked',
-						'actioncreer' => 'Unchecked',
-						'actionmodifier' => 'Unchecked',
-						'actionsupprimer' => 'Unchecked',
-						'alias' => 'Gestions des Devis',
+						'alias' => 'Gestions des Paiements',
 						'url' => '#',
 						'icon' => 'fa fa-money',
 						'sous_menu' => [ 
 								[ 
-										"nomMenu" => "Listes des Devis",
+										"nomMenu" => "Listes des Paiements",
 										"url" => "#"
 								],
-								[ 
+								[
 										"nomMenu" => "",
-										"url" => "#" 
+										"url" => "#"
 								],
-								[ 
+								[
 										"nomMenu" => "",
-										"url" => "#" 
+										"url" => "#"
 								] 
 						] 
 				],
+// 				[ 
+// 						'name' => 'Gestions des Devis',
+// 						'actionvoir' => 'Unchecked',
+// 						'actioncreer' => 'Unchecked',
+// 						'actionmodifier' => 'Unchecked',
+// 						'actionsupprimer' => 'Unchecked',
+// 						'alias' => 'Gestions des Devis',
+// 						'url' => '#',
+// 						'icon' => 'fa fa-money',
+// 						'sous_menu' => [ 
+// 								[ 
+// 										"nomMenu" => "Listes des Devis",
+// 										"url" => "#"
+// 								],
+// 								[ 
+// 										"nomMenu" => "",
+// 										"url" => "#" 
+// 								],
+// 								[ 
+// 										"nomMenu" => "",
+// 										"url" => "#" 
+// 								] 
+// 						] 
+// 				],
 				[ 
 						'name' => 'Gestions des Users',
 						'actionvoir' => 'Unchecked',
@@ -233,6 +213,7 @@ class Cic_auth {
 		];
 		
 		$dataGrp = $this->ci->groupes->get_all ();
+		$this->ci->droits->remove();
 		$dataDroits = $this->ci->droits->get_all ( "NULL" );
 		if (count ( $dataDroits ) == 0) {
 			foreach ( $dataGrp as $grp ) {

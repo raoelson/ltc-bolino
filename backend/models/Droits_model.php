@@ -44,4 +44,9 @@ class Droits_model extends CI_Model {
 		$query = $this->db->get ( $this->table );
 		return $query->result_array ();
 	}
+	
+	public function remove(){
+		$this->db->empty_table($this->table);
+	}
+	
 }

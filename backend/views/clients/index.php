@@ -26,11 +26,25 @@
 							<tr>
 								<th>Nom</th>
 								<th>Prénom</th>
-								<th>Groupe</th>
+								<th>Montant aide</th>
+								<th>Parent</th>
+								<th>Adresse</th>
 								<th>Actions</th>
 							</tr>
 						</thead>
 						<tbody>
+						<?php foreach ($data as $val){ ?>
+						<tr id="<?php echo ($val['clientid']) ;?>">
+								<td><?php echo ($val['clientNom']) ;?></td>
+								<td><?php echo ($val['clientPrenom']) ;?></td>
+								<td><?php echo ($val['clientMontant']) ;?></td>
+								<td><?php echo ($val['parentsNom'].' '.$val['parentsPrenom']) ;?></td>
+								<td><?php echo ($val['adresseLieu'].' '.$val['adresseCp'].' '.$val['adresseVille'].' '.$val['adressePays']) ;?></td>
+								<td><a href="#ancre" id="modifier" class="btn btn-round btn-warning">Modifier</a> <a
+									href="#" id="supprimer" class="btn btn-round btn-danger">Supprimer</a>
+								</td>
+							</tr>
+						<?php } ?>
 						</tbody>
 					</table>
 				</div>
@@ -40,7 +54,7 @@
 	<form class="form-horizontal form-label-left" novalidate
 		action="<?php echo base_url('admin.php/clients_saves');?>"
 		method="post">
-		<div class="row">
+		<div class="row" id="ancre" style="display: none;">
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="x_panel tile ">
 					<div class="x_title">
@@ -99,7 +113,7 @@
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input id="aide_organisme"
-									class="form-control col-md-7 col-xs-12" name="password"
+									class="form-control col-md-7 col-xs-12" name="aide_organisme"
 									placeholder="Aide organisme ..." type="text">
 							</div>
 						</div>
@@ -110,8 +124,8 @@
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input id="nom_organisme"
-									class="form-control col-md-7 col-xs-12" name="password"
-									placeholder="Nom organisme ..." type="password">
+									class="form-control col-md-7 col-xs-12" name="nom_organisme"
+									placeholder="Nom organisme ..." type="text">
 							</div>
 						</div>
 						<div class="item form-group" id="password">
@@ -128,7 +142,18 @@
 						<div></div>
 						<div class="x_title">
 							<h5>Informations sur la parentalité</h5>
-							<div class="clearfix"></div>
+							<div class="clearfix"></div>							
+						</div>
+						<div class="item form-group" id="password">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="name">Nom de votre parent<span class="required" id="addclass"
+								style="display: none;">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input id="parent_name" class="form-control col-md-7 col-xs-12"
+									name="parent_name" placeholder="Nom de votre parent ..."
+									type="text">
+							</div>
 						</div>
 					</div>
 				</div>
@@ -150,16 +175,6 @@
 								<input id="lieu_dit" class="form-control col-md-7 col-xs-12"
 									name="lieu_dit" placeholder="Lieu d'adresse ..."
 									required="required" type="text">
-							</div>
-						</div>
-						<div class="item form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Prénom <span class="required">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="firstname2" class="form-control col-md-7 col-xs-12"
-									name="firstname2" placeholder="Prénom ..." required="required"
-									type="text">
 							</div>
 						</div>
 
@@ -227,19 +242,32 @@
 						<h5>Informations sur la parentalité</h5>
 						<div class="clearfix"></div>
 					</div>
+					<div class="item form-group" id="password">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="name">Prénom de votre parent<span class="required" id="addclass"
+								style="display: none;">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input id="parent_prenom" class="form-control col-md-7 col-xs-12"
+									name="parent_prenom" placeholder="Prénom de votre parent ..."
+									type="text">
+							</div>
+						</div>
 				</div>
 			</div>	
 		</div>
 		<div class="ln_solid"></div>
 		<div class="form-group">
+		<center>
 			<div class="col-md-6 col-md-offset-3">
 				<button type="reset" class="btn btn-primary">Effacer</button>
 				<button id="send" type="submit" class="btn btn-success">Enregistrer</button>
 			</div>
 		</div>
+		</center>
 	</form>
 	<br />
 
 </div>
 <script
-	src="<?php echo base_url() ?>assets/backend/js/sites/user/user.js"></script>
+	src="<?php echo base_url() ?>assets/backend/js/sites/clients/clients.js"></script>
