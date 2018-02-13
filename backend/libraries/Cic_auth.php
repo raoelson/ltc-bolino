@@ -61,7 +61,7 @@ class Cic_auth {
 						'sous_menu' => [ 
 								[ 
 										"nomMenu" => "Gestions des Propriétaires",
-										"url" => "#" 
+										"url" => "clients" 
 								],
 								[
 										"nomMenu" => "Gestions des Demandes",

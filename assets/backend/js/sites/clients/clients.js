@@ -2,9 +2,28 @@ $(document)
 .ready(
 function() {
 
+
+	 
+	 $('input.flat').iCheck({
+         checkboxClass: 'icheckbox_flat-green',
+         radioClass: 'iradio_flat-green'
+     });
+	 $("ins.iCheck-helper").click(function(){
+			var etatCheck = $(this).prev('input[name="aide_organisme"]').val();
+			if(etatCheck  == 0 && etatCheck !='undefined'){
+				$('#div_nom_organisme').hide();
+				$('#div_montant_aide').hide();
+				
+			}else if(etatCheck  == 1 && etatCheck !='undefined'){
+				$('#div_nom_organisme').removeAttr("style");
+				$('#div_montant_aide').removeAttr("style");
+				
+			}
+	 });
 	if (typeof ($.fn.DataTable) === 'undefined') {
 		return;
 	}
+	
 	var handleDataTableButtons = function() {
 		if ($("#datatable-buttons").length) {
 		var table = $("#datatable-buttons").DataTable({
@@ -68,6 +87,8 @@ function() {
 	$("#nouveau").click(function() {
 		$('#ancre').show();		
 	});
+	
+	
 	
 	modifierCallBack = function(json){
 		var elt = json.data;

@@ -40,9 +40,9 @@
 								<td><?php echo ($val['clientMontant']) ;?></td>
 								<td><?php echo ($val['parentsNom'].' '.$val['parentsPrenom']) ;?></td>
 								<td><?php echo ($val['adresseLieu'].' '.$val['adresseCp'].' '.$val['adresseVille'].' '.$val['adressePays']) ;?></td>
-								<td><a href="#ancre" id="modifier" class="btn btn-round btn-warning">Modifier</a> <a
-									href="#" id="supprimer" class="btn btn-round btn-danger">Supprimer</a>
-								</td>
+								<td><a href="#ancre" id="modifier"
+									class="btn btn-round btn-warning">Modifier</a> <a href="#"
+									id="supprimer" class="btn btn-round btn-danger">Supprimer</a></td>
 							</tr>
 						<?php } ?>
 						</tbody>
@@ -55,24 +55,43 @@
 		action="<?php echo base_url('admin.php/clients_saves');?>"
 		method="post">
 		<div class="row" id="ancre" style="display: none;">
-			<div class="col-md-6 col-sm-6 col-xs-12">
-				<div class="x_panel tile ">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="x_panel">
 					<div class="x_title">
 						<h5>Informations personelles</h5>
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
-
 						<div class="item form-group">
-							<input id="usergrp" name="usergrp" type="hidden" value="" /> <input
-								id="idusr" name="idusr" type="hidden" value="" /> <label
-								class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nom
-								<span class="required">*</span>
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="name">Indentité <span class="required">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<p style="margin-top: 9px !important">
+									Madame: <input type="radio" class="flat" name="indetite" id=""
+										value="0" checked="true" required /> &nbsp;Mademoiselle: <input
+										type="radio" class="flat" name="indetite" id="" value="1" />
+									&nbsp;Monsieur: <input type="radio" class="flat"
+										name="indetite" id="" value="1" />
+								</p>
+							</div>
+						</div>
+						<div class="item form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="name">Nom martial </label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input id="firstname1" class="form-control col-md-7 col-xs-12"
+									type="text" placeholder="Nom martial...">
+							</div>
+						</div>
+						<div class="item form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="name">Nom de naissance<span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input id="firstname1" class="form-control col-md-7 col-xs-12"
-									name="firstname1" placeholder="Nom ..." required="required"
-									type="text">
+									name="firstname1" placeholder="Nom de naissance..."
+									required="required" type="text">
 							</div>
 						</div>
 						<div class="item form-group">
@@ -81,11 +100,20 @@
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input id="firstname2" class="form-control col-md-7 col-xs-12"
-									name="firstname2" placeholder="Prénom ..." required="required"
+									name="firstname2" placeholder="Prénom..." required="required"
 									type="text">
 							</div>
 						</div>
-						<div class="item form-group" id="password">
+						<div class="item form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="name">Autre nom d'usage </label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input id="firstname1" class="form-control col-md-7 col-xs-12"
+									name="firstname1" placeholder="Autre nom d'usage..."
+									type="text">
+							</div>
+						</div>
+						<div class="item form-group" id="">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Date de naissance<span class="required" id="addclass"
 								style="display: none;">*</span>
@@ -95,7 +123,7 @@
 									name="birthday" placeholder="Date de naissance ..." type="date">
 							</div>
 						</div>
-						<div class="item form-group" id="password">
+						<div class="item form-group" id="">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Lieu de naissance<span class="required" id="addclass"
 								style="display: none;">*</span>
@@ -106,18 +134,39 @@
 									type="text">
 							</div>
 						</div>
-						<div class="item form-group" id="password">
+						<div class="item form-group" id="">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="name">Situation familiale<span class="required"
+								id="addclass" style="display: none;">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<select id="birthplace" class="form-control col-md-7 col-xs-12">
+									<option value="Célibataire">Célibataire</option>
+									<option value="Marié(e)">Marié(e)</option>
+									<option value="Séparé(e)">Séparé(e)</option>
+									<option value=">Divorcé(e)">Divorcé(e)</option>
+									<option value="Veuf(ve)">Veuf(ve)</option>
+									<option value="Vie Maritale">Vie Maritale/option>
+								
+								</select>
+							</div>
+						</div>
+						<div class="item form-group" id="">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Aide organisme<span class="required" id="addclass"
 								style="display: none;">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="aide_organisme"
-									class="form-control col-md-7 col-xs-12" name="aide_organisme"
-									placeholder="Aide organisme ..." type="text">
+								<p style="margin-top: 9px !important">
+									Non: <input type="radio" class="flat" name="aide_organisme"
+										id="aide_organismeNon" value="0" checked="" required /> Oui: <input
+										type="radio" class="flat" name="aide_organisme"
+										id="aide_organismeOui" value="1" />
+								</p>
 							</div>
 						</div>
-						<div class="item form-group" id="password">
+						<div class="item form-group" id="div_nom_organisme"
+							style="display: none; height: 40px !important;">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Nom organisme<span class="required" id="addclass"
 								style="display: none;">*</span>
@@ -128,7 +177,8 @@
 									placeholder="Nom organisme ..." type="text">
 							</div>
 						</div>
-						<div class="item form-group" id="password">
+						<div class="item form-group" id="div_montant_aide"
+							style="display: none; height: 40px !important;">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Montant à aider<span class="required" id="addclass"
 								style="display: none;">*</span>
@@ -139,45 +189,56 @@
 									type="text">
 							</div>
 						</div>
-						<div></div>
-						<div class="x_title">
-							<h5>Informations sur la parentalité</h5>
-							<div class="clearfix"></div>							
-						</div>
-						<div class="item form-group" id="password">
+						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Nom de votre parent<span class="required" id="addclass"
+								for="name">Type des travaux<span class="required" id="addclass"
 								style="display: none;">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="parent_name" class="form-control col-md-7 col-xs-12"
-									name="parent_name" placeholder="Nom de votre parent ..."
-									type="text">
+								<textarea rows="4" class="form-control col-md-7 col-xs-12"> 
+								</textarea>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<div class="col-md-6 col-sm-6 col-xs-12">
-				<div class="x_panel tile ">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="x_panel">
 					<div class="x_title">
 						<h5>Informations adresses</h5>
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
-
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Lieu d'adresse <span class="required">*</span>
+								for="name">Adresse 1 <span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input id="lieu_dit" class="form-control col-md-7 col-xs-12"
-									name="lieu_dit" placeholder="Lieu d'adresse ..."
-									required="required" type="text">
+									name="lieu_dit" placeholder="Adresse 1..." required="required"
+									type="text">
 							</div>
 						</div>
-
+						<div class="item form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="name">Adresse 2 <span class="required">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input id="lieu_dit" class="form-control col-md-7 col-xs-12"
+									name="lieu_dit" placeholder="Adresse 2..." required="required"
+									type="text">
+							</div>
+						</div>
+						<div class="item form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="name">Lieudit <span class="required">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input id="lieu_dit" class="form-control col-md-7 col-xs-12"
+									name="lieu_dit" placeholder="Lieudit..." required="required"
+									type="text">
+							</div>
+						</div>
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Code Postal <span class="required">*</span>
@@ -229,6 +290,16 @@
 						</div>
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="name">Fax<span class="required" id="addclass"
+								style="display: none;">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input id="fax" class="form-control col-md-7 col-xs-12"
+									name="fax" placeholder="Fax ..." type="text">
+							</div>
+						</div>
+						<div class="item form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Email<span class="required" id="addclass"
 								style="display: none;">*</span>
 							</label>
@@ -238,31 +309,117 @@
 							</div>
 						</div>
 					</div>
+				</div>
+			</div>
+
+			<!-- 			-------------------------------------------------------------------------------- -->
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="x_panel">
 					<div class="x_title">
-						<h5>Informations sur la parentalité</h5>
+						<h5>Informations sur les parents</h5>
 						<div class="clearfix"></div>
 					</div>
-					<div class="item form-group" id="password">
+					<div class="x_content">
+						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Prénom de votre parent<span class="required" id="addclass"
-								style="display: none;">*</span>
+								for="name">Nom <span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="parent_prenom" class="form-control col-md-7 col-xs-12"
-									name="parent_prenom" placeholder="Prénom de votre parent ..."
+								<input id="lieu_dit" class="form-control col-md-7 col-xs-12"
+									name="lieu_dit" placeholder="Nom..." required="required"
 									type="text">
 							</div>
 						</div>
+						<div class="item form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="name">Prénom<span class="required">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input id="cp" class="form-control col-md-7 col-xs-12" name="cp"
+									placeholder="Prénom..." required="required" type="text" />
+							</div>
+						</div>
+						<div class="item form-group" id="ville">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="name">Date de naissance<span class="required" id="addclass"
+								style="display: none;">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input id="ville" class="form-control col-md-7 col-xs-12"
+									name="ville" type="date">
+							</div>
+						</div>
+						<div class="item form-group" id="ville">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="name">Lien parenté<span class="required" id="addclass">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input id="ville" class="form-control col-md-7 col-xs-12"
+									name="ville" placeholder="ex:Père ou Mère..." type="text">
+							</div>
+						</div>	
+					</div>
 				</div>
-			</div>	
+			</div>
+			
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="x_panel">
+					<div class="x_title">
+						<h5>Informations sur les ressources</h5>
+						<div class="clearfix"></div>
+					</div>
+					<div class="x_content">
+						<div class="item form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="name">Nom <span class="required">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input id="lieu_dit" class="form-control col-md-7 col-xs-12"
+									name="lieu_dit" placeholder="Nom..." required="required"
+									type="text">
+							</div>
+						</div>
+						<div class="item form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="name">Prénom<span class="required">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input id="cp" class="form-control col-md-7 col-xs-12" name="cp"
+									placeholder="Prénom..." required="required" type="text" />
+							</div>
+						</div>
+						<div class="item form-group" id="ville">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="name">Date de naissance<span class="required" id="addclass"
+								style="display: none;">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input id="ville" class="form-control col-md-7 col-xs-12"
+									name="ville" type="date">
+							</div>
+						</div>
+						<div class="item form-group" id="ville">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="name">Lien parenté<span class="required" id="addclass">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input id="ville" class="form-control col-md-7 col-xs-12"
+									name="ville" placeholder="ex:Père ou Mère..." type="text">
+							</div>
+						</div>	
+					</div>
+				</div>
+			</div>
+
 		</div>
 		<div class="ln_solid"></div>
 		<div class="form-group">
-		<center>
-			<div class="col-md-6 col-md-offset-3">
-				<button type="reset" class="btn btn-primary">Effacer</button>
-				<button id="send" type="submit" class="btn btn-success">Enregistrer</button>
-			</div>
+			<center>
+				<div class="col-md-6 col-md-offset-3">
+					<button type="reset" class="btn btn-primary">Effacer</button>
+					<button id="send" type="submit" class="btn btn-success">Enregistrer</button>
+				</div>
+		
 		</div>
 		</center>
 	</form>
