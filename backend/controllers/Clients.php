@@ -17,6 +17,7 @@ class Clients extends CI_Controller {
 	}
 	public function save() {
 		$posts = $this->input->post ();
+		var_dump($posts);die;
 		$dataclient = array (
 				'firstname1' => $posts ['firstname1'],
 				'firstname2' => $posts ['firstname2'],

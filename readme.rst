@@ -68,4 +68,8 @@ Acknowledgement
 
 The CodeIgniter team would like to thank EllisLab, all the
 contributors to the CodeIgniter project and you, the CodeIgniter user.
+<<<<<<< HEAD
 test
+=======
+ok
+>>>>>>> a621aff68d166cce4d98f0174972fce01b57e491

@@ -319,14 +319,14 @@
 						<h5>Informations sur les parents</h5>
 						<div class="clearfix"></div>
 					</div>
-					<div class="x_content">
+					<div class="x_content" id="divRessources">
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Nom <span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="lieu_dit" class="form-control col-md-7 col-xs-12"
-									name="lieu_dit" placeholder="Nom..." required="required"
+								<input id="nomParent" class="form-control col-md-7 col-xs-12"
+									name="nomParent" placeholder="Nom..." required="required"
 									type="text">
 							</div>
 						</div>
@@ -335,18 +335,17 @@
 								for="name">Prénom<span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="cp" class="form-control col-md-7 col-xs-12" name="cp"
+								<input id="prenomParent" class="form-control col-md-7 col-xs-12" name="prenomParent"
 									placeholder="Prénom..." required="required" type="text" />
 							</div>
 						</div>
 						<div class="item form-group" id="ville">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Date de naissance<span class="required" id="addclass"
-								style="display: none;">*</span>
+								for="name">Date de naissance<span class="required" id="addclass">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="ville" class="form-control col-md-7 col-xs-12"
-									name="ville" type="date">
+								<input id="datenaissanceParent" class="form-control col-md-7 col-xs-12"
+									name="datenaissanceParent" type="date"  required="required" >
 							</div>
 						</div>
 						<div class="item form-group" id="ville">
@@ -354,62 +353,23 @@
 								for="name">Lien parenté<span class="required" id="addclass">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="ville" class="form-control col-md-7 col-xs-12"
-									name="ville" placeholder="ex:Père ou Mère..." type="text">
+								<input id="lienParent" class="form-control col-md-7 col-xs-12"
+									name="lienParent" placeholder="ex:Père ou Mère..." type="text"  required="required" >
 							</div>
-						</div>	
+						</div>
+						<div  id="newElements" >
+							
+						</div>
+						<div class="item form-group" style="padding-left: 140px;">
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<button type="button" id="ajoutRessources" class="btn btn-primary">Ajouter un autre champs</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
+
 			
-			<div class="col-md-12 col-sm-12 col-xs-12">
-				<div class="x_panel">
-					<div class="x_title">
-						<h5>Informations sur les ressources</h5>
-						<div class="clearfix"></div>
-					</div>
-					<div class="x_content">
-						<div class="item form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Nom <span class="required">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="lieu_dit" class="form-control col-md-7 col-xs-12"
-									name="lieu_dit" placeholder="Nom..." required="required"
-									type="text">
-							</div>
-						</div>
-						<div class="item form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Prénom<span class="required">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="cp" class="form-control col-md-7 col-xs-12" name="cp"
-									placeholder="Prénom..." required="required" type="text" />
-							</div>
-						</div>
-						<div class="item form-group" id="ville">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Date de naissance<span class="required" id="addclass"
-								style="display: none;">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="ville" class="form-control col-md-7 col-xs-12"
-									name="ville" type="date">
-							</div>
-						</div>
-						<div class="item form-group" id="ville">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Lien parenté<span class="required" id="addclass">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="ville" class="form-control col-md-7 col-xs-12"
-									name="ville" placeholder="ex:Père ou Mère..." type="text">
-							</div>
-						</div>	
-					</div>
-				</div>
-			</div>
 
 		</div>
 		<div class="ln_solid"></div>
