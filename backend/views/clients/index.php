@@ -16,7 +16,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Listes des Clients</h2>
+					<h2>Listes des Propriétaires</h2>
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
@@ -46,9 +46,9 @@
 								<td><?php echo ($val['type_travaux_finan']) ;?></td>
 								
 								<td>
-									<a href="#ancre" id="modifier"
+									<a href="<?php echo base_url('admin.php/ressources/index/'.$val['id'].'#ancre');?>" id="modifier"
 									class="btn btn-round btn-primary">Ajouter ressource</a>
-									<a href="#ancre" id="modifier"
+									<a href="#" id="modifier"
 									class="btn btn-round btn-default">Voir détails</a> 							
 									<!-- <a href="#ancre" id="modifier"
 									class="btn btn-round btn-warning">Modifier</a>  -->
@@ -316,67 +316,159 @@
 					</div>
 				</div>
 			</div>
-
-			<!-- 			-------------------------------------------------------------------------------- -->
+			
+			<div class="row" id="ancre">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h5>Informations sur les parentés</h5>
+						<h5>Informations sur votre ressources (DEMANDEUR)</h5>
+						<div class="clearfix"></div>
+					</div>
+					<div class="x_content">	
+					<table class="table table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>Salaire et Rénumération</th>
+								<th>Allocation Familiales</th>
+								<th>Autres préstations familiales</th>
+								<th>A.A.H</th>
+								<th>ASSEDIC</th>
+								<th>R.S.A</th>
+								<th>Retraite</th>
+								<th>Pension Alimentaire</th>
+								<th>Autres</th>
+							</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td>
+								<div class="item form-group">		
+								  	<input id="" 
+										name="typeRessoucesDemandeur[]" 
+										 type="hidden" value="Salaire et Rénumération"/>		
+									<input id="" class="form-control col-md-7 col-xs-12"
+										name="montantRessoucesDemandeur[]" placeholder="Salaire et Rénumération..."
+										 type="text" value="0.0">									
+								</div>
+							</td>
+							<td>
+								<div class="item form-group">	
+								<input id="" 
+										name="typeRessoucesDemandeur[]" 
+										 type="hidden" value="Allocation Familiales"/>			
+									<input id="" class="form-control col-md-7 col-xs-12"									
+										name="montantRessoucesDemandeur[]" placeholder="Allocation Familiales..."
+										 type="text" value="0.0">									
+								</div>
+							</td>
+							<td>
+								<div class="item form-group">
+								<input id="" 
+										name="typeRessoucesDemandeur[]" 
+										 type="hidden" value="Autres préstations familiales"/>					
+									<input id="" class="form-control col-md-7 col-xs-12"
+										name="montantRessoucesDemandeur[]" placeholder="Autres préstations familiales..."
+										 type="text" value="0.0">									
+								</div>
+							</td>
+							<td>
+								<div class="item form-group">	
+								<input id="" 
+										name="typeRessoucesDemandeur[]" 
+										 type="hidden" value="A.A.H"/>			
+									<input id="" class="form-control col-md-7 col-xs-12"
+										name="montantRessoucesDemandeur[]" placeholder="A.A.H..."
+										 type="text" value="0.0">									
+								</div>
+							</td>
+							<td>
+								<div class="item form-group">	
+								<input id="" 
+										name="typeRessoucesDemandeur[]" 
+										 type="hidden" value="ASSEDIC"/>				
+									<input id="" class="form-control col-md-7 col-xs-12"
+										name="montantRessoucesDemandeur[]" placeholder="ASSEDIC..."
+										 type="text" value="0.0">									
+								</div>
+							</td>
+							<td>
+								<div class="item form-group">	
+								<input id="" 
+										name="typeRessoucesDemandeur[]" 
+										 type="hidden" value="R.S.A"/>			
+									<input id="" class="form-control col-md-7 col-xs-12"
+										name="montantRessoucesDemandeur[]" placeholder="R.S.A..."
+										 type="text" value="0.0">									
+								</div>
+							</td>
+							<td>
+								<div class="item form-group">
+								<input id="" 
+										name="typeRessoucesDemandeur[]" 
+										 type="hidden" value="Retraite"/>				
+									<input id="" class="form-control col-md-7 col-xs-12"
+										name="montantRessoucesDemandeur[]" placeholder="Retraite..."
+										 type="text" value="0.0">									
+								</div>
+							</td>
+							<td>
+								<div class="item form-group">
+								<input id="" 
+										name="typeRessoucesDemandeur[]" 
+										 type="hidden" value="Pension Alimentaire"/>				
+									<input id="" class="form-control col-md-7 col-xs-12"
+										name="montantRessoucesDemandeur[]" placeholder="Pension Alimentaire..."
+										 type="text" value="0.0">									
+								</div>
+							</td>
+							<td>
+								<div class="item form-group">	
+								<input id="" 
+										name="typeRessoucesDemandeur[]" 
+										 type="hidden" value="Autres"/>			
+									<input id="" class="form-control col-md-7 col-xs-12"
+										name="montantRessoucesDemandeur[]" placeholder="Autres..."
+										 type="text" value="0.0">									
+								</div>
+							</td>
+						</tr>
+						</tbody>
+						</table>																																			 						
+					</div>
+				</div>
+			</div>					
+		</div>
+		
+		
+<!-- 		---------------------parenté -->
+		<div class="col-md-12 col-sm-12 col-xs-12" id="parentRessourceDiv" style="display: none;">
+				<div class="x_panel">
+					<div class="x_title">
+						<h5>Informations sur les parentés avec les ressouces</h5>
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content" id="divRessources">
-						<div class="item form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Nom <span class="required">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="nomParent" class="form-control col-md-7 col-xs-12"
-									name="nomParent[]" placeholder="Nom..." required="required"
-									type="text">
-							</div>
-						</div>
-						<div class="item form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Prénom<span class="required">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="prenomParent" class="form-control col-md-7 col-xs-12" name="prenomParent[]"
-									placeholder="Prénom..." required="required" type="text" />
-							</div>
-						</div>
-						<div class="item form-group" id="ville">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Date de naissance<span class="required" id="addclass">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="datenaissanceParent" class="form-control col-md-7 col-xs-12"
-									name="datenaissanceParent[]" type="date"  required="required" >
-							</div>
-						</div>
-						<div class="item form-group" id="ville">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Lien parenté<span class="required" id="addclass">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="lienParent" class="form-control col-md-7 col-xs-12"
-									name="lienParent[]" placeholder="ex:Père ou Mère..." type="text"  required="required" >
-							</div>
-						</div>
-						<div  id="newElements" >
-							
-						</div>
-						<div class="item form-group" style="padding-left: 140px;">
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<button type="button" id="ajoutRessources" class="btn btn-primary">Ajouter un autre champs</button>
-							</div>
-						</div>
+												
 					</div>
 				</div>
 			</div>
-
+<!-- ------------fin -->
+		
+		
 			
-
+			<div class="ln_solid"></div>
+		<div class="form-group">
+			<center>
+				<div class="col-md-6 col-md-offset-3">
+					<button id="AffichePersonnes" type="button" class="btn btn-success">AJOUTER DES PERSONNES VIVANT DANS VOTRE FOYER</button>
+				</div>
+			</center>
 		</div>
+			
+          </div>
+          
+			<!-- 			-------------------------------------------------------------------------------- -->
+			
 		<div class="ln_solid"></div>
 		<div class="form-group">
 			<center>
@@ -384,9 +476,8 @@
 					<button type="reset" class="btn btn-primary">Effacer</button>
 					<button id="send" type="submit" class="btn btn-success">Enregistrer</button>
 				</div>
-		
-		</div>
-		</center>
+			</center>
+		</div>		
 	</form>
 	<br />
 

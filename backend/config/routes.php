@@ -90,3 +90,7 @@ $route['dashboard'] = 'welcome';
 $route['clients'] = 'clients';
 $route['clients_saves'] = 'clients/save';
 
+
+// 	Routage Ressources
+
+$route['ressources/index/(:id)'] = 'ressources/index/$1';

@@ -19,6 +19,7 @@ class Clients extends CI_Controller {
 	public function save() {
 		$posts = $this->input->post ();
 		
+		var_dump($posts);die;
 
 		$dataclient = array (
 				'title'=>$posts['indentite'],
