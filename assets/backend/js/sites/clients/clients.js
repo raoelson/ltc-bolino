@@ -1,6 +1,19 @@
 $(document)
 		.ready(
 				function() {
+					var tailleTable = 0;
+
+					$('input[name^="montantRessoucesDemandeur"]').keyup(function() {
+						var sommeDemandeur = 0;
+					    $('input[name^="montantRessoucesDemandeur"]').each(function() {
+					        if($(this).val() == "")
+					        	return;
+					        sommeDemandeur += parseFloat(($(this).val()));
+					    });
+					    $('input[name="montantSommeRessoucesDemandeur"]').val(sommeDemandeur);
+					    SommeFoyer();
+					});
+					
 
 					$('input.flat').iCheck({
 						checkboxClass : 'icheckbox_flat-green',
@@ -133,7 +146,7 @@ $(document)
 						$('#parentRessourceDiv').show();
 						var data = "";
 						 if(x < max_fields){ //max input box allowed
-							 x++; 
+						 	tailleTable = x++;							 
 							 data += '<div class="item form-group">';	
 							 data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nom<span class="required" id="addclass">*</span></label>';	
 							 data += '<div class="col-md-6 col-sm-6 col-xs-12">';
@@ -172,37 +185,65 @@ $(document)
 							 data +='<th>Retraite</th>';
 							 data +='<th>Pension Alimentaire</th>';
 							 data +='<th>Autres</th>';
+							 data +='<th>Montant Total</th>';
 							 data +='</thead></tr>';
 							 data +='<tbody><tr>';
 							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents[]" type="hidden" value="Salaire et Rénumération"/>';
-							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents[]" placeholder="Salaire et Rénumération..." type="text" value="0.0"></div></td>';
+							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents'+(x)+'[]" placeholder="Salaire et Rénumération..." type="text" value="0.0"></div></td>';
 							
 							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents[]" type="hidden" value="Allocation Familiales"/>';
-							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents[]" placeholder="Allocation Familiales..." type="text" value="0.0"></div></td>';
+							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents'+(x)+'[]" placeholder="Allocation Familiales..." type="text" value="0.0"></div></td>';
 							 
 							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents[]" type="hidden" value="Autres préstations familiales"/>';
-							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents[]" placeholder="Autres préstations familiales..." type="text" value="0.0"></div></td>';
+							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents'+(x)+'[]" placeholder="Autres préstations familiales..." type="text" value="0.0"></div></td>';
 							 
 							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents[]" type="hidden" value="A.A.H"/>';
-							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents[]" placeholder="A.A.H..." type="text" value="0.0"></div></td>';
+							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents'+(x)+'[]" placeholder="A.A.H..." type="text" value="0.0"></div></td>';
 							 
 							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents[]" type="hidden" value="ASSEDIC"/>';
-							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents[]" placeholder="ASSEDIC..." type="text" value="0.0"></div></td>';
+							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents'+(x)+'[]" placeholder="ASSEDIC..." type="text" value="0.0"></div></td>';
 							 
 							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents[]" type="hidden" value="R.S.A"/>';
-							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents[]" placeholder="R.S.A..." type="text" value="0.0"></div></td>';
+							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents'+(x)+'[]" placeholder="R.S.A..." type="text" value="0.0"></div></td>';
 							 
 							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents[]" type="hidden" value="Retraite"/>';
-							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents[]" placeholder="Retraite..." type="text" value="0.0"></div></td>';
+							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents'+(x)+'[]" placeholder="Retraite..." type="text" value="0.0"></div></td>';
 							 
 							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents[]" type="hidden" value="Pension Alimentaire"/>';
-							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents[]" placeholder="Pension Alimentaire..." type="text" value="0.0"></div></td>';
+							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents'+(x)+'[]" placeholder="Pension Alimentaire..." type="text" value="0.0"></div></td>';
 							 
 							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents[]" type="hidden" value="Autres"/>';
-							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents[]" placeholder="Autres..." type="text" value="0.0"></div></td>';
+							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents'+(x)+'[]" placeholder="Autres..." type="text" value="0.0"></div></td>';
+							 data +='<td><div class="item form-group">';
+							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantTotalRessoucesParents'+(x)+'" placeholder="Autres..." type="text" value="0.0"></div></td>';
 							 data +='</tr></tbody>';
 							 data += '</table>';
 					         $(wrapper).append(data);
-						 }
+
+					          $('input[name^="montantRessoucesParents'+(x)+'"]').keyup(function(e) {
+							 	e.preventDefault();
+							 		var sommeFoyer = 0;
+
+								    $('input[name^="montantRessoucesParents'+(x)+'"]').each(function() {
+								        if($(this).val() == "")
+								        	return;
+								        sommeFoyer += parseFloat(($(this).val()));
+								    });
+								    $('input[name="montantTotalRessoucesParents'+(x)+'"]').val(sommeFoyer);
+								    SommeFoyer();
+								});						 
+						 }						 
+						 SommeFoyer();
 					});
-				});
+
+				SommeFoyer = function(){
+					var SommeTableFoyer = 0;
+						 for(i=1;i<=tailleTable;i++){
+						 	SommeTableFoyer += (parseFloat( $('input[name="montantTotalRessoucesParents'+(i+1)+'"]').val()));
+						 }
+					var sommeGeneral = SommeTableFoyer+parseFloat($('input[name="montantSommeRessoucesDemandeur"]').val());
+						 //notificationSomme('Montant total des personnes vivants au Foyer',sommeGeneral);
+						 $('#totalFoyer').text(sommeGeneral + " € ");
+				}
+				
+		});

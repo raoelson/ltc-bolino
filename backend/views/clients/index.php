@@ -337,6 +337,7 @@
 								<th>Retraite</th>
 								<th>Pension Alimentaire</th>
 								<th>Autres</th>
+								<th>Montant Total</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -431,6 +432,13 @@
 										 type="text" value="0.0">									
 								</div>
 							</td>
+							<td>
+								<div class="item form-group">											
+									<input id="" class="form-control col-md-7 col-xs-12"
+										name="montantSommeRessoucesDemandeur" placeholder="Montant Total..."
+										 type="text" value="0.0">									
+								</div>
+							</td>
 						</tr>
 						</tbody>
 						</table>																																			 						
@@ -451,16 +459,23 @@
 												
 					</div>
 				</div>
+
 			</div>
 <!-- ------------fin -->
 		
 		
-			
-			<div class="ln_solid"></div>
+		<div class="form-group" >
+					<div class="col-md-11 col-sm-12 col-xs-12 " style="margin-left: 16px;">
+						<a href="#ancre" id="nouveau" 
+							 type="button" style="float: right;">MONTANT TOTAL POUR LES PERSONNES VIVANTS DANS LE FOYER  : <span id="totalFoyer"> 0.0€  </span></a>
+					</div>
+				</div>
+		<div class="ln_solid"></div>
 		<div class="form-group">
 			<center>
 				<div class="col-md-6 col-md-offset-3">
 					<button id="AffichePersonnes" type="button" class="btn btn-success">AJOUTER DES PERSONNES VIVANT DANS VOTRE FOYER</button>
+
 				</div>
 			</center>
 		</div>

@@ -99,11 +99,11 @@
             <!-- /sidebar menu -->
 
             <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
+            <!-- <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen" id="totalFoyer">
                 <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
               </a>
               <a data-toggle="tooltip" data-placement="top" title="Lock">
@@ -111,6 +111,18 @@
               </a>
               <a data-toggle="tooltip" data-placement="top" title="Déconnexion" href="<?php echo base_url() ?>admin.php/user_logout">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div> -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                Montant 
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen"> total 
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock" >:
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Déconnexion"  id="totalFoyer">
+                0.0
               </a>
             </div>
             <!-- /menu footer buttons -->
@@ -126,6 +138,7 @@
               </div>
 
               <ul class="nav navbar-nav navbar-right">
+
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <img src="<?php echo base_url() ?>assets/backend/images/img.jpg" alt=""><?php if($this->session->userdata('user'))

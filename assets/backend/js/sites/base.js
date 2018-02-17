@@ -7,3 +7,4 @@ function notification(titre,message,etat) {
 $.postJSON = function(url, data, callback) {
 	$.post(url, data, callback, "json");
 };
+
