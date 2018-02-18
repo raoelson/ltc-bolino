@@ -249,4 +249,5 @@ class Cic_auth {
 		}
 		return;
 	}
+
 }

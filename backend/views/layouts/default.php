@@ -99,11 +99,11 @@
             <!-- /sidebar menu -->
 
             <!-- /menu footer buttons -->
-            <!-- <div class="sidebar-footer hidden-small">
+            <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="FullScreen" id="totalFoyer">
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
                 <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
               </a>
               <a data-toggle="tooltip" data-placement="top" title="Lock">
@@ -112,8 +112,8 @@
               <a data-toggle="tooltip" data-placement="top" title="Déconnexion" href="<?php echo base_url() ?>admin.php/user_logout">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
-            </div> -->
-            <div class="sidebar-footer hidden-small">
+            </div>
+            <!-- <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
                 Montant 
               </a>
@@ -121,10 +121,10 @@
               </a>
               <a data-toggle="tooltip" data-placement="top" title="Lock" >:
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Déconnexion"  id="totalFoyer">
+              <a data-toggle="tooltip" data-placement="top" title="Déconnexion"  >
                 0.0
               </a>
-            </div>
+            </div> -->
             <!-- /menu footer buttons -->
           </div>
         </div>

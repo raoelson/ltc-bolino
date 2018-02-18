@@ -65,8 +65,9 @@
 	<form class="form-horizontal form-label-left" novalidate
 		action="<?php echo base_url('admin.php/clients_saves');?>"
 		method="post">
+		<input type="hidden" name="nombreVivantfoyer" value="0" />
 		<div class="row" id="ancre" style="display: none;">
-			<div class="col-md-12 col-sm-12 col-xs-12">
+			<!-- <div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
 						<h5>Informations personelles</h5>
@@ -206,8 +207,8 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-md-12 col-sm-12 col-xs-12">
+			</div> -->
+			<!-- <div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
 						<h5>Informations adresses</h5>
@@ -275,12 +276,20 @@
 						</div>
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Tél<span class="required" id="addclass"
-								style="display: none;">*</span>
+								for="name">Email<span class="required" id="addclass">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input id="mail" class="form-control col-md-7 col-xs-12"
+									name="mail" placeholder="Email ..." type="email" required="true">
+							</div>
+						</div>
+						<div class="item form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="name">Tél<span class="required" id="addclass" >*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input id="phone" class="form-control col-md-7 col-xs-12"
-									name="phone" placeholder="Téléphone ..." type="text">
+									name="phone" placeholder="Téléphone ..." type="text" required="true">
 							</div>
 						</div>
 						<div class="item form-group">
@@ -303,19 +312,10 @@
 									name="fax" placeholder="Fax ..." type="text">
 							</div>
 						</div>
-						<div class="item form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Email<span class="required" id="addclass"
-								style="display: none;">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="mail" class="form-control col-md-7 col-xs-12"
-									name="mail" placeholder="Email ..." type="email">
-							</div>
-						</div>
+						
 					</div>
 				</div>
-			</div>
+			</div> -->
 			
 			<div class="row" id="ancre">
 			<div class="col-md-12 col-sm-12 col-xs-12">
@@ -466,8 +466,8 @@
 		
 		<div class="form-group" >
 					<div class="col-md-11 col-sm-12 col-xs-12 " style="margin-left: 16px;">
-						<a href="#ancre" id="nouveau" 
-							 type="button" style="float: right;">MONTANT TOTAL POUR LES PERSONNES VIVANTS DANS LE FOYER  : <span id="totalFoyer"> 0.0€  </span></a>
+						<a href="#" id="nouveau" 
+							 type="button" style="float: right;">MONTANT TOTAL POUR LES PERSONNES VIVANTS DANS LE FOYER  : <b><span id="totalFoyer"> 0.0 € </span></b> </a>
 					</div>
 				</div>
 		<div class="ln_solid"></div>

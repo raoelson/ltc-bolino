@@ -188,31 +188,31 @@ $(document)
 							 data +='<th>Montant Total</th>';
 							 data +='</thead></tr>';
 							 data +='<tbody><tr>';
-							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents[]" type="hidden" value="Salaire et Rénumération"/>';
+							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents'+(x)+'[]" type="hidden" value="Salaire et Rénumération"/>';
 							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents'+(x)+'[]" placeholder="Salaire et Rénumération..." type="text" value="0.0"></div></td>';
 							
-							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents[]" type="hidden" value="Allocation Familiales"/>';
+							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents'+(x)+'[]" type="hidden" value="Allocation Familiales"/>';
 							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents'+(x)+'[]" placeholder="Allocation Familiales..." type="text" value="0.0"></div></td>';
 							 
-							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents[]" type="hidden" value="Autres préstations familiales"/>';
+							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents'+(x)+'[]" type="hidden" value="Autres préstations familiales"/>';
 							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents'+(x)+'[]" placeholder="Autres préstations familiales..." type="text" value="0.0"></div></td>';
 							 
-							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents[]" type="hidden" value="A.A.H"/>';
+							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents'+(x)+'[]" type="hidden" value="A.A.H"/>';
 							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents'+(x)+'[]" placeholder="A.A.H..." type="text" value="0.0"></div></td>';
 							 
-							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents[]" type="hidden" value="ASSEDIC"/>';
+							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents'+(x)+'[]" type="hidden" value="ASSEDIC"/>';
 							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents'+(x)+'[]" placeholder="ASSEDIC..." type="text" value="0.0"></div></td>';
 							 
-							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents[]" type="hidden" value="R.S.A"/>';
+							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents'+(x)+'[]" type="hidden" value="R.S.A"/>';
 							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents'+(x)+'[]" placeholder="R.S.A..." type="text" value="0.0"></div></td>';
 							 
-							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents[]" type="hidden" value="Retraite"/>';
+							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents'+(x)+'[]" type="hidden" value="Retraite"/>';
 							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents'+(x)+'[]" placeholder="Retraite..." type="text" value="0.0"></div></td>';
 							 
-							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents[]" type="hidden" value="Pension Alimentaire"/>';
+							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents'+(x)+'[]" type="hidden" value="Pension Alimentaire"/>';
 							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents'+(x)+'[]" placeholder="Pension Alimentaire..." type="text" value="0.0"></div></td>';
 							 
-							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents[]" type="hidden" value="Autres"/>';
+							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents'+(x)+'[]" type="hidden" value="Autres"/>';
 							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents'+(x)+'[]" placeholder="Autres..." type="text" value="0.0"></div></td>';
 							 data +='<td><div class="item form-group">';
 							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantTotalRessoucesParents'+(x)+'" placeholder="Autres..." type="text" value="0.0"></div></td>';
@@ -232,7 +232,8 @@ $(document)
 								    $('input[name="montantTotalRessoucesParents'+(x)+'"]').val(sommeFoyer);
 								    SommeFoyer();
 								});						 
-						 }						 
+						 }	
+						 $('input[name="nombreVivantfoyer"]').val(tailleTable);
 						 SommeFoyer();
 					});
 
