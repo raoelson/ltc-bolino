@@ -27,7 +27,7 @@
                     </form>
                 </div>
                 <div class="ro col col-xs-1 text-right">
-                    <button href="#ajout" id="new_ajout" type="button" class="btn_ko btn btn-sm  btn-create">Create New</button>
+                    <button href="#ajout" id="new_ajout" type="button" class="btn_ko btn btn-sm  btn-create">Nouveau</button>
                 </div>
             </div>
 

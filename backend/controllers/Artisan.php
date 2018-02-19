@@ -20,16 +20,7 @@ class Artisan extends CI_Controller
 
 
         $data['data'] = $this->art->get_news();
-       // $this->load->view('theme/header');
-        //$this->load->view('itemCRUD/list',$data);
-       // $this->load->view('theme/footer');
 
-       // $this->db->from('artisan');
-       // $query=$this->db->get();
-        //return $query->result();
-        //$this->template->title ( 'Gestions des artisans' )->build ( 'artisan/index');
-        //$this->load->view('artisan/index');
-        ///$data_artisan = $this->groupes->get_all ();
         $this->template->title ( 'Gestions des artisans' )->build ( 'artisan/index',$data);
     }
     public function create_artisan()
