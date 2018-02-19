@@ -181,6 +181,7 @@ $(document)
 							 data += '<option value="FILS">FILS</option>';
 							 data += '<option value="FILLE">FILLE</option>';
 							 data += '<option  value="FILLE">FILLE</option>';
+							 data += '<option  value="Conjoint">Conjoint</option>';
 							 data += '</select>';
 							 data += '</div>';
 							 data += '</div>';
