@@ -22,6 +22,8 @@ class Artisan extends CI_Controller
         $data['data'] = $this->art->get_news();
 
         $this->template->title ( 'Gestions des artisans' )->build ( 'artisan/index',$data);
+        
+        //commentaire
     }
     public function create_artisan()
     {
