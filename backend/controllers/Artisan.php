@@ -17,7 +17,7 @@ class Artisan extends CI_Controller
     }
     public function index()
     {
-
+        //commentaire
 
         $data['data'] = $this->art->get_news();
 
