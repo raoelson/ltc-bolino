@@ -17,9 +17,16 @@ class Clients extends CI_Controller {
 		$this->template->title ( 'Gestions des Propriétaires' )->build ( 'clients/index',array('data'=>$data) );
 	}
 	public function save() {
-		$posts = $this->input->post ();
+		$posts = $this->input->post();
+		$donneeTypeDemandeur = array();
+		$donneeMontantDemandeur = array();
 		
-		var_dump($posts);die;
+		for($i=0;$i<8;$i++){
+			array_push($donneeTypeDemandeur, $posts['typeRessoucesDemandeur'][$i]);
+			array_push($donneeMontantDemandeur, $posts['montantRessoucesDemandeur'][$i]);
+		}
+		
+		var_dump($donneeMontantDemandeur);die;
 
 		$dataclient = array (
 				'title'=>$posts['indentite'],
