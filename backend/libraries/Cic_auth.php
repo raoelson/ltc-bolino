@@ -69,7 +69,7 @@ class Cic_auth {
 								],
 								[
 										"nomMenu" => "Gestions des Artisans",
-										"url" => "#"
+										"url" => "artisan"
 								] 
 						] 
 				],

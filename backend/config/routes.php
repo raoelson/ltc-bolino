@@ -89,4 +89,6 @@ $route['dashboard'] = 'welcome';
 
 $route['clients'] = 'clients';
 $route['clients_saves'] = 'clients/save';
-
+//routage artisan
+$route['artisan'] = 'artisan';
+$route['artisan/create_artisan'] = 'artisan/create_artisan';
