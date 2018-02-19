@@ -33,4 +33,12 @@ class Clients_model extends CI_Model {
 		$query = $this->db->get_where ( $this->table, $array );
 		return $query->result_array ();
 	}
+	
+	public function getWhereID($id){
+		$this->db->where ( array (
+				"id" => $id
+		) );
+		$query = $this->db->get_where ( $this->table );
+		return $query->row_array ();
+	}
 }
