@@ -186,6 +186,7 @@ $(document)
 							 data += '</div>';
 							 data += '</div>';
 							 data += '<table class="table table-striped table-bordered">';
+							 
 							 data +='<thead><tr>';
 							 data +='<th>Salaire et Rénumération</th>';
 							 data +='<th>Allocation Familiales</th>';
