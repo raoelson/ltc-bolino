@@ -78,6 +78,7 @@ $db['default'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
+	//'database' => 'ltc_botino',
 	'database' => 'ltc_bolino',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

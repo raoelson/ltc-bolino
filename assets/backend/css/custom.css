@@ -1702,7 +1702,7 @@ span.right {
 }
 @media (min-width: 992px) {
     footer {
-        margin-left: 233px
+        margin-left: 230px
     }
 }
 @media (min-width: 992px) {
@@ -3414,7 +3414,7 @@ a.hiddenanchor {
     max-width: 350px;
     position: relative
 }
-.registration_form,
+.registration_form,.test_form,
 .login_form {
     position: absolute;
     top: 0px;
@@ -3428,12 +3428,19 @@ a.hiddenanchor {
 .login_form {
     z-index: 22
 }
+.test_form {
+    z-index: 21;
+    opacity: 0;
+    width: 100%
+}
+#signtest:target ~ .login_wrapper .test_form,
 #signup:target ~ .login_wrapper .registration_form,
 #signin:target ~ .login_wrapper .login_form {
     z-index: 22;
     animation-name: fadeInLeft;
     animation-delay: .1s
 }
+#signtest:target ~ .login_wrapper .test_form,
 #signup:target ~ .login_wrapper .login_form,
 #signin:target ~ .login_wrapper .registration_form {
     animation-name: fadeOutLeft
@@ -4253,14 +4260,3 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     background-color: #ffff !important;
 }
 /** /bootstrap-datetimepicker **/
-
-
-/* .sidebar-footer{
-	width: 233px !important;
-}
-.nav-md .container.body .col-md-3.left_col{
-	width: 233px !important;
-}
-.nav-md .container.body .right_col {
-    margin-left: 233px !important;
-} */

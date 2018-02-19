@@ -68,8 +68,9 @@ Acknowledgement
 
 The CodeIgniter team would like to thank EllisLab, all the
 contributors to the CodeIgniter project and you, the CodeIgniter user.
+mlaoris
 <<<<<<< HEAD
-test
+bree
 =======
-ok
->>>>>>> a621aff68d166cce4d98f0174972fce01b57e491
+daniva
+>>>>>>> mon projet
