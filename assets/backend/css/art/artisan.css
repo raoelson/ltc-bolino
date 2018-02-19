@@ -1,0 +1,48 @@
+.check
+{
+    height: 20px;
+    width: 20px;
+}
+.btn_activ
+{
+    margin-top: -20px;
+    width: 79%;
+}
+.matricu{
+    margin-top: 10px;
+}
+.gest_art
+{
+ border: 2px solid white;
+    background: white;
+
+}
+.btn_ko
+{
+    margin-top: 15px;
+    border: 1px solid cyan;
+    background: cyan;
+    height: 35px;
+
+}
+.ro{
+    padding: 0px;
+}
+.form_bar
+{
+    margin-top: 15px;
+    padding: 0px;
+}
+/*********************modal
+*************************
+ */
+.head_modal
+{
+    background: cyan;
+}
+.title_ajout
+{
+    text-align: center;
+    font-family: cursive;
+    font-size: 24px;
+}

@@ -92,5 +92,5 @@ $route['clients_saves'] = 'clients/save';
 
 
 // 	Routage Ressources
-
-$route['ressources/index/(:id)'] = 'ressources/index/$1';
+$route['artisan'] = 'artisan';
+$route['artisan/create_artisan'] = 'artisan/create_artisan';
