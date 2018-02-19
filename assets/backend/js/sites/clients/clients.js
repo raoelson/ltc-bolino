@@ -178,9 +178,9 @@ $(document)
 							 data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Lien parenté<span class="required" id="addclass">*</span></label>';	
 							 data += '<div class="col-md-6 col-sm-6 col-xs-12">'; 
 							 data += '<select id="nom"  required="required"  class="form-control col-md-7 col-xs-12" name="lienParent'+(x)+'" placeholder="ex:Père ou Mère..." type="text">';
-							 data += '<option value="FILS">FILS</option>';
-							 data += '<option value="FILLE">FILLE</option>';
-							 data += '<option  value="FILLE">FILLE</option>';
+							 data += '<option value="Mère">Mère</option>';
+							 data += '<option value="Père">Père</option>';
+							 data += '<option  value="Enfant">Enfant</option>';
 							 data += '<option  value="Conjoint">Conjoint</option>';
 							 data += '</select>';
 							 data += '</div>';
