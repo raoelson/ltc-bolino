@@ -42,17 +42,11 @@
                     <thead>
 
 
-                    <th>Denomination</th>
-                    <th>Nom gerant</th>
+                    <th>Image</th>
+                    <th>Etat civil</th>
+                    <th>Locale</th>
 
-                    <th> Adress</th>
-                    <th>Adress deuxieme </th>
-
-
-
-
-
-
+                    <th>Status</th>
 
                     <th>Edit</th>
                     <th>Delete</th>
@@ -61,15 +55,21 @@
                     <tbody>
                     <?php foreach ($data as $item) { ?>
                         <tr>
-                            <td><?php echo $item->denomination; ?></td>
-                            <td><?php echo $item->nom_gerant; ?></td>
+                            <td><img src="<?php echo base_url() ?>images/image.jpg" height="80px" width="80px"/></td>
+                                </td>
+                            <td><?php echo $item->denomination; ?><br/>
+                                Nom:<?php echo $item->nom_gerant; ?><br/>
+                                Prénom: <?php echo $item->prenom_gerant; ?><br/>
+                                Phone:<?php echo $item->phone; ?><br/>
+                            </td>
+                            <td>
+                                Adress:<?php echo $item->adress1; ?><?php echo $item->adress2; ?><br/>
+                                Ville:<?php echo $item->ville; ?><br/>
+                                Pays:<?php echo $item->pays; ?><br/>
 
-                            <td><?php echo $item->adress1; ?></td>
-                            <td><?php echo $item->adress2; ?></td>
+                            </td>
 
-
-
-
+                            <td><?php echo $item->statut; ?></td>
 
 
                             <!--button class="btn btn-warning" ><!--?php echo $item->statut; ?></button></td-->
