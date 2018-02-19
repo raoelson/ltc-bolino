@@ -46,8 +46,6 @@
 								<td><?php echo ($val['type_travaux_finan']) ;?></td>
 								
 								<td>
-									<a href="<?php echo base_url('admin.php/ressources/index/'.$val['id'].'#ancre');?>" id="modifier"
-									class="btn btn-round btn-primary">Ajouter ressource</a>
 									<a href="#" id="modifier"
 									class="btn btn-round btn-default">Voir détails</a> 							
 									<!-- <a href="#ancre" id="modifier"
@@ -67,7 +65,7 @@
 		method="post">
 		<input type="hidden" name="nombreVivantfoyer" value="0" />
 		<div class="row" id="ancre" style="display: none;">
-			<!-- <div class="col-md-12 col-sm-12 col-xs-12">
+		<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
 						<h5>Informations personelles</h5>
@@ -196,19 +194,19 @@
 									type="text">
 							</div>
 						</div>
-						<div class="item form-group">
+						<div class="item form-group" id="div_type_travaux" style="display: none;">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Type des travaux<span class="required" id="addclass">*</span>
+								for="name">Type des travaux
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<textarea  name="type_travaux_finan" rows="4" class="form-control col-md-7 col-xs-12" required="true"> 
+								<textarea  name="type_travaux_finan" id="type_travaux_finan" rows="4" class="form-control col-md-7 col-xs-12" > 
 								</textarea>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div> -->
-			<!-- <div class="col-md-12 col-sm-12 col-xs-12">
+			</div> 
+			 <div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
 						<h5>Informations adresses</h5>
@@ -315,7 +313,7 @@
 						
 					</div>
 				</div>
-			</div> -->
+			</div> 
 			
 			<div class="row" id="ancre">
 			<div class="col-md-12 col-sm-12 col-xs-12">
@@ -479,20 +477,21 @@
 				</div>
 			</center>
 		</div>
-			
+			<div class="ln_solid"></div>
+				<div class="form-group">
+					<center>
+						<div class="col-md-6 col-md-offset-3">
+							<button type="reset" class="btn btn-primary">Effacer</button>
+							<button id="send" type="submit" class="btn btn-success">Enregistrer</button>
+						</div>
+					</center>
+				</div>
+				
           </div>
           
 			<!-- 			-------------------------------------------------------------------------------- -->
 			
-		<div class="ln_solid"></div>
-		<div class="form-group">
-			<center>
-				<div class="col-md-6 col-md-offset-3">
-					<button type="reset" class="btn btn-primary">Effacer</button>
-					<button id="send" type="submit" class="btn btn-success">Enregistrer</button>
-				</div>
-			</center>
-		</div>		
+				
 	</form>
 	<br />
 

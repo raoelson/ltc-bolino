@@ -11,6 +11,8 @@ class Clients extends CI_Controller {
 		$this->load->model ( "Adresse_model", "adresse" );
 		$this->load->model ( "Parents_model", "parents" );
 		$this->load->model ( "ParentsLink_model", "parentslink" );
+		$this->load->model ( "Ressources_model", "ressources" );
+		$this->load->model ( "TypeRessouces_model", "typesressources" );
 	}
 	public function index() {
 		$data = $this->client->get_all();
@@ -18,16 +20,10 @@ class Clients extends CI_Controller {
 	}
 	public function save() {
 		$posts = $this->input->post();
-		$donneeTypeDemandeur = array();
-		$donneeMontantDemandeur = array();
 		
-		for($i=0;$i<8;$i++){
-			array_push($donneeTypeDemandeur, $posts['typeRessoucesDemandeur'][$i]);
-			array_push($donneeMontantDemandeur, $posts['montantRessoucesDemandeur'][$i]);
-		}
 		
-		var_dump($donneeMontantDemandeur);die;
-
+		// Table Client
+		
 		$dataclient = array (
 				'title'=>$posts['indentite'],
 				'marriedname'=>$posts['marriedname'],
@@ -42,8 +38,9 @@ class Clients extends CI_Controller {
 				'type_travaux_finan' => $posts ['type_travaux_finan']
 		);
 
+		$idclient = $this->client->add($dataclient);
 		
-		
+		// Table Adresse
 		$dataAdresse = array (
 				'adress1' => $posts ['adresse1'],
 				'adress2' => $posts ['adresse2'],
@@ -56,31 +53,95 @@ class Clients extends CI_Controller {
 				'fax' => $posts ['fax'],
 				'mail' => $posts ['mail']
 		);
-		
-			
-		$idclient = $this->client->add($dataclient);
+							
 		$idadresse = $this->adresse->add($dataAdresse);
+		
+		//Table relation entre adresse et client
+		
 		$this->owneradresse->save($idclient,$idadresse);
 		
 		
-
-
-		$nombreParent = count($posts['nomParent']);
-		for($i=0;$i<$nombreParent;$i++){
-			$dataLink = array('name' => $posts['lienParent'][$i]);
-			$idLink = $this->parentslink->add($dataLink);
-			$dataParent = array(
-				'name'=>$posts['nomParent'][$i],
-				'firstname'=>$posts['prenomParent'][$i],
-				'birthdate'=>$posts['datenaissanceParent'][$i],
-				'owner_id'=>$idclient,
-				'link_parent_id'=>$idLink
-			);
-
-			$this->parents->add($dataParent);
+		
+		
+		// Ajout parent et lien  demandeur
+		
+		$dataLiendemandeur = array('name'=>'DEMANDEUR');
+		$id_demandeur = $this->parentslink->add($dataLiendemandeur);		
+		$dataDemandeur = $this->client->getWhereID($idclient);		
+		$DemandeurParent = array(
+				'owner_id'=>$dataDemandeur['id'],
+				'name'=>$dataDemandeur['firstname1'],
+				'firstname'=>$dataDemandeur['firstname2'],
+				'birthdate'=>$dataDemandeur['birthdate'],
+				'link_parent_id' => $id_demandeur
+		);
+		$parent_idDemandeur = $this->parents->add($DemandeurParent);
+		
+		$donneeTypeDemandeur = array();
+		$donneeMontantDemandeur = array();
+		
+		for($i=0;$i<8;$i++){
+			array_push($donneeTypeDemandeur, $posts['typeRessoucesDemandeur'][$i]);
+			array_push($donneeMontantDemandeur, $posts['montantRessoucesDemandeur'][$i]);
 		}
+		
+		$dataTypedemande = array('name'=>serialize($donneeTypeDemandeur));
+		$id_ressoucesDemandeur = $this->typesressources->add($dataTypedemande);
+		
+		$dataRessourceDemandeur = array(
+				'owner_id' => $idclient,
+				'parent_id' => $parent_idDemandeur,
+				'type_resource_id' => $id_ressoucesDemandeur,
+				'montant' => serialize($donneeMontantDemandeur)
+		);
+		
+		$this->ressources->add($dataRessourceDemandeur);
+// 		------------------------------------------
 
-
+        //Ajout vivant au foyer
+        $nombre  = $posts['nombreVivantfoyer'];
+        if($nombre != 0){
+        	for($i=1; $i<=$nombre;$i++){
+        		$j = $i+1;        		
+        		$nom = $posts["nomParent".$j];
+        		$prenom = $posts["prenomParent".$j];
+        		$datenaissance = $posts["datenaissanceParent".$j];
+        		$lienParent= $posts["lienParent".$j];
+        		
+        		$typeressouces = $posts['typeRessoucesParents'.$j];
+        		$ressouces = $posts['typeRessoucesParents'.$j];
+        		
+        		$dataLienFoyer = array('name'=>strtoupper($lienParent));
+        		
+        		$id_foyer = $this->parentslink->add($dataLienFoyer);
+        		$FoyerParent = array(
+        				'owner_id'=>$idclient,
+        				'name'=>$nom,
+        				'firstname'=>$prenom,
+        				'birthdate'=>$datenaissance,
+        			'link_parent_id' => $id_foyer
+        		);
+        		$parent_idFoyer = $this->parents->add($FoyerParent);
+        		
+        		$donneeTypeFoyer = array();
+        		$donneeMontantFoyer= array();
+        		for($ii=0;$ii<8;$ii++){
+        			array_push($donneeTypeFoyer, $typeressouces[$ii]);
+        			array_push($donneeMontantFoyer, $ressouces[$ii]);
+        		}   
+        		
+        			$dataType = array('name'=>serialize($donneeTypeFoyer));
+        			$id_ressouces = $this->typesressources->add($dataType); 
+        			
+        			$dataRessourceFoyer = array(
+        				'owner_id' => $idclient,
+        				'parent_id' => $parent_idFoyer,
+        				'type_resource_id' => $id_ressouces,
+        				'montant' => serialize($donneeMontantFoyer)
+        			);
+        			$this->ressources->add($dataRessourceFoyer);
+        	}
+        }
 		//$this->session->set_flashdata ( $typeMessage, $message );
 		redirect ( base_url () . "admin.php/clients" );
 		

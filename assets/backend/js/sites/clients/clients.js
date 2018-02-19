@@ -29,13 +29,19 @@ $(document)
 												&& etatCheck != 'undefined') {
 											$('#div_nom_organisme').hide();
 											$('#div_montant_aide').hide();
-
+											$('#div_type_travaux').hide();											
+											$("#montant_aide").val("");
+											$("#nom_organisme").val("");
+											$("#type_travaux_finan").val("");
+											
 										} else if (etatCheck == 1
 												&& etatCheck != 'undefined') {
 											$('#div_nom_organisme').removeAttr(
 													"style");
 											$('#div_montant_aide').removeAttr(
 													"style");
+											$('#div_type_travaux').removeAttr(
+											"style");
 
 										}
 									});
@@ -150,28 +156,32 @@ $(document)
 							 data += '<div class="item form-group">';	
 							 data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nom<span class="required" id="addclass">*</span></label>';	
 							 data += '<div class="col-md-6 col-sm-6 col-xs-12">';
-							 data += '<input id="nomParent"  required="required"  class="form-control col-md-7 col-xs-12" name="nomParent[]" placeholder="Nom..." type="text">';
+							 data += '<input id="nomParent"  required="required"  class="form-control col-md-7 col-xs-12" name="nomParent'+(x)+'" placeholder="Nom..." type="text">';
 							 data += '</div>';
 							 data += '</div>'; 
 							 
 							 data += '<div class="item form-group">';	
 							 data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Prénom<span class="required" id="addclass">*</span></label>';	
 							 data += '<div class="col-md-6 col-sm-6 col-xs-12">'; 
-							 data += '<input id="prenomParent"  required="required"  class="form-control col-md-7 col-xs-12" name="prenomParent[]" placeholder="Prénom..." type="text">';
+							 data += '<input id="prenomParent"  required="required"  class="form-control col-md-7 col-xs-12" name="prenomParent'+(x)+'" placeholder="Prénom..." type="text">';
 							 data += '</div>';
 							 data += '</div>';
 							 
 							 data += '<div class="item form-group">';	
 							 data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date de naissance<span class="required" id="addclass">*</span></label>';	
 							 data += '<div class="col-md-6 col-sm-6 col-xs-12">'; 
-							 data += '<input id="datenaissanceParent"  required="required"  class="form-control col-md-7 col-xs-12" name="datenaissanceParent[]"  type="date">';
+							 data += '<input id="datenaissanceParent"  required="required"  class="form-control col-md-7 col-xs-12" name="datenaissanceParent'+(x)+'"  type="date">';
 							 data += '</div>';
 							 data += '</div>';
 							 
 							 data += '<div class="item form-group">';	
 							 data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Lien parenté<span class="required" id="addclass">*</span></label>';	
 							 data += '<div class="col-md-6 col-sm-6 col-xs-12">'; 
-							 data += '<input id="nom"  required="required"  class="form-control col-md-7 col-xs-12" name="lienParent[]" placeholder="ex:Père ou Mère..." type="text">';
+							 data += '<select id="nom"  required="required"  class="form-control col-md-7 col-xs-12" name="lienParent'+(x)+'" placeholder="ex:Père ou Mère..." type="text">';
+							 data += '<option value="FILS">FILS</option>';
+							 data += '<option value="FILLE">FILLE</option>';
+							 data += '<option  value="FILLE">FILLE</option>';
+							 data += '</select>';
 							 data += '</div>';
 							 data += '</div>';
 							 data += '<table class="table table-striped table-bordered">';
