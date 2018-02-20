@@ -26,11 +26,12 @@ class Clients extends CI_Controller {
 		
 		$dataclient = array (
 				'title'=>$posts['indentite'],
-				'marriedname'=>$posts['marriedname'],
-				'firstname1' => $posts ['firstname1'],
-				'firstname2' => $posts ['firstname2'],
-				'firstname3' => $posts ['firstname3'],
+				'marriedname'=>strtoupper($posts['marriedname']),
+				'firstname1' => strtoupper($posts ['firstname1']),
+				'firstname2' => ucwords($posts ['firstname2']),
+				'firstname3' => ucwords($posts ['firstname3']),
 				'birthdate' => $posts ['birthday'],
+				'birthplace' => $posts ['birthplace'],
 				'familysituation' => $posts ['familysituation'],
 				'aide_organisme' => $posts ['aide_organisme'],
 				'nom_organisme' => $posts ['nom_organisme'],
@@ -42,8 +43,8 @@ class Clients extends CI_Controller {
 		
 		// Table Adresse
 		$dataAdresse = array (
-				'adress1' => $posts ['adresse1'],
-				'adress2' => $posts ['adresse2'],
+				'adress1' => ucwords($posts ['adresse1']),
+				'adress2' => ucwords($posts ['adresse2']),
 				'lieu_dit' => $posts ['lieu_dit'],
 				'cp' => $posts ['cp'],
 				'ville' => $posts ['ville'],
@@ -70,8 +71,8 @@ class Clients extends CI_Controller {
 		$dataDemandeur = $this->client->getWhereID($idclient);		
 		$DemandeurParent = array(
 				'owner_id'=>$dataDemandeur['id'],
-				'name'=>$dataDemandeur['firstname1'],
-				'firstname'=>$dataDemandeur['firstname2'],
+				'name'=>strtoupper($dataDemandeur['firstname1']),
+				'firstname'=>ucwords($dataDemandeur['firstname2']),
 				'birthdate'=>$dataDemandeur['birthdate'],
 				'link_parent_id' => $id_demandeur
 		);
@@ -80,7 +81,7 @@ class Clients extends CI_Controller {
 		$donneeTypeDemandeur = array();
 		$donneeMontantDemandeur = array();
 		
-		for($i=0;$i<8;$i++){
+		for($i=0;$i<9;$i++){
 			array_push($donneeTypeDemandeur, $posts['typeRessoucesDemandeur'][$i]);
 			array_push($donneeMontantDemandeur, $posts['montantRessoucesDemandeur'][$i]);
 		}
@@ -103,15 +104,15 @@ class Clients extends CI_Controller {
         if($nombre != 0){
         	for($i=1; $i<=$nombre;$i++){
         		$j = $i+1;        		
-        		$nom = $posts["nomParent".$j];
-        		$prenom = $posts["prenomParent".$j];
+        		$nom = strtoupper($posts["nomParent".$j]);
+        		$prenom = ucwords($posts["prenomParent".$j]);
         		$datenaissance = $posts["datenaissanceParent".$j];
         		$lienParent= $posts["lienParent".$j];
         		
         		$typeressouces = $posts['typeRessoucesParents'.$j];
-        		$ressouces = $posts['typeRessoucesParents'.$j];
+        		$ressouces = $posts['montantRessoucesParents'.$j];
         		
-        		$dataLienFoyer = array('name'=>strtoupper($lienParent));
+        		$dataLienFoyer = array('name'=>($lienParent));
         		
         		$id_foyer = $this->parentslink->add($dataLienFoyer);
         		$FoyerParent = array(
@@ -125,7 +126,7 @@ class Clients extends CI_Controller {
         		
         		$donneeTypeFoyer = array();
         		$donneeMontantFoyer= array();
-        		for($ii=0;$ii<8;$ii++){
+        		for($ii=0;$ii<9;$ii++){
         			array_push($donneeTypeFoyer, $typeressouces[$ii]);
         			array_push($donneeMontantFoyer, $ressouces[$ii]);
         		}   
@@ -147,27 +148,9 @@ class Clients extends CI_Controller {
 		
 	}
 	
-	// public function getWhere ($id){
-	// $data = $this->droit->get_allByGroup($id);
-	// $this->output->set_content_type ( 'application/json' )->set_output ( json_encode ( array (
-	// 'data' => $data
-	// ) ) );
-	// }
-	
-	// public function saveAndupdate(){
-	// $posts = $this->input->post();
-	// if($posts["data"] == "true"){
-	// $actionData = "Checked";
-	// }else{
-	// $actionData = "Unchecked";
-	// }
-	// $data = array(trim($posts["name"],'"') => $actionData);
-	// $this->droit->update($data,$posts["id"]);
-	// $this->output->set_content_type ( 'application/json' )->set_output ( json_encode (array('posts'=>$posts,'data'=>$data)) );
-	// }
-	
-	// public function front_office() {
-	// $data_group = $this->groupes->get_all ();
-	// $this->template->title ( 'Gestions des groupes' )->build ( 'user/droits/fronted/index',array('groupes'=>$data_group));
-	// }
+	public function details($id){
+		$data = $this->owneradresse->getWhere(array('owners_id'=>$id));
+		//print_r((($data)));die;
+		$this->template->title ( 'Gestions des Propriétaires' )->build ( 'clients/details',array('data'=>$data) );
+	}
 }

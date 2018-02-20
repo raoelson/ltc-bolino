@@ -9,4 +9,6 @@ class Parents_model extends CI_Model {
 		$this->db->insert ( $this->table, $posts);
 		return $this->db->insert_id ();
 	}
+	
+	
 }

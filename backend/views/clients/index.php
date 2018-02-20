@@ -46,7 +46,7 @@
 								<td><?php echo ($val['type_travaux_finan']) ;?></td>
 								
 								<td>
-									<a href="#" id="modifier"
+									<a href="<?php  echo base_url('admin.php/clients/details/'.$val['id']) ?>" id="modifier"
 									class="btn btn-round btn-default">Voir détails</a> 							
 									<!-- <a href="#ancre" id="modifier"
 									class="btn btn-round btn-warning">Modifier</a>  -->

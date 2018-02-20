@@ -4,24 +4,27 @@ class Owneradresse_model extends CI_Model {
 	
 	public function getWhere($array) {
 		
-		$this->db->select ( 'owners.id as clientid, owners.firstname1 as clientNom,owners.firstname2 as clientPrenom
-					,owners.birthdate as clientDate,owners.birthplace as clientPlace
-					,owners.aide_organisme as clientAide,owners.nom_organisme as clientOrganisme
-					,owners.montant_aide as clientMontant
+		$this->db->select ( 'owners.title as indentite,owners.marriedname as nommarie,owners.id as clientid, owners.firstname1 as clientNom,owners.firstname2 as clientPrenom
+					,owners.firstname3 as clientUsagenom,owners.birthdate as clientDate,owners.birthplace as clientPlace
+					,owners.familysituation as clientSituation,owners.aide_organisme as clientAide,owners.nom_organisme as clientOrganisme
+					,owners.montant_aide as clientMontant,owners.type_travaux_finan as clienttp
+					,adress.adress1 as adresseAdresse1,adress.adress2 as adresseAdresse2,
 					,adress.id as adresseId,adress.lieu_dit as adresseLieu,
 					adress.cp as adresseCp,adress.ville as adresseVille,
 					adress.pays as adressePays,adress.phone as adressePhone,
-					adress.cellphone1 as adresseCellphone,adress.mail as adresseMail,
-					parents.id as parentsId,parents.name as parentsNom,parents.firstname as parentsPrenom' );
+					adress.cellphone1 as adresseCellphone,adress.mail as adresseMail,adress.fax as adresseFax,
+					parents.id as parentsId,parents.name as parentsNom,parents.firstname as parentsPrenom,parents.birthdate as parentsBirthdate,
+					link_parents.name as linkparentsNom,
+					resources.id as ressourcesId,resources.montant as ressourcesMontant');
 		
 		$this->db->join ( "owners", "owners.id =owners_id" );
 		$this->db->join ( "adress", "adress.id = adress_id" );
 		$this->db->join ( "parents", "parents.owner_id = owners.id" );
+		$this->db->join ( "link_parents", "link_parents.id = parents.link_parent_id" );
+		//$this->db->join ( "resources", "resources.owner_id = owners.id" );
+		$this->db->join ( "resources", "resources.parent_id = parents.id" );
 		
 		$query = $this->db->get_where ( $this->table, $array );
-// 		if ($array != NULL) {
-// 			return $query->row_array ();
-// 		}
 		return $query->result_array ();
 	}
 		

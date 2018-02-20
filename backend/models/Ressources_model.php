@@ -7,4 +7,11 @@ class Ressources_model extends CI_Model {
 		$this->db->insert ( $this->table, $posts);
 		return $this->db->insert_id ();
 	}
+	
+	public function getWhere($array){
+		$this->db->select ('resources.id as ressourcesId,resources.montant as ressourcesMontat');
+		$this->db->join ( "type_resources", "type_resources.id =resources.type_resource_id" );
+		$query = $this->db->get_where ( $this->table, $array );
+		return $query->row_array ();
+	}
 }
