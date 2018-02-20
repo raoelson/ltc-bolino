@@ -73,7 +73,7 @@ class Artisan extends CI_Controller
         //recuperer $post tableau
         $posts = $this->input->post ();
 
-
+        //artisan
         $dataartisan = array (
             'denomination'=>$posts['denomination'],
             'nom_gerant'=>$posts['nom_gerant'],
@@ -99,7 +99,7 @@ class Artisan extends CI_Controller
 
 
         );
-
+        //adress
         $dataadress = array (
             'adress1'=>$posts['adress1'],
             'adress2'=>$posts['adress2'],
@@ -113,8 +113,6 @@ class Artisan extends CI_Controller
             'fax'=>$posts['fax'],
             'mail'=>$posts['mail'],
             'site_web'=>$posts['site_web'],
-
-
         );
         $artisan = $this->Artisan_model->create_artisan_query($dataartisan);
         $adresse = $this->Adress_model->create_artisan_query($dataadress);
