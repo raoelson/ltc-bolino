@@ -203,27 +203,27 @@
                             </div>
                             <div class="form-group">
                                 <label for="concept" class="col-sm-3 control-label">Nom de l'entreprise</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="denomination" name="denomination">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="description" class="col-sm-3 control-label">Nom du gerant </label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="nom_gerant" name="nom_gerant">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="description" class="col-sm-3 control-label">Prénom du gerant </label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="prenom_gerant" name="prenom_gerant">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="amount" class="col-sm-3 control-label">Status</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <select name="statut" id="statut" class="form-control"  tabindex="50" ><br />
-                                        <option value="">   </option>
+
                                         <option value="En cours">En cours </option>
                                         <option value="En Attente">En Attente </option>
                                         <option value="Accepter">Accepter </option>
@@ -234,89 +234,100 @@
                             </div>
                             <div class="form-group">
                                 <label for="status" class="col-sm-3 control-label">SIREN</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="siren" name="siren">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label">NAF</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="code_activite" name="code_activite">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label">Libellé activité</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="libelle_activite" name="libelle_activite">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label">Forme juridique RCS ou INSEE</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="forme_juridique" name="forme_juridique">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label">Date immatriculation RCS</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="date" class="form-control" id="date_immatriculation" name="date_immatriculation">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label">Date dernière maj RCS</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="date" class="form-control" id="date_derniere_rcs" name="date_derniere_rcs">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label">Catégorie</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="categorie" name="categorie">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label">Bilan (actif/passif) </label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="montant_actif_passif" name="montant_actif_passif">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label"> Chiffres d’affaires</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="chiffres_affaires" name="chiffres_affaires">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label"> Tranche d’effectif</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="tranche_effectif" name="tranche_effectif">
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
-                            <!--*****************************type artisan********************************************>
+       <!--*****************************type artisan********************************************-->
+                    <div class="panel panel-default">
+                        <div class="panel-body form-horizontal payment-form">
                             <div class="x_title">
                                 <h5>Type d'artisan</h5>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label"> Type Artisan</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="tranche_effectif" name="tranche_effectif">
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="name" name="name">
+                                    <input type="text" class="form-control" id="id" name="id">
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
-                            <!--*****************************Document nécessaire sur l'artisan********************************************-->
+       <!--*****************************Document nécessaire sur l'artisan********************************************-->
+
+                    <div class="panel panel-default">
+                        <div class="panel-body form-horizontal payment-form">
                             <div class="x_title">
                                 <h5>Document nécessaire sur l'artisan</h5>
                                 <div class="clearfix"></div>
                             </div>
+
                             <div class="form-group">
-                                <label for="date" class="col-sm-3 control-label text-align"> Attestation d’immatriculation
+                                <label for="date" class="droite col-sm-3 control-label text-align"> Attestation d’immatriculation
                                     du répertoire des métiers  </label>
-                                <div class="matricu col-sm-9">
+                                <div class="matricu col-sm-6">
                                         <input type="checkbox" value="1" name="pres_attestation_immat" class="check filled-in" id="pres_attestation_immat">
 
                                         <label for="active">Attestation activer</label>
@@ -329,8 +340,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="date" class="col-sm-3 control-label text-align"> Extrait kbis de moins de 6 mois  </label>
-                                <div class="matricu col-sm-9">
+                                <label for="date" class="droite col-sm-3 control-label text-align"> Extrait kbis de moins de 6 mois  </label>
+                                <div class="matricu col-sm-6">
                                     <input type="checkbox" value="1" name="pres_kbis" class="check filled-in" id="pres_kbis">
                                     <label for="active">Filled-in checkbox</label>
                                     <div class="btn_activ btn btn-primary btn-sm">
@@ -342,8 +353,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="date" class="col-sm-3 control-label text-align">Attestation des services fiscaux </label>
-                                <div class="matricu col-sm-9">
+                                <label for="date" class="droite col-sm-3 control-label text-align">Attestation des services fiscaux </label>
+                                <div class="matricu col-sm-6">
                                     <input type="checkbox" value="1" name="pres_services_fiscaux" class="check filled-in" id="pres_services_fiscaux">
                                     <label for="active">Filled-in checkbox</label>
                                     <div class="btn_activ btn btn-primary btn-sm">
@@ -355,8 +366,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="date" class="col-sm-3 control-label text-align"> Attestation sur l’honneur  relative au travail non clandestin </label>
-                                <div class="matricu col-sm-9">
+                                <label for="date" class="droite col-sm-3 control-label text-align"> Attestation sur l’honneur  relative au travail non clandestin </label>
+                                <div class="matricu col-sm-6">
                                     <input type="checkbox" value="1" name="pers_attestation_clandestin" class="check filled-in" id="pers_attestation_clandestin">
                                     <label for="active">Filled-in checkbox</label>
                                     <div class="btn_activ btn btn-primary btn-sm">
@@ -368,8 +379,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="date" class="col-sm-3 control-label text-align">Attestation de fourniture de déclarations sociales(moins 6 mois) </label>
-                                <div class="matricu col-sm-9">
+                                <label for="date" class="droite col-sm-3 control-label text-align">Attestation de fourniture de déclarations sociales(moins 6 mois) </label>
+                                <div class="matricu col-sm-6">
                                     <input type="checkbox" value="1" name="pres_attestation_decl_social" class="check filled-in" id="pres_attestation_decl_social">
                                     <label for="active">Filled-in checkbox</label>
                                     <div class="btn_activ btn btn-primary btn-sm">
@@ -381,8 +392,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="date" class="col-sm-3 control-label text-align">Attestations d’assurance  </label>
-                                <div class="matricu col-sm-9">
+                                <label for="date" class="droite col-sm-3 control-label text-align">Attestations d’assurance  </label>
+                                <div class="matricu col-sm-6">
                                     <input type="checkbox" value="1" name="pres_attestation_assurance" class="check filled-in" id="pres_attestation_assurance">
                                     <label for="active">Filled-in checkbox</label>
                                     <div class="btn_activ btn btn-primary btn-sm">
@@ -394,8 +405,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="date" class="col-sm-3 control-label text-align">RIB</label>
-                                <div class="matricu col-sm-9">
+                                <label for="date" class="droite col-sm-3 control-label text-align">RIB</label>
+                                <div class="matricu col-sm-6">
                                     <input type="checkbox" value="1" name="pres_rib" class="check filled-in" id="pres_rib">
                                     <label for="active">Filled-in checkbox</label>
                                     <div class="btn_activ btn btn-primary btn-sm">
@@ -406,83 +417,90 @@
                                     </div-->
                                 </div>
                             </div>
-                            <!--*****************************adresse artisan********************************************-->
+
+                        </div>
+                    </div>
+        <!--*****************************adresse artisan********************************************-->
+                    <div class="panel panel-default">
+                        <div class="panel-body form-horizontal payment-form">
                           <div class="x_title">
                               <h5>Adress artisan</h5>
                               <div class="clearfix"></div>
                           </div>
                           <div class="form-group">
                               <label for="date" class="col-sm-3 control-label"> Adress1</label>
-                              <div class="col-sm-9">
+                              <div class="col-sm-6">
                                   <input type="text" class="form-control" id="adress1" name="adress1">
                               </div>
                           </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label"> Adress2</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="adress2" name="adress2">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label"> lieu_dit</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="lieu_dit" name="lieu_dit">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label"> Code Postal</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="cp" name="cp">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label"> Ville</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="ville" name="ville">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label"> Pays</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="pays" name="pays">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label"> Phone</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="phone" name="phone">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label"> Celluire Phone 1</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="cellphone1" name="cellphone1">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label"> Celluire Phone 2</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="cellphone2" name="cellphone2">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label">  Fax</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="fax" name="fax">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label"> Mail</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="mail" name="mail">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label"> Site_web</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="site_web" name="site_web">
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
                           <!--*****************************Document nécessaire sur l'artisan********************************************-->
 
@@ -493,9 +511,6 @@
 
                                 </div>
                             </div>
-                        </div>
-
-                </div>
 
 
                 </form>

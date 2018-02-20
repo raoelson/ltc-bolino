@@ -11,6 +11,9 @@ class Artisan extends CI_Controller
         $this->load->model('Artisan_model','Artisan_model');
         $this->load->model('Adress_model','Adress_model');
         $this->load->model('Artisan_Adress_model','Artisan_Adress_model');
+        $this->load->model('Type_artisan','Type_artisan');
+        $this->load->model('Artisan_type_model','Artisan_type_model');
+
         $this->art = new Artisan_Adress_model;
         //$this->art = new Artisan_model;
 
@@ -27,6 +30,17 @@ class Artisan extends CI_Controller
     }
     public function create_artisan()
     {
+
+        //type artisan
+        $posts = $this->input->post ();
+        $datatype = array (
+            //'id'=>$posts['id'],
+            'name'=>$posts['name'],
+
+        );
+        $type_artisan=$this->Type_artisan->create_artisan_query($datatype);
+
+
         //condition artisan
         $pres_attestation_immat=1;
         if($this->input->post ('pres_attestation_immat')==0)
@@ -70,11 +84,10 @@ class Artisan extends CI_Controller
             $pres_rib=0;
         }
 
-        //recuperer $post tableau
-        $posts = $this->input->post ();
 
         //artisan
         $dataartisan = array (
+
             'denomination'=>$posts['denomination'],
             'nom_gerant'=>$posts['nom_gerant'],
 
@@ -88,6 +101,7 @@ class Artisan extends CI_Controller
             'date_derniere_rcs'=>$posts['date_derniere_rcs'],
             'categorie'=>$posts['categorie'],
             'montant_actif_passif'=>$posts['montant_actif_passif'],
+            'type_artisan_id'=>$type_artisan,
             //case à cocher
             'pres_attestation_immat'=>$pres_attestation_immat,
             'pres_kbis'=>$pres_kbis,
@@ -114,10 +128,16 @@ class Artisan extends CI_Controller
             'mail'=>$posts['mail'],
             'site_web'=>$posts['site_web'],
         );
+        //adress
+
+       // $type_artisan_id=$type_artisan;
+        //var_dump($type_artisan_id);
         $artisan = $this->Artisan_model->create_artisan_query($dataartisan);
         $adresse = $this->Adress_model->create_artisan_query($dataadress);
         $ref=$this->Artisan_Adress_model->create($artisan,$adresse);
-        if($ref)
+       //$ref1=$this->Type_artisan->create_type($type_artisan,$artisan);
+
+        if($ref and $type_artisan)
             echo json_encode(array('status'=>true));
         else
             echo json_encode(array('status'=>false));

@@ -14,7 +14,9 @@ class Artisan_Adress_model extends CI_Model
 					artisan.pres_attestation_immat,artisan.pres_kbis,artisan.pres_services_fiscaux,artisan.pers_attestation_clandestin,
 					artisan.pres_attestation_decl_social,artisan.pres_attestation_assurance,artisan.pres_rib
 					,adress.id,adress.adress1,adress.adress2,adress.lieu_dit,adress.cp,adress.ville,adress.pays,
-					adress.phone,adress.cellphone1,adress.cellphone2,adress.fax,adress.mail,adress.mail,adress.site_web' );
+					adress.phone,adress.cellphone1,adress.cellphone2,adress.fax,adress.mail,adress.mail,adress.site_web'
+
+        );
         $this->db->join ( 'artisan', 'artisan.id =artisan_id' );
         $this->db->join ( 'adress', 'adress.id = adress_id' );
 
