@@ -8,7 +8,9 @@
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
     <title>LTC-BOLINO | <?php echo $template['title'] ;?></title>
-    
+      <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap -->
     <link href="<?php echo base_url() ?>assets/backend/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->

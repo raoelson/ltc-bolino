@@ -1,7 +1,8 @@
 
 
 <div class="container">
-    <div class="row">
+    <div class="panel panel-default">
+        <div class="panel-body form-horizontal payment-form">
 
 
         <div class="col-md-12">
@@ -10,7 +11,7 @@
                     <h1>Gestion des Artisans</h1>
                     <hr class="gest_art"/>
                 </div>
-                <div class="ro col col-xs-5 text-right">
+                <!---div class="ro col col-xs-5 text-right">
                     <form class="form_bar navbar-form navbar-search" role="search">
                         <div class="input-group">
 
@@ -25,15 +26,11 @@
                             </div>
                         </div>
                     </form>
-                </div>
-                <div class="ro col col-xs-1 text-right">
+                </div-->
+                <div class="ro col col-xs-6 text-right">
                     <button href="#ajout" id="new_ajout" type="button" class="btn_ko btn btn-sm  btn-create">Nouveau</button>
                 </div>
             </div>
-
-
-
-
             <div class="table-responsive">
 
 
@@ -41,50 +38,46 @@
 
                     <thead>
 
+                            <th>Etat civil</th>
+                            <th>Locale</th>
+                            <th>Activité</th>
+                            <th>Status</th>
+                                <!--view /delete/update-->
+                                <th class="th">Action</th>
 
-                    <th>Image</th>
-                    <th>Etat civil</th>
-                    <th>Locale</th>
-
-                    <th>Status</th>
-
-                    <th>Edit</th>
-                    <th>Delete</th>
-                    <th>Voir</th>
                     </thead>
                     <tbody>
                     <?php foreach ($data as $item) { ?>
                         <tr>
-                            <td><img src="<?php echo base_url() ?>images/image.jpg" height="80px" width="80px"/></td>
-                                </td>
+                            <!--td><img src="<!--?php echo base_url() ?>images/image.jpg" height="80px" width="80px"/></td>
+                                </td-->
                             <td><?php echo $item->denomination; ?><br/>
-                                Nom:<?php echo $item->nom_gerant; ?><br/>
-                                Prénom: <?php echo $item->prenom_gerant; ?><br/>
-                                Phone:<?php echo $item->phone; ?><br/>
+                                Nom:&nbsp;&nbsp;<?php echo $item->nom_gerant; ?>
+                                &nbsp;<?php echo $item->prenom_gerant; ?><br/>
+                                Tel:&nbsp;<?php echo $item->phone; ?><br/>
                             </td>
                             <td>
-                                Adress:<?php echo $item->adress1; ?><?php echo $item->adress2; ?><br/>
-                                Ville:<?php echo $item->ville; ?><br/>
-                                Pays:<?php echo $item->pays; ?><br/>
+                                Adress:&nbsp;<?php echo $item->adress1; ?><?php echo $item->adress2; ?><br/>
+                                Ville:&nbsp;<?php echo $item->ville; ?><br/>
+                                Pays:&nbsp;<?php echo $item->pays; ?><br/>
 
                             </td>
-
-                            <td><?php echo $item->statut; ?></td>
+                            <td><?php echo $item->name; ?></td>
+                            <td><button  class="btn btn-warning"><?php echo $item->statut; ?></button> </td>
 
 
                             <!--button class="btn btn-warning" ><!--?php echo $item->statut; ?></button></td-->
 
-                            <td><p data-placement="top" data-toggle="tooltip" title="Edit">
-                                    <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" >
-                                        <span class="glyphicon glyphicon-pencil"></span></button></p></td>
-
-                            <td><p data-placement="top" data-toggle="tooltip" title="Delete">
-                                    <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" >
-                                        <span class="glyphicon glyphicon-trash"></span></button></p></td>
-
-                            <td><p data-placement="top" data-toggle="tooltip" title="Edit">
-                                    <button class="btn btn-warning btn-xs view_artisan" id="<?php echo $item->id; ?>">
-                                        <span class="fa fa-eye"></span></button></p></td>
+                            <td class="wx">
+                                <div class="action">
+                                    <button class="bt btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" >
+                                        <span class="gly glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;</button>
+                                    <button class="bt btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" >
+                                        <span class="gly glyphicon glyphicon-trash"></span>&nbsp;&nbsp;</button>
+                                    <button class="bt btn btn-warning btn-xs view_artisan" id="<?php echo $item->id; ?>">
+                                        <span class="gly fa fa-eye"></span>&nbsp;&nbsp;</button>
+                                </div>
+                            </td>
                         </tr>
                     <?php } ?>
 
@@ -106,6 +99,7 @@
             </div>
 
         </div>
+    </div>
     </div>
 </div>
 
@@ -195,6 +189,7 @@
 <!-- ************************************************************/.modal-ajout *********************************************************************-->
     <div class="ajout" id="ajout">
                 <form class="form-horizontal" id="frm-create">
+                    <div class="container">
                     <div class="panel panel-default">
                         <div class="panel-body form-horizontal payment-form">
                             <div class="x_title">
@@ -223,7 +218,6 @@
                                 <label for="amount" class="col-sm-3 control-label">Status</label>
                                 <div class="col-sm-6">
                                     <select name="statut" id="statut" class="form-control"  tabindex="50" ><br />
-
                                         <option value="En cours">En cours </option>
                                         <option value="En Attente">En Attente </option>
                                         <option value="Accepter">Accepter </option>
@@ -253,7 +247,15 @@
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label">Forme juridique RCS ou INSEE</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="forme_juridique" name="forme_juridique">
+                                    <select name="forme_juridique" id="forme_juridique" class="form-control"  tabindex="50" ><br />
+                                        <option value="En cours">EIRL </option>
+                                        <option value="En Attente">SARL </option>
+                                        <option value="Accepter">EURL </option>
+                                        <option value="Refuser">SAS </option>
+                                        <option value="Refuser">SASU </option>
+                                        <option value="Refuser">SA </option>
+                                        </optgroup>
+                                    </select>
                                 </div>
                             </div>
 
@@ -292,13 +294,24 @@
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label"> Tranche d’effectif</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="tranche_effectif" name="tranche_effectif">
+                                    <select name="tranche_effectif" id="tranche_effectif" class="form-control"  tabindex="50" ><br />
+                                        <option value="En cours">1 à 2 Salariés </option>
+                                        <option value="En Attente">3 à 5 Salariés </option>
+                                        <option value="Accepter">6 à 9 Salariés </option>
+                                        <option value="Refuser">10 à 19 Salariés </option>
+                                        <option value="Refuser">20 à 49 Salariés </option>
+                                        <option value="Refuser">50 à 99 Salariés </option>
+                                        <option value="Refuser">100 à 199 Salariés </option>
+                                        <option value="Refuser">200 à 299 Salariés </option>
+                                        </optgroup>
+                                    </select>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-       <!--*****************************type artisan********************************************-->
+
+                    <!--*****************************type artisan********************************************-->
                     <div class="panel panel-default">
                         <div class="panel-body form-horizontal payment-form">
                             <div class="x_title">
@@ -309,7 +322,7 @@
                                 <label for="date" class="col-sm-3 control-label"> Type Artisan</label>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control" id="name" name="name">
-                                    <input type="text" class="form-control" id="id" name="id">
+
                                 </div>
                             </div>
                         </div>
@@ -516,6 +529,28 @@
                 </form>
     </div>
 
+
+<!--***************Modal confirmation
+-->
+<div id="modal_confirm" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="material-icons">&#xE876;</i>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body text-center">
+                <h4>Terminer</h4>
+                <p>Ajout d'un artisan confirmer</p>
+                <button id="confirm" class="btn btn-success" data-dismiss="modal"><span>Valider</span> <i class="material-icons">&#xE5C8;</i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
     <!-- /.modal-dialog -->
 
 <script
@@ -538,8 +573,13 @@
                 dataType:'json',
                 success:function(data)
                 {
-                   alert('succccceeeeeeesss');
-                    window.location.reload();
+                   //alert('succccceeeeeeesss');
+                    $('#modal_confirm').modal('show');
+                    $("#confirm").click(function () {
+                        // $('#ancre').show();
+                        window.location.reload();
+                    });
+                    //window.location.reload();
 
                 },
                 error:function()
@@ -565,6 +605,9 @@
             });
         });
     });
+</script>
+<script>
+
 </script>
 <!---script apparait ajout**************
 ****************************************-->
