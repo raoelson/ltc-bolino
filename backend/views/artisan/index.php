@@ -1,105 +1,118 @@
 
-
+<div class="col-md-12 text-right">
+    <button href="#ajout" id="new_ajout" type="button" class="btn_ko btn btn-sm  btn-create">Nouveau</button>
+</div>
 <div class="container">
     <div class="panel panel-default">
         <div class="panel-body form-horizontal payment-form">
 
 
-        <div class="col-md-12">
             <div class="row">
-                <div class="col col-xs-6 ">
-                    <h1>Gestion des Artisans</h1>
-                    <hr class="gest_art"/>
-                </div>
-                <!---div class="ro col col-xs-5 text-right">
-                    <form class="form_bar navbar-form navbar-search" role="search">
-                        <div class="input-group">
-
-                            <input type="text" class="form-control">
-
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-search btn-danger">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                    <span class="label-icon">Search</span>
-                                </button>
-
-                            </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Listes des Artisans</h2>
+                            <div class="clearfix"></div>
                         </div>
-                    </form>
-                </div-->
-                <div class="ro col col-xs-6 text-right">
-                    <button href="#ajout" id="new_ajout" type="button" class="btn_ko btn btn-sm  btn-create">Nouveau</button>
-                </div>
+                        <div class="x_content">
+                            <table id="datatable-buttons"
+                                   class="table table-striped table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Nom entreprise</th>
+                                    <th>Etat civil</th>
+                                    <th>Local</th>
+                                    <th>Activité</th>
+                                    <th>Statut</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach ($data as $item) { ?>
+                                    <tr>
+                                        <!--td><img src="<!--?php echo base_url() ?>images/image.jpg" height="80px" width="80px"/></td>
+                                            </td-->
+                                        <td><?php echo $item->denomination; ?><br/></td>
+                                        <td>
+                                            Nom:&nbsp;&nbsp;<?php echo $item->nom_gerant; ?><br/>
+                                            Prenom:&nbsp;<?php echo $item->prenom_gerant; ?><br/>
+                                            Tel:&nbsp;<?php echo $item->phone; ?><br/>
+                                        </td>
+                                        <td>
+                                            Adress:&nbsp;<?php echo $item->adress1; ?><?php echo $item->adress2; ?><br/>
+                                            Ville:&nbsp;<?php echo $item->ville; ?><br/>
+                                            Pays:&nbsp;<?php echo $item->pays; ?><br/>
+
+                                        </td>
+                                        <td><?php echo $item->name; ?></td>
+                                        <td>
+
+                                                <?php
+                                                $value=$item->statut;
+                                                $cour='En cours';
+                                                $attente="En Attente";
+                                                $accepter="Accepter";
+                                                $refuser="Réfuser";
+                                                if($value==$cour)
+                                                {
+                                                    ?>
+                                                    <button class="btn btn-primary">
+                                                        <?php echo $cour;?>
+                                                    </button>
+                                            <?php
+                                                }
+                                                else if($value==$attente)
+                                                {
+                                                    ?>
+                                                    <button class="btn btn-danger">
+                                                        <?php echo $attente;?>
+                                            </button>
+                                            <?php
+                                                }
+                                                else if($value==$accepter)
+                                                {
+                                                    ?>
+                                                    <button class="btn btn-warning">
+                                                        <?php echo $accepter;?>
+                                                    </button>
+                                                    <?php
+                                                }
+                                                else
+                                                {
+                                                    ?>
+                                                    <button class="btn btn-default">
+                                                        <?php echo $refuser;?>
+                                                    </button>
+                                                    <?php
+                                                }
+
+                                                 ?>
+
+                                        </td>
+
+
+                                        <!--button class="btn btn-warning" ><!--?php echo $item->statut; ?></button></td-->
+
+                                        <td class="wx">
+                                            <div class="action">
+
+                                                <button class="bt btn btn-primary btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" >
+                                                    <span class="gly glyphicon glyphicon-trash"></span>&nbsp;&nbsp;</button>
+                                                <button class="bt btn  btn-success btn-xs view_artisan" id="<?php echo $item->id; ?>">
+                                                    <span class="gly fa fa-eye"></span>&nbsp;&nbsp;</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+
+
             </div>
-            <div class="table-responsive">
-
-
-                <table id="mytable" class="table table-bordred table-striped">
-
-                    <thead>
-
-                            <th>Etat civil</th>
-                            <th>Locale</th>
-                            <th>Activité</th>
-                            <th>Status</th>
-                                <!--view /delete/update-->
-                                <th class="th">Action</th>
-
-                    </thead>
-                    <tbody>
-                    <?php foreach ($data as $item) { ?>
-                        <tr>
-                            <!--td><img src="<!--?php echo base_url() ?>images/image.jpg" height="80px" width="80px"/></td>
-                                </td-->
-                            <td><?php echo $item->denomination; ?><br/>
-                                Nom:&nbsp;&nbsp;<?php echo $item->nom_gerant; ?>
-                                &nbsp;<?php echo $item->prenom_gerant; ?><br/>
-                                Tel:&nbsp;<?php echo $item->phone; ?><br/>
-                            </td>
-                            <td>
-                                Adress:&nbsp;<?php echo $item->adress1; ?><?php echo $item->adress2; ?><br/>
-                                Ville:&nbsp;<?php echo $item->ville; ?><br/>
-                                Pays:&nbsp;<?php echo $item->pays; ?><br/>
-
-                            </td>
-                            <td><?php echo $item->name; ?></td>
-                            <td><button  class="btn btn-warning"><?php echo $item->statut; ?></button> </td>
-
-
-                            <!--button class="btn btn-warning" ><!--?php echo $item->statut; ?></button></td-->
-
-                            <td class="wx">
-                                <div class="action">
-                                    <button class="bt btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" >
-                                        <span class="gly glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;</button>
-                                    <button class="bt btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" >
-                                        <span class="gly glyphicon glyphicon-trash"></span>&nbsp;&nbsp;</button>
-                                    <button class="bt btn btn-warning btn-xs view_artisan" id="<?php echo $item->id; ?>">
-                                        <span class="gly fa fa-eye"></span>&nbsp;&nbsp;</button>
-                                </div>
-                            </td>
-                        </tr>
-                    <?php } ?>
-
-                    </tbody>
-
-                </table>
-
-                <div class="clearfix"></div>
-                <ul class="pagination pull-right">
-                    <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-                </ul>
-
-            </div>
-
         </div>
-    </div>
     </div>
 </div>
 
@@ -647,3 +660,5 @@
         });
     });
 </script-->
+        <script
+                src="<?php echo base_url() ?>assets/backend/js/sites/clients/clients.js"></script>
