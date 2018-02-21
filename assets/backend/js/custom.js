@@ -1753,13 +1753,24 @@ if (typeof NProgress != 'undefined') {
 			});
 			$('#single_cal4').daterangepicker({
 			  singleDatePicker: true,
-			  singleClasses: "picker_4"
+			  singleClasses: "picker_4",
+			  startDate: testDate(),
+			  locale: {
+					format: 'DD/MM/YYYY'
+				  }
 			}, function(start, end, label) {
 			  //console.log(start.toISOString(), end.toISOString(), label);
 			});
-  
-  
+			testDate();
+			
 		}
+	    
+	    function testDate (){
+	    	var date = new Date();
+	    	date.setDate(date.getDate() - 1);
+	    	var datereturn = date.getDate()  + '/' + (date.getMonth() + 1) + '/' +  date.getFullYear()
+	    	return (datereturn);
+	    }
 		
 		 
 		function init_daterangepicker_reservation() {

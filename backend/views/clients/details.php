@@ -19,7 +19,7 @@
 	<form class="form-horizontal form-label-left" novalidate
 		action="<?php echo base_url('admin.php/clients_saves');?>"
 		method="post">
-		<input type="hidden" name="nombreVivantfoyer" value="0" />
+		<input type="hidden" name="idInfoPerso" value="<?php echo $data[0]['clientid']; ?>" />		
 		<div class="row" id="ancre" >
 		<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
@@ -46,11 +46,11 @@
 								    	$RadioMonsieur = "checked='true'";
 								    }
 								?>
-									Madame: <input type="radio" class="flat" name="indentite" id=""
+									Madame: <input type="radio" class="flat" name="indentite" 
 										value="Madame" <?php echo $RadioMadame;?>  /> &nbsp;Mademoiselle: <input
-										type="radio" <?php echo $RadioMademoiselle;?> class="flat" name="indentite" id="" value="Mademoiselle" />
+										type="radio" <?php echo $RadioMademoiselle;?> class="flat" name="indentite"  value="Mademoiselle" />
 									&nbsp;Monsieur: <input type="radio" class="flat"
-										name="indentite" id="" value="Monsieur" <?php echo $RadioMonsieur;?> />
+										name="indentite"  value="Monsieur" <?php echo $RadioMonsieur;?> />
 								</p>
 							</div>
 						</div>
@@ -91,7 +91,7 @@
 									type="text" value="<?php echo $data[0]['clientUsagenom'];?>" />
 							</div>
 						</div>
-						<div class="item form-group" id="">
+						<div class="item form-group" >
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Date de naissance<span class="required" id="addclass"
 								>*</span>
@@ -101,7 +101,7 @@
 									name="birthday" required="required" type="date" value="<?php echo $data[0]['clientDate'];?>"/>
 							</div>
 						</div>
-						<div class="item form-group" id="">
+						<div class="item form-group" >
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Lieu de naissance<span class="required" id="addclass">*</span>
 							</label>
@@ -111,7 +111,7 @@
 									type="text" required="required" value="<?php echo $data[0]['clientPlace'];?>"/>
 							</div>
 						</div>
-						<div class="item form-group" id="">
+						<div class="item form-group" >
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Situation familiale
 							</label>
@@ -127,7 +127,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="item form-group" id="">
+						<div class="item form-group" >
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Aide organisme
 							</label>
@@ -316,97 +316,97 @@
 						<tr>
 							<td>
 								<div class="item form-group">		
-								  	<input id="" 
+								  	<input  
 										name="typeRessoucesDemandeur[]" 
 										 type="hidden" value="Salaire et Rénumération"/>		
-									<input id="" class="form-control col-md-7 col-xs-12"
+									<input  class="form-control col-md-7 col-xs-12"
 										name="montantRessoucesDemandeur[]" placeholder="Salaire et Rénumération..."
 										 type="text" value="<?php echo (unserialize($data[0]['ressourcesMontant'])[0]);?>">									
 								</div>
 							</td>
 							<td>
 								<div class="item form-group">	
-								<input id="" 
+								<input  
 										name="typeRessoucesDemandeur[]" 
 										 type="hidden" value="Allocation Familiales"/>			
-									<input id="" class="form-control col-md-7 col-xs-12"									
+									<input  class="form-control col-md-7 col-xs-12"									
 										name="montantRessoucesDemandeur[]" placeholder="Allocation Familiales..."
 										 type="text" value="<?php echo (unserialize($data[0]['ressourcesMontant'])[1]);?>">									
 								</div>
 							</td>
 							<td>
 								<div class="item form-group">
-								<input id="" 
+								<input  
 										name="typeRessoucesDemandeur[]" 
 										 type="hidden" value="Autres préstations familiales"/>					
-									<input id="" class="form-control col-md-7 col-xs-12"
+									<input  class="form-control col-md-7 col-xs-12"
 										name="montantRessoucesDemandeur[]" placeholder="Autres préstations familiales..."
 										 type="text" value="<?php echo (unserialize($data[0]['ressourcesMontant'])[2]);?>">									
 								</div>
 							</td>
 							<td>
 								<div class="item form-group">	
-								<input id="" 
+								<input  
 										name="typeRessoucesDemandeur[]" 
 										 type="hidden" value="A.A.H"/>			
-									<input id="" class="form-control col-md-7 col-xs-12"
+									<input  class="form-control col-md-7 col-xs-12"
 										name="montantRessoucesDemandeur[]" placeholder="A.A.H..."
 										 type="text" value="<?php echo (unserialize($data[0]['ressourcesMontant'])[3]);?>">									
 								</div>
 							</td>
 							<td>
 								<div class="item form-group">	
-								<input id="" 
+								<input  
 										name="typeRessoucesDemandeur[]" 
 										 type="hidden" value="ASSEDIC"/>				
-									<input id="" class="form-control col-md-7 col-xs-12"
+									<input  class="form-control col-md-7 col-xs-12"
 										name="montantRessoucesDemandeur[]" placeholder="ASSEDIC..."
 										 type="text" value="<?php echo (unserialize($data[0]['ressourcesMontant'])[4]);?>">									
 								</div>
 							</td>
 							<td>
 								<div class="item form-group">	
-								<input id="" 
+								<input  
 										name="typeRessoucesDemandeur[]" 
 										 type="hidden" value="R.S.A"/>			
-									<input id="" class="form-control col-md-7 col-xs-12"
+									<input  class="form-control col-md-7 col-xs-12"
 										name="montantRessoucesDemandeur[]" placeholder="R.S.A..."
 										 type="text" value="<?php echo (unserialize($data[0]['ressourcesMontant'])[5]);?>">									
 								</div>
 							</td>
 							<td>
 								<div class="item form-group">
-								<input id="" 
+								<input  
 										name="typeRessoucesDemandeur[]" 
 										 type="hidden" value="Retraite"/>				
-									<input id="" class="form-control col-md-7 col-xs-12"
+									<input  class="form-control col-md-7 col-xs-12"
 										name="montantRessoucesDemandeur[]" placeholder="Retraite..."
 										 type="text" value="<?php echo (unserialize($data[0]['ressourcesMontant'])[6]);?>">									
 								</div>
 							</td>
 							<td>
 								<div class="item form-group">
-								<input id="" 
+								<input  
 										name="typeRessoucesDemandeur[]" 
 										 type="hidden" value="Pension Alimentaire"/>				
-									<input id="" class="form-control col-md-7 col-xs-12"
+									<input  class="form-control col-md-7 col-xs-12"
 										name="montantRessoucesDemandeur[]" placeholder="Pension Alimentaire..."
 										 type="text" value="<?php echo (unserialize($data[0]['ressourcesMontant'])[7]);?>">									
 								</div>
 							</td>
 							<td>
 								<div class="item form-group">	
-								<input id="" 
+								<input  
 										name="typeRessoucesDemandeur[]" 
 										 type="hidden" value="Autres"/>			
-									<input id="" class="form-control col-md-7 col-xs-12"
+									<input  class="form-control col-md-7 col-xs-12"
 										name="montantRessoucesDemandeur[]" placeholder="Autres..."
 										 type="text" value="<?php echo (unserialize($data[0]['ressourcesMontant'])[8]);?>">									
 								</div>
 							</td>
 							<td>
 								<div class="item form-group">											
-									<input id="" class="form-control col-md-7 col-xs-12"
+									<input  class="form-control col-md-7 col-xs-12"
 										name="montantSommeRessoucesDemandeur" placeholder="Montant Total..."
 										 type="text" value="<?php echo array_sum(unserialize($data[0]['ressourcesMontant']));?>">									
 								</div>
@@ -471,7 +471,7 @@
 									 </select>
 								 </div>
 							 </div>
-							 <table class="table table-striped table-bordered">							 
+							 <table class="table table-striped table-bordered" id="<?php echo $i+1;?>_table">							 
 								 <thead>
 									 <th>Salaire et Rénumération</th>
 									 <th>Allocation Familiales</th>
@@ -488,72 +488,82 @@
 								 <tbody>
 									 <tr>
 										 <td>
-										 	<div class="item form-group"><input id="" name="typeRessoucesParents<?php echo $i+1;?>[]" type="hidden" value="Salaire et Rénumération"/>
-										 		<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents<?php echo $i+1;?>[]" placeholder="Salaire et Rénumération..." 
-										 		type="text" value="<?php echo (unserialize($data[$i]['ressourcesMontant'])[0]);?>">
+										 	<div class="item form-group"><input  name="<?php echo $i+1;?>_typeRessoucesParents[]" type="hidden" value="Salaire et Rénumération"/>
+										 		<input  class="form-control col-md-7 col-xs-12" name="montantTotalRessoucesParents_<?php echo $i+1;?>" placeholder="Salaire et Rénumération..." 
+										 		type="text" value="<?php echo (unserialize($data[$i]['ressourcesMontant'])[0]);?>"
+										 		id="<?php echo $i+1;?>_montantRessoucesParents[]">
 										 	</div>
 										 </td>
 										
 										 <td>
 										 	<div class="item form-group">
-										 		<input id="" name="typeRessoucesParents<?php echo $i+1;?>[]" type="hidden" value="Allocation Familiales"/>
-										 		<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents<?php echo $i+1;?>[]" 
-										 		placeholder="Allocation Familiales..." type="text" value="<?php echo (unserialize($data[$i]['ressourcesMontant'])[1]);?>">
+										 		<input  name="<?php echo $i+1;?>_typeRessoucesParents[]" type="hidden" value="Allocation Familiales"/>
+										 		<input  class="form-control col-md-7 col-xs-12" name="montantTotalRessoucesParents_<?php echo $i+1;?>" 
+										 		placeholder="Allocation Familiales..." type="text" value="<?php echo (unserialize($data[$i]['ressourcesMontant'])[1]);?>"
+										 		id="<?php echo $i+1;?>_montantRessoucesParents[]">
 									 		</div>
 								 		</td>
 										 
 										 <td>
-										 	<div class="item form-group"><input id="" name="typeRessoucesParents<?php echo $i+1;?>[]" type="hidden" value="Autres préstations familiales"/>
-										 		<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents<?php echo $i+1;?>[]" 
-										 		placeholder="Autres préstations familiales..." type="text" value="<?php echo (unserialize($data[$i]['ressourcesMontant'])[2]);?>">
+										 	<div class="item form-group"><input  name="<?php echo $i+1;?>_typeRessoucesParents[]" type="hidden" value="Autres préstations familiales"/>
+										 		<input  class="form-control col-md-7 col-xs-12" name="montantTotalRessoucesParents_<?php echo $i+1;?>" 
+										 		placeholder="Autres préstations familiales..." type="text" value="<?php echo (unserialize($data[$i]['ressourcesMontant'])[2]);?>"
+										 		id="<?php echo $i+1;?>_montantRessoucesParents[]">
 									 		</div>
 								 		</td>
 										 
 										 <td>
-										 	<div class="item form-group"><input id="" name="typeRessoucesParents<?php echo $i+1;?>[]" type="hidden" value="A.A.H"/>
-										 		<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents<?php echo $i+1;?>[]" placeholder="A.A.H..."
-										 		 type="text" value="<?php echo (unserialize($data[$i]['ressourcesMontant'])[3]);?>">
+										 	<div class="item form-group"><input  name="<?php echo $i+1;?>_typeRessoucesParents[]" type="hidden" value="A.A.H"/>
+										 		<input  class="form-control col-md-7 col-xs-12" name="montantTotalRessoucesParents_<?php echo $i+1;?>" placeholder="A.A.H..."
+										 		 type="text" value="<?php echo (unserialize($data[$i]['ressourcesMontant'])[3]);?>"
+										 		 id="<?php echo $i+1;?>_montantRessoucesParents[]">
 									 		</div>
 								 		</td>
 										 
 										 <td>
-										 	<div class="item form-group"><input id="" name="typeRessoucesParents<?php echo $i+1;?>[]" type="hidden" value="ASSEDIC"/>
-										 		<input id="" class="form-control col-md-7 col-xs-12" 
-										 		name="montantRessoucesParents<?php echo $i+1;?>[]" placeholder="ASSEDIC..." type="text" value="<?php echo (unserialize($data[$i]['ressourcesMontant'])[4]);?>">
+										 	<div class="item form-group"><input  name="<?php echo $i+1;?>_typeRessoucesParents[]" type="hidden" value="ASSEDIC"/>
+										 		<input  class="form-control col-md-7 col-xs-12" 
+										 		name="montantTotalRessoucesParents_<?php echo $i+1;?>" placeholder="ASSEDIC..." type="text" value="<?php echo (unserialize($data[$i]['ressourcesMontant'])[4]);?>"
+										 		id="<?php echo $i+1;?>_montantRessoucesParents[]">
 									 		</div>
 								 		</td>
 										 
 										 <td>
-										 	<div class="item form-group"><input id="" name="typeRessoucesParents<?php echo $i+1;?>[]" type="hidden" value="R.S.A"/>
-										 		<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents<?php echo $i+1;?>[]" 
-										 		placeholder="R.S.A..." type="text" value="<?php echo (unserialize($data[$i]['ressourcesMontant'])[5]);?>">
+										 	<div class="item form-group"><input  name="<?php echo $i+1;?>_typeRessoucesParents[]" type="hidden" value="R.S.A"/>
+										 		<input  class="form-control col-md-7 col-xs-12" name="montantTotalRessoucesParents_<?php echo $i+1;?>" 
+										 		placeholder="R.S.A..." type="text" value="<?php echo (unserialize($data[$i]['ressourcesMontant'])[5]);?>"
+										 		id="<?php echo $i+1;?>_montantRessoucesParents[]">
 									 		</div>
 								 		</td>
 										 
 										 <td>
-										 	<div class="item form-group"><input id="" name="typeRessoucesParents<?php echo $i+1;?>[]" type="hidden" value="Retraite"/>
-										 		<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents<?php echo $i+1;?>[]" placeholder="Retraite..."
-										 		 type="text" value="<?php echo (unserialize($data[$i]['ressourcesMontant'])[6]);?>">
+										 	<div class="item form-group"><input  name="<?php echo $i+1;?>_typeRessoucesParents[]" type="hidden" value="Retraite"/>
+										 		<input  class="form-control col-md-7 col-xs-12" name="montantTotalRessoucesParents_<?php echo $i+1;?>" placeholder="Retraite..."
+										 		 type="text" value="<?php echo (unserialize($data[$i]['ressourcesMontant'])[6]);?>"
+										 		 id="<?php echo $i+1;?>_montantRessoucesParents[]">
 									 		</div>
 								 		</td>
 										 
 										 <td>
-										 	<div class="item form-group"><input id="" name="typeRessoucesParents<?php echo $i+1;?>[]" type="hidden" value="Pension Alimentaire"/>
-										 		<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents<?php echo $i+1;?>[]" 
-										 		placeholder="Pension Alimentaire..." type="text" value="<?php echo (unserialize($data[$i]['ressourcesMontant'])[7]);?>">
+										 	<div class="item form-group"><input  name="<?php echo $i+1;?>_typeRessoucesParents[]" type="hidden" value="Pension Alimentaire"/>
+										 		<input  class="form-control col-md-7 col-xs-12" name="montantTotalRessoucesParents_<?php echo $i+1;?>" 
+										 		placeholder="Pension Alimentaire..." type="text" value="<?php echo (unserialize($data[$i]['ressourcesMontant'])[7]);?>"
+										 		id="<?php echo $i+1;?>_montantRessoucesParents[]">
 									 		</div>
 								 		</td>
 										 
 										 <td>
-										 	<div class="item form-group"><input id="" name="typeRessoucesParents<?php echo $i+1;?>[]" type="hidden" value="Autres"/>
-										 		<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents<?php echo $i+1;?>[]" placeholder="Autres..." 
-										 		type="text" value="<?php echo (unserialize($data[$i]['ressourcesMontant'])[8]);?>">
+										 	<div class="item form-group"><input  name="<?php echo $i+1;?>_typeRessoucesParents[]" type="hidden" value="Autres"/>
+										 		<input  class="form-control col-md-7 col-xs-12" name="montantTotalRessoucesParents_<?php echo $i+1;?>" placeholder="Autres..." 
+										 		type="text" value="<?php echo (unserialize($data[$i]['ressourcesMontant'])[8]);?>"
+										 		id="<?php echo $i+1;?>_montantRessoucesParents[]">
 									 		</div>
 								 		</td>
 										 <td>
 										 	<div class="item form-group">
-										 		<input id="" class="form-control col-md-7 col-xs-12" name="montantTotalRessoucesParents<?php echo $i+1;?>"
-										 		 placeholder="Autres..." type="text" value="<?php echo array_sum(unserialize($data[$i]['ressourcesMontant']));?>">
+										 		<input  class="form-control col-md-7 col-xs-12" name="montantTotalRessoucesParents_<?php echo $i+1;?>"
+										 		 placeholder="Autres..." type="text" value="<?php echo array_sum(unserialize($data[$i]['ressourcesMontant']));?>"
+										 		  id="<?php echo $i+1;?>_montantTotalRessoucesParents">
 									 		</div>
 								 		</td>
 									 </tr>

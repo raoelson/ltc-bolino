@@ -20,7 +20,7 @@ class Clients extends CI_Controller {
 	}
 	public function save() {
 		$posts = $this->input->post();
-		
+		//print_r($posts);die;
 		
 		// Table Client
 		
@@ -143,7 +143,7 @@ class Clients extends CI_Controller {
         			$this->ressources->add($dataRessourceFoyer);
         	}
         }
-		//$this->session->set_flashdata ( $typeMessage, $message );
+		$this->session->set_flashdata ( "success", "Votre donnée  a été bien enregistrée !");
 		redirect ( base_url () . "admin.php/clients" );
 		
 	}
