@@ -16,6 +16,6 @@ class Welcome extends CI_Controller {
 		//$this->template->write('title', "Gestion des articles - Seraseran'ny Tantsaha");		;
 		$this->template
 		->title('ma')
-		->build('dashboard/content');
+		->build('test/test');
 	}
 }
