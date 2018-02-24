@@ -8,7 +8,9 @@
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
     <title>LTC-BOLINO | <?php echo $template['title'] ;?></title>
-    
+      <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap -->
     <link href="<?php echo base_url() ?>assets/backend/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -56,6 +58,10 @@
     <script src="<?php echo base_url() ?>assets/backend/vendors/jszip/dist/jszip.min.js"></script>
     <script src="<?php echo base_url() ?>assets/backend/vendors/pdfmake/build/pdfmake.min.js"></script>
     <script src="<?php echo base_url() ?>assets/backend/vendors/pdfmake/build/vfs_fonts.js"></script>
+      <!-- bootstrap-daterangepicker -->
+    <script src="<?php echo base_url() ?>assets/backend/vendors/moment/min/moment.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/backend/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="<?php echo base_url() ?>assets/backend/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
     
     <script type="text/javascript">
 		var SITE_URL = "<?php echo base_url()?>";
@@ -269,9 +275,7 @@
     <script src="<?php echo base_url() ?>assets/backend/vendors/jqvmap/dist/jquery.vmap.js"></script>
     <script src="<?php echo base_url() ?>assets/backend/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
     <script src="<?php echo base_url() ?>assets/backend/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-    <!-- bootstrap-daterangepicker -->
-    <script src="<?php echo base_url() ?>assets/backend/vendors/moment/min/moment.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/backend/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+  
     
     <script src="<?php echo base_url() ?>assets/backend/js/notify/pnotify.custom.min.js"></script>
      <script src="<?php echo base_url() ?>assets/backend/js/sites/base.js"></script>

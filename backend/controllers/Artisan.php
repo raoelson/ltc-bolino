@@ -13,8 +13,10 @@ class Artisan extends CI_Controller
         $this->load->model('Artisan_Adress_model','Artisan_Adress_model');
         $this->load->model('Type_artisan','Type_artisan');
         $this->load->model('Artisan_type_model','Artisan_type_model');
+        //affichage tableau
+        $this->load->model('Affichage_artisan','Affichage_artisan');
 
-        $this->art = new Artisan_Adress_model;
+        $this->art = new Affichage_artisan;
         //$this->art = new Artisan_model;
 
     }
@@ -84,7 +86,22 @@ class Artisan extends CI_Controller
             $pres_rib=0;
         }
 
-
+        //adress
+        $dataadress = array (
+            'adress1'=>$posts['adress1'],
+            'adress2'=>$posts['adress2'],
+            'lieu_dit'=>$posts['lieu_dit'],
+            'cp'=>$posts['cp'],
+            'ville'=>$posts['ville'],
+            'pays'=>$posts['pays'],
+            'phone'=>$posts['phone'],
+            'cellphone1'=>$posts['cellphone1'],
+            'cellphone2'=>$posts['cellphone1'],
+            'fax'=>$posts['fax'],
+            'mail'=>$posts['mail'],
+            'site_web'=>$posts['site_web'],
+        );
+        $adresse = $this->Adress_model->create_artisan_query($dataadress);
         //artisan
         $dataartisan = array (
 
@@ -102,6 +119,7 @@ class Artisan extends CI_Controller
             'categorie'=>$posts['categorie'],
             'montant_actif_passif'=>$posts['montant_actif_passif'],
             'type_artisan_id'=>$type_artisan,
+            'artisan_adress_id'=>$adresse,
             //case à cocher
             'pres_attestation_immat'=>$pres_attestation_immat,
             'pres_kbis'=>$pres_kbis,
@@ -113,27 +131,12 @@ class Artisan extends CI_Controller
 
 
         );
-        //adress
-        $dataadress = array (
-            'adress1'=>$posts['adress1'],
-            'adress2'=>$posts['adress2'],
-            'lieu_dit'=>$posts['lieu_dit'],
-            'cp'=>$posts['cp'],
-            'ville'=>$posts['ville'],
-            'pays'=>$posts['pays'],
-            'phone'=>$posts['phone'],
-            'cellphone1'=>$posts['cellphone1'],
-            'cellphone2'=>$posts['cellphone1'],
-            'fax'=>$posts['fax'],
-            'mail'=>$posts['mail'],
-            'site_web'=>$posts['site_web'],
-        );
+
         //adress
 
        // $type_artisan_id=$type_artisan;
         //var_dump($type_artisan_id);
         $artisan = $this->Artisan_model->create_artisan_query($dataartisan);
-        $adresse = $this->Adress_model->create_artisan_query($dataadress);
         $ref=$this->Artisan_Adress_model->create($artisan,$adresse);
        //$ref1=$this->Type_artisan->create_type($type_artisan,$artisan);
 

@@ -16,16 +16,17 @@ $(document)
 					
 					for(x = 1;x<=tailleTable; x++){
 						if(x>1){
-							$('input[name^="montantRessoucesParents'+(x)+'"]').keyup(function(e) {
-							 	e.preventDefault();
+							$('#'+x+'_table tbody input[id^="'+(x)+'_montantRessoucesParents"]').keyup(function(e) {
+							 	e.preventDefault();									 	
 							 		var sommeFoyer = 0;
-
-								    $('input[name^="montantRessoucesParents'+(x)+'"]').each(function() {
+							 		var index = $(this).attr("name").split("_");	
+								    $('input[id^="'+(index[0])+'_montantRessoucesParents"]').each(function() {
 								        if($(this).val() == "")
 								        	return;
 								        sommeFoyer += parseFloat(($(this).val()));
 								    });
-								    $('input[name="montantTotalRessoucesParents'+(x)+'"]').val(sommeFoyer);
+								    console.log(sommeFoyer);
+								    $('input[id="'+index[0]+'_montantTotalRessoucesParents"]').val(sommeFoyer);
 								    SommeFoyer();
 								});
 						}
@@ -140,7 +141,7 @@ $(document)
 					var SommeTableFoyer = 0;
 						 for(i=1;i<=tailleTable;i++){
 							 if(i > 1){
-								 SommeTableFoyer += (parseFloat( $('input[name="montantTotalRessoucesParents'+(i)+'"]').val())); 
+								 SommeTableFoyer += (parseFloat( $('input[id="'+(i)+'_montantTotalRessoucesParents"]').val())); 
 							 }						 	
 						 }
 					var sommeGeneral = SommeTableFoyer+parseFloat($('input[name="montantSommeRessoucesDemandeur"]').val());

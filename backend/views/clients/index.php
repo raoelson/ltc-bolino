@@ -129,8 +129,9 @@
 								>*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="birthday" class="form-control col-md-7 col-xs-12"
-									name="birthday" required="required" type="date">
+<!-- 								<input id="birthday" class="form-control col-md-7 col-xs-12" -->
+<!-- 									name="birthday" required="required" type="text"> -->
+			                     <input type="text" class="form-control col-md-7 col-xs-1" id="single_cal4" placeholder="Date de naissance..." aria-describedby="inputSuccess2Status4">
 							</div>
 						</div>
 						<div class="item form-group" id="">
@@ -496,5 +497,5 @@
 	<br />
 
 </div>
-<script
-	src="<?php echo base_url() ?>assets/backend/js/sites/clients/clients.js"></script>
+<script src="<?php echo base_url() ?>assets/backend/js/sites/clients/clients.js"></script>
+	
