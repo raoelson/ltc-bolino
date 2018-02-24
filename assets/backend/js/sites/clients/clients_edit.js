@@ -2,7 +2,7 @@ $(document)
 		.ready(
 				function() {
 					var tailleTable = dataTotal;
-					/*alert(dataTotal);*/
+					/*alert();*/
 					$('input[name^="montantRessoucesDemandeur"]').keyup(function() {
 						var sommeDemandeur = 0;
 					    $('input[name^="montantRessoucesDemandeur"]').each(function() {
@@ -19,14 +19,14 @@ $(document)
 							$('#'+x+'_table tbody input[id^="'+(x)+'_montantRessoucesParents"]').keyup(function(e) {
 							 	e.preventDefault();									 	
 							 		var sommeFoyer = 0;
-							 		var index = $(this).attr("name").split("_");								 		
-								    $('input[id^="'+(index[1])+'_montantRessoucesParents"]').each(function() {
+							 		var index = $(this).attr("name").match(/\d+/);								 									 	
+								    $('input[id^="'+(index[0])+'_montantRessoucesParents"]').each(function() {
 								        if($(this).val() == "")
 								        	return;
 								        sommeFoyer += parseFloat(($(this).val()));
 								    });
 								    //console.log(sommeFoyer);
-								    $('input[id="'+index[1]+'_montantTotalRessoucesParents"]').val(sommeFoyer);
+								    $('input[id="'+index[0]+'_montantTotalRessoucesParents"]').val(sommeFoyer);
 								    SommeFoyer();
 								});
 						}
@@ -148,5 +148,26 @@ $(document)
 						 //notificationSomme('Montant total des personnes vivants au Foyer',sommeGeneral);
 						 $('#totalFoyer').text(sommeGeneral + " € ");
 				}
+
+				$('#supprimer').click(function(){
+					var idPersonne = $('input[name="idInfoPerso"]').val();
+					var idAdresse = $('input[name="idInfoAdresse"]').val();					
+					if (!confirm(" Êtes-vous certain de vouloir supprimer ceci ? "))
+						return;
+					$.postJSON(BASE_URL + "clients/deleteClient/",{
+						"idpersonne": idPersonne,
+						"idadresse": idAdresse
+					}, function(json){
+						id = json.data;
+						if(id != ""){							
+							notification("","Votre donnée a été bien supprimée","success");
+							setTimeout(function(){
+							 window.location = urlRedirect;
+							}, 1000);
+							
+						}
+					});
+				});
+
 				
 		});

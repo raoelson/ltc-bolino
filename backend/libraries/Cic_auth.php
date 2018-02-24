@@ -7,9 +7,9 @@ if (! defined ( 'BASEPATH' ))
  * Authentication library for Code Igniter.
  *
  * @package Cic_auth
- * @author Samuelson
+ * @author Maoris
  * @version 0.1
- * @license MIT License Copyright (c) 2013 Samuelson
+ * @license MIT License Copyright (c) 2013 Maoris
  */
 class Cic_auth {
 	function __construct() {

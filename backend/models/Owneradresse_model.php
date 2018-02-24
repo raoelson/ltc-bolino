@@ -14,7 +14,7 @@ class Owneradresse_model extends CI_Model {
 					adress.pays as adressePays,adress.phone as adressePhone,
 					adress.cellphone1 as adresseCellphone,adress.mail as adresseMail,adress.fax as adresseFax,
 					parents.id as parentsId,parents.name as parentsNom,parents.firstname as parentsPrenom,parents.birthdate as parentsBirthdate,
-					link_parents.name as linkparentsNom,
+					link_parents.name as linkparentsNom,link_parents.id as linkparentsId,
 					resources.id as ressourcesId,resources.montant as ressourcesMontant');
 		
 		$this->db->join ( "owners", "owners.id =owners_id" );
@@ -34,9 +34,10 @@ class Owneradresse_model extends CI_Model {
 		return $this->db->insert_id ();
 	}
 	
-	public function remove($id) {
+	public function remove($id,$adress) {
 		$this->db->delete ( $this->table, array (
-				$this->iduser => $id
+				'owners_id' => $id,
+				'adress_id' => $adress
 		) );
 	}
 }

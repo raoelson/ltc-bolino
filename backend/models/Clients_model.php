@@ -41,4 +41,16 @@ class Clients_model extends CI_Model {
 		$query = $this->db->get_where ( $this->table );
 		return $query->row_array ();
 	}
+
+	public function modificationclient($posts,$id){
+		$this->db->update ( $this->table, $posts, array (
+				$this->id => $id 
+		) );
+	}
+
+	public function remove($id){
+		$this->db->delete ( $this->table, array (
+				$this->id => $id 
+		) );
+	}
 }

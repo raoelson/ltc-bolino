@@ -41,17 +41,21 @@
 								<td><?php echo ($val['familysituation']) ;?></td>
 								<td><?php echo ($val['firstname1']) ;?></td>
 								<td><?php echo ($val['firstname2']) ;?></td>
-								<td><?php echo ($val['nom_organisme']) ;?></td>
+								<td><?php if($val['nom_organisme'] != "") echo ($val['nom_organisme']); else echo "-" ;?></td>
 								<td><?php echo ($val['montant_aide']) ;?></td>
-								<td><?php echo ($val['type_travaux_finan']) ;?></td>
+								<td><?php if($val['type_travaux_finan'] != "") echo ($val['type_travaux_finan']) ; else echo "-";?></td>
 								
 								<td>
 									<a href="<?php  echo base_url('admin.php/clients/details/'.$val['id']) ?>" id="modifier"
-									class="btn btn-round btn-default">Voir détails</a> 							
+									class="btn btn-round btn-default"><span class="gly fa fa-eye"></span></a>
+
+									<!-- <a href="#" id="supprimer"
+									class="btn btn-round btn-danger"><span class="gly fa fa-trash"></span></a> -->	
+															
 									<!-- <a href="#ancre" id="modifier"
 									class="btn btn-round btn-warning">Modifier</a>  -->
-									<a href="#"
-									id="supprimer" class="btn btn-round btn-danger">Supprimer</a></td>
+									<!-- <a href="#"
+									id="supprimer" class="btn btn-round btn-danger">Supprimer</a></td> -->
 							</tr>
 						<?php } ?>
 						</tbody>
@@ -473,7 +477,7 @@
 		<div class="form-group">
 			<center>
 				<div class="col-md-6 col-md-offset-3">
-					<button id="AffichePersonnes" type="button" class="btn btn-success">AJOUTER DES PERSONNES VIVANT DANS VOTRE FOYER</button>
+					<button id="AffichePersonnes" type="button" class="btn btn-round btn-success"><span class="fa fa-plus-square-o"></span>&nbsp; AJOUTER DES PERSONNES VIVANT DANS VOTRE FOYER</button>
 
 				</div>
 			</center>
@@ -482,8 +486,8 @@
 				<div class="form-group">
 					<center>
 						<div class="col-md-6 col-md-offset-3">
-							<button type="reset" class="btn btn-primary">Effacer</button>
-							<button id="send" type="submit" class="btn btn-success">Enregistrer</button>
+							<button type="reset" class="btn btn-primary"><span class="gly fa fa-save"></span>&nbsp;Effacer</button>
+							<button id="send" type="submit" class="btn btn-success"><span class="gly fa fa-save"></span>&nbsp;Enregistrer</button>
 						</div>
 					</center>
 				</div>
