@@ -20,7 +20,8 @@ class Clients extends CI_Controller {
 	}
 	public function save() {
 		$posts = $this->input->post();
-		//print_r($posts);die;
+		
+		//die;
 		
 		// Table Client
 		
@@ -30,7 +31,7 @@ class Clients extends CI_Controller {
 				'firstname1' => strtoupper($posts ['firstname1']),
 				'firstname2' => ucwords($posts ['firstname2']),
 				'firstname3' => ucwords($posts ['firstname3']),
-				'birthdate' => $posts ['birthday'],
+				'birthdate' => $this->cic_auth->FormatDate($posts ['birthday']),
 				'birthplace' => $posts ['birthplace'],
 				'familysituation' => $posts ['familysituation'],
 				'aide_organisme' => $posts ['aide_organisme'],
@@ -73,7 +74,7 @@ class Clients extends CI_Controller {
 				'owner_id'=>$dataDemandeur['id'],
 				'name'=>strtoupper($dataDemandeur['firstname1']),
 				'firstname'=>ucwords($dataDemandeur['firstname2']),
-				'birthdate'=>$dataDemandeur['birthdate'],
+				'birthdate'=>($dataDemandeur['birthdate']),
 				'link_parent_id' => $id_demandeur
 		);
 		$parent_idDemandeur = $this->parents->add($DemandeurParent);
@@ -106,7 +107,7 @@ class Clients extends CI_Controller {
         		$j = $i+1;        		
         		$nom = strtoupper($posts["nomParent".$j]);
         		$prenom = ucwords($posts["prenomParent".$j]);
-        		$datenaissance = $posts["datenaissanceParent".$j];
+        		$datenaissance = $this->cic_auth->FormatDate($posts["datenaissanceParent".$j]);
         		$lienParent= $posts["lienParent".$j];
         		
         		$typeressouces = $posts['typeRessoucesParents'.$j];

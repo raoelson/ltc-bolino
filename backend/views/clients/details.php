@@ -158,7 +158,7 @@
 							</div>
 						</div>
 						<div class="item form-group" id="div_montant_aide"
-							style="display: none; height: 40px !important;">
+							style="<?php echo $testAide;?>; height: 40px !important;">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Montant à aider<span class="required" id="addclass">*</span>
 							</label>
@@ -168,13 +168,12 @@
 									type="text" value="<?php echo $data[0]['clientMontant'];?>">
 							</div>
 						</div>
-						<div class="item form-group" id="div_type_travaux" style="display: none;">
+						<div class="item form-group" id="div_type_travaux" style="<?php echo $testAide;?>;">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Type des travaux
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<textarea  name="type_travaux_finan" id="type_travaux_finan" rows="4" class="form-control col-md-7 col-xs-12" value="<?php echo $data[0]['clienttp'];?>"> 
-								</textarea>
+								<input  name="type_travaux_finan" id="type_travaux_finan" rows="4" class="form-control col-md-7 col-xs-12"  value="<?php echo trim($data[0]['clienttp']);?>" /> 									
 							</div>
 						</div>
 					</div>
@@ -422,7 +421,9 @@
 		
 <!-- 		---------------------parenté -->
        <?php 
-       		if(count($data) > 0){       	
+       		$sommeData = 0;  
+       		$sommeData+= array_sum(unserialize($data[0]['ressourcesMontant']));
+       		if(count($data) >1){         		   
        ?>
 		<div class="col-md-12 col-sm-12 col-xs-12" id="parentRessourceDiv" >
 				<div class="x_panel">
@@ -431,11 +432,10 @@
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content" id="divRessources">
-						<?php 
-						 	$sommeData = 0;
-							for($i=0 ; $i<count($data);$i++){
-								$sommeData += array_sum(unserialize($data[$i]['ressourcesMontant']));
+						<?php 						 	
+							for($i=0 ; $i<count($data);$i++){								
 								if($i > 0) {
+								 $sommeData += array_sum(unserialize($data[$i]['ressourcesMontant']));
 						?>
 						 	<div class="item form-group">	
 								 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nom<span class="required" id="addclass">*</span></label>	

@@ -2,7 +2,7 @@ $(document)
 		.ready(
 				function() {
 					var tailleTable = dataTotal;
-					//alert(dataTotal);
+					/*alert(dataTotal);*/
 					$('input[name^="montantRessoucesDemandeur"]').keyup(function() {
 						var sommeDemandeur = 0;
 					    $('input[name^="montantRessoucesDemandeur"]').each(function() {
@@ -19,14 +19,14 @@ $(document)
 							$('#'+x+'_table tbody input[id^="'+(x)+'_montantRessoucesParents"]').keyup(function(e) {
 							 	e.preventDefault();									 	
 							 		var sommeFoyer = 0;
-							 		var index = $(this).attr("name").split("_");	
-								    $('input[id^="'+(index[0])+'_montantRessoucesParents"]').each(function() {
+							 		var index = $(this).attr("name").split("_");								 		
+								    $('input[id^="'+(index[1])+'_montantRessoucesParents"]').each(function() {
 								        if($(this).val() == "")
 								        	return;
 								        sommeFoyer += parseFloat(($(this).val()));
 								    });
-								    console.log(sommeFoyer);
-								    $('input[id="'+index[0]+'_montantTotalRessoucesParents"]').val(sommeFoyer);
+								    //console.log(sommeFoyer);
+								    $('input[id="'+index[1]+'_montantTotalRessoucesParents"]').val(sommeFoyer);
 								    SommeFoyer();
 								});
 						}

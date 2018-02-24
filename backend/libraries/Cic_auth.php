@@ -250,4 +250,9 @@ class Cic_auth {
 		return;
 	}
 
+	public function FormatDate($var){
+		$date = str_replace('/', '-', $var);
+		return date('Y-m-d', strtotime($date));
+	}
+
 }

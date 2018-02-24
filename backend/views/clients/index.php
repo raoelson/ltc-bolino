@@ -131,7 +131,7 @@
 							<div class="col-md-6 col-sm-6 col-xs-12">
 <!-- 								<input id="birthday" class="form-control col-md-7 col-xs-12" -->
 <!-- 									name="birthday" required="required" type="text"> -->
-			                     <input type="text" class="form-control col-md-7 col-xs-1" id="single_cal4" placeholder="Date de naissance..." aria-describedby="inputSuccess2Status4">
+			                     <input type="text" class="form-control col-md-7 col-xs-1" name="birthday" id="single_cal01" placeholder="Date de naissance..." >
 							</div>
 						</div>
 						<div class="item form-group" id="">

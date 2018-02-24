@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="images/favicon.ico" type="image/ico" />
+  <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
     <title>LTC-BOLINO | <?php echo $template['title'] ;?></title>
       <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
@@ -14,12 +14,12 @@
     <!-- Bootstrap -->
     <link href="<?php echo base_url() ?>assets/backend/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
- 	<link href="<?php echo base_url() ?>assets/backend/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">    
+  <link href="<?php echo base_url() ?>assets/backend/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">    
     <!-- NProgress -->
     <link href="<?php echo base_url() ?>assets/backend/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="<?php echo base_url() ?>assets/backend/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
+  
     <!-- bootstrap-progressbar -->
     <link href="<?php echo base_url() ?>assets/backend/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -33,8 +33,8 @@
     <link href="<?php echo base_url() ?>assets/backend/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/backend/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 
- 	<link href="<?php echo base_url() ?>assets/backend/css//notify/pnotify.custom.min.css" rel="stylesheet">	
-	<script src="<?php echo base_url() ?>assets/backend/vendors/validator/validator.js"></script>
+  <link href="<?php echo base_url() ?>assets/backend/css//notify/pnotify.custom.min.css" rel="stylesheet">  
+  <script src="<?php echo base_url() ?>assets/backend/vendors/validator/validator.js"></script>
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url() ?>assets/backend/css/custom.css" rel="stylesheet">
     <!-- jQuery -->
@@ -64,10 +64,10 @@
     <script src="<?php echo base_url() ?>assets/backend/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
     
     <script type="text/javascript">
-		var SITE_URL = "<?php echo base_url()?>";
-		var BASE_URL = "<?php echo base_url()?>admin.php/";
-	</script>
-	
+    var SITE_URL = "<?php echo base_url()?>";
+    var BASE_URL = "<?php echo base_url()?>admin.php/";
+  </script>
+  
   </head>
 
   <body class="nav-md">
@@ -89,7 +89,7 @@
               <div class="profile_info">
                 <span>Bonjour,</span>
                 <h2><?php if($this->session->userdata('user'))
-                	print_r($this->session->userdata('user')['nameuser']);?></h2>
+                  print_r($this->session->userdata('user')['nameuser']);?></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -148,7 +148,7 @@
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <img src="<?php echo base_url() ?>assets/backend/images/img.jpg" alt=""><?php if($this->session->userdata('user'))
-                	print_r($this->session->userdata('user')['nameuser']);?>
+                  print_r($this->session->userdata('user')['nameuser']);?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -229,8 +229,8 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
-        	<!-- ************************CONTENT********************** -->        	
-        	<?php echo $template['body'] ;?>
+          <!-- ************************CONTENT********************** -->          
+          <?php echo $template['body'] ;?>
         </div>
         <!-- /page content -->
 
@@ -282,9 +282,9 @@
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url() ?>assets/backend/js/custom.js"></script>
     <script
-	src="<?php echo base_url() ?>assets/backend/vendors/switchery/dist/switchery.min.js"></script>
+  src="<?php echo base_url() ?>assets/backend/vendors/switchery/dist/switchery.min.js"></script>
     <script
-	src="<?php echo base_url() ?>assets/backend/vendors/validator/validator.js"></script>
+  src="<?php echo base_url() ?>assets/backend/vendors/validator/validator.js"></script>
     <?php $this->load->view("message/flash_message");?>
   </body>
 </html>

@@ -170,7 +170,7 @@ $(document)
 							 data += '<div class="item form-group">';	
 							 data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date de naissance<span class="required" id="addclass">*</span></label>';	
 							 data += '<div class="col-md-6 col-sm-6 col-xs-12">'; 
-							 data += '<input id="datenaissanceParent"  required="required"  class="form-control col-md-7 col-xs-12" name="datenaissanceParent'+(x)+'"  type="date">';
+							 data += '<input id="single_cal'+(x)+'" placeholder="Date de naissance..."   required="required"  class="form-control col-md-7 col-xs-12" name="datenaissanceParent'+(x)+'"  type="text">';
 							 data += '</div>';
 							 data += '</div>';
 							 
@@ -242,7 +242,20 @@ $(document)
 								    });
 								    $('input[name="montantTotalRessoucesParents'+(x)+'"]').val(sommeFoyer);
 								    SommeFoyer();
-								});						 
+								});	
+
+
+
+								$("#single_cal"+(x)).daterangepicker({
+									  singleDatePicker: true,
+									  singleClasses: "picker_4",
+									  startDate: testDate(),
+									  locale: {
+											format: 'DD/MM/YYYY'
+										  }
+									}, function(start, end, label) {
+									  //console.log(start.toISOString(), end.toISOString(), label);
+								})					 
 						 }	
 						 $('input[name="nombreVivantfoyer"]').val(tailleTable);
 						 SommeFoyer();
