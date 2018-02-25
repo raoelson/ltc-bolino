@@ -46,7 +46,7 @@
 								<td><?php if($val['type_travaux_finan'] != "") echo ($val['type_travaux_finan']) ; else echo "-";?></td>
 								
 								<td>
-									<a href="<?php  echo base_url('admin.php/clients/details/'.$val['id']) ?>" id="modifier"
+									<a href="<?php  echo base_url('admin.php/clients/details/'.$val['id']) ?>" id="modifier" title="Voir les détails"
 									class="btn btn-round btn-default"><span class="gly fa fa-eye"></span></a>
 
 									<!-- <a href="#" id="supprimer"
