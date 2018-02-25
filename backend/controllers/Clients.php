@@ -14,9 +14,11 @@ class Clients extends CI_Controller {
 		$this->load->model ( "ParentsLink_model", "parentslink" );
 		$this->load->model ( "Ressources_model", "ressources" );
 		$this->load->model ( "TypeRessouces_model", "typesressources" );
+		$this->load->library('pays');
 	}
 	public function index() {
-		$data = $this->client->get_all();
+		$data['clients'] = $this->client->get_all();		
+		$data['pays'] = $this->pays->getAllPays();
 		$this->template->title ( 'Gestions des Propriétaires' )->build ( 'clients/index',array('data'=>$data) );
 	}
 	public function save() {
@@ -148,8 +150,10 @@ class Clients extends CI_Controller {
 	
 	public function details($id){
 		$data = $this->owneradresse->getWhere(array('owners_id'=>$id));
-		/*print_r((count($data)));die;*/
-		$this->template->title ( 'Gestions des Propriétaires' )->build ( 'clients/details',array('data'=>$data) );
+		$pays = $this->pays->getAllPays();
+		/*print_r($data);die;*/
+		$this->template->title ( 'Gestions des Propriétaires' )->build ( 'clients/details',array('data'=>$data,
+																								'pays'=>$pays) );
 	}
 
 
@@ -160,6 +164,7 @@ class Clients extends CI_Controller {
         		$nom = strtoupper($posts["nomParent".$j]);
         		$prenom = ucwords($posts["prenomParent".$j]);
         		$datenaissance = $this->cic_auth->FormatDate($posts["datenaissanceParent".$j]);
+        		print_r($datenaissance);
         		$lienParent= $posts["lienParent".$j];
         		
         		$typeressouces = $posts['typeRessoucesParents'.$j];

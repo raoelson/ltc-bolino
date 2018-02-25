@@ -97,8 +97,8 @@
 								>*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="birthday" class="form-control col-md-7 col-xs-12"
-									name="birthday" required="required" type="date" value="<?php echo $data[0]['clientDate'];?>"/>
+								<input id="single_cal001" class="form-control col-md-7 col-xs-12"
+									name="birthday" required="required" type="text" value="<?php echo $data[0]['clientDate'];?>"/>
 							</div>
 						</div>
 						<div class="item form-group" >
@@ -209,12 +209,41 @@
 						</div>
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Lieudit <span class="required">*</span>
+								for="name">Lieudit 
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input id="lieu_dit" class="form-control col-md-7 col-xs-12"
-									name="lieu_dit" placeholder="Lieudit..." required="required"
+									name="lieu_dit" placeholder="Lieudit..." 
 									type="text" value="<?php echo $data[0]['adresseLieu'];?>">
+							</div>
+						</div>
+						
+						<div class="item form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="name">Pays 
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<select id="pays" name="pays" class="form-control col-md-7 col-xs-12">
+									<?php
+										foreach ($pays as $key => $value) {
+											# code...										
+									 ?>								
+										<option value="<?php echo $value['0'];?>"
+											<?php if ($data[0]['adressePays'] == $value['0'] ) echo 'selected' ; ?>><?php echo $value['3'];?></option>									
+									<?php }
+									 ?>
+								</select>
+							</div>
+						</div>
+
+						<div class="item form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="name">Ville  <span class="required" id="addclass" >*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input id="ville" class="form-control col-md-7 col-xs-12"
+									name="ville" placeholder="Ville ..."  required="required" 
+									type="text" value="<?php echo $data[0]['adresseVille'];?>">
 							</div>
 						</div>
 						<div class="item form-group">
@@ -226,26 +255,8 @@
 									placeholder="Code postal ..." required="required" type="text" value="<?php echo $data[0]['adresseCp'];?>"/>
 							</div>
 						</div>
-						<div class="item form-group" id="ville">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Ville<span class="required" id="addclass" >*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="ville" class="form-control col-md-7 col-xs-12"
-									name="ville" placeholder="Ville ..."  required="required" 
-									type="text" value="<?php echo $data[0]['adresseVille'];?>">
-							</div>
-						</div>
-						<div class="item form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Pays<span class="required" id="addclass">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="pays" class="form-control col-md-7 col-xs-12"
-									name="pays" placeholder="Pays ..." required="required"
-									 type="text" value="<?php echo $data[0]['adressePays'];?>">
-							</div>
-						</div>
+						
+
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Email<span class="required" id="addclass">*</span>
@@ -462,8 +473,8 @@
 							 <div class="item form-group">	
 								 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date de naissance<span class="required" id="addclass">*</span></label>	
 								 <div class="col-md-6 col-sm-6 col-xs-12"> 
-								 	<input id="datenaissanceParent"  required="required"  class="form-control col-md-7 col-xs-12" name="datenaissanceParent<?php echo $i+1;?>"
-									value="<?php echo $data[$i]['parentsBirthdate'];?>" type="date">
+								 	<input id="single_cal_<?php echo $i+1;?>"  required="required"  class="form-control col-md-7 col-xs-12" name="datenaissanceParent<?php echo $i+1;?>"
+									value="<?php echo $data[$i]['parentsBirthdate'];?>" type="text">
 							 	 </div>
 						 	</div>
 						 	 <div class="item form-group">
@@ -474,6 +485,7 @@
 										 <option value="Père" <?php if ($data[$i]['linkparentsNom'] == "Père" ) echo 'selected' ; ?>>Père</option>
 										 <option  value="Enfant" <?php if ($data[$i]['linkparentsNom'] == "Enfant" ) echo 'selected' ; ?>>Enfant</option>
 										 <option  value="Conjoint" <?php if ($data[$i]['linkparentsNom'] == "Conjoint" ) echo 'selected' ; ?>>Conjoint</option>
+										  <option  value="Grandparent" <?php if ($data[$i]['linkparentsNom'] == "Grandparent" ) echo 'selected' ; ?>>Grands-parents</option>
 									 </select>
 								 </div>
 							 </div>

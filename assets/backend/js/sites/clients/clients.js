@@ -182,6 +182,7 @@ $(document)
 							 data += '<option value="Père">Père</option>';
 							 data += '<option  value="Enfant">Enfant</option>';
 							 data += '<option  value="Conjoint">Conjoint</option>';
+							 data += '<option  value="Grandparent">Grands-parents</option>';							 
 							 data += '</select>';
 							 data += '</div>';
 							 data += '</div>';
@@ -226,7 +227,7 @@ $(document)
 							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents'+(x)+'[]" type="hidden" value="Autres"/>';
 							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents'+(x)+'[]" placeholder="Autres..." type="text" value="0.0"></div></td>';
 							 data +='<td><div class="item form-group">';
-							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantTotalRessoucesParents'+(x)+'" placeholder="Autres..." type="text" value="0.0"></div></td>';
+							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantTotalRessoucesParents'+(x)+'" disabled="disabled" placeholder="Autres..." type="text" value="0.0"></div></td>';
 							 data +='</tr></tbody>';
 							 data += '</table>';
 					         $(wrapper).append(data);

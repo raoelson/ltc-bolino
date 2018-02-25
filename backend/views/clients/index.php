@@ -35,7 +35,7 @@
 							</tr>
 						</thead>
 						<tbody>
-						<?php foreach ($data as $val){ ?>
+						<?php foreach ($data['clients'] as $val){ ?>
 						<tr id="<?php echo ($val['id']) ;?>">
 								<td><?php echo ($val['title']) ;?></td>
 								<td><?php echo ($val['familysituation']) ;?></td>
@@ -240,12 +240,39 @@
 						</div>
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Lieudit <span class="required">*</span>
+								for="name">Lieudit 
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input id="lieu_dit" class="form-control col-md-7 col-xs-12"
-									name="lieu_dit" placeholder="Lieudit..." required="required"
+									name="lieu_dit" placeholder="Lieudit..." 
 									type="text">
+							</div>
+						</div>
+						<div class="item form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="name">Pays<span class="required" id="addclass"
+								style="display: none;">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								
+									<select id="pays" name="pays" class="form-control col-md-7 col-xs-12">
+									<?php
+										foreach ($data['pays'] as $key => $value) {
+											# code...										
+									 ?>								
+										<option value="<?php echo $value['0'];?>"><?php echo $value['3'];?></option>									
+									<?php }
+									 ?>
+								
+								</select>
+							</div>
+						</div>
+						<div class="item form-group" id="ville">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">Ville<span class="required" id="addclass">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input id="ville" class="form-control col-md-7 col-xs-12"
+									name="ville" placeholder="Ville ..." type="text" required="required">
 							</div>
 						</div>
 						<div class="item form-group">
@@ -257,26 +284,8 @@
 									placeholder="Code postal ..." required="required" type="text" />
 							</div>
 						</div>
-						<div class="item form-group" id="ville">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Ville<span class="required" id="addclass"
-								style="display: none;">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="ville" class="form-control col-md-7 col-xs-12"
-									name="ville" placeholder="Ville ..." type="text">
-							</div>
-						</div>
-						<div class="item form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Pays<span class="required" id="addclass"
-								style="display: none;">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="pays" class="form-control col-md-7 col-xs-12"
-									name="pays" placeholder="Pays ..." type="text">
-							</div>
-						</div>
+						
+						
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Email<span class="required" id="addclass">*</span>
@@ -439,7 +448,7 @@
 								<div class="item form-group">											
 									<input id="" class="form-control col-md-7 col-xs-12"
 										name="montantSommeRessoucesDemandeur" placeholder="Montant Total..."
-										 type="text" value="0.0">									
+										 type="text" value="0.0" disabled="disabled">									
 								</div>
 							</td>
 						</tr>

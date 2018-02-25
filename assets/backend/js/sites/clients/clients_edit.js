@@ -29,6 +29,17 @@ $(document)
 								    $('input[id="'+index[0]+'_montantTotalRessoucesParents"]').val(sommeFoyer);
 								    SommeFoyer();
 								});
+
+							$("#single_cal_"+(x)).daterangepicker({
+									  singleDatePicker: true,
+									  singleClasses: "picker_4",
+									  //startDate: testDate(),
+									  locale: {
+											format: 'DD/MM/YYYY'
+										  }
+									}, function(start, end, label) {
+									  //console.log(start.toISOString(), end.toISOString(), label);
+								})
 						}
 					}
 					
@@ -169,5 +180,15 @@ $(document)
 					});
 				});
 
+				$("#single_cal001").daterangepicker({
+					  singleDatePicker: true,
+					  singleClasses: "picker_4",
+					  //startDate: testDate(),
+					  locale: {
+							format: 'DD/MM/YYYY'
+						  }
+					}, function(start, end, label) {
+					  //console.log(start.toISOString(), end.toISOString(), label);
+				})
 				
 		});
