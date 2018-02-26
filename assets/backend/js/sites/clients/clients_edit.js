@@ -34,6 +34,7 @@ $(document)
 									  singleDatePicker: true,
 									  singleClasses: "picker_4",
 									  //startDate: testDate(),
+									   maxDate:  testDate() ,
 									  locale: {
 											format: 'DD/MM/YYYY'
 										  }
