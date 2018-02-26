@@ -272,5 +272,27 @@ $(document)
 						 //notificationSomme('Montant total des personnes vivants au Foyer',sommeGeneral);
 						 $('#totalFoyer').text(sommeGeneral + " € ");
 				}
+				if($('#pays').val() != ""){
+					$('#ville').html("");
+					$.postJSON(BASE_URL + "villes/getWhere/",{
+							"id": $('#pays').val()
+						},ChargementCallback);
+				}
+				$('#pays').change(function(){					
+					var id = $(this).val();
+					$('#ville').html("");
+					$.postJSON(BASE_URL + "villes/getWhere/",{
+							"id": id
+						},ChargementCallback);
+				});
+
 				
 		});
+ChargementCallback = function(json){
+	
+	var tbody ="";
+	$.each(json['data'],function(i,elt){
+		tbody+="<option value='"+elt.nom_region_fr+"'>"+elt.nom_region_fr+"</option>"						
+	});
+	$('#ville').append(tbody);
+}

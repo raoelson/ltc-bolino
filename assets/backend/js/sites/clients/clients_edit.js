@@ -191,5 +191,33 @@ $(document)
 					}, function(start, end, label) {
 					  //console.log(start.toISOString(), end.toISOString(), label);
 				})
+
+
+				if($('#pays').val() != ""){
+					$('#ville').html("");
+					$.postJSON(BASE_URL + "villes/getWhere/",{
+							"id": $('#pays').val()
+						},ChargementCallback);
+				}
+				$('#pays').change(function(){					
+					var id = $(this).val();							
+					$('#ville').html("");
+					$.postJSON(BASE_URL + "villes/getWhere/",{
+							"id": id
+						},ChargementCallback);
+				});
 				
 		});
+
+ChargementCallback = function(json){
+	
+	var tbody ="";
+	$.each(json['data'],function(i,elt){
+		var active = "";
+		if(elt.nom_region_fr == dataVille){
+			active = "selected=''true";
+		}
+		tbody+="<option value='"+elt.nom_region_fr+"' "+active+" >"+elt.nom_region_fr+"</option>"						
+	});
+	$('#ville').append(tbody);
+}

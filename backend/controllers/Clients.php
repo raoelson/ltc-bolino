@@ -14,7 +14,7 @@ class Clients extends CI_Controller {
 		$this->load->model ( "ParentsLink_model", "parentslink" );
 		$this->load->model ( "Ressources_model", "ressources" );
 		$this->load->model ( "TypeRessouces_model", "typesressources" );
-		$this->load->library('pays');
+		$this->load->model ('Pays_model','pays');
 	}
 	public function index() {
 		$data['clients'] = $this->client->get_all();		

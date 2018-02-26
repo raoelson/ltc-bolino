@@ -24,13 +24,14 @@
 						class="table table-striped table-bordered">
 						<thead>
 							<tr>
-								<th>Indentité</th>
-								<th>Situation</th>
+								<th>Identité</th>								
 								<th>Nom</th>
 								<th>Prénom</th>
 								<th>Nom Organisme</th>
-								<th>Montant à aider</th>
+								<th>Montant de l'aide</th>
 								<th>Type des travaux</th>
+								<th>Etat</th>
+								<th>Logement</th>
 								<th>Actions</th>
 							</tr>
 						</thead>
@@ -38,24 +39,29 @@
 						<?php foreach ($data['clients'] as $val){ ?>
 						<tr id="<?php echo ($val['id']) ;?>">
 								<td><?php echo ($val['title']) ;?></td>
-								<td><?php echo ($val['familysituation']) ;?></td>
 								<td><?php echo ($val['firstname1']) ;?></td>
 								<td><?php echo ($val['firstname2']) ;?></td>
 								<td><?php if($val['nom_organisme'] != "") echo ($val['nom_organisme']); else echo "-" ;?></td>
 								<td><?php echo ($val['montant_aide']) ;?></td>
-								<td><?php if($val['type_travaux_finan'] != "") echo ($val['type_travaux_finan']) ; else echo "-";?></td>
+								<td><?php if($val['type_travaux_finan'] != "") echo ($val['type_travaux_finan']) ; else echo "-";?></td>								
+								<td><?php
+									$etat = "badge bg-green";
+									$textEtat = "Activé";
+								 if($val['etat'] == 0) {
+								 	$etat = "badge bg-orange";
+								 	$textEtat = "désactivé";
+								 	}?>
+									<a href="#" ><span class="<?php echo $etat;?>"><?php echo $textEtat;?></span></a>
+								</td>
 								
+								<td>
+									<a href="<?php  echo base_url('admin.php/clients/details/'.$val['id']) ?>" id="modifier" title="Assigner à un logement"
+									class="btn btn-default"><span class="gly fa fa-home"></span></a>
+								</td>
 								<td>
 									<a href="<?php  echo base_url('admin.php/clients/details/'.$val['id']) ?>" id="modifier" title="Voir les détails"
 									class="btn btn-round btn-default"><span class="gly fa fa-eye"></span></a>
-
-									<!-- <a href="#" id="supprimer"
-									class="btn btn-round btn-danger"><span class="gly fa fa-trash"></span></a> -->	
-															
-									<!-- <a href="#ancre" id="modifier"
-									class="btn btn-round btn-warning">Modifier</a>  -->
-									<!-- <a href="#"
-									id="supprimer" class="btn btn-round btn-danger">Supprimer</a></td> -->
+								</td>
 							</tr>
 						<?php } ?>
 						</tbody>
@@ -78,7 +84,7 @@
 					<div class="x_content">
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Indentité <span class="required">*</span>
+								for="name">Identité <span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<p style="margin-top: 9px !important">
@@ -191,7 +197,7 @@
 						<div class="item form-group" id="div_montant_aide"
 							style="display: none; height: 40px !important;">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Montant à aider<span class="required" id="addclass">*</span>
+								for="name">Montant de l'aide<span class="required" id="addclass">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input id="montant_aide" class="form-control col-md-7 col-xs-12"
@@ -260,19 +266,19 @@
 										foreach ($data['pays'] as $key => $value) {
 											# code...										
 									 ?>								
-										<option value="<?php echo $value['0'];?>"><?php echo $value['3'];?></option>									
+										<option value="<?php echo $value['id'];?>"><?php echo $value['nom_pays_fr'];?></option>									
 									<?php }
 									 ?>
 								
 								</select>
 							</div>
 						</div>
-						<div class="item form-group" id="ville">
+						<div class="item form-group" >
 							<label class="control-label col-md-3 col-sm-3 col-xs-12">Ville<span class="required" id="addclass">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="ville" class="form-control col-md-7 col-xs-12"
-									name="ville" placeholder="Ville ..." type="text" required="required">
+								<select id="ville" name="ville" class="form-control col-md-7 col-xs-12" required="required">
+								</select>
 							</div>
 						</div>
 						<div class="item form-group">

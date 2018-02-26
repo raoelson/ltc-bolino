@@ -228,8 +228,8 @@
 										foreach ($pays as $key => $value) {
 											# code...										
 									 ?>								
-										<option value="<?php echo $value['0'];?>"
-											<?php if ($data[0]['adressePays'] == $value['0'] ) echo 'selected' ; ?>><?php echo $value['3'];?></option>									
+										<option value="<?php echo $value['id'];?>"
+											<?php if ($data[0]['adressePays'] == $value['id'] ) echo 'selected' ; ?>><?php echo $value['nom_pays_fr'];?></option>									
 									<?php }
 									 ?>
 								</select>
@@ -241,9 +241,8 @@
 								for="name">Ville  <span class="required" id="addclass" >*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="ville" class="form-control col-md-7 col-xs-12"
-									name="ville" placeholder="Ville ..."  required="required" 
-									type="text" value="<?php echo $data[0]['adresseVille'];?>">
+								<select id="ville" name="ville" class="form-control col-md-7 col-xs-12" required="required">
+								</select>
 							</div>
 						</div>
 						<div class="item form-group">
@@ -629,6 +628,7 @@
 </div>
 <script type="text/javascript">
         var dataTotal = "<?php echo count($data);?>";
+        var dataVille = "<?php echo $data[0]['adresseVille'];?>";
         var urlRedirect = "<?php echo  base_url () . "admin.php/clients" ;?>";
     </script>
 <script
