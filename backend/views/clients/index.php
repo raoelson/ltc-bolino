@@ -35,24 +35,27 @@
 							</tr>
 						</thead>
 						<tbody>
-						<?php foreach ($data as $val){ ?>
+						<?php foreach ($data['clients'] as $val){ ?>
 						<tr id="<?php echo ($val['id']) ;?>">
 								<td><?php echo ($val['title']) ;?></td>
 								<td><?php echo ($val['familysituation']) ;?></td>
 								<td><?php echo ($val['firstname1']) ;?></td>
 								<td><?php echo ($val['firstname2']) ;?></td>
-								<td><?php echo ($val['nom_organisme']) ;?></td>
+								<td><?php if($val['nom_organisme'] != "") echo ($val['nom_organisme']); else echo "-" ;?></td>
 								<td><?php echo ($val['montant_aide']) ;?></td>
-								<td><?php echo ($val['type_travaux_finan']) ;?></td>
+								<td><?php if($val['type_travaux_finan'] != "") echo ($val['type_travaux_finan']) ; else echo "-";?></td>
 								
 								<td>
-									<a href="#" id="modifier"
-									class="btn btn-round btn-default">Voir détails</a> 							
+									<a href="<?php  echo base_url('admin.php/clients/details/'.$val['id']) ?>" id="modifier" title="Voir les détails"
+									class="btn btn-round btn-default"><span class="gly fa fa-eye"></span></a>
+
+									<!-- <a href="#" id="supprimer"
+									class="btn btn-round btn-danger"><span class="gly fa fa-trash"></span></a> -->	
+															
 									<!-- <a href="#ancre" id="modifier"
-									class="btn btn-round btn-warning">Modifier</a>
-									 <!--?php  echo base_url('admin.php/clients/details/'.$val['id']) ?-->
-									<a href="#"
-									id="supprimer" class="btn btn-round btn-danger">Supprimer</a></td>
+									class="btn btn-round btn-warning">Modifier</a>  -->
+									<!-- <a href="#"
+									id="supprimer" class="btn btn-round btn-danger">Supprimer</a></td> -->
 							</tr>
 						<?php } ?>
 						</tbody>
@@ -132,7 +135,7 @@
 							<div class="col-md-6 col-sm-6 col-xs-12">
 <!-- 								<input id="birthday" class="form-control col-md-7 col-xs-12" -->
 <!-- 									name="birthday" required="required" type="text"> -->
-			                     <input type="text" class="form-control col-md-7 col-xs-1" id="single_cal4" placeholder="Date de naissance..." aria-describedby="inputSuccess2Status4">
+			                     <input type="text" class="form-control col-md-7 col-xs-1" name="birthday" id="single_cal01" placeholder="Date de naissance..." >
 							</div>
 						</div>
 						<div class="item form-group" id="">
@@ -237,12 +240,39 @@
 						</div>
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Lieudit <span class="required">*</span>
+								for="name">Lieudit 
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input id="lieu_dit" class="form-control col-md-7 col-xs-12"
-									name="lieu_dit" placeholder="Lieudit..." required="required"
+									name="lieu_dit" placeholder="Lieudit..." 
 									type="text">
+							</div>
+						</div>
+						<div class="item form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="name">Pays<span class="required" id="addclass"
+								style="display: none;">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								
+									<select id="pays" name="pays" class="form-control col-md-7 col-xs-12">
+									<?php
+										foreach ($data['pays'] as $key => $value) {
+											# code...										
+									 ?>								
+										<option value="<?php echo $value['0'];?>"><?php echo $value['3'];?></option>									
+									<?php }
+									 ?>
+								
+								</select>
+							</div>
+						</div>
+						<div class="item form-group" id="ville">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">Ville<span class="required" id="addclass">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input id="ville" class="form-control col-md-7 col-xs-12"
+									name="ville" placeholder="Ville ..." type="text" required="required">
 							</div>
 						</div>
 						<div class="item form-group">
@@ -254,26 +284,8 @@
 									placeholder="Code postal ..." required="required" type="text" />
 							</div>
 						</div>
-						<div class="item form-group" id="ville">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Ville<span class="required" id="addclass"
-								style="display: none;">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="ville" class="form-control col-md-7 col-xs-12"
-									name="ville" placeholder="Ville ..." type="text">
-							</div>
-						</div>
-						<div class="item form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Pays<span class="required" id="addclass"
-								style="display: none;">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="pays" class="form-control col-md-7 col-xs-12"
-									name="pays" placeholder="Pays ..." type="text">
-							</div>
-						</div>
+						
+						
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Email<span class="required" id="addclass">*</span>
@@ -436,7 +448,7 @@
 								<div class="item form-group">											
 									<input id="" class="form-control col-md-7 col-xs-12"
 										name="montantSommeRessoucesDemandeur" placeholder="Montant Total..."
-										 type="text" value="0.0">									
+										 type="text" value="0.0" disabled="disabled">									
 								</div>
 							</td>
 						</tr>
@@ -474,7 +486,7 @@
 		<div class="form-group">
 			<center>
 				<div class="col-md-6 col-md-offset-3">
-					<button id="AffichePersonnes" type="button" class="btn btn-success">AJOUTER DES PERSONNES VIVANT DANS VOTRE FOYER</button>
+					<button id="AffichePersonnes" type="button" class="btn btn-round btn-success"><span class="fa fa-plus-square-o"></span>&nbsp; AJOUTER DES PERSONNES VIVANT DANS VOTRE FOYER</button>
 
 				</div>
 			</center>
@@ -483,8 +495,8 @@
 				<div class="form-group">
 					<center>
 						<div class="col-md-6 col-md-offset-3">
-							<button type="reset" class="btn btn-primary">Effacer</button>
-							<button id="send" type="submit" class="btn btn-success">Enregistrer</button>
+							<button type="reset" class="btn btn-primary"><span class="gly fa fa-remove"></span>&nbsp;Effacer</button>
+							<button id="send" type="submit" class="btn btn-success"><span class="gly fa fa-save"></span>&nbsp;Enregistrer</button>
 						</div>
 					</center>
 				</div>

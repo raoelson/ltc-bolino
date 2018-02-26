@@ -1733,7 +1733,7 @@ if (typeof NProgress != 'undefined') {
 			if( typeof ($.fn.daterangepicker) === 'undefined'){ return; }
 			//console.log('init_daterangepicker_single_call');
 		   
-			$('#single_cal1').daterangepicker({
+			/*$('#single_cal1').daterangepicker({
 			  singleDatePicker: true,
 			  singleClasses: "picker_1"
 			}, function(start, end, label) {
@@ -1747,30 +1747,29 @@ if (typeof NProgress != 'undefined') {
 			});
 			$('#single_cal3').daterangepicker({
 			  singleDatePicker: true,
-			  singleClasses: "picker_3"
-			}, function(start, end, label) {
-			  //console.log(start.toISOString(), end.toISOString(), label);
-			});
-			$('#single_cal4').daterangepicker({
-			  singleDatePicker: true,
-			  singleClasses: "picker_4",
+			  singleClasses: "picker_3",
 			  startDate: testDate(),
 			  locale: {
 					format: 'DD/MM/YYYY'
 				  }
 			}, function(start, end, label) {
 			  //console.log(start.toISOString(), end.toISOString(), label);
+			});*/
+			$('#single_cal01').daterangepicker({
+			  singleDatePicker: true,
+			  singleClasses: "picker_4",
+			  startDate: testDate(),
+			  maxDate:  testDate() ,
+			  locale: {
+					format: 'DD/MM/YYYY'
+				  }
+			}, function(start, end, label) {
+			  //console.log(start.toISOString(), end.toISOString(), label);
 			});
-			testDate();
-			
+						
 		}
 	    
-	    function testDate (){
-	    	var date = new Date();
-	    	date.setDate(date.getDate() - 1);
-	    	var datereturn = date.getDate()  + '/' + (date.getMonth() + 1) + '/' +  date.getFullYear()
-	    	return (datereturn);
-	    }
+	    
 		
 		 
 		function init_daterangepicker_reservation() {

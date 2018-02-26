@@ -4260,3 +4260,15 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     background-color: #ffff !important;
 }
 /** /bootstrap-datetimepicker **/
+table,
+thead,
+tr,
+tbody,
+th,
+td {
+    text-align: center !important;
+}
+
+.table td {
+   text-align: center !important; 
+}

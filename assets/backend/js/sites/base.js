@@ -8,3 +8,10 @@ $.postJSON = function(url, data, callback) {
 	$.post(url, data, callback, "json");
 };
 
+function testDate (){
+	var date = new Date();
+	date.setDate(date.getDate() - 1);
+	var datereturn = date.getDate()  + '/' + (date.getMonth() + 1) + '/' +  date.getFullYear()
+	return (datereturn);
+}
+

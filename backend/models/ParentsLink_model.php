@@ -9,4 +9,10 @@ class ParentsLink_model extends CI_Model {
 		$this->db->insert ( $this->table, $posts);
 		return $this->db->insert_id ();
 	}
+
+	public function modificationLinkParents($posts,$id){
+		$this->db->update ( $this->table, $posts, array (
+				$this->id => $id 
+		) );
+	}
 }

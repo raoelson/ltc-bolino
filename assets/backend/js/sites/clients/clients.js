@@ -170,7 +170,7 @@ $(document)
 							 data += '<div class="item form-group">';	
 							 data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date de naissance<span class="required" id="addclass">*</span></label>';	
 							 data += '<div class="col-md-6 col-sm-6 col-xs-12">'; 
-							 data += '<input id="datenaissanceParent"  required="required"  class="form-control col-md-7 col-xs-12" name="datenaissanceParent'+(x)+'"  type="date">';
+							 data += '<input id="single_cal'+(x)+'" placeholder="Date de naissance..."   required="required"  class="form-control col-md-7 col-xs-12" name="datenaissanceParent'+(x)+'"  type="text">';
 							 data += '</div>';
 							 data += '</div>';
 							 
@@ -182,6 +182,7 @@ $(document)
 							 data += '<option value="Père">Père</option>';
 							 data += '<option  value="Enfant">Enfant</option>';
 							 data += '<option  value="Conjoint">Conjoint</option>';
+							 data += '<option  value="Grandparent">Grands-parents</option>';							 
 							 data += '</select>';
 							 data += '</div>';
 							 data += '</div>';
@@ -226,7 +227,7 @@ $(document)
 							 data +='<td><div class="item form-group"><input id="" name="typeRessoucesParents'+(x)+'[]" type="hidden" value="Autres"/>';
 							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantRessoucesParents'+(x)+'[]" placeholder="Autres..." type="text" value="0.0"></div></td>';
 							 data +='<td><div class="item form-group">';
-							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantTotalRessoucesParents'+(x)+'" placeholder="Autres..." type="text" value="0.0"></div></td>';
+							 data +='<input id="" class="form-control col-md-7 col-xs-12" name="montantTotalRessoucesParents'+(x)+'" disabled="disabled" placeholder="Autres..." type="text" value="0.0"></div></td>';
 							 data +='</tr></tbody>';
 							 data += '</table>';
 					         $(wrapper).append(data);
@@ -242,7 +243,21 @@ $(document)
 								    });
 								    $('input[name="montantTotalRessoucesParents'+(x)+'"]').val(sommeFoyer);
 								    SommeFoyer();
-								});						 
+								});	
+
+
+
+								$("#single_cal"+(x)).daterangepicker({
+									  singleDatePicker: true,
+									  singleClasses: "picker_4",
+									  startDate: testDate(),
+									  maxDate:  testDate() ,
+									  locale: {
+											format: 'DD/MM/YYYY'
+										  }
+									}, function(start, end, label) {
+									  //console.log(start.toISOString(), end.toISOString(), label);
+								})					 
 						 }	
 						 $('input[name="nombreVivantfoyer"]').val(tailleTable);
 						 SommeFoyer();
