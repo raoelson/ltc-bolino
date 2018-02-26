@@ -11,8 +11,14 @@ class Artisan extends CI_Controller
         $this->load->model('Artisan_model','Artisan_model');
         $this->load->model('Adress_model','Adress_model');
         $this->load->model('Artisan_Adress_model','Artisan_Adress_model');
+        //type artisan
         $this->load->model('Type_artisan','Type_artisan');
-        $this->load->model('Artisan_type_model','Artisan_type_model');
+        //$this->load->model('Artisan_type_model','Artisan_type_model');
+        //assurance
+         $this->load->model('Assurance_model','Assurance_model');
+        $this->load->model('Type_assurance_model','Type_assurance_model');
+        $this->load->model('Type_travaux_artisan','Type_travaux_artisan');
+
         //affichage tableau
         $this->load->model('Affichage_artisan','Affichage_artisan');
 
@@ -27,21 +33,48 @@ class Artisan extends CI_Controller
         $data['data'] = $this->art->get_news();
 
         $this->template->title ( 'Gestions des artisans' )->build ( 'artisan/index',$data);
-        
+        //var_dump($data['data']);
         //commentaire
     }
     public function create_artisan()
     {
-
-        //type artisan
         $posts = $this->input->post ();
-        $datatype = array (
+        //type assurance
+        $datatype_assurance = array (
+            //'id'=>$posts['id'],
+            'nom'=>$posts['nom'],
+        );
+        $type_assurance=$this->Type_assurance_model->create_artisan_query($datatype_assurance);
+        //type travaux artisan
+        $datatype_travaux = array (
             //'id'=>$posts['id'],
             'name'=>$posts['name'],
+        );
+        $type_travaux=$this->Type_travaux_artisan->create_artisan_query($datatype_travaux);
 
+        //assurance
+        $scan_assurance=1;
+        if($this->input->post ('scan_assurance')==0)
+        {
+            $scan_assurance=0;
+        }
+        $dataassurance = array (
+            'type_assurance_id'=>$type_assurance,
+            'type_travaux_id'=>$type_travaux,
+            'date_deb'=>$posts['date_deb'],
+            'date_fin'=>$posts['date_fin'],
+            'assureur'=>$posts['assureur'],
+           'telephone'=>$posts['telephone'],
+            'scan_assurance'=>$scan_assurance,
+        );
+        $assurance=$this->Assurance_model->create_artisan_query($dataassurance);
+
+        //type artisan
+       $datatype = array (
+            //'id'=>$posts['id'],
+            'name'=>$posts['name'],
         );
         $type_artisan=$this->Type_artisan->create_artisan_query($datatype);
-
 
         //condition artisan
         $pres_attestation_immat=1;
@@ -118,8 +151,11 @@ class Artisan extends CI_Controller
             'date_derniere_rcs'=>$posts['date_derniere_rcs'],
             'categorie'=>$posts['categorie'],
             'montant_actif_passif'=>$posts['montant_actif_passif'],
+
+            'tranche_effectif'=>$posts['tranche_effectif'],
             'type_artisan_id'=>$type_artisan,
             'artisan_adress_id'=>$adresse,
+           'assurance_id'=>$assurance,
             //case à cocher
             'pres_attestation_immat'=>$pres_attestation_immat,
             'pres_kbis'=>$pres_kbis,
@@ -140,7 +176,7 @@ class Artisan extends CI_Controller
         $ref=$this->Artisan_Adress_model->create($artisan,$adresse);
        //$ref1=$this->Type_artisan->create_type($type_artisan,$artisan);
 
-        if($ref and $type_artisan)
+        if($ref and $type_artisan and $assurance and $type_travaux and $type_assurance)
             echo json_encode(array('status'=>true));
         else
             echo json_encode(array('status'=>false));
@@ -263,6 +299,63 @@ class Artisan extends CI_Controller
         else
             echo json_encode(array('status'=>false));*/
     }
+    public function edit_artisan()
+    {
+        $output=array();
+        $id_artisan=$this->input->post('id_artisan');
+        //$denomination=$this->input->post('denomination');
+        $data = $this->Affichage_artisan->affiche_query($id_artisan);
+        // $this->output->set_content_type('application/json')->set_output(json_encode($data));
+        //$output=$data;
+        foreach ($data as $row)
+        {
+            $output['denomination']=$row->denomination;
+            $output['nom_gerant']=$row->nom_gerant;
+            $output['prenom_gerant']=$row->prenom_gerant;
+            $output['statut']=$row->statut;
+            $output['siren']=$row->siren;
+            $output['code_activite']=$row->code_activite;
+            $output['libelle_activite']=$row->libelle_activite;
+            $output['forme_juridique']=$row->forme_juridique;
+            $output['date_immatriculation']=$row->date_immatriculation;
+            $output['date_derniere_rcs']=$row->date_derniere_rcs;
+            $output['categorie']=$row->categorie;
+            $output['montant_actif_passif']=$row->montant_actif_passif;
+            $output['chiffres_affaires']=$row->chiffres_affaires;
+            $output['tranche_effectif']=$row->tranche_effectif;
+            /**/
+            $output['pres_attestation_immat']=$row->pres_attestation_immat;
+            $output['pres_services_fiscaux']=$row->pres_services_fiscaux;
+            $output['pres_kbis']=$row->pres_kbis;
+            $output['pers_attestation_clandestin']=$row->pers_attestation_clandestin;
+            $output['pres_attestation_assurance']=$row->pres_attestation_assurance;
+            $output['pres_attestation_decl_social']=$row->pres_attestation_decl_social;
+            $output['pres_rib']=$row->pres_rib;
 
+        }
+       // $output['nom_gerant']="test";
+
+        echo json_encode($output);
+        /*$output=array();
+        $id_artisan=$this->input->post('$id_artisan');
+        //$denomination=$this->input->post('denomination');
+        $data = $this->Affichage_artisan->affiche_artisan_query($id_artisan);
+       // $this->output->set_content_type('application/json')->set_output(json_encode($data));
+        foreach ($data as $row)
+        {
+            $output['denomination']=$row->denomination;
+        }
+        echo json_encode($output);*/
+    }
+    //function de teste
+   /* public function test()
+    {
+        $data = $this->Affichage_artisan->affiche_query(79);
+
+        echo "<pre>";
+        print_r($data);
+        echo "</pre>";
+//http://localhost/ltc-botino/admin.php/artisan/test
+    }*/
 
 }

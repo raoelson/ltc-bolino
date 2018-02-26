@@ -95,5 +95,6 @@ $route['clients/details/(:id)'] = 'clients/details/$1';
 // 	Routage Ressources
 $route['artisan'] = 'artisan';
 $route['artisan/create_artisan'] = 'artisan/create_artisan';
+$route['artisan/edit_artisan'] = 'artisan/edit_artisan';
 
 

@@ -199,39 +199,6 @@ modal confirmation
     margin-bottom: 5px;
 
     background: white;
-    font-size: 15px;
-    margin: 5px;
+    font-size: 20px;
 
-}
-.pt2{
-    border: none;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    /* background: white; */
-    background: content-box;
-    font-size: 15px;
-    color: black;
-    width: 50%;
-    text-align: center;
-    /*margin: 5px;*/
-
-}
-.bh{
-
-    /* border: 1px solid cornflowerblue; */
-padding: 0px;
-    /* width: 0px; */
-    background: cornflowerblue;
-    /* background: white; */
-    width: 40%;
-}
-.ko
-{
-    border: 1px solid darkgrey;
-    background: darkgray;
-    padding: 5px;
-    width: 50px;
-    text-align: center;
-    border-radius: 9px;
-    font-size: 17px
 }

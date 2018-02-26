@@ -46,10 +46,11 @@
 								<td><?php echo ($val['type_travaux_finan']) ;?></td>
 								
 								<td>
-									<a href="<?php  echo base_url('admin.php/clients/details/'.$val['id']) ?>" id="modifier"
+									<a href="#" id="modifier"
 									class="btn btn-round btn-default">Voir détails</a> 							
 									<!-- <a href="#ancre" id="modifier"
-									class="btn btn-round btn-warning">Modifier</a>  -->
+									class="btn btn-round btn-warning">Modifier</a>
+									 <!--?php  echo base_url('admin.php/clients/details/'.$val['id']) ?-->
 									<a href="#"
 									id="supprimer" class="btn btn-round btn-danger">Supprimer</a></td>
 							</tr>
