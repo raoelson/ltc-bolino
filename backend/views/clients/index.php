@@ -495,7 +495,7 @@
 				<div class="form-group">
 					<center>
 						<div class="col-md-6 col-md-offset-3">
-							<button type="reset" class="btn btn-primary"><span class="gly fa fa-save"></span>&nbsp;Effacer</button>
+							<button type="reset" class="btn btn-primary"><span class="gly fa fa-remove"></span>&nbsp;Effacer</button>
 							<button id="send" type="submit" class="btn btn-success"><span class="gly fa fa-save"></span>&nbsp;Enregistrer</button>
 						</div>
 					</center>
