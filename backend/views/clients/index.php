@@ -45,18 +45,22 @@
 								<td><?php echo ($val['montant_aide']) ;?></td>
 								<td><?php if($val['type_travaux_finan'] != "") echo ($val['type_travaux_finan']) ; else echo "-";?></td>								
 								<td><?php
+									$titre  = 'title="Assigner à un logement"';
+									$disabled_ = "";
 									$etat = "badge bg-green";
 									$textEtat = "Activé";
 								 if($val['etat'] == 0) {
 								 	$etat = "badge bg-orange";
 								 	$textEtat = "désactivé";
+								 	$titre  = 'title="Veuillez activez ce propriétaire après vous assignerez à un logement"';
+									$disabled_ = "disabled=true";
 								 	}?>
 									<a href="#" ><span class="<?php echo $etat;?>"><?php echo $textEtat;?></span></a>
 								</td>
 								
 								<td>
-									<a href="<?php  echo base_url('admin.php/clients/details/'.$val['id']) ?>" id="modifier" title="Assigner à un logement"
-									class="btn btn-default"><span class="gly fa fa-home"></span></a>
+									<a href="<?php  echo base_url('admin.php/logements/index/'.$val['id']) ?>" <?php echo $disabled_; echo $titre;?>
+									class="btn btn-round btn-default"><span class="gly fa fa-plus"></span></a>
 								</td>
 								<td>
 									<a href="<?php  echo base_url('admin.php/clients/details/'.$val['id']) ?>" id="modifier" title="Voir les détails"

@@ -1,5 +1,5 @@
 <?php
-class Owneradresse_model extends CI_Model {
+class Logements_model extends CI_Model {
 	private $table = "owner-adress";
 	
 	public function getWhere($array) {
@@ -27,17 +27,5 @@ class Owneradresse_model extends CI_Model {
 		$query = $this->db->get_where ( $this->table, $array );
 		return $query->result_array ();
 	}
-		
-	public function save($idClient,$id){
-		$data = array('owners_id'=>$idClient,'adress_id'=>$id);
-		$this->db->insert ( $this->table, $data);
-		return $this->db->insert_id ();
-	}
-	
-	public function remove($id,$adress) {
-		$this->db->delete ( $this->table, array (
-				'owners_id' => $id,
-				'adress_id' => $adress
-		) );
-	}
+			
 }

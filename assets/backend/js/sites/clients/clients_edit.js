@@ -175,7 +175,7 @@ $(document)
 							notification("","Votre donnée a été bien supprimée","success");
 							setTimeout(function(){
 							 window.location = urlRedirect;
-							}, 1000);
+							}, 500);
 							
 						}
 					});
@@ -220,4 +220,23 @@ ChargementCallback = function(json){
 		tbody+="<option value='"+elt.nom_region_fr+"' "+active+" >"+elt.nom_region_fr+"</option>"						
 	});
 	$('#ville').append(tbody);
+
+	ActiveDesactive = function(id,action){
+		$.getJSON(BASE_URL + "clients/getUpdatetat/",{
+			'id' : id,
+			'action' : action
+		},ActiveDesactiveCallBack);
+	}
+
+	ActiveDesactiveCallBack= function(json){
+		if(json == 1){
+			notification("","Ce propriétaire est activé","success");
+				
+		}else{
+			notification("","Ce propriétaire est desactivé","success");
+		}
+		setTimeout(function(){
+				 window.location = urlDetails;
+			}, 500);
+	}
 }

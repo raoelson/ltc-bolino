@@ -244,4 +244,18 @@ class Clients extends CI_Controller {
 				'data' => 1
 		) ) );
 	}
+
+	public function getUpdatetat(){
+		$gets = $this->input->get();
+		$reponse = 2;
+		if($gets['action'] == 0){
+			$reponse = 0;
+		}else{
+			$reponse = 1;
+		}
+		$data  = array('etat' => $gets['action']);
+		$this->client->modificationclient($data,$gets['id']);
+		$this->output->set_content_type ( 'application/json' )
+				->set_output (json_encode($reponse) );
+	}
 }
