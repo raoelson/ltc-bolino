@@ -101,3 +101,4 @@ $route['artisan/edit_artisan'] = 'artisan/edit_artisan';
 
 //Routage Housing
 $route['logements/index/(:id)'] = 'logements/index/$1';
+$route['logements_saves'] = 'logements/saves';

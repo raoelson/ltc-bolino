@@ -16,7 +16,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Listes des Propriétaires</h2>
+					<h2>Liste des Propriétaires</h2>
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
@@ -82,7 +82,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h5>Informations personelles</h5>
+						<h5>Informations personnelles</h5>
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
@@ -240,11 +240,11 @@
 						</div>
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Adresse 2 <span class="required">*</span>
+								for="name">Adresse 2 
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input id="adresse2" class="form-control col-md-7 col-xs-12"
-									name="adresse2" placeholder="Adresse 2..." required="required"
+									name="adresse2" placeholder="Adresse 2..." 
 									type="text">
 							</div>
 						</div>
@@ -474,7 +474,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12" id="parentRessourceDiv" style="display: none;">
 				<div class="x_panel">
 					<div class="x_title">
-						<h5>Informations sur les parentés avec les ressouces</h5>
+						<h5>Informations sur les parentés avec les ressources</h5>
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content" id="divRessources">

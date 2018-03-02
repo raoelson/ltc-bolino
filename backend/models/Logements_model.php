@@ -1,31 +1,37 @@
 <?php
 class Logements_model extends CI_Model {
-	private $table = "owner-adress";
+	private $table = "housing";
 	
 	public function getWhere($array) {
 		
-		$this->db->select ( 'owners.title as indentite,owners.marriedname as nommarie,owners.id as clientid, owners.firstname1 as clientNom,owners.firstname2 as clientPrenom
-					,owners.firstname3 as clientUsagenom,DATE_FORMAT(owners.birthdate, "%d/%m/%Y") as clientDate,owners.birthplace as clientPlace
-					,owners.familysituation as clientSituation,owners.aide_organisme as clientAide,owners.nom_organisme as clientOrganisme
-					,owners.montant_aide as clientMontant,owners.type_travaux_finan as clienttp,owners.etat as clientEtat,
-					,adress.adress1 as adresseAdresse1,adress.adress2 as adresseAdresse2,
-					,adress.id as adresseId,adress.lieu_dit as adresseLieu,
-					adress.cp as adresseCp,adress.ville as adresseVille,
-					adress.pays as adressePays,adress.phone as adressePhone,
-					adress.cellphone1 as adresseCellphone,adress.mail as adresseMail,adress.fax as adresseFax,
-					parents.id as parentsId,parents.name as parentsNom,parents.firstname as parentsPrenom,DATE_FORMAT(parents.birthdate, "%d/%m/%Y") as parentsBirthdate,
-					link_parents.name as linkparentsNom,link_parents.id as linkparentsId,
-					resources.id as ressourcesId,resources.montant as ressourcesMontant');
+		$this->db->select ('housing.id as idLog,type_housing.name as typeLog,type_housing.id as typeIdLog,log_proprietaire as proprieteLog,log_locataire as locataireLog,log_occupant_gratuit as 							occupantLog,foncier_proprietaire as profoncierLog,foncier_locataire as foncierlocataireLog,
+							foncier_indivision as foncierdivisionLog,foncier_occupant_gratuit as foncieroccupantLog,
+							area as regionLog,numberpieces as pieceLog,numberpersons as persLog,DATE_FORMAT(buildDate, "%d/%m/%Y") as dateLog,
+							housing.owner_id as idClient,housing.adresseetat as adresseetat,
+							beton,bois_dulcifie,bois,tole,electricite,autres_mat,cuisine,salle_eau,wc,eau_potable,tout_a_egout,
+							fosse_septique,placecalledsec,adress1_sec,postalcode_sec,town_sec');
 		
-		$this->db->join ( "owners", "owners.id =owners_id" );
-		$this->db->join ( "adress", "adress.id = adress_id" );
-		$this->db->join ( "parents", "parents.owner_id = owners.id" );
-		$this->db->join ( "link_parents", "link_parents.id = parents.link_parent_id" );
-		//$this->db->join ( "resources", "resources.owner_id = owners.id" );
-		$this->db->join ( "resources", "resources.parent_id = parents.id" );
-		
-		$query = $this->db->get_where ( $this->table, $array );
-		return $query->result_array ();
+		$this->db->join ( "owners", "owners.id =housing.owner_id" );
+		$this->db->join ( "type_housing", "type_housing.id =type_housing_id" );
+
+		if($array == "NULL")	{
+			$query = $this->db->get ( $this->table );			
+		}					
+		else{
+			$query = $this->db->get_where ( $this->table, $array );
+
+		}	
+		return $query->row_array ();	
+	}
+
+	public function updates($posts,$id){
+		$this->db->update ( $this->table, $posts, array (
+				'id' => $id 
+		) );
+	}
+	public function add($posts) {
+		$this->db->insert ( $this->table, $posts);
+		return $this->db->insert_id ();
 	}
 			
 }

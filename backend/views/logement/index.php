@@ -14,39 +14,48 @@
 	</div>
 	<div class="clearfix"></div>
 	<form class="form-horizontal form-label-left" novalidate
-		action="<?php echo base_url('admin.php/clients_saves');?>"
+		action="<?php echo base_url('admin.php/logements_saves');?>"
 		method="post">
-		<input type="hidden" name="nombreVivantfoyer" value="0" />
+		<input type="hidden" name="idlogement" value="<?php echo $data["idLog"];?>" />
+		<input type="hidden" name="idtype" value="<?php echo $data["typeIdLog"];?>" />
+		<input type="hidden" name="idClient" value="<?php echo $idClient?>" />
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
 						<h5>Informations sur logement à rénover</h5>
-						<div class="clearfix"></div>
+						<div class="clearfix"></div> 
 					</div>
-					<div class="x_content">
+					<div class="">
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Type du logement <span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input  class="form-control col-md-7 col-xs-12"
-									type="text" name="nameType" placeholder="Type du logement..." required="true">
+									type="text" name="nameType" placeholder="Type du logement..." required="true"
+									value="<?php echo $data["typeLog"];?>" />
 							</div>
 						</div>
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Adresse du logement à rénover<br>(à compléter si différente de l'adresse où vous habitez) </label>
+								<?php 
+								   $testAide = "display: block;";
+								   if($data['adresseetat'] == 1){
+										$testAide = "display: none;";
+									}
+								?>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<p style="margin-top: 9px !important">
 									Oui: <input type="radio" class="flat" name="adresse" id=""
-										value="1" checked="true" required /> &nbsp;Non: <input
-										type="radio" class="flat" name="adresse" id="" value="0" />
+										value="1" checked="true" required <?php if ($data['adresseetat'] == 1 ) echo 'checked' ; ?> /> &nbsp;Non: <input
+										type="radio" class="flat" name="adresse" id="" value="0" <?php if ($data['adresseetat'] == 0 ) echo 'checked' ; ?> />
 								</p>
 							</div>
 						</div>
 						
-						<div id="NonAdresse" style="display: none;">
+						<div id="NonAdresse" style="<?php echo $testAide;?>">
 							<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12"
 									for="name">N° de la voie<span class="required">*</span>
@@ -54,7 +63,7 @@
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input  class="form-control col-md-7 col-xs-12"
 										name="numerovoie" placeholder="N° de la voie..."
-										required="required" type="text">
+										required="required" type="text" value="<?php echo $data["placecalledsec"];?>" />
 								</div>
 							</div>
 							<div class="item form-group">
@@ -64,7 +73,7 @@
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input  class="form-control col-md-7 col-xs-12"
 										name="nomvoie" placeholder="Nom de la voie..." required="required"
-										type="text" required="">
+										type="text" required="" value="<?php echo $data["adress1_sec"];?>" />
 								</div>
 							</div>
 							<div class="item form-group">
@@ -73,7 +82,7 @@
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input  class="form-control col-md-7 col-xs-12"
 										name="codepostal" placeholder="Code postal..."
-										type="text" required="">
+										type="text" required="" value="<?php echo $data["postalcode_sec"];?>" />
 								</div>
 							</div>
 							<div class="item form-group" id="">
@@ -82,7 +91,7 @@
 									>*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-				                     <input type="text" class="form-control col-md-7 col-xs-1" name="ville"  placeholder="Ville..." required="">
+				                     <input type="text" class="form-control col-md-7 col-xs-1" name="ville"  placeholder="Ville..." required="" value="<?php echo $data["town_sec"];?>" />
 								</div>
 							</div>
 						</div>
@@ -107,13 +116,23 @@
 											Propriétaire 								
 										</th>
 										<td>
-											 <input type="checkbox" class="flat" >									
+											<?php
+												$proprietaire = "checked='true'";
+												if($data["proprieteLog"] == 0)
+													$proprietaire = "";
+											?>
+											 <input type="checkbox" class="flat" name="proprietaire" <?php echo $proprietaire ;?> />									
 										</td>
 										<th>	
 											Propriétaire 								
 										</th>
 										<td>
-											<input type="checkbox" class="flat" >								
+											<?php
+												$proprietaire1 = "checked='true'";
+												if($data["profoncierLog"] == 0)
+													$proprietaire1 = "";
+											?>
+											<input type="checkbox" class="flat" name="proprietaire1" <?php echo $proprietaire1 ;?>/>								
 										</td>
 									</tr>
 									<tr>
@@ -121,13 +140,23 @@
 											Locataire 								
 										</th>
 										<td>
-											<input type="checkbox" class="flat" >								
+											<?php
+												$locataire = "checked='true'";
+												if($data["locataireLog"] == 0)
+													$locataire = "";
+											?>
+											<input type="checkbox" class="flat" name="locataire" <?php echo $locataire; ?> />								
 										</td>
 										<th>
 											Locataire(²) 									
 										</th>
 										<td>
-											<input type="checkbox" class="flat" >									
+											<?php
+												$locataire1 = "checked='true'";
+												if($data["foncierlocataireLog"] == 0)
+													$locataire1 = "";
+											?>
+											<input type="checkbox" class="flat" name="locataire1" <?php echo $locataire1; ?> />									
 										</td>
 									</tr>
 									<tr>
@@ -135,13 +164,23 @@
 											Occupant à titre gratuit						
 										</th>
 										<td>
-											<input type="checkbox" class="flat" >									
+											<?php
+												$occupant = "checked='true'";
+												if($data["occupantLog"] == 0)
+													$occupant = "";
+											?>
+											<input type="checkbox" class="flat" name="occupant" <?php echo $occupant; ?> />									
 										</td>
 										<th>
 											Occupant à titre gratuit(²)  					
 										</th>
 										<td>
-											<input type="checkbox" class="flat" >								
+											<?php
+												$occupant1 = "checked='true'";
+												if($data["foncieroccupantLog"] == 0)
+													$occupant1 = "";
+											?>
+											<input type="checkbox" class="flat" name="occupant1" <?php echo $occupant1; ?> />								
 										</td>
 									</tr>															
 								</tbody>
@@ -159,7 +198,7 @@
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input  class="form-control col-md-7 col-xs-12"
-										type="text" name="nmaeType" placeholder="Surface du logement..." required="true">
+										type="text" name="surface" placeholder="Surface du logement..." required="true" value=" <?php echo $data["regionLog"]; ?>" />
 								</div>
 							</div>
 							<div class="item form-group">
@@ -167,8 +206,13 @@
 									for="name">Nombre de pièces habitable 
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
+									<?php
+									$dataPiece = 0;
+									 if($data["pieceLog"] != 0)
+									  $dataPiece= $data["pieceLog"];
+									?>
 									<input  class="form-control col-md-7 col-xs-12"
-										type="number" name="nmaeType" placeholder="Nombre de pièces habitable ..." value="0">
+										type="number" name="nombrepiece" placeholder="Nombre de pièces habitable ..." value="<?php echo $dataPiece;?>" />
 								</div>
 							</div>
 							<div class="item form-group">
@@ -176,18 +220,34 @@
 									for="name">Nombre de personnes occupant le logement 
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
+									<?php
+									$dataPers = 0;
+									 if($data["persLog"] != 0)
+									  $dataPers= $data["persLog"];
+									?>
 									<input  class="form-control col-md-7 col-xs-12"
-										type="number" name="nmaeType" placeholder="Nombre de personnes occupant le logement ..."  value="0">
+										type="number" name="nombrepersonne" placeholder="Nombre de personnes occupant le logement ..."  value="<?php echo $dataPers;?>" />
 								</div>
 							</div>
 							<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12"
 									for="name">Date de contruction <span class="required">*</span>
 								</label>
+								<?php
+									if(isset($data["dateLog"])){
+								?>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input  class="form-control col-md-7 col-xs-12"
-										type="text" name="nmaeType" id="single_cal01" required="true" >
+										type="text" name="dateconstruction" id="single_cal001" required="true" 
+										value=" <?php echo $data["dateLog"]; ?>">
 								</div>
+								<?php } else{?>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<input  class="form-control col-md-7 col-xs-12"
+										type="text" name="dateconstruction" id="single_cal002" required="true" 
+										value="">
+								</div>
+								<?php }?>
 							</div>
 							<br/>
 							<div class="x_content">	
@@ -208,19 +268,34 @@
 											Béton 								
 										</th>
 										<td>
-											 <input type="checkbox" class="flat" >									
+											<?php
+												$beton = "checked='true'";
+												if($data["beton"] == 0)
+													$beton = "";
+											?>
+											 <input type="checkbox" class="flat" name="beton" <?php echo $beton; ?> />									
 										</td>
 										<th>	
 											Cuisine 								
 										</th>
 										<td>
-											<input type="checkbox" class="flat" >								
+											<?php
+												$cuisine = "checked='true'";
+												if($data["cuisine"] == 0)
+													$cuisine = "";
+											?>
+											<input type="checkbox" class="flat" name="cuisine" <?php echo $cuisine; ?> />								
 										</td>
 										<th>	
 											Eau potable 								
 										</th>
 										<td>
-											<input type="checkbox" class="flat" >								
+											<?php
+												$eau_potable = "checked='true'";
+												if($data["eau_potable"] == 0)
+													$eau_potable = "";
+											?>
+											<input type="checkbox" class="flat"  name="eaupotable" <?php echo $eau_potable; ?> />								
 										</td>
 									</tr>
 									<tr>
@@ -228,19 +303,35 @@
 											Bois dulcifié  								
 										</th>
 										<td>
-											<input type="checkbox" class="flat" >								
+											<?php
+												$bois_dulcifie = "checked='true'";
+												if($data["bois_dulcifie"] == 0)
+													$bois_dulcifie = "";
+											?>
+											<input type="checkbox" class="flat"  name="boisdulcifie"  <?php echo $bois_dulcifie; ?> />								
 										</td>
 										<th>
 											Salle d'Eau									
 										</th>
 										<td>
-											<input type="checkbox" class="flat" >									
+											<?php
+												$salle_eau = "checked='true'";
+												if($data["salle_eau"] == 0)
+													$salle_eau = "";
+											?>
+											<input type="checkbox" class="flat"  name="salleeau" <?php echo $salle_eau; ?>  />									
 										</td>
 										<th>
+											
 										 	Electricté									
 										</th>
 										<td>
-											<input type="checkbox" class="flat" >									
+											<?php
+												$electricite = "checked='true'";
+												if($data["electricite"] == 0)
+													$electricite = "";
+											?>
+											<input type="checkbox" class="flat"  name="electricite" <?php echo $electricite; ?> />									
 										</td>
 									</tr>
 									<tr>
@@ -248,19 +339,34 @@
 											Bois						
 										</th>
 										<td>
-											<input type="checkbox" class="flat" >									
+											<?php
+												$bois = "checked='true'";
+												if($data["bois"] == 0)
+													$bois = "";
+											?>
+											<input type="checkbox" class="flat"  name="bois" <?php echo $bois; ?> />									
 										</td>
 										<th>
 											W.C  					
 										</th>
 										<td>
-											<input type="checkbox" class="flat" >								
+											<?php
+												$wc = "checked='true'";
+												if($data["wc"] == 0)
+													$wc = "";
+											?>
+											<input type="checkbox" class="flat"  name="wc" <?php echo $wc; ?> />								
 										</td>
 										<th>
 											Tout-à-l'égout					
 										</th>
 										<td>
-											<input type="checkbox" class="flat" >								
+											<?php
+												$tout_a_egout = "checked='true'";
+												if($data["tout_a_egout"] == 0)
+													$tout_a_egout = "";
+											?>
+											<input type="checkbox" class="flat"  name="toutegout" <?php echo $tout_a_egout; ?> />								
 										</td>
 									</tr>
 										<tr>
@@ -268,7 +374,12 @@
 											Tôles						
 										</th>
 										<td>
-											<input type="checkbox" class="flat" >									
+											<?php
+												$tole = "checked='true'";
+												if($data["tole"] == 0)
+													$tole = "";
+											?>
+											<input type="checkbox" class="flat"  name="tole" <?php echo $tole; ?>;  />									
 										</td>
 										<th>
 											-						
@@ -285,10 +396,15 @@
 									</tr>	
 									<tr>
 										<th>
-											autres						
+											autres															
 										</th>
 										<td>
-											<input type="checkbox" class="flat" >									
+											<?php
+												$autres_mat = "checked='true'";
+												if($data["autres_mat"] == 0)
+													$autres_mat = "";
+											?>
+											<input type="checkbox" class="flat"  name="autre"  <?php echo $autres_mat; ?>;  />									
 										</td>
 										<th>
 											-					
@@ -300,7 +416,12 @@
 											Fosse septique						
 										</th>
 										<td>
-											<input type="checkbox" class="flat" >									
+											<?php
+												$fosse_septique = "checked='true'";
+												if($data["fosse_septique"] == 0)
+													$fosse_septique = "";
+											?>
+											<input type="checkbox" class="flat"  name="fosseeptique" <?php echo $fosse_septique; ?>>									
 										</td>
 									</tr>															
 								</tbody>
@@ -314,7 +435,7 @@
 				<center>
 					<div class="col-md-6 col-md-offset-3">
 						<button type="reset" class="btn btn-primary"><span class="gly fa fa-remove"></span>&nbsp;Effacer</button>
-						<button id="send" type="submit" class="btn btn-success"><span class="gly fa fa-save"></span>&nbsp;Enregistrer</button>
+						<button  type="submit" class="btn btn-success"><span class="gly fa fa-save"></span>&nbsp;Enregistrer</button>
 					</div>
 				</center>
 			</div>

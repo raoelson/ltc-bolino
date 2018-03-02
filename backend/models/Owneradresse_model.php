@@ -40,4 +40,5 @@ class Owneradresse_model extends CI_Model {
 				'adress_id' => $adress
 		) );
 	}
+
 }
