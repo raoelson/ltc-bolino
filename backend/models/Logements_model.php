@@ -9,10 +9,12 @@ class Logements_model extends CI_Model {
 							area as regionLog,numberpieces as pieceLog,numberpersons as persLog,DATE_FORMAT(buildDate, "%d/%m/%Y") as dateLog,
 							housing.owner_id as idClient,housing.adresseetat as adresseetat,
 							beton,bois_dulcifie,bois,tole,electricite,autres_mat,cuisine,salle_eau,wc,eau_potable,tout_a_egout,
-							fosse_septique,placecalledsec,adress1_sec,postalcode_sec,town_sec');
+							fosse_septique,adress1_sec,adress2_sec,postalcode_sec,town_sec,type_travaux.name as typetravaux,type_travaux.id as idtypetravaux');
 		
 		$this->db->join ( "owners", "owners.id =housing.owner_id" );
 		$this->db->join ( "type_housing", "type_housing.id =type_housing_id" );
+		$this->db->join ( "travaux", "travaux.housing_id = housing.id" );
+		$this->db->join ( "type_travaux", "type_travaux.id = travaux.type_travaux_id" );
 
 		if($array == "NULL")	{
 			$query = $this->db->get ( $this->table );			

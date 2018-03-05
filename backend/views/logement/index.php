@@ -19,6 +19,7 @@
 		<input type="hidden" name="idlogement" value="<?php echo $data["idLog"];?>" />
 		<input type="hidden" name="idtype" value="<?php echo $data["typeIdLog"];?>" />
 		<input type="hidden" name="idClient" value="<?php echo $idClient?>" />
+		<input type="hidden" name="idTypeTravaux" value="<?php echo $data["idtypetravaux"];?>" />
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
@@ -63,17 +64,17 @@
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input  class="form-control col-md-7 col-xs-12"
 										name="numerovoie" placeholder="N° de la voie..."
-										required="required" type="text" value="<?php echo $data["placecalledsec"];?>" />
+										required="required" type="text" value="<?php echo $data["adress1_sec"];?>" />
 								</div>
 							</div>
 							<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12"
-									for="name">Nom de la voie <span class="required">*</span>
+									for="name">Nom de la voie 
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input  class="form-control col-md-7 col-xs-12"
-										name="nomvoie" placeholder="Nom de la voie..." required="required"
-										type="text" required="" value="<?php echo $data["adress1_sec"];?>" />
+										name="nomvoie" placeholder="Nom de la voie..." 
+										type="text"  value="<?php echo $data["adress2_sec"];?>" />
 								</div>
 							</div>
 							<div class="item form-group">
@@ -426,7 +427,15 @@
 									</tr>															
 								</tbody>
 							</table>
-
+							<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12"
+									for="name">Nature des travaux à effectuer <span class="required">*</span></label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<textarea class="form-control col-md-7 col-xs-12" style="height: 40px; !important;" 
+										name="nature_travaux" placeholder="Nature des travaux à effectuer..."
+										type="text" required="" value="" ><?php echo $data["typetravaux"];?></textarea> 
+								</div>
+							</div>
 						</div>
 				</div>
 			</div> 
