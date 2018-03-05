@@ -123,8 +123,8 @@ class Logements extends CI_Controller {
 		if($posts['adresse'] == 1){
 
 			$client = $this->client->getWhere(array('owners_id'=>$posts['idClient']));
-			$numero = $client[0]['lieu_dit'];
-			$nomvoie = $client[0]['adresseAdresse1'];
+			$numero = $client[0]['adresseAdresse1'];
+			$nomvoie = $client[0]['adresseAdresse2'];
 			$codePostal = $client[0]['adresseCp'];
 			$ville = $client[0]['adresseVille'];
 		}
