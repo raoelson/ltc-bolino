@@ -65,6 +65,7 @@ $route['user_save'] = 'user/save';
 $route['user_auth'] = 'user';
 $route['user_auth'] = 'user'; */
 
+
 // 	Routage Groupes
 
 $route['groupes'] = 'group';
@@ -102,3 +103,7 @@ $route['artisan/edit_artisan'] = 'artisan/edit_artisan';
 //Routage Housing
 $route['logements/index/(:id)'] = 'logements/index/$1';
 $route['logements_saves'] = 'logements/saves';
+
+
+//Routage Demandes
+$route['demande'] = 'demande';

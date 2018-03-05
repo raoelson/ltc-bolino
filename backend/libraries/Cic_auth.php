@@ -65,7 +65,7 @@ class Cic_auth {
 								],
 								[
 										"nomMenu" => "Gestions des Demandes",
-										"url" => "Gestions des Demandes"
+										"url" => "demande"
 								],
 								[
 										"nomMenu" => "Gestions des Artisans",
