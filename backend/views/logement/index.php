@@ -33,9 +33,16 @@
 								for="name">Type du logement <span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input  class="form-control col-md-7 col-xs-12"
-									type="text" name="nameType" placeholder="Type du logement..." required="true"
-									value="<?php echo $data["typeLog"];?>" />
+								
+								<select id="nameType" name="nameType" class="form-control col-md-7 col-xs-12" >
+									<option value="F2" <?php if ($data["typeLog"] == "F2" ) echo 'selected' ; ?> >Appartement F2</option>
+									<option value="F3" <?php if ($data["typeLog"] == "F3" ) echo 'selected' ; ?> >Appartement F3</option>
+									<option value="F4" <?php if ($data["typeLog"] == "F4" ) echo 'selected' ; ?> >Appartement F4</option>
+
+									<option value="maison_ind" <?php if ($data["typeLog"] == "maison_ind" ) echo 'selected' ; ?>>Maison individuelle</option>
+									<option value="duplex" <?php if ($data["typeLog"] == "duplex" ) echo 'selected' ; ?>>Duplex</option>
+								
+								</select>
 							</div>
 						</div>
 						<div class="item form-group">
