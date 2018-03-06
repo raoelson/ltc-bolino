@@ -39,7 +39,7 @@
 		</div>
 	</div>
 	<form class="form-horizontal form-label-left" novalidate
-		action="<?php echo base_url('admin.php/clients_saves');?>"
+		action="<?php echo base_url('admin.php/demande_saves');?>"
 		method="post">
 		<div class="row" id="ancre">
 			<div class="col-md-12 col-sm-12 col-xs-12">
@@ -65,23 +65,23 @@
 						</div>
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Type de ressouces<span class="required">*</span>
+								for="name">Date d'arrivée<span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="firstname1" class="form-control col-md-7 col-xs-12"
-									name="firstname1" placeholder="Nom de naissance..."
+								<input id="date_arrivee" class="form-control col-md-7 col-xs-12"
+									name="date_arrivee" placeholder=""
 									required="required" type="date">
 							</div>
 						</div>
-						
+							
 
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Montant du devis <span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="firstname2" class="form-control col-md-7 col-xs-12"
-									name="firstname2" placeholder="" required="required"
+								<input id="montant_devis" class="form-control col-md-7 col-xs-12"
+									name="montant_devis" placeholder="" required="required"
 									type="text">
 							</div>
 						</div>																											

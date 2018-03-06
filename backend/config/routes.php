@@ -107,3 +107,4 @@ $route['logements_saves'] = 'logements/saves';
 
 //Routage Demandes
 $route['demande'] = 'demande';
+$route['demande_saves'] = 'demande/save';
