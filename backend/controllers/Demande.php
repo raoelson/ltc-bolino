@@ -8,8 +8,9 @@ class Demande extends CI_Controller{
 	}
 
 	public function index(){
-		
-		$this->template->title ( 'Gestions des demandes' )->build ( 'demande/index');
+
+		$data['demande'] = $this->demande->get_all();
+		$this->template->title ( 'Gestions des demandes' )->build ( 'demande/index', array ('data' =>$data ) );
 	}
 
 	public function save(){
