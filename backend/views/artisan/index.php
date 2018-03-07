@@ -7,7 +7,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Listes des Artisans</h2>
+                            <h2>Liste des Artisans</h2>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
@@ -40,7 +40,7 @@
                                             Pays:&nbsp;<?php echo $item->pays; ?><br/>
 
                                         </td>
-                                        <td><?php echo $item->name; ?></td>
+                                        <td><?php echo $item->namee; ?></td>
                                         <td>
                                         <!--affichage en cours-->
                                                 <?php
@@ -137,12 +137,12 @@
                             <div class="profile_img">
                                 <div id="crop-avatar">
                                     <!-- Current avatar -->
-                                   <img  class="mage img-responsive avatar-view" src="<?php echo base_url() ?>images/picture.jpg" alt="Avatar" title="Change the avatar"/>
+                                   <!--img  class="mage img-responsive avatar-view" src="<!--?php echo base_url() ?>images/picture.jpg" alt="Avatar" title="Change the avatar"/-->
 
                                 </div>
                             </div>
 
-                            <h3><input type="text" id="denomination1" name="denomination1" disabled class="pt1"></h3>
+                            <h3></h3>
 
                             <!---ul class="list-unstyled user_data">
                                 <li><i class="fa fa-map-marker user-profile-icon"></i>
@@ -215,9 +215,9 @@
                                 <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                                     <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Etat civil</a>
                                     </li>
-                                    <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Local</a>
+                                    <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Adress</a>
                                     </li>
-                                    <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Activté</a>
+                                    <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Activité</a>
                                     </li>
                                     <li role="presentation" class=""><a href="#tab_content4" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Assurance</a>
                                     </li>
@@ -236,8 +236,7 @@
 
                                                         </label>
                                                         <div class="col-md-9">
-                                                            <input type="text" id="denomination" name="denomination" disabled class="pt1 form-control">
-
+                                                            <input type="text" id="denomination" name="denomination"  disabled class="pt1 form-control">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -495,14 +494,14 @@
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Prestation attestation d'immatriculation <span class="required">*</span>
                                                         </label>
                                                         <div class="col-md-9">
-                                                            <input disabled type="text" id="pres_attestation_immat" name="pres_attestation_immat"  class="pt1 ko">
+                                                            <input disabled type="text" id="pres_attestation_immat" name="pres_attestation_immat"  class="put pt1 ko">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Pres Kbis<span class="required">*</span>
                                                         </label>
                                                         <div class="col-md-9">
-                                                            <input disabled type="text" id="pres_kbis" name="pres_kbis"  class="pt1 ko">
+                                                            <input disabled type="text" id="pres_kbis" name="pres_kbis"  class="put pt1 ko">
                                                         </div>
                                                     </div>
                                                     <div style="margin-bottom: 18px;" class="form-group">
@@ -510,35 +509,35 @@
                                                         </label>
                                                         <div class="col-md-9">
 
-                                                            <input disabled type="text" id="pres_services_fiscaux" name="pres_services_fiscaux"  class="pt1 ko">
+                                                            <input disabled type="text" id="pres_services_fiscaux" name="pres_services_fiscaux"  class="put pt1 ko">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Attestation clandestin <span class="required">*</span>
                                                         </label>
                                                         <div class="col-md-9">
-                                                            <input disabled type="text" id="pers_attestation_clandestin" name="pers_attestation_clandestin"  class="pt1 ko">
+                                                            <input disabled type="text" id="pers_attestation_clandestin" name="pers_attestation_clandestin"  class="put pt1 ko">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Attestation Declin Social<span class="required">*</span>
                                                         </label>
                                                         <div class="col-md-9">
-                                                            <input disabled type="text" id="pres_attestation_decl_social" name="pres_attestation_decl_social"  class="pt1 ko">
+                                                            <input disabled type="text" id="pres_attestation_decl_social" name="pres_attestation_decl_social"  class="put pt1 ko">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Attestation assurance <span class="required">*</span>
                                                         </label>
                                                         <div class="col-md-9">
-                                                            <input disabled type="text" id="pres_attestation_assurance" name="pres_attestation_assurance"  class="pt1 ko">
+                                                            <input disabled type="text" id="pres_attestation_assurance" name="pres_attestation_assurance"  class="put pt1 ko">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">RIB<span class="required">*</span>
                                                         </label>
                                                         <div class="col-md-9">
-                                                            <input disabled type="text" id="pres_rib" name="pres_rib"  class="pt1 ko">
+                                                            <input disabled type="text" id="pres_rib" name="pres_rib"  class="put pt1 ko">
                                                         </div>
                                                     </div>
 
@@ -555,8 +554,85 @@
                                         </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="profile-tab">
-                                        <p>xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui
-                                            photo booth letterpress, commodo enim craft beer mlkshk </p>
+
+                                        <!--*****************************type artisan********************************************-->
+                                        <div class="panel panel-default">
+                                            <div class="panel-body form-horizontal payment-form">
+                                                <div class="x_title">
+                                                    <h5>Assurance</h5>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <!--***********************************
+                                                *******************************type_assurance-->
+                                                <div class="form-group">
+                                                    <label for="date" class="col-sm-3 control-label">Type assurance</label>
+                                                    <div class="col-sm-6">
+                                                        <input  placeholder="Type assurance....." type="text" class="form-control" id="nom" name="nom">
+                                                    </div>
+
+                                                    <!--div class="col-sm-6">
+                                                    <div class="show_ajout">
+                                                    <form name="product" onsubmit="SaveProduct(this); return false;">
+                                                    <select style="300px;" multiple="multiple" id="assurance" name="nom"   class="form-control"  tabindex="50">
+
+                                                    </select>
+                                                    </form>
+                                                    </div>
+                                                    </div-->
+
+
+                                                </div>
+                                                <!--************************
+                                                ****************************-->
+                                                <!--type_travaux _assurance-->
+                                                <div class="form-group">
+                                                    <label for="date" class="col-sm-3 control-label">Type Travaux</label>
+                                                    <div class="col-sm-6">
+                                                        <input  placeholder="Type Travaux....." type="text" class="form-control" id="name" name="name">
+                                                    </div>
+                                                </div>
+                                                <!--************************
+                                                ****************************-->
+                                                <div class="form-group">
+                                                    <label for="date" class="col-sm-3 control-label">Date début assurance</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="date" class="form-control" id="date_deb" name="date_deb">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="date" class="col-sm-3 control-label">Date fin assurance</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="date" class="form-control" id="date_fin" name="date_fin">
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label for="date" class="col-sm-3 control-label">Assureur</label>
+                                                    <div class="col-sm-6">
+                                                        <input  placeholder="Assureur....." type="text" class="form-control" id="assureur" name="assureur">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="date" class="col-sm-3 control-label">Contact de l'assureur</label>
+                                                    <div class="col-sm-6">
+                                                        <input  placeholder="Contact de l'assureur....." type="text" class="form-control" id="telephone" name="telephone">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="date" class="col-sm-3 control-label text-align">Scan Assurance</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="checkbox" value="1" name="scan_assurance" class="check filled-in" id="scan_assurance">
+                                                        <div class="btn_activ btn btn-primary btn-sm">
+                                                            <input id="scan_assurance_id" type="file" multiple>
+                                                        </div>
+                                                        <!--div class="file-path-wrapper">
+                                                            <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                                            </div-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -599,51 +675,124 @@
 
 
 
+<!-- ***********************************************/.modal-type artisan ************************************************************ -->
+
 <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="head modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
+                <h4 class="titre modal-title custom_align" id="Heading">Ajout Type d'artisan</h4>
             </div>
             <div class="modal-body">
-
-                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Record?</div>
-
+                <form class="form-horizontal" id="create_tp">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                    <input required="required" placeholder="type artisan..."type="text" id="nameType" name="name"  class="inp pt1 form-control">
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer ">
-                <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                <div class="lp">
+                <button type="button" class="ajout_type btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Terminer</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Annuler</button>
+                </div>
             </div>
         </div>
         <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
 </div>
-
-
-<!--***************************************************modal view *****************************************************************************-->
+<!-- ***********************************************/.modal-categorie ************************************************************ -->
 <div class="modal fade" id="modal_artisan" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="head modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                <h4 class="modal-title custom_align" id="Heading">View artisan</h4>
+                <h4 class="titre modal-title custom_align" id="Heading">Catégorie des Artisans</h4>
             </div>
             <div class="modal-body">
-                
+                <form class="form-horizontal" id="categorie">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input required="required" placeholder="Catégorie..."type="text" id="namecategorie" name="name"  class="inp pt1 form-control">
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer ">
-                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+                <div class="lp">
+                    <button type="button" class="ajout_categorie btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Terminer</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Annuler</button>
+                </div>
             </div>
         </div>
         <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
 </div>
+
+<!-- ***********************************************/.modal-type assurance ************************************************************ -->
+<div class="modal fade" id="modal_assurance" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="head modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <h4 class="titre modal-title custom_align" id="Heading">Type Assurance</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="categorie">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input required="required" placeholder="Type assurance..."type="text" id="nameassurance" name="name"  class="inp pt1 form-control">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer ">
+                <div class="lp">
+                    <button type="button" class="ajout_assurance btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Terminer</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Annuler</button>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!--***************************************************modal view *****************************************************************************-->
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- ************************************************************/.modal-ajout *********************************************************************-->
     <div class="ajout" id="ajout">
-                <form class="form-horizontal" id="frm-create">
+                <form class="form-horizontal" method="post" id="frm-create" >
                     <div class="container">
                     <div class="panel panel-default">
                         <div class="panel-body form-horizontal payment-form">
@@ -654,25 +803,37 @@
                             <div class="form-group">
                                 <label for="concept" class="col-sm-3 control-label">Nom de l'entreprise</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="denomination" name="denomination">
-
+                                    <input type="text" class="form-control"  id="denomination2"  placeholder="Nom entreprise..." name="denomination" required
+                                           data-fv-notempty-message="The password is required">
+                                </div>
+                                <div class="error-message col-sm-3">
+                                    <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="description" class="col-sm-3 control-label">Nom du gerant </label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="nom_gerant"
-                                           placeholder="Nom du gerant..." required="required" name="nom_gerant">
+                                    <input type="text" class="form-control" id="nom_gerant2"
+                                           placeholder="Nom du gerant..."  name="nom_gerant">
                                 </div>
+                                <div class="error-message1 col-sm-3">
+                                    <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
+                                </div>
+
                             </div>
                             <div class="form-group">
                                 <label for="description" class="col-sm-3 control-label">Prénom du gerant </label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="prenom_gerant" name="prenom_gerant">
+                                    <input type="text" class="form-control" id="prenom_gerant2" required name="prenom_gerant"
+                                            placeholder="Prenom du gerant...">
                                 </div>
+                                <div class="error-message2 col-sm-3">
+                                    <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
+                                </div>
+
                             </div>
                             <div class="form-group">
-                                <label for="amount" class="col-sm-3 control-label">Status</label>
+                                <label for="amount" class="col-sm-3 control-label">Statut</label>
                                 <div class="col-sm-6">
                                     <select name="statut" id="statut" class="form-control"  tabindex="50" ><br />
                                         <option value="En cours">En cours </option>
@@ -686,20 +847,35 @@
                             <div class="form-group">
                                 <label for="status" class="col-sm-3 control-label">SIREN</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="siren" name="siren">
+                                    <input type="text" class="form-control" id="siren2"
+                                           required="required" placeholder="SIREN..." name="siren">
                                 </div>
+                                <div class="error-message-siren col-sm-3">
+                                    <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
+                                </div>
+
+
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label">NAF</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="code_activite" name="code_activite">
+                                    <input type="text" class="form-control" id="code_activite2"
+                                           required="required" placeholder="NAF...." name="code_activite">
                                 </div>
+                                <div class="error-message-naf col-sm-3">
+                                    <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
+                                </div>
+
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label">Libellé activité</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="libelle_activite" name="libelle_activite">
+                                    <input type="text" placeholder=Libellé activité... class="form-control" id="libelle_activite2" name="libelle_activite">
                                 </div>
+                                <div class="error-message-la col-sm-3">
+                                    <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
+                                </div>
+
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label">Forme juridique RCS ou INSEE</label>
@@ -715,7 +891,6 @@
                                     </select>
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label">Date immatriculation RCS</label>
                                 <div class="col-sm-6">
@@ -731,20 +906,36 @@
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label">Catégorie</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="categorie" name="categorie">
+                                    <!--input type="text" class="form-control" id="categorie" name="categorie"-->
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="show_ajout">
+                                        <select id="typecategorie" name="categorie"  required="required" class="form-control"  tabindex="50">
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <button   data-toggle="modal" data-target="#modal_artisan" class="ak"><span class="fa fa-plus"></span>&nbsp;Ajout</button>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label">Bilan (actif/passif) en Euro</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="montant_actif_passif" name="montant_actif_passif">
+                                    <input type="text" placeholder="Bilan (actif/passif) en Euro..." class="form-control" id="montant_actif_passif2" name="montant_actif_passif">
+                                </div>
+                                <div class="error-message-bl col-sm-3">
+                                    <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label"> Chiffres d’affaires en Euro</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="chiffres_affaires" name="chiffres_affaires">
+                                    <input type="text" placeholder="Chiffres d’affaires en Euro..." class="form-control" id="chiffres_affaires2" name="chiffres_affaires">
+                                </div>
+                                <div class="error-message-chiffre col-sm-3">
+                                    <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
                                 </div>
                             </div>
 
@@ -775,18 +966,26 @@
                                 <h5>Type d'artisan</h5>
                                 <div class="clearfix"></div>
                             </div>
-                            <div class="form-group">
+                            <div id="relo" class="form-group">
                                 <label for="date" class="col-sm-3 control-label"> Type Artisan</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="name" name="name">
+                                    <div class="show_ajout">
+                                        <select style="width:500px;"id="typeartisan" name="namee"  required="required" class="form-control"  tabindex="50">
 
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-3">
+                                    <button  data-title="Delete" data-toggle="modal" data-target="#delete" class="ak"><span class="fa fa-plus"></span>&nbsp;Ajout</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-       <!--*****************************Document nécessaire sur l'artisan********************************************-->
 
+
+       <!--*****************************Document nécessaire sur l'artisan********************************************-->
                     <div class="panel panel-default">
                         <div class="panel-body form-horizontal payment-form">
                             <div class="x_title">
@@ -892,31 +1091,295 @@
                     <div class="panel panel-default">
                         <div class="panel-body form-horizontal payment-form">
                           <div class="x_title">
-                              <h5>Adress artisan</h5>
+                              <h5>Adresse artisan</h5>
                               <div class="clearfix"></div>
                           </div>
                           <div class="form-group">
-                              <label for="date" class="col-sm-3 control-label"> Adress1</label>
+                              <label for="date" class="col-sm-3 control-label"> Adresse</label>
                               <div class="col-sm-6">
-                                  <input type="text" class="form-control" id="adress1" name="adress1">
+                                  <input placeholder="Adresse..." type="text" class="form-control" id="adress12" name="adress1">
+                              </div>
+                              <div class="error-message-ad2 col-sm-3">
+                                  <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
                               </div>
                           </div>
                             <div class="form-group">
-                                <label for="date" class="col-sm-3 control-label"> Adress2</label>
+                                <label for="date" class="col-sm-3 control-label"> Suite Adresse</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="adress2" name="adress2">
+                                    <input placeholder="Suite Adresse....." type="text" class="form-control" id="adress13" name="adress2">
+                                </div>
+                                <div class="error-message-ad3 col-sm-3">
+                                    <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label"> lieu_dit</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="lieu_dit" name="lieu_dit">
+                                    <input placeholder="Lieu_dit....." type="text" class="form-control" id="lieu_dit" name="lieu_dit">
                                 </div>
                             </div>
+
+
                             <div class="form-group">
-                                <label for="date" class="col-sm-3 control-label"> Code Postal</label>
+                                <label for="amount" class="col-sm-3 control-label">Pays</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="cp" name="cp">
+                                    <select name="pays" class="form-control" id="pays">
+                                        <option value="France" selected="selected">France </option>
+                                        <option value="Afghanistan">Afghanistan </option>
+                                        <option value="Afrique_Centrale">Afrique_Centrale </option>
+                                        <option value="Afrique_du_sud">Afrique_du_Sud </option>
+                                        <option value="Albanie">Albanie </option>
+                                        <option value="Algerie">Algerie </option>
+                                        <option value="Allemagne">Allemagne </option>
+                                        <option value="Andorre">Andorre </option>
+                                        <option value="Angola">Angola </option>
+                                        <option value="Anguilla">Anguilla </option>
+                                        <option value="Arabie_Saoudite">Arabie_Saoudite </option>
+                                        <option value="Argentine">Argentine </option>
+                                        <option value="Armenie">Armenie </option>
+                                        <option value="Australie">Australie </option>
+                                        <option value="Autriche">Autriche </option>
+                                        <option value="Azerbaidjan">Azerbaidjan </option>
+
+                                        <option value="Bahamas">Bahamas </option>
+                                        <option value="Bangladesh">Bangladesh </option>
+                                        <option value="Barbade">Barbade </option>
+                                        <option value="Bahrein">Bahrein </option>
+                                        <option value="Belgique">Belgique </option>
+                                        <option value="Belize">Belize </option>
+                                        <option value="Benin">Benin </option>
+                                        <option value="Bermudes">Bermudes </option>
+                                        <option value="Bielorussie">Bielorussie </option>
+                                        <option value="Bolivie">Bolivie </option>
+                                        <option value="Botswana">Botswana </option>
+                                        <option value="Bhoutan">Bhoutan </option>
+                                        <option value="Boznie_Herzegovine">Boznie_Herzegovine </option>
+                                        <option value="Bresil">Bresil </option>
+                                        <option value="Brunei">Brunei </option>
+                                        <option value="Bulgarie">Bulgarie </option>
+                                        <option value="Burkina_Faso">Burkina_Faso </option>
+                                        <option value="Burundi">Burundi </option>
+
+                                        <option value="Caiman">Caiman </option>
+                                        <option value="Cambodge">Cambodge </option>
+                                        <option value="Cameroun">Cameroun </option>
+                                        <option value="Canada">Canada </option>
+                                        <option value="Canaries">Canaries </option>
+                                        <option value="Cap_vert">Cap_Vert </option>
+                                        <option value="Chili">Chili </option>
+                                        <option value="Chine">Chine </option>
+                                        <option value="Chypre">Chypre </option>
+                                        <option value="Colombie">Colombie </option>
+                                        <option value="Comores">Colombie </option>
+                                        <option value="Congo">Congo </option>
+                                        <option value="Congo_democratique">Congo_democratique </option>
+                                        <option value="Cook">Cook </option>
+                                        <option value="Coree_du_Nord">Coree_du_Nord </option>
+                                        <option value="Coree_du_Sud">Coree_du_Sud </option>
+                                        <option value="Costa_Rica">Costa_Rica </option>
+                                        <option value="Cote_d_Ivoire">Côte_d_Ivoire </option>
+                                        <option value="Croatie">Croatie </option>
+                                        <option value="Cuba">Cuba </option>
+
+                                        <option value="Danemark">Danemark </option>
+                                        <option value="Djibouti">Djibouti </option>
+                                        <option value="Dominique">Dominique </option>
+
+                                        <option value="Egypte">Egypte </option>
+                                        <option value="Emirats_Arabes_Unis">Emirats_Arabes_Unis </option>
+                                        <option value="Equateur">Equateur </option>
+                                        <option value="Erythree">Erythree </option>
+                                        <option value="Espagne">Espagne </option>
+                                        <option value="Estonie">Estonie </option>
+                                        <option value="Etats_Unis">Etats_Unis </option>
+                                        <option value="Ethiopie">Ethiopie </option>
+
+                                        <option value="Falkland">Falkland </option>
+                                        <option value="Feroe">Feroe </option>
+                                        <option value="Fidji">Fidji </option>
+                                        <option value="Finlande">Finlande </option>
+                                        <option value="France">France </option>
+
+                                        <option value="Gabon">Gabon </option>
+                                        <option value="Gambie">Gambie </option>
+                                        <option value="Georgie">Georgie </option>
+                                        <option value="Ghana">Ghana </option>
+                                        <option value="Gibraltar">Gibraltar </option>
+                                        <option value="Grece">Grece </option>
+                                        <option value="Grenade">Grenade </option>
+                                        <option value="Groenland">Groenland </option>
+                                        <option value="Guadeloupe" selected="selected">Guadeloupe </option>
+                                        <option value="Guam">Guam </option>
+                                        <option value="Guatemala">Guatemala</option>
+                                        <option value="Guernesey">Guernesey </option>
+                                        <option value="Guinee">Guinee </option>
+                                        <option value="Guinee_Bissau">Guinee_Bissau </option>
+                                        <option value="Guinee equatoriale">Guinee_Equatoriale </option>
+                                        <option value="Guyana">Guyana </option>
+                                        <option value="Guyane_Francaise ">Guyane_Francaise </option>
+
+                                        <option value="Haiti">Haiti </option>
+                                        <option value="Hawaii">Hawaii </option>
+                                        <option value="Honduras">Honduras </option>
+                                        <option value="Hong_Kong">Hong_Kong </option>
+                                        <option value="Hongrie">Hongrie </option>
+
+                                        <option value="Inde">Inde </option>
+                                        <option value="Indonesie">Indonesie </option>
+                                        <option value="Iran">Iran </option>
+                                        <option value="Iraq">Iraq </option>
+                                        <option value="Irlande">Irlande </option>
+                                        <option value="Islande">Islande </option>
+                                        <option value="Israel">Israel </option>
+                                        <option value="Italie">italie </option>
+
+                                        <option value="Jamaique">Jamaique </option>
+                                        <option value="Jan Mayen">Jan Mayen </option>
+                                        <option value="Japon">Japon </option>
+                                        <option value="Jersey">Jersey </option>
+                                        <option value="Jordanie">Jordanie </option>
+
+                                        <option value="Kazakhstan">Kazakhstan </option>
+                                        <option value="Kenya">Kenya </option>
+                                        <option value="Kirghizstan">Kirghizistan </option>
+                                        <option value="Kiribati">Kiribati </option>
+                                        <option value="Koweit">Koweit </option>
+
+                                        <option value="Laos">Laos </option>
+                                        <option value="Lesotho">Lesotho </option>
+                                        <option value="Lettonie">Lettonie </option>
+                                        <option value="Liban">Liban </option>
+                                        <option value="Liberia">Liberia </option>
+                                        <option value="Liechtenstein">Liechtenstein </option>
+                                        <option value="Lituanie">Lituanie </option>
+                                        <option value="Luxembourg">Luxembourg </option>
+                                        <option value="Lybie">Lybie </option>
+
+                                        <option value="Macao">Macao </option>
+                                        <option value="Macedoine">Macedoine </option>
+                                        <option value="Madagascar">Madagascar </option>
+                                        <option value="Madère">Madère </option>
+                                        <option value="Malaisie">Malaisie </option>
+                                        <option value="Malawi">Malawi </option>
+                                        <option value="Maldives">Maldives </option>
+                                        <option value="Mali">Mali </option>
+                                        <option value="Malte">Malte </option>
+                                        <option value="Man">Man </option>
+                                        <option value="Mariannes du Nord">Mariannes du Nord </option>
+                                        <option value="Maroc">Maroc </option>
+                                        <option value="Marshall">Marshall </option>
+                                        <option value="Martinique">Martinique </option>
+                                        <option value="Maurice">Maurice </option>
+                                        <option value="Mauritanie">Mauritanie </option>
+                                        <option value="Mayotte">Mayotte </option>
+                                        <option value="Mexique">Mexique </option>
+                                        <option value="Micronesie">Micronesie </option>
+                                        <option value="Midway">Midway </option>
+                                        <option value="Moldavie">Moldavie </option>
+                                        <option value="Monaco">Monaco </option>
+                                        <option value="Mongolie">Mongolie </option>
+                                        <option value="Montserrat">Montserrat </option>
+                                        <option value="Mozambique">Mozambique </option>
+
+                                        <option value="Namibie">Namibie </option>
+                                        <option value="Nauru">Nauru </option>
+                                        <option value="Nepal">Nepal </option>
+                                        <option value="Nicaragua">Nicaragua </option>
+                                        <option value="Niger">Niger </option>
+                                        <option value="Nigeria">Nigeria </option>
+                                        <option value="Niue">Niue </option>
+                                        <option value="Norfolk">Norfolk </option>
+                                        <option value="Norvege">Norvege </option>
+                                        <option value="Nouvelle_Caledonie">Nouvelle_Caledonie </option>
+                                        <option value="Nouvelle_Zelande">Nouvelle_Zelande </option>
+
+                                        <option value="Oman">Oman </option>
+                                        <option value="Ouganda">Ouganda </option>
+                                        <option value="Ouzbekistan">Ouzbekistan </option>
+
+                                        <option value="Pakistan">Pakistan </option>
+                                        <option value="Palau">Palau </option>
+                                        <option value="Palestine">Palestine </option>
+                                        <option value="Panama">Panama </option>
+                                        <option value="Papouasie_Nouvelle_Guinee">Papouasie_Nouvelle_Guinee </option>
+                                        <option value="Paraguay">Paraguay </option>
+                                        <option value="Pays_Bas">Pays_Bas </option>
+                                        <option value="Perou">Perou </option>
+                                        <option value="Philippines">Philippines </option>
+                                        <option value="Pologne">Pologne </option>
+                                        <option value="Polynesie">Polynesie </option>
+                                        <option value="Porto_Rico">Porto_Rico </option>
+                                        <option value="Portugal">Portugal </option>
+
+                                        <option value="Qatar">Qatar </option>
+
+                                        <option value="Republique_Dominicaine">Republique_Dominicaine </option>
+                                        <option value="Republique_Tcheque">Republique_Tcheque </option>
+                                        <option value="Reunion">Reunion </option>
+                                        <option value="Roumanie">Roumanie </option>
+                                        <option value="Royaume_Uni">Royaume_Uni </option>
+                                        <option value="Russie">Russie </option>
+                                        <option value="Rwanda">Rwanda </option>
+
+                                        <option value="Sahara Occidental">Sahara Occidental </option>
+                                        <option value="Sainte_Lucie">Sainte_Lucie </option>
+                                        <option value="Saint_Marin">Saint_Marin </option>
+                                        <option value="Salomon">Salomon </option>
+                                        <option value="Salvador">Salvador </option>
+                                        <option value="Samoa_Occidentales">Samoa_Occidentales</option>
+                                        <option value="Samoa_Americaine">Samoa_Americaine </option>
+                                        <option value="Sao_Tome_et_Principe">Sao_Tome_et_Principe </option>
+                                        <option value="Senegal">Senegal </option>
+                                        <option value="Seychelles">Seychelles </option>
+                                        <option value="Sierra Leone">Sierra Leone </option>
+                                        <option value="Singapour">Singapour </option>
+                                        <option value="Slovaquie">Slovaquie </option>
+                                        <option value="Slovenie">Slovenie</option>
+                                        <option value="Somalie">Somalie </option>
+                                        <option value="Soudan">Soudan </option>
+                                        <option value="Sri_Lanka">Sri_Lanka </option>
+                                        <option value="Suede">Suede </option>
+                                        <option value="Suisse">Suisse </option>
+                                        <option value="Surinam">Surinam </option>
+                                        <option value="Swaziland">Swaziland </option>
+                                        <option value="Syrie">Syrie </option>
+
+                                        <option value="Tadjikistan">Tadjikistan </option>
+                                        <option value="Taiwan">Taiwan </option>
+                                        <option value="Tonga">Tonga </option>
+                                        <option value="Tanzanie">Tanzanie </option>
+                                        <option value="Tchad">Tchad </option>
+                                        <option value="Thailande">Thailande </option>
+                                        <option value="Tibet">Tibet </option>
+                                        <option value="Timor_Oriental">Timor_Oriental </option>
+                                        <option value="Togo">Togo </option>
+                                        <option value="Trinite_et_Tobago">Trinite_et_Tobago </option>
+                                        <option value="Tristan da cunha">Tristan de cuncha </option>
+                                        <option value="Tunisie">Tunisie </option>
+                                        <option value="Turkmenistan">Turmenistan </option>
+                                        <option value="Turquie">Turquie </option>
+
+                                        <option value="Ukraine">Ukraine </option>
+                                        <option value="Uruguay">Uruguay </option>
+
+                                        <option value="Vanuatu">Vanuatu </option>
+                                        <option value="Vatican">Vatican </option>
+                                        <option value="Venezuela">Venezuela </option>
+                                        <option value="Vierges_Americaines">Vierges_Americaines </option>
+                                        <option value="Vierges_Britanniques">Vierges_Britanniques </option>
+                                        <option value="Vietnam">Vietnam </option>
+
+                                        <option value="Wake">Wake </option>
+                                        <option value="Wallis et Futuma">Wallis et Futuma </option>
+
+                                        <option value="Yemen">Yemen </option>
+                                        <option value="Yougoslavie">Yougoslavie </option>
+
+                                        <option value="Zambie">Zambie </option>
+                                        <option value="Zimbabwe">Zimbabwe </option>
+
+                                    </select>
+
                                 </div>
                             </div>
                             <div class="form-group">
@@ -954,52 +1417,57 @@
                                         <option value="Trois-Rivières">Trois-Rivières </option>
                                         <option value="Vieux-Fort">Vieux-Fort </option>
                                         <option value="Vieux-Habitants">Vieux-Habitants </option>
-
                                         </optgroup>
                                     </select>
                                 </div>
 
                             </div>
                             <div class="form-group">
-                                <label for="date" class="col-sm-3 control-label"> Pays</label>
+                                <label for="date" class="col-sm-3 control-label"> Code Postal</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="pays" name="pays">
+                                    <input type="text" class="form-control" id="cp2" name="cp">
+                                </div>
+                                <div class="error-message-cp col-sm-3">
+                                    <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="date" class="col-sm-3 control-label"> Phone</label>
+                                <label for="date" class="col-sm-3 control-label"> Téléphone</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="phone" name="phone">
+                                    <input placeholder="Téléphone....." type="text" class="form-control" id="phone2" name="phone">
+                                </div>
+                                <div class="error-message-phone col-sm-3">
+                                    <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="date" class="col-sm-3 control-label"> Celluire Phone 1</label>
+                                <label for="date" class="col-sm-3 control-label"> Téléphone Portable 1</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="cellphone1" name="cellphone1">
+                                    <input placeholder="Téléphone Portable 1....." type="text" class="form-control" id="cellphone1" name="cellphone1">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="date" class="col-sm-3 control-label"> Celluire Phone 2</label>
+                                <label for="date" class="col-sm-3 control-label"> Téléphone Portable 2</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="cellphone2" name="cellphone2">
+                                    <input type="text" placeholder="Téléphone Portable 2....." class="form-control" id="cellphone2" name="cellphone2">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label">  Fax</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="fax" name="fax">
+                                    <input type="text" placeholder="Fax....." class="form-control" id="fax" name="fax">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class="col-sm-3 control-label"> Mail</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="mail" name="mail">
+                                    <input type="text" placeholder="Mail....." class="form-control" id="mail" name="mail">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="date" class="col-sm-3 control-label"> Site_web</label>
+                                <label for="date" class="col-sm-3 control-label"> Site web</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="site_web" name="site_web">
+                                    <input type="text" placeholder="Site web....." class="form-control" id="site_web" name="site_web">
                                 </div>
                             </div>
                         </div>
@@ -1011,7 +1479,56 @@
                                     <h5>Assurance</h5>
                                     <div class="clearfix"></div>
                                 </div>
+                                <!--***********************************
+                               *******************************type_assurance-->
+                                <div class="form-group">
+                                    <label for="date" class="col-sm-3 control-label">Type assurance</label>
+                                    <!--div class="col-sm-6">
+                                        <input  placeholder="Type assurance....." type="text" class="form-control" id="nom" name="nom">
+                                    </div-->
 
+                                    <div class="col-sm-6">
+                                        <div class="show_ajout">
+
+                                            <select style="width:500px;" multiple="multiple" id="assurance" name="nom"   class="form-control"  tabindex="50">
+                                                </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <button  data-title="Delete" data-toggle="modal" data-target="#modal_assurance" class="ak"><span class="fa fa-plus"></span>&nbsp;Ajout</button>
+                                    </div>
+
+                                </div>
+                                <!--************************
+                                ****************************-->
+                                <!--type_travaux _assurance-->
+                                <div class="form-group">
+                                    <label for="date" class="col-sm-3 control-label">Type Travaux</label>
+                                    <!--div class="col-sm-6">
+                                        <input  placeholder="Type Travaux....." type="text" class="form-control" id="name" name="name">
+                                    </div-->
+                                    <div class="col-sm-6">
+                                        <div class="show_ajout">
+                                            <form name="product" >
+                                                <select style="width:500px;" multiple="multiple" id="travaux" name="name"   class="form-control"  tabindex="50">
+
+                                                </select>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <button  data-title="Delete" data-toggle="modal" data-target="#modal_travaux" class="ak"><span class="fa fa-plus"></span>&nbsp;Ajout</button>
+                                    </div>
+                                </div>
+                                <!--div class="form-group">
+                                    <label for="date" class="col-sm-3 control-label">Type Travaux</label>
+                                    <div class="col-sm-6">
+                                        <input  placeholder="Type Travaux....." type="text" class="form-control" id="name" name="name">
+                                    </div>
+                                </div-->
+                                <!--************************
+                                ****************************-->
                                 <div class="form-group">
                                     <label for="date" class="col-sm-3 control-label">Date début assurance</label>
                                     <div class="col-sm-6">
@@ -1024,36 +1541,18 @@
                                         <input type="date" class="form-control" id="date_fin" name="date_fin">
                                     </div>
                                 </div>
-                                <!--***********************************
-                                *******************************type_assurance-->
-                                <div class="form-group">
-                                    <label for="date" class="col-sm-3 control-label">Type_assurance</label>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="nom" name="nom">
-                                    </div>
-                                </div>
-                                <!--************************
-                                ****************************-->
-                                <!--type_travaux _assurance-->
-                                <div class="form-group">
-                                    <label for="date" class="col-sm-3 control-label">Type Travaux</label>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="name" name="name">
-                                    </div>
-                                </div>
-                                <!--************************
-                                ****************************-->
+
 
                                 <div class="form-group">
                                     <label for="date" class="col-sm-3 control-label">Assureur</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="assureur" name="assureur">
+                                        <input  placeholder="Assureur....." type="text" class="form-control" id="assureur" name="assureur">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="date" class="col-sm-3 control-label">Contact de l'assureur</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="telephone" name="telephone">
+                                        <input  placeholder="Contact de l'assureur....." type="text" class="form-control" id="telephone" name="telephone">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -1097,7 +1596,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body text-center">
-                <h4>Ajout d'un artisan terminer</h4>
+                <h4>Ajout d'un artisan terminé</h4>
 
                 <button id="confirm" class="btn btn-success" data-dismiss="modal"><span>OK</span> <!--i class="material-icons">&#xE5C8;</i--></button>
             </div>
@@ -1105,6 +1604,23 @@
     </div>
 </div>
 
+<div id="modal_confirm" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="material-icons">&#xE876;</i>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body text-center">
+                <h4>Ajout d'un artisan terminé</h4>
+
+                <button id="confirm" class="btn btn-success" data-dismiss="modal"><span>OK</span> <!--i class="material-icons">&#xE5C8;</i--></button>
+            </div>
+        </div>
+    </div>
+</div>
 
     <!-- /.modal-dialog -->
 
@@ -1116,49 +1632,176 @@
 <!---script ajout****************
 *******************************-->
 <script>
+   /* jQuery(document).ready(function() {
+        jQuery("#frm-create").validate({
+            rules: {
+                "denomination":{
+                    required: "votre message",
+                    "minlength": 2,
+                    "maxlength": 60000
+                }
+            })
+    });*/
     $(document).ready(function(){
         $("[data-toggle=tooltip]").tooltip();
+        $(".error-message").hide();
+        $(".error-message1").hide();
+        $(".error-message2").hide();
+        $(".error-message-siren").hide();
+        $(".error-message-naf").hide();
+        $(".error-message-la").hide();
+        $(".error-message-bl").hide();
+        $(".error-message-chiffre").hide();
+        $(".error-message-ad2").hide();
+        $(".error-message-ad3").hide();
+        $(".error-message-cp").hide();
+        $(".error-message-phone").hide();
+       // $(".error-message-prenom").hide();
+        //$(".error-message-libel").hide();*/
         //create
+
         $("#btn-create").on('click',function () {
-            //alert('hgdfhjgsdfhbgkjldghbkjfd');
-            $.ajax({
-                url:"<?php echo base_url()?>admin.php/artisan/create_artisan",
-                type:"POST",
-                data:$('#frm-create').serialize(),
-                dataType:'json',
-                success:function(data)
-                {
-                   //alert('succccceeeeeeesss');
-                    console.log(data)
-                    $('#modal_confirm').modal('show');
-                    $("#confirm").click(function () {
-                        // $('#ancre').show();
+           /* $('#it_home_form').submit(function (event) {
+                event.preventDefault();*/
+            var denomination = $('#denomination2').val();
+            var nom_gerant = $('#nom_gerant2').val();
+            var prenom_gerant = $('#prenom_gerant2').val();
+            var siren = $('#siren2').val();
+            var code = $('#code_activite2').val();
+            var la = $('#libelle_activite2').val();
+            var bl = $('#montant_actif_passif2').val();
+            var chiffre = $('#chiffres_affaires2').val();
+            var ad = $('#adress12').val();
+            var adr = $('#adress13').val();
+            var cp = $('#cp2').val();
+            var phone = $('#phone2').val();
+
+
+            if (denomination== '' && prenom_gerant== '' && nom_gerant== '' && siren== '' && code== '' && la== '' && bl== ''&& ad=='') {
+                //alert("SVP! Modifier vos texte");
+                // $('#denomination').next(".error-message").fadeIn().text("sssssssssssssssssss");
+                $('#denomination2').css('border-color','red');
+                $('#prenom_gerant2').css('border-color','red');
+                $('#nom_gerant2').css('border-color','red');
+                $('#siren2').css('border-color','red');
+                $('#code_activite2').css('border-color','red');
+                $('#libelle_activite2').css('border-color','red');
+                $('#code_activite2').css('border-color','red');
+                $('#montant_actif_passif2').css('border-color','red');
+                $('#chiffres_affaires2').css('border-color','red');
+                $('#adress12').css('border-color','red');
+                $(".error-message-ad2").show();
+                $('#adress13').css('border-color','red');
+                $(".error-message-ad3").show();
+                $('#cp2').css('border-color','red');
+                $(".error-message-cp").show();
+                $('#phone2').css('border-color','red');
+                $(".error-message-phone").show();
+                //alert("SVP! Modifier vos texte");
+                $(".error-message").show();
+                $(".error-message1").show();
+                $(".error-message2").show();
+                $(".error-message-siren").show();
+                $(".error-message-naf").show();
+                $(".error-message-la").show();
+                $(".error-message-bl").show();
+                $(".error-message-chiffre").show();
+
+                return false;
+            }
+            if (nom_gerant== ''  ) {
+                //alert("SVP! Modifier vos texte");
+                // $('#denomination').next(".error-message").fadeIn().text("sssssssssssssssssss");
+                $('#nom_gerant2').css('border-color','red');
+                $(".error-message1").show();
+
+                return false;
+            }
+            if (prenom_gerant== ''  ) {
+                //alert("SVP! Modifier vos texte");
+                // $('#denomination').next(".error-message").fadeIn().text("sssssssssssssssssss");
+                $('#prenom_gerant2').css('border-color','red');
+                $(".error-message2").show();
+                return false;
+            }
+            if (siren== '' ) {
+
+                $('#siren2').css('border-color','red');
+                $(".error-message-siren").show();
+                return false;
+            }
+            if (code== '' ) {
+
+                $('#code_activite2').css('border-color','red');
+                $(".error-message-naf").show();
+                return false;
+            }
+            if (la== '' ) {
+
+                $('#libelle_activite2').css('border-color','red');
+                $(".error-message-la").show();
+                return false;
+            }
+            if (bl== '' ) {
+
+                $('#montant_actif_passif2').css('border-color','red');
+                $(".error-message-bl").show();
+                return false;
+            }
+            if (chiffre== '' ) {
+                $('#chiffres_affaires2').css('border-color','red');
+                $(".error-message-chiffre").show();
+                return false;
+            }
+            if (chiffre== '' ) {
+                $('#chiffres_affaires2').css('border-color','red');
+                $(".error-message-chiffre").show();
+                return false;
+            }
+            if (ad== '' ) {
+                $('#adress12').css('border-color','red');
+                $(".error-message-ad2").show();
+                return false;
+            }
+            if (adr== '' ) {
+                $('#adress13').css('border-color','red');
+                $(".error-message-ad3").show();
+                return false;
+            }
+            if (cp== '' ) {
+                $('#cp2').css('border-color','red');
+                $(".error-message-cp").show();
+                return false;
+            }
+            if (phone== '' ) {
+                $('#phone2').css('border-color','red');
+                $(".error-message-phone").show();
+                return false;
+            }
+
+
+                $.ajax({
+                    url: "<?php echo base_url()?>admin.php/artisan/create_artisan",
+                    type: "POST",
+                    data: $('#frm-create').serialize(),
+                    dataType: 'json',
+                    success: function (data) {
+                        //alert('succccceeeeeeesss');
+                        console.log(data)
+                        $('#modal_confirm').modal('show');
+                        //alert($('#assurance').val());
+                        $("#confirm").click(function () {
+                            // $('#ancre').show();
+                            window.location.reload();
+                        });
+                        //window.location.reload();
+                    },
+                    error: function () {
+                        alert('errooooooooooooooooooooooo');
                         window.location.reload();
-                    });
-                    //window.location.reload();
 
-                },
-                error:function()
-                {
-                    alert('errooooooooooooooooooooooo');
-                    window.location.reload();
-
-                }
-                /*success:function()
-                {
-                    if(data.status)
-                    {
-                        $('#frm-create')[0].reset();
-                        alert('succccceeeeeeesss');
                     }
-
-                },
-                error:function()
-                {
-                    alert('errooooooooooooooooooooooo');
-
-                }*/
-            });
+                });
         });
     });
 </script>
@@ -1211,7 +1854,7 @@
                //appelFonction(id_artisan, id_artisan);
                //appelFonction(pres_attestation_immat,'#pres_attestation');
                $('#denomination').val(data.denomination);
-               $('#denomination1').val(data.denomination);
+               //$('#denomination1').val(data.denomination);
                $('#nom_gerant').val(data.nom_gerant);
                $('#prenom_gerant').val(data.prenom_gerant);
                $('#statut').val(data.statut);
@@ -1269,6 +1912,16 @@
                }
                else
                    $('#pres_rib').val("NOT OK");
+               $('#adress1').val(data.adress1);
+               $('#adress2').val(data.adress2);
+               $('#lieu_dit').val(data.lieu_dit);
+               $('#cp').val(data.cp);
+               $('#ville').val(data.ville);
+               $('#pays').val(data.pays);
+               $('#cellphone1').val(data.cellphone1);
+               $('#cellphone2').val(data.cellphone2);
+               $('#fax').val(data.fax);
+               $('#site_web').val(data.site_web);
                //appelFonction(id_artisan, id_artisan);
                //appelFonction(pres_attestation_immat,pres_attestation_immat);
                /*$('#pres_services_fiscaux').val(data.pres_services_fiscaux);
@@ -1329,4 +1982,43 @@
         });*/
     });
 </script>
-        <script src="<?php echo base_url() ?>assets/backend/js/sites/clients/clients.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.hid_ajout').hide();
+        $('.show_ajout').show();
+        $('.mp').hide();
+        $(".error-message").hide();
+        $(".bt_ajout").click(function () {
+            // $('#ancre').show();
+            $('.hid_ajout').show();
+            $('.show_ajout').hide();
+            $(".error-message").hide();
+           /*$('#ajout').toggle(1000);
+            $('html,body').animate({scrollTop: $("#ajout").offset().top}, 'slow'      );*/
+        });
+       /* $(".ak").click(function () {
+            // $('#ancre').show();
+            $('.show_ajout').hide();
+            $('.mp').show();
+            /*$('#ajout').toggle(1000);
+             $('html,body').animate({scrollTop: $("#ajout").offset().top}, 'slow'      );*/
+
+    });
+</script>
+        <script src="<?php echo base_url() ?>assets/backend/js/sites/artisan/artisan.js"></script>
+<script src="<?php echo base_url() ?>assets/backend/js/sites/artisan/select2.js"></script>
+<link href="<?php echo base_url() ?>assets/backend/css/art/select2.css" rel="stylesheet"/>
+
+
+<!--script type="text/javascript">
+    $(function(){
+        var items="";
+        $.getJSON("get-data.php",function(data){
+            $.each(data,function(index,item)
+            {
+                items+="<option value='"+item.id+"'>"+item.name+"</option>";
+            });
+            $("#a1_title").html(items);
+        });
+    });
+</script-->
