@@ -239,3 +239,18 @@ modal confirmation
     text-align: center;
     background: darkgrey
 }
+#AfficheAssurance
+{
+    /* margin: 5px; */
+    border: 1px solid transparent;
+    padding: -5px;
+    /* height: 50%; */
+    width: 70%;
+    height: 40px;
+    /* margin-right: 100px; */
+    margin-left: 200px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    font-size: 18px;
+}

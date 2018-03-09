@@ -39,24 +39,21 @@ class Artisan extends CI_Controller
     }
     public function create_artisan()
     {
-       /* $data_in['nom']=$this->input->post('nom');
-        echo $data_in;*/
-
+       // ajout type travaux
         $posts = $this->input->post ();
+
+
         //var_dump($posts);
+        //die;
 
         /*$this->output->set_content_type ( 'application/json' )->set_output ( json_encode ( array (
             'data' => $posts
         ) ) );*/
 
-        $datatype_travaux = array (
-            //'id'=>$posts['id'],
-            'name'=>$posts['name'],
-        );
-        $type_travaux=$this->Type_travaux_artisan->create_artisan_query($datatype_travaux);
+
 
         //assurance
-        $scan_assurance=1;
+        /*$scan_assurance=1;
         if($this->input->post ('scan_assurance')==0)
         {
             $scan_assurance=0;
@@ -98,14 +95,14 @@ class Artisan extends CI_Controller
             // var_dump($nom)
             /*foreach($noms as $val) {
             }*/
-           $datatype_assurance = array(
+           /*$datatype_assurance = array(
                 //'id'=>$posts['id'],
                 'nom' => $posts['nom'],
                 'assurance_id'=>$assurance,
             );
             $type_assurance = $this->Type_assurance_model->create_artisan_query($datatype_assurance);
 
-
+*/
 
 
         /*foreach ($posts['nom'] as $item){
@@ -124,7 +121,7 @@ class Artisan extends CI_Controller
         //type artisan
       $datatype = array (
             //'id'=>$posts['id'],
-            'namee'=>$posts['namee'],
+            'namee'=>$posts['name'],
         );
         $type_artisan=$this->Type_artisan->create_artisan_query($datatype);
 
@@ -207,7 +204,7 @@ class Artisan extends CI_Controller
             'tranche_effectif'=>$posts['tranche_effectif'],
             'type_artisan_id'=>$type_artisan,
             'artisan_adress_id'=>$adresse,
-           'assurance_id'=>$assurance,
+          // 'assurance_id'=>$assurance,
             //case à cocher
             'pres_attestation_immat'=>$pres_attestation_immat,
             'pres_kbis'=>$pres_kbis,
@@ -216,34 +213,54 @@ class Artisan extends CI_Controller
             'pres_attestation_decl_social'=>$pres_attestation_decl_social,
             'pres_attestation_assurance'=>$pres_attestation_assurance,
             'pres_rib'=>$pres_rib,
-
-
         );
-     //echo
-        /* $da = array (
-            //'id'=>$posts['id'],
-            'nom'=>$posts['nom'],
-        );
-
-        echo var_dump($da);
-        //type_art
-        //*$datatype_art = array (
-            //'id'=>$posts['id'],
-          /*  'name'=>$posts['name'],
-        );
-        $type_artt=$this->Type_assurance_model->create_art_query($datatype_art);*/
-        //adress
-
-       // $type_artisan_id=$type_artisan;
-        //var_dump($type_artisan_id);
         $artisan = $this->Artisan_model->create_artisan_query($dataartisan);
-        $ref=$this->Artisan_Adress_model->create($artisan,$adresse);
-       //$ref1=$this->Type_artisan->create_type($type_artisan,$artisan);
+        $this->Artisan_Adress_model->create($artisan,$adresse);
+        //type travaux
+        $travaux=$posts['name_travaux'];
+        if($travaux)
+        {
+            foreach ($travaux as $c)
+            {
+                $datatype_travaux = array (
+                    //'id'=>$posts['id'],
+                    'name'=>$c,
+                    'artisan_id'=>$artisan,
 
-        if($ref and $type_artisan and $assurance and $type_travaux and $type_assurance)
+                );
+                $this->Type_travaux_artisan->create_artisan_query($datatype_travaux);
+
+            }
+        }
+        //assurance
+        $nombre  = $posts['nombre'];
+        if($nombre != 0) {
+            for ($i = 1; $i <= $nombre; $i++) {
+                $j = $i + 1;
+                $nom = ($posts["noms" . $j]);
+                $date_deb = ($posts["date_debs" . $j]);
+                $date_fin = $posts["date_fins" . $j];
+                $assureur = $posts["assureurs" . $j];
+                $telephone = $posts["telephones" . $j];
+
+                $dataassurance = array(
+                    'artisan_id' => $artisan,
+                    'nom' => $nom,
+                    'date_deb' => $date_deb,
+                    'date_fin' => $date_fin,
+                    'assureur' => $assureur,
+                    'telephone' => $telephone,
+                );
+                 $this->Assurance_model->create_artisan_query($dataassurance);
+            }
+        }
+        $this->session->set_flashdata ( "success", "Votre donnée  a été bien enregistrée !");
+        redirect ( base_url () . "admin.php/artisan" );
+
+        /*if($ref and $type_artisan and $assurance)
             echo json_encode(array('status'=>true));
         else
-            echo json_encode(array('status'=>false));
+            echo json_encode(array('status'=>false));*/
         //******************************adress
 
 

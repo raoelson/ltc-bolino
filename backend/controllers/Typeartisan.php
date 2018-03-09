@@ -67,7 +67,7 @@ class Typeartisan extends CI_Controller {
     public function saves_travaux(){
         $posts = $this->input->post();
         $donnes = array('name_travaux'=> $posts['name_travaux']);
-        $data = $this->typeartisan->create_assurance_query($donnes);
+        $data = $this->typeartisan->create_travaux_query($donnes);
         $this->output->set_content_type ( 'application/json' )->set_output ( json_encode ( array (
             'data' => $data
         ) ) );
