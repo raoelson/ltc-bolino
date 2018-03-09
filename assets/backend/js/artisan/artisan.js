@@ -1,6 +1,3 @@
-$('document').ready(function(){
-    /*$("#e1").select2();*/
-    ChargementSelect();
 
     $(".ajout_type").click(function(){
         $.postJSON(BASE_URL+'/typeartisan/saves/',{
@@ -201,6 +198,4 @@ $('document').ready(function(){
         }
         $('input[name="nombre"]').val(tailleTable);
         });
-
-    });
 

@@ -31,7 +31,6 @@ class Artisan extends CI_Controller
         //commentaire
 
         $data['data'] = $this->art->get_news();
-        $data['sitraka'] = $this->Type_artisan->art_query();
 
         $this->template->title ( 'Gestions des artisans' )->build ( 'artisan/index',$data);
         //var_dump($data['data']);
@@ -39,89 +38,41 @@ class Artisan extends CI_Controller
     }
     public function create_artisan()
     {
-       // ajout type travaux
         $posts = $this->input->post ();
-
-
-        //var_dump($posts);
-        //die;
-
-        /*$this->output->set_content_type ( 'application/json' )->set_output ( json_encode ( array (
-            'data' => $posts
-        ) ) );*/
-
-
+        //type assurance
+        $datatype_assurance = array (
+            //'id'=>$posts['id'],
+            'nom'=>$posts['nom'],
+        );
+        $type_assurance=$this->Type_assurance_model->create_artisan_query($datatype_assurance);
+        //type travaux artisan
+        $datatype_travaux = array (
+            //'id'=>$posts['id'],
+            'name'=>$posts['name'],
+        );
+        $type_travaux=$this->Type_travaux_artisan->create_artisan_query($datatype_travaux);
 
         //assurance
-        /*$scan_assurance=1;
+        $scan_assurance=1;
         if($this->input->post ('scan_assurance')==0)
         {
             $scan_assurance=0;
         }
         $dataassurance = array (
-            // 'type_assurance_id'=>$type_assurance,
+            'type_assurance_id'=>$type_assurance,
             'type_travaux_id'=>$type_travaux,
             'date_deb'=>$posts['date_deb'],
             'date_fin'=>$posts['date_fin'],
             'assureur'=>$posts['assureur'],
-            'telephone'=>$posts['telephone'],
+           'telephone'=>$posts['telephone'],
             'scan_assurance'=>$scan_assurance,
         );
         $assurance=$this->Assurance_model->create_artisan_query($dataassurance);
 
-       //if(isset($_POST['occasion']) && !empty($_POST['occasion'])){ $Col1_Array = $_POST['occasion']; print_r($Col1_Array)
-           //$/noms = $this->input->post ('nom');
-         //$Col1_Array = $_POST[$noms];
-         //print_r($Col1_Array);
-       /* $col = $this->input->post('nom');
-        $assur=$this->input->post('assurance_id');
-
-        if($col)
-        {
-            foreach ($col as $c)
-            {
-                $type_assurance=$this->Type_assurance_model->create_artisan_query($c,$assur);
-            }
-        }*/
-
-        /*foreach($col as $selectValue){
-
-            'assurance_id'=>$assurance,
-        }*/
-
-        //type assurance
-        //$noms = $this->input->post ('nom');
-        //if($noms=$this->input->post ('nom')) {
-            // var_dump($nom)
-            /*foreach($noms as $val) {
-            }*/
-           /*$datatype_assurance = array(
-                //'id'=>$posts['id'],
-                'nom' => $posts['nom'],
-                'assurance_id'=>$assurance,
-            );
-            $type_assurance = $this->Type_assurance_model->create_artisan_query($datatype_assurance);
-
-*/
-
-
-        /*foreach ($posts['nom'] as $item){
-            //requete
-            //assurance +item
-            $type_assurance=$this->Type_assurance_model->create_artisan_query($datatype_assurance);
-        }*/
-        //creation assurance $assurance
-        //selection type assurance foreach par item
-        // enregistrement entre assurance et type assurance
-
-        //type travaux artisan
-
-
-
         //type artisan
-      $datatype = array (
+       $datatype = array (
             //'id'=>$posts['id'],
-            'namee'=>$posts['name'],
+            'name'=>$posts['name'],
         );
         $type_artisan=$this->Type_artisan->create_artisan_query($datatype);
 
@@ -204,7 +155,7 @@ class Artisan extends CI_Controller
             'tranche_effectif'=>$posts['tranche_effectif'],
             'type_artisan_id'=>$type_artisan,
             'artisan_adress_id'=>$adresse,
-          // 'assurance_id'=>$assurance,
+           'assurance_id'=>$assurance,
             //case à cocher
             'pres_attestation_immat'=>$pres_attestation_immat,
             'pres_kbis'=>$pres_kbis,
@@ -213,22 +164,6 @@ class Artisan extends CI_Controller
             'pres_attestation_decl_social'=>$pres_attestation_decl_social,
             'pres_attestation_assurance'=>$pres_attestation_assurance,
             'pres_rib'=>$pres_rib,
-        );
-        $artisan = $this->Artisan_model->create_artisan_query($dataartisan);
-        $this->Artisan_Adress_model->create($artisan,$adresse);
-        //type travaux
-        $travaux=$posts['name_travaux'];
-        if($travaux)
-        {
-            foreach ($travaux as $c)
-            {
-                $datatype_travaux = array (
-                    //'id'=>$posts['id'],
-                    'name'=>$c,
-                    'artisan_id'=>$artisan,
-
-                );
-                $this->Type_travaux_artisan->create_artisan_query($datatype_travaux);
 
             }
         }
@@ -250,17 +185,20 @@ class Artisan extends CI_Controller
                     'date_fin' => $date_fin,
                     'assureur' => $assureur,
                     'telephone' => $telephone,
-                );
-                 $this->Assurance_model->create_artisan_query($dataassurance);
-            }
-        }
-        $this->session->set_flashdata ( "success", "Votre donnée  a été bien enregistrée !");
-        redirect ( base_url () . "admin.php/artisan" );
+        );
 
-        /*if($ref and $type_artisan and $assurance)
+        //adress
+
+       // $type_artisan_id=$type_artisan;
+        //var_dump($type_artisan_id);
+        $artisan = $this->Artisan_model->create_artisan_query($dataartisan);
+        $ref=$this->Artisan_Adress_model->create($artisan,$adresse);
+       //$ref1=$this->Type_artisan->create_type($type_artisan,$artisan);
+
+        if($ref and $type_artisan and $assurance and $type_travaux and $type_assurance)
             echo json_encode(array('status'=>true));
         else
-            echo json_encode(array('status'=>false));*/
+            echo json_encode(array('status'=>false));
         //******************************adress
 
 
@@ -380,22 +318,6 @@ class Artisan extends CI_Controller
         else
             echo json_encode(array('status'=>false));*/
     }
-    public function create_type()
-    {
-        $posts = $this->input->post ();
-
-        //type travaux artisan
-        $type_art = array (
-            //'id'=>$posts['id'],
-            'name'=>$posts['name'],
-        );
-        $type_travaux=$this->Type_artisan->create_art_query($type_art);
-        if($type_travaux)
-            echo json_encode(array('status'=>true));
-        else
-            echo json_encode(array('status'=>false));
-    }
-
     public function edit_artisan()
     {
         $output=array();
@@ -457,4 +379,15 @@ class Artisan extends CI_Controller
         }
         echo json_encode($output);*/
     }
+    //function de teste
+   /* public function test()
+    {
+        $data = $this->Affichage_artisan->affiche_query(79);
+
+        echo "<pre>";
+        print_r($data);
+        echo "</pre>";
+//http://localhost/ltc-botino/admin.php/artisan/test
+    }*/
+
 }

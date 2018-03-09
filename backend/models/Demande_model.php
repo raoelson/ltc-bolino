@@ -8,8 +8,8 @@ class Demande_model extends CI_Model{
 		return $insert_id = $this->db->insert_id();
 	}
 
-	public function get_all(){
+	/*public function get_all(){
 		$query = $this->db->get($this->table);
 		return $query->result_array();
-	}
+	}*/
 }
