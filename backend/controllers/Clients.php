@@ -1,5 +1,6 @@
 <?php
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
+
 class Clients extends CI_Controller {
 	public function __construct() {
 		parent::__construct ();
@@ -164,7 +165,7 @@ class Clients extends CI_Controller {
         		$nom = strtoupper($posts["nomParent".$j]);
         		$prenom = ucwords($posts["prenomParent".$j]);
         		$datenaissance = $this->cic_auth->FormatDate($posts["datenaissanceParent".$j]);
-        		print_r($datenaissance);
+        		//print_r($datenaissance);
         		$lienParent= $posts["lienParent".$j];
         		
         		$typeressouces = $posts['typeRessoucesParents'.$j];
