@@ -25,22 +25,13 @@
 						<thead>
 							<tr>
 								<th>Date d'arrivée  </th>
-								<th>Montants du devis</th>
-								<th>Montants de l'aide </th>
+								<th>Montants de l'aide</th>
+								<th>Montants du devis </th>
 								<th>Numéro du dossier validé</th>
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach ($data['demande'] as $val) { ?>
-								<tr>
-									
-										<td><?php echo $val['date_arrivee']; ?></td>
-										<td><?php echo $val['montant_devis']; ?></td>
-										<td><?php echo 'vide1'; ?></td>
-										<td><?php echo 'vide2'; ?></td>
-									
-								</tr>
-							<?php } ?>
+						
 						</tbody>
 					</table>
 				</div>
@@ -64,9 +55,11 @@
 								for="name">Nom de personne au foyer</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<div class="col-md-6 col-sm-6 col-xs-12">
-								<select id="idgroupe" name="idgroupe" class="form-control col-md-7 col-xs-12">		
-								</select>						
-								
+								<select id="idgroupe" name="idgroupe" class="form-control col-md-7 col-xs-12">								
+								<?php foreach ($data as $val){ ?>
+										<option value="<?php echo ($val['parentid']) ;?>"><?php echo ($val['parentName'].' '.$val['parentPrenom']) ;?></option>
+								<?php } ?>
+								</select>
 							</div>
 							</div>
 						</div>
