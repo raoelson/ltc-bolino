@@ -97,4 +97,11 @@ $route['create_artisan'] = 'artisan/create_artisan';
 //$route['artisan/ind'] = 'artisan/ind';
 $route['artisan/edit_artisan'] = 'artisan/edit_artisan';
 
+//Routage Housing
+$route['logements/index/(:id)'] = 'logements/index/$1';
+$route['logements_saves'] = 'logements/saves';
 
+
+//Routage Demandes
+$route['demande'] = 'demande';
+$route['demande_saves'] = 'demande/save';
