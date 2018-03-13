@@ -133,71 +133,11 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_content">
-                        <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
-                            <div class="profile_img">
-                                <div id="crop-avatar">
-                                    <!-- Current avatar -->
-                                    <!--img  class="mage img-responsive avatar-view" src="<!--?php echo base_url() ?>images/picture.jpg" alt="Avatar" title="Change the avatar"/-->
 
-                                </div>
-                            </div>
-
-                            <h3></h3>
-
-                            <!---ul class="list-unstyled user_data">
-                                <li><i class="fa fa-map-marker user-profile-icon"></i>
-                                    <input type="text" id="adress" name="adress" disabled class="pt1">
-                                </li>
-
-                                <li>
-                                    <i class="fa fa-briefcase user-profile-icon"></i>
-                                    <input type="text" id="activite" name="activite" disabled class="pt1">
-                                </li>
-
-                                <li class="m-top-xs">
-                                    <i class="fa fa-external-link user-profile-icon"></i>
-                                    <a href="http://www.kimlabs.com/profile/" target="_blank">www.kimlabs.com</a>
-                                </li->
-                            </ul-->
-
-                            <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
-                            <br />
-
-                            <!-- start skills -->
-                            <h4>Skills</h4>
-                            <ul class="list-unstyled user_data">
-                                <li>
-                                    <p>Web Applications</p>
-                                    <div class="progress progress_sm">
-                                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <p>Website Design</p>
-                                    <div class="progress progress_sm">
-                                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="70"></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <p>Automation & Testing</p>
-                                    <div class="progress progress_sm">
-                                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="30"></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <p>UI / UX</p>
-                                    <div class="progress progress_sm">
-                                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <!-- end of skills -->
-
-                        </div>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="profile_title">
                                 <div class="col-md-6">
-                                    <h2>User Activity Report</h2>
+
 
                                 </div>
                                 <div class="col-md-6">
@@ -225,150 +165,142 @@
                                 <div id="myTabContent" class="tab-content">
                                     <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
 
-                                        <div class="x_panel">
-
-                                            <div class="x_content">
-                                                <br />
-                                                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3" for="first-name">Nom Entreprise <span class="required">*</span>
-
-                                                        </label>
-                                                        <div class="col-md-9">
-                                                            <input type="text" id="denomination" name="denomination"  disabled class="pt1 form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nom gerant <span class="required">*</span>
-                                                        </label>
-                                                        <div class="col-md-9">
-                                                            <input disabled type="text" id="nom_gerant" name="nom_gerant"  class="pt1 form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Prenom gerant <span class="required">*</span>
-                                                        </label>
-                                                        <div class="col-md-9">
-                                                            <input disabled type="text" id="prenom_gerant" name="prenom_gerant"  class="pt1 form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div style="margin-bottom: 18px;" class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Statut <span class="required">*</span>
-                                                        </label>
-                                                        <div class="col-md-9">
-                                                            <button class="bh btn">
-                                                                <input disabled type="text" id="statut" name="statut"  class="pt2">
-                                                            </button>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Siren <span class="required">*</span>
-                                                        </label>
-                                                        <div class="col-md-9">
-                                                            <input disabled type="text" id="siren" name="siren"  class="pt1 form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Code d'activiter <span class="required">*</span>
-                                                        </label>
-                                                        <div class="col-md-9">
-                                                            <input disabled type="text" id="code_activite" name="code_activite"  class="pt1 form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Libellé d'activité <span class="required">*</span>
-                                                        </label>
-                                                        <div class="col-md-9">
-                                                            <input disabled type="text" id="libelle_activite" name="libelle_activite"  class="pt1 form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Forme juridique <span class="required">*</span>
-                                                        </label>
-                                                        <div class="col-md-9">
-                                                            <input disabled type="text" id="forme_juridique" name="forme_juridique"  class="pt1 form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Date d'immatriculation <span class="required">*</span>
-                                                        </label>
-                                                        <div class="col-md-9">
-                                                            <input disabled type="text" id="date_immatriculation" name="date_immatriculation"  class="pt1 form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Date du dernier rcs <span class="required">*</span>
-                                                        </label>
-                                                        <div class="col-md-9">
-                                                            <input disabled type="text" id="date_derniere_rcs" name="date_derniere_rcs"  class="pt1 form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Categorie <span class="required">*</span>
-                                                        </label>
-                                                        <div class="col-md-9">
-                                                            <input disabled type="text" id="categorie" name="categorie"  class="pt1 form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Montant actif  passif <span class="required">*</span>
-                                                        </label>
-                                                        <div class="col-md-9">
-                                                            <input disabled type="text" id="montant_actif_passif" name="montant_actif_passif"  class="pt1 form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Chiffre d'affaires <span class="required">*</span>
-                                                        </label>
-                                                        <div class="col-md-9">
-                                                            <input disabled type="text" id="chiffres_affaires" name="chiffres_affaires"  class="pt1 form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Tranche effectif <span class="required">*</span>
-                                                        </label>
-                                                        <div class="col-md-9">
-                                                            <input disabled type="text" id="tranche_effectif" name="tranche_effectif"  class="pt1 form-control">
-                                                        </div>
+                                        <div class="panel panel-default">
+                                            <div class="panel-body form-horizontal payment-form">
+                                                <div class="x_title">
+                                                    <h5>Information sur l'artisan</h5>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="concept" class="col-sm-3 control-label">Nom de l'entreprise</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" id="denomination" name="denomination"   class="form-control">
                                                     </div>
 
-                                                    <!--div class="form-group">
-                                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
-                                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input disabled  class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
-                                                        </div>
-                                                    </div-->
-                                                    <!--div class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
-                                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <div id="gender" class="btn-group" data-toggle="buttons">
-                                                                <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                                    <input type="radio" name="gender" value="male"> &nbsp; Male &nbsp;
-                                                                </label>
-                                                                <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                                    <input type="radio" name="gender" value="female"> Female
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div-->
-                                                    <!--div class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>
-                                                        </label>
-                                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-                                                        </div>
-                                                    </div-->
-                                                    <div class="ln_solid"></div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="description" class="col-sm-3 control-label">Nom du gerant </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" id="nom_gerant" name="nom_gerant">
+                                                    </div>
 
-                                                </form>
-                                                <?php //$vl=$_Post['statut'];
 
-                                                // $_GET['statut'] == $vl;
-                                                // echo $vl;
-                                                ?>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="description" class="col-sm-3 control-label">Prénom du gerant </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" id="prenom_gerant" name="prenom_gerant">
+                                                    </div>
 
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="amount" class="col-sm-3 control-label">Statut</label>
+                                                    <div class="col-sm-6">
+                                                        <select name="statut" id="statut" class="form-control"  tabindex="50" ><br />
+                                                            <option value="En cours">En cours </option>
+                                                            <option value="En Attente">En Attente </option>
+                                                            <option value="Accepter">Accepter </option>
+                                                            <option value="Refuser">Réfuser </option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="status" class="col-sm-3 control-label">SIREN</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" id="siren" name="siren">
+                                                    </div>
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="date" class="col-sm-3 control-label">NAF</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" id="code_activite" name="code_activite">
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="date" class="col-sm-3 control-label">Libellé activité</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" id="libelle_activite" name="libelle_activite">
+                                                    </div>
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="date" class="col-sm-3 control-label">Forme juridique RCS ou INSEE</label>
+                                                    <div class="col-sm-6">
+                                                        <select name="forme_juridique" id="forme_juridique" class="form-control"  tabindex="50" ><br />
+                                                            <option value="EIRL">EIRL </option>
+                                                            <option value="SARL">SARL </option>
+                                                            <option value="EURL">EURL </option>
+                                                            <option value="SAS">SAS </option>
+                                                            <option value="SASU">SASU </option>
+                                                            <option value="SA">SA </option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="date" class="col-sm-3 control-label">Date immatriculation RCS</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="date" class="form-control" id="date_immatriculation" name="date_immatriculation" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="date" class="col-sm-3 control-label">Date dernière maj RCS</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="date" class="form-control" id="date_derniere_rcs" name="date_derniere_rcs">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="date" class="col-sm-3 control-label">Catégorie</label>
+                                                    <div class="col-sm-6">
+                                                        <!--input type="text" class="form-control" id="categorie" name="categorie"-->
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="show_ajout">
+                                                            <select id="typecategorie" name="categorie"   class="form-control"  tabindex="50">
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <button   data-toggle="modal" data-target="#modal_artisan" class="ak"><span class="fa fa-plus"></span>&nbsp;Ajout</button>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="date" class="col-sm-3 control-label">Bilan (actif/passif) en Euro</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" id="montant_actif_passif" name="montant_actif_passif">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="date" class="col-sm-3 control-label"> Chiffres d’affaires en Euro</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text"  class="form-control" id="chiffres_affaires" name="chiffres_affaires">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="date" class="col-sm-3 control-label"> Tranche d’effectif</label>
+                                                    <div class="col-sm-6">
+                                                        <select name="tranche_effectif" id="tranche_effectif" class="form-control"  tabindex="50" ><br />
+                                                            <option value="1 à 2 Salariés">1 à 2 Salariés </option>
+                                                            <option value="3 à 5 Salariés">3 à 5 Salariés </option>
+                                                            <option value="6 à 9 Salariés">6 à 9 Salariés </option>
+                                                            <option value="10 à 19 Salariés">10 à 19 Salariés </option>
+                                                            <option value="20 à 49 Salariés">20 à 49 Salariés </option>
+                                                            <option value="50 à 99 Salariés">50 à 99 Salariés </option>
+                                                            <option value="100 à 199 Salariés">100 à 199 Salariés </option>
+                                                            <option value="100 à 199 Salariés">200 à 299 Salariés </option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <!-- end recent activity -->
@@ -861,7 +793,6 @@
     <form class="form-horizontal form-label-left" id="frm-create"
           action="<?php echo base_url('admin.php/create_artisan');?>"
           method="post">
-
         <input type="hidden" name="nombre" value="0" />
         <div class="container">
             <div class="panel panel-default">

@@ -7,7 +7,7 @@ class Affichage_artisan extends CI_Model
     public function get_news()
     {
         //table.nom_column
-        $this->db->select ( 'artisan.id as id_artisan_alias, artisan.artisan_adress_id,artisan.type_artisan_id,artisan.denomination,artisan.nom_gerant,artisan.prenom_gerant
+        $this->db->select ( 'artisan.id as id_artisan_alias,artisan.nombre, artisan.artisan_adress_id,artisan.type_artisan_id,artisan.denomination,artisan.nom_gerant,artisan.prenom_gerant
 					,artisan.statut,artisan.siren,artisan.code_activite,artisan.libelle_activite,
 					artisan.forme_juridique,artisan.date_immatriculation,artisan.date_derniere_rcs,
 					artisan.categorie,artisan.montant_actif_passif,artisan.chiffres_affaires,artisan.tranche_effectif,
