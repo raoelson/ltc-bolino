@@ -24,14 +24,49 @@
 						class="table table-striped table-bordered">
 						<thead>
 							<tr>
-								<th>Date d'arrivée  </th>
-								<th>Montants de l'aide</th>
-								<th>Montants du devis </th>
-								<th>Numéro du dossier validé</th>
+                                <th>N°</th>
+                                <th>N° Dossier</th>
+                                <th>Titre</th>
+                                <th>Propriétaire</th>
+                                <th>Adresse Postale</th>
+                                <th>Artisan</th>
+                                <th>Type de l'artisan</th>
+                                <th>Type des travaux</th>
+								<th>Date d'arrivée</th>
+								<th>Montant du devis</th>
+								<th>Montant de l'aide</th>
+                                <th>Action</th>
+
 							</tr>
 						</thead>
 						<tbody>
-						
+							<?php foreach ($data['demande'] as $val ) { ?>
+								<tr>
+
+                                    <td><?php echo $val['demandeid']; ?></td>
+                                    <td><?php echo $val['num_dossier_valide']; ?></td>
+                                    <td><?php echo $val['title']; ?></td>
+                                    <td><?php echo $val['marriedname']; ?></td>
+                                    <td><?php echo 'Adress P'; ?></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><?php if ($val['type_travaux_finan'] != "") echo $val['type_travaux_finan']; else echo '-'; ?></td>
+                                    <td><?php echo $val['date_arrivee']; ?></td>
+                                    <td><?php echo $val['montant_devis']; ?></td>
+                                    <td>
+
+                                        <?php 
+                                            $aide = $val['montant_devis'];
+                                            echo ($aide > 10500 ? 10500 : $aide); 
+                                        ?>
+
+                                    </td>
+                                    <td><a href="<?php  echo base_url('admin.php/demande/details/'.$val['demandeid']) ?>" id="modifier" title="Voir les détails"
+                                    class="btn btn-round btn-default"><span class="gly fa fa-eye"></span></a></td>
+
+									
+								</tr>
+							<?php } ?>
 						</tbody>
 					</table>
 				</div>
@@ -43,51 +78,131 @@
 		method="post">
 		<div class="row" id="ancre">
 			<div class="col-md-12 col-sm-12 col-xs-12">
-				<div class="x_panel">
-					<div class="x_title">
-						<h5>Informations sur la demande</h5>
-						<div class="clearfix"></div>
-					</div>
-					<div class="x_content">
-						
-						<div class="item form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Nom de personne au foyer</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<div class="col-md-6 col-sm-6 col-xs-12">
-								<select id="idgroupe" name="idgroupe" class="form-control col-md-7 col-xs-12">								
-								<?php foreach ($data as $val){ ?>
-										<option value="<?php echo ($val['parentid']) ;?>"><?php echo ($val['parentName'].' '.$val['parentPrenom']) ;?></option>
-								<?php } ?>
-								</select>
-							</div>
-							</div>
-						</div>
-						<div class="item form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Date d'arrivée<span class="required">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="date_arrivee" class="form-control col-md-7 col-xs-12"
-									name="date_arrivee" placeholder=""
-									required="required" type="date">
-							</div>
-						</div>
-							
 
-						<div class="item form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Montant du devis <span class="required">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="montant_devis" class="form-control col-md-7 col-xs-12"
-									name="montant_devis" placeholder="" required="required"
-									type="text">
-							</div>
-						</div>																											
-						
-					</div>
-				</div>
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h5>Informations sur le propriétaire</h5>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                   for="name">Nom<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                <select class="form-control col-md-7 col-xs-12" name="nom" id="nom">
+                                    <option></option>
+                                    <?php foreach ($data_client['client'] as $val){ ?>
+                                        <option value="<?php echo $val['marriedname'] ?>" ><?php echo $val['marriedname']; ?></option>
+                                    <?php } ?>
+                                </select>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                   for="name">Date d'arrivée <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input id="date_arrivee" class="form-control col-md-7 col-xs-12"
+                                       name="date_arrivee" placeholder="" required="required"
+                                       type="date">
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                   for="name">N° Dossier
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input id="num_dossier_valide" class="form-control col-md-7 col-xs-12"
+                                       name="num_dossier_valide" placeholder="Seulement si la demande est validée"
+                                        type="text">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                
+
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h5>Informations sur la demande de devis</h5>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                   for="name">Détail de devis du propriétaire
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                               <p style="margin-top: 9px !important"><input id="detail_devis" class="flat" name="detail_devis" type="checkbox"></p>
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                   for="name">Devis du propriétaire
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="btn_activ btn btn-info">
+                                    <input id="file" type="file" multiple>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                   for="name">Montant du devis du propriétaire <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input id="montant_devis" class="form-control col-md-7 col-xs-12"
+                                       name="montant_devis" placeholder="" required="required"
+                                       type="text">
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                   for="name">Artisan
+                            </label>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <p style="margin-top: 9px !important">
+                                    Oui: <input type="radio" class="flat" name="art" value="1">
+                                    Non: <input type="radio" class="flat" name="art" value="0">
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                   for="name">Nom de l'artisan
+                            </label>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <select id="name" name="name" class="form-control">
+                                    <option value="Paul">Paul</option>
+                                    <option value="Tony">Tony</option>
+                                    <option value="Eric">Eric</option>
+                                    <option value="Ga">Ga</option>
+                                    <option value="Gold">Gold</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
 			</div>
 						
 		</div>
@@ -105,5 +220,4 @@
 	<br />
 
 </div>
-<script
-	src="<?php echo base_url() ?>assets/backend/js/sites/clients/clients.js"></script>
+<script src="<?php echo base_url() ?>assets/backend/js/sites/clients/clients.js"></script>
