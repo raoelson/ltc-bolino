@@ -35,13 +35,6 @@ class Demande extends CI_Controller{
 			
 			);
 		}
-
-
-		
-
-		
-
-
 		$iddemande = $this->demande->add($dataDemande);
 		//$this->demande->addOwnerId($iddemande);
 	}
