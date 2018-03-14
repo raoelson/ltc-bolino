@@ -6,7 +6,7 @@
 		<div  >
 			<div class="col-md-12 ">
 				<a href="<?php echo base_url('admin.php/clients')?>" id="nouveau" class="btn btn-success"
-					style="width: 15%" type="button"><span class="gly fa fa-angle-left"></span>&nbsp; Retour vers les listes</a>
+					style="width: 15%" type="button"><span class="gly fa fa-angle-left"></span>&nbsp; Retour vers liste</a>
 					
 					<a  href="<?php  echo base_url('admin.php/clients/exports/'.$data[0]['clientid']) ?>"  class="btn btn-primary"
 					style="width: 10% ;float: right;display: none;" type="button"><span class="gly fa fa-print"></span>&nbsp;Imprimer</a>
@@ -29,7 +29,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h5>Informations personnelles</h5>
+						<h5>Etat civil des propriétaires</h5>
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
@@ -188,7 +188,7 @@
 			 	<input type="hidden" name="idInfoAdresse" value="<?php echo $data[0]['adresseId']; ?>" />		
 				<div class="x_panel">
 					<div class="x_title">
-						<h5>Informations adresses</h5>
+						<h5>Information sur l’adresse du propriétaire</h5>
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
@@ -309,7 +309,7 @@
 				<input type="hidden" name="idInfoRessourceAdresse" value="<?php echo $data[0]['ressourcesId']; ?>" />	
 				<div class="x_panel">
 					<div class="x_title">
-						<h5>Informations sur votre ressources (DEMANDEUR)</h5>
+						<h5>Information sur les revenus du propriétaire</h5>
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">	
@@ -446,7 +446,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12" id="parentRessourceDiv" >
 				<div class="x_panel">
 					<div class="x_title">
-						<h5>Informations sur les parentés avec les ressources</h5>
+						<h5>Information sur les parentés et les revenus du ressources</h5>
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content" id="divRessources">

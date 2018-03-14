@@ -19,7 +19,14 @@ class Logements extends CI_Controller {
 
 	public function saves(){		
 		$posts = $this->input->post();
-
+		$typetravauxArray = array();
+		for($i=0;$i<8;$i++){
+			if(isset($posts['nature_travaux_'.$i])){
+				array_push($typetravauxArray, 1);				
+			}else{
+				array_push($typetravauxArray, 0);
+			}
+		}	
 		$typeLogement = $posts['nameType'];
 		$numero = $posts['numerovoie'];
 		$nomvoie = $posts['nomvoie'];
@@ -29,7 +36,7 @@ class Logements extends CI_Controller {
 		$nombrepiece = $posts['nombrepiece'];
 		$nombrepersonne = $posts['nombrepersonne'];
 		$dateconstruction = $this->cic_auth->FormatDate($posts['dateconstruction']);
-        $typetravaux =  $posts['nature_travaux'];       
+        $typetravaux =  serialize($typetravauxArray);       
 		$proprietaire = 0;
 		if(isset($posts['proprietaire'])){			
 			$proprietaire = 1;

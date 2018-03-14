@@ -53,7 +53,7 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-// 	Routage User 
+// 	Routage User
 
 $route['user_login'] = 'user';
 $route['user_verify']['post']= 'user/login';
@@ -61,10 +61,9 @@ $route['user_logout'] = 'user/logout';
 
 $route['user_listes'] = 'user/listes';
 $route['user_save'] = 'user/save';
-/* 
+/*
 $route['user_auth'] = 'user';
 $route['user_auth'] = 'user'; */
-
 
 // 	Routage Groupes
 
@@ -91,14 +90,12 @@ $route['dashboard'] = 'welcome';
 $route['clients'] = 'clients';
 $route['clients_saves'] = 'clients/save';
 $route['clients/details/(:id)'] = 'clients/details/$1';
-$route['clients/exports/(:id)'] = 'clients/exports/$1';
-
 
 // 	Routage Ressources
 $route['artisan'] = 'artisan';
-$route['artisan/create_artisan'] = 'artisan/create_artisan';
+$route['create_artisan'] = 'artisan/create_artisan';
+//$route['artisan/ind'] = 'artisan/ind';
 $route['artisan/edit_artisan'] = 'artisan/edit_artisan';
-
 
 //Routage Housing
 $route['logements/index/(:id)'] = 'logements/index/$1';

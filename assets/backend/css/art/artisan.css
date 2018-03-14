@@ -1,7 +1,3 @@
-.mage{
-    width: 400px;
-    height: 250px;
-}
 .check
 {
     height: 20px;
@@ -28,22 +24,22 @@
 }
 .gest_art
 {
- border: 2px solid white;
+    border: 2px solid white;
     background: white;
 
 }
 .btn_ko
 {
     margin-top: 15px;
-
+    border: 1px solid gainsboro;
     /* background: cyan; */
     height: 35px;
     font-size: 15px;
     font-family: sans-serif;
     width: 15%;
     height: 40px;
-
-
+    margin-bottom: 4%;
+    background: gainsboro
 }
 .ro{
     padding: 0px;
@@ -88,7 +84,7 @@
     padding-left: 5px;
 }
 .action{
-text-align: center;
+    text-align: center;
 }
 
 /**********************
@@ -182,56 +178,79 @@ modal confirmation
 }
 
 /**********************
-******input voir detail
+******controler input
  */
-.pt{
-    border: none;
-    margin-top: 5px;
-    margin-bottom: 5px;
-
-    background: white;
-    font-size: 20px;
-
-}
-.pt1{
-    border: none;
-    margin-top: 5px;
-    margin-bottom: 5px;
-
-    background: white;
-    font-size: 15px;
-    margin: 5px;
-
-}
-.pt2{
-    border: none;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    /* background: white; */
-    background: content-box;
-    font-size: 15px;
-    color: black;
-    width: 50%;
-    text-align: center;
-    /*margin: 5px;*/
-
-}
-.bh{
-
-    /* border: 1px solid cornflowerblue; */
-padding: 0px;
-    /* width: 0px; */
-    background: cornflowerblue;
-    /* background: white; */
-    width: 40%;
-}
-.ko
+.error-message
 {
-    border: 1px solid darkgrey;
-    background: darkgray;
-    padding: 5px;
-    width: 50px;
+    /* background-color: white;
+     color: red;
+     padding: 5px;
+     border:1px solid red;*/
+
+}
+.error
+{
+    border: 1px solid red;
+    background: red;
+    padding-bottom: 4px;
     text-align: center;
-    border-radius: 9px;
-    font-size: 17px
+    border-radius: 15px;
+    color: white;
+}
+
+/**mopdal*/
+.head{
+    background: lightcoral;
+    height: 70px;
+}
+.titre
+{
+    text-align: center;
+    /* font-family: monospace; */
+    font-size: 25px;
+    /* border-bottom: 2px solid black; */
+
+}
+.inp
+{
+    height: 50px;
+    padding: 10px;
+    font-size: 20px;
+    margin-bottom: 30px;
+    width: 80%;
+    margin-left: 50px;
+    margin-top: 30px;
+}
+.ak
+{
+    border: 2px solid cadetblue;
+    padding: 5px;
+    width: 40%;
+    font-family: arial;
+    border-radius: 10px;
+    font-size: 15px
+}
+.put{
+
+    border: 1px solid darkgray;
+    width: 50px;
+    height: 40px;
+    border-radius: 10px;
+    text-align: center;
+    background: darkgrey
+}
+#AfficheAssurance
+{
+    /* margin: 5px; */
+    border: 1px solid transparent;
+    padding: -5px;
+    /* height: 50%; */
+    width: 70%;
+    height: 40px;
+    /* margin-right: 100px; */
+    margin-left: 200px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    font-size: 18px;
 }

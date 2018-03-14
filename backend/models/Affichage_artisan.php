@@ -15,7 +15,7 @@ class Affichage_artisan extends CI_Model
 					artisan.pres_attestation_decl_social,artisan.pres_attestation_assurance,artisan.pres_rib
 					,adress.id as id_adress_alias,adress.adress1,adress.adress2,adress.lieu_dit,adress.cp,adress.ville,adress.pays,
 					adress.phone,adress.cellphone1,adress.cellphone2,adress.fax,adress.mail,adress.mail,adress.site_web
-					,type_artisan.id,type_artisan.name'
+					,type_artisan.id,type_artisan.namee'
 
         );
 
@@ -35,11 +35,14 @@ class Affichage_artisan extends CI_Model
     {
         /*$this->db->where('id',$id_artisan);
         $query=$this->db->get('artisan');*/
-       $this->db->select('*');
-        $this->db->from('artisan');
-        $this->db->where('id',$id_artisan);
-        $query=$this->db->get();
+        $query = $this->db->query("select * from artisan as art,adress as a,type_artisan as type_art where art.id=$id_artisan");
+
         return $query->result();
+        /*$this->db->select('*');
+         $this->db->from('artisan');
+         $this->db->where('id',$id_artisan);
+         $query=$this->db->get();
+         return $query->result();*/
         //$query = $this->db->get("artisan");
         //return $query->result();
     }

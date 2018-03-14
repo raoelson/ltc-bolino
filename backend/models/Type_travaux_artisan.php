@@ -1,7 +1,6 @@
 <?php
-class Type_travaux_artisan extends CI_Model
-{
-
+class Type_travaux_artisan extends CI_Model{
+    
     public function __construct()
     {
         //$this->load->database();

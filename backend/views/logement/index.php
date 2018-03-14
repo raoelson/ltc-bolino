@@ -6,7 +6,7 @@
 		<div  >
 			<div class="col-md-12 ">
 				<a href="<?php echo base_url('admin.php/clients')?>" id="nouveau" class="btn btn-success"
-					style="width: 15%" type="button"><span class="gly fa fa-angle-left"></span>&nbsp; Retour vers les listes</a>
+					style="width: 15%" type="button"><span class="gly fa fa-angle-left"></span>&nbsp; Retour vers liste</a>
 										
 			</div>		
 		</div>
@@ -32,8 +32,7 @@
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Type du logement <span class="required">*</span>
 							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								
+							<div class="col-md-6 col-sm-6 col-xs-12">								
 								<select id="nameType" name="nameType" class="form-control col-md-7 col-xs-12" >
 									<option value="F2" <?php if ($data["typeLog"] == "F2" ) echo 'selected' ; ?> >Appartement F2</option>
 									<option value="F3" <?php if ($data["typeLog"] == "F3" ) echo 'selected' ; ?> >Appartement F3</option>
@@ -436,11 +435,25 @@
 							</table>
 							<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12"
-									for="name">Nature des travaux à effectuer <span class="required">*</span></label>
+									for="name" style="margin-top: 122px! important;">Nature des travaux à effectuer <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<textarea class="form-control col-md-7 col-xs-12" style="height: 40px; !important;" 
-										name="nature_travaux" placeholder="Nature des travaux à effectuer..."
-										type="text" required="" value="" ><?php echo $data["typetravaux"];?></textarea> 
+									<p style="margin-top: 9px !important">
+									<input type="checkbox" class="flat" name="nature_travaux_0" <?php if (unserialize($data['typetravaux'])[0] == 1 ) echo 'checked' ; ?> />&nbsp;&nbsp; Pose ou réfection des sanitaires(WC,lavabo,douche)
+									<br/><br/><input
+									type="checkbox" class="flat" name="nature_travaux_1" <?php if (unserialize($data['typetravaux'])[1] == 1 ) echo 'checked' ; ?>  /> &nbsp;&nbsp;L'aménagement et l'équipement des bases d'une cuisine pour les logements&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; qui en sont dépouvus(évier,menuisier sous évier)
+									<br/><br/><input
+									type="checkbox" class="flat" name="nature_travaux_2" <?php if (unserialize($data['typetravaux'])[2] == 1 ) echo 'checked' ; ?> /> &nbsp;&nbsp;L'installation de fosse septique(dans le cas ou le raccordement aux réseaux&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; publics ne serait pas envisageable) Les raccordements aux réseaux &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d'adduction d'eau potable(AEP),d'eaux usées(EU) et électrique
+										<br/><br/><input
+									type="checkbox" class="flat" name="nature_travaux_3" id="" value="3" <?php if (unserialize($data['typetravaux'])[3] == 1 ) echo 'checked' ; ?> /> &nbsp;&nbsp;Les travaux de réalisation et de réfection de l'installation électrique
+										<br/><br/><input
+									type="checkbox" class="flat" name="nature_travaux_4" <?php if (unserialize($data['typetravaux'])[4] == 1 ) echo 'checked' ; ?> /> &nbsp;&nbsp;Les travaux d'étanchéité et de réfection de la charpente couverte
+										<br/><br/><input
+									type="checkbox" class="flat" name="nature_travaux_5" <?php if (unserialize($data['typetravaux'])[5] == 1 ) echo 'checked' ; ?>/> &nbsp;&nbsp;La pose de portes et fenêtre et la mise en sécurité de l'habitat	
+									<br/><br/><input
+									type="checkbox" class="flat" name="nature_travaux_6" <?php if (unserialize($data['typetravaux'])[6] == 1 ) echo 'checked' ; ?> /> &nbsp;&nbsp;Les revêtements du sol et de murs(carrelage, peinture extérieure, enduisage&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intérieur) justifiés par la rfection du bâti
+									<br/><br/><input
+									type="checkbox" class="flat" name="nature_travaux_7" <?php if (unserialize($data['typetravaux'])[7] == 1 ) echo 'checked' ; ?>/> &nbsp;&nbsp;Les travaux d'accesssibilité et d'adaption du logment au profit des personnes&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;âgées, handicapées ou à mobilité réduite, si ces travaux ne peuvent être pris en&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;compte au titre des dispositifs dédiés
+									</p>
 								</div>
 							</div>
 						</div>
