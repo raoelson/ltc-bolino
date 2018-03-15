@@ -8,6 +8,7 @@ class Clients extends CI_Controller {
 			redirect ( base_url () . "admin.php/user_login" );
 		}
 
+		//Chargement des modeles
 		$this->load->model ( "Clients_model", "client" );
 		$this->load->model ( "Owneradresse_model", "owneradresse" );
 		$this->load->model ( "Adresse_model", "adresse" );
@@ -17,14 +18,17 @@ class Clients extends CI_Controller {
 		$this->load->model ( "TypeRessouces_model", "typesressources" );
 		$this->load->model ('Pays_model','pays');
 	}
+
+	//Affichages des propriétaires
 	public function index() {
 		$data['clients'] = $this->client->get_all();		
 		$data['pays'] = $this->pays->getAllPays();
 		$this->template->title ( 'Gestions des Propriétaires' )->build ( 'clients/index',array('data'=>$data) );
 	}
+
+	//Ajout et modif de propriétaire
 	public function save() {
 		$posts = $this->input->post();
-		/*print_r($posts);die;*/
 		$message = "";
 		$typeMessage = "success";
 
@@ -142,22 +146,18 @@ class Clients extends CI_Controller {
     		$this->session->set_flashdata ( $typeMessage, $message);
 			redirect ( base_url () . "admin.php/clients" );
 		}
-		
-// 		------------------------------------------
-        
-		
-		
 	}
 	
+	//Affichage de details des propriétaires
 	public function details($id){
 		$data = $this->owneradresse->getWhere(array('owners_id'=>$id));
 		$pays = $this->pays->getAllPays();
-		/*print_r($data);die;*/
 		$this->template->title ( 'Gestions des Propriétaires' )->build ( 'clients/details',array('data'=>$data,
 																								'pays'=>$pays) );
 	}
 
 
+	//Ajout et modif de parents
 	public function AjoutModification($nombre,$action,$posts,$client){
 		for($i=1; $i<=$nombre;$i++){
 				$j = $i+1;        		

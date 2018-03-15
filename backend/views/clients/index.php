@@ -31,7 +31,7 @@
 								<th>Montant de l'aide</th>
 								<th>Type des travaux</th>
 								<th>Etat</th>
-								<th>Logement</th>
+								<th>Logement du propriétaire<br/>(Maison à rénover)</th>
 								<th>Actions</th>
 							</tr>
 						</thead>

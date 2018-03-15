@@ -1,0 +1,6 @@
+<?php
+class Echanges_proprietaire_model extends CI_Model {
+	private $table = "adress";
+	private $id = "id";
+	
+}
