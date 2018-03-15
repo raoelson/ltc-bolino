@@ -6,6 +6,7 @@ class Demande extends CI_Controller{
 		$this->load->helper('url');
 		$this->load->model('Demande_model', 'demande');
 		$this->load->model('Clients_model', 'client');
+		$this->load->model('Owneradresse_model', 'owneradresse');
 	}
 
 	public function index(){
@@ -32,10 +33,11 @@ class Demande extends CI_Controller{
 				'montant_devis' => $posts['montant_devis'],
 				'owner_id' => $row->id,
 				'montant_aide_dept' => $aide
+                //'housing_id' => $row->housing.id
 			
 			);
 		}
-		$iddemande = $this->demande->add($dataDemande);
+		$this->demande->add($dataDemande);
 		//$this->demande->addOwnerId($iddemande);
 	}
 

@@ -46,7 +46,7 @@
                                     <td><?php echo $val['num_dossier_valide']; ?></td>
                                     <td><?php echo $val['title']; ?></td>
                                     <td><?php echo $val['firstname1']; ?></td>
-                                    <td><?php echo 'Adress P'; ?></td>
+                                    <td><?php echo $val['adress1']; ?></td>
                                     <td></td>
                                     <td></td>
                                     <td><?php if ($val['type_travaux_finan'] != "") echo $val['type_travaux_finan']; else echo '-'; ?></td>
@@ -96,7 +96,7 @@
                                 <select class="form-control col-md-7 col-xs-12" name="nom" id="nom">
                                     <option></option>
                                     <?php foreach ($data_client['client'] as $val){ ?>
-                                        <option value="<?php echo $val['marriedname'] ?>" ><?php echo $val['marriedname']; ?></option>
+                                        <option value="<?php echo $val['firstname1'] ?>" ><?php echo $val['firstname1']; ?></option>
                                     <?php } ?>
                                 </select>
 
