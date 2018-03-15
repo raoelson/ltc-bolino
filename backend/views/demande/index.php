@@ -181,7 +181,7 @@
                                 <p style="margin-top: 9px !important">
                                     Oui: <input type="radio" class="flat" name="art" value="1">
                                     Non: <input type="radio" class="flat" name="art" value="0" checked="" required>
-                                </p>
+                                </p> 
                             </div>
                         </div>
 

@@ -5,7 +5,7 @@ class Demande_model extends CI_Model{
 	private $table3 = 'housing';
 	private $id = 'id';
 	
-
+ 
 	public function add($posts){
 
 		$this->db->insert($this->table, $posts);

@@ -30,7 +30,7 @@ $(document).ready(function() {
            
         }else{
             $('#div_nom_artisan').removeAttr("style");
-        }  
+        }   
 
     });
 });
