@@ -6,8 +6,7 @@
 		<div class="title_right" style="float: right;">
 			<div
 				class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
-				<a href="#ancre" id="nouveau" class="btn btn-success"
-					style="width: 100%" type="button">Nouveau</a>
+				<button  id="nouveau" class="btn btn-success" style="width: 100%" type="button">Nouveau</button>
 			</div>
 		</div>
 	</div>
@@ -46,7 +45,7 @@
                                     <td><?php echo $val['demandeid']; ?></td>
                                     <td><?php echo $val['num_dossier_valide']; ?></td>
                                     <td><?php echo $val['title']; ?></td>
-                                    <td><?php echo $val['marriedname']; ?></td>
+                                    <td><?php echo $val['firstname1']; ?></td>
                                     <td><?php echo 'Adress P'; ?></td>
                                     <td></td>
                                     <td></td>
@@ -73,11 +72,13 @@
 			</div>
 		</div>
 	</div>
-	<form class="form-horizontal form-label-left" novalidate
-		action="<?php echo base_url('admin.php/demande_saves');?>"
-		method="post">
-		<div class="row" id="ancre">
-			<div class="col-md-12 col-sm-12 col-xs-12">
+
+    <div id="ajout">
+            <form class="form-horizontal form-label-left" novalidate
+        action="<?php echo base_url('admin.php/demande_saves');?>"
+        method="post">
+        <div class="row" id="ancre">
+            <div class="col-md-12 col-sm-12 col-xs-12">
 
                 <div class="x_panel">
                     <div class="x_title">
@@ -129,7 +130,7 @@
                     </div>
                 </div>
 
-                
+               
 
                 <div class="x_panel">
                     <div class="x_title">
@@ -144,7 +145,7 @@
                                    for="name">Détail de devis du propriétaire
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                               <p style="margin-top: 9px !important"><input id="detail_devis" class="flat" name="detail_devis" type="checkbox"></p>
+                               <p style="margin-top: 9px !important"><input id="detail_devis" class="flat" name="detail_devis" type="checkbox" ></p>
                             </div>
                         </div>
 
@@ -154,7 +155,7 @@
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="btn_activ btn btn-info">
-                                    <input id="file" type="file" multiple>
+                                    <input id="file" name="fileTest" type="file" multiple disabled="">
                                 </div>
                             </div>
                         </div>
@@ -179,18 +180,18 @@
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <p style="margin-top: 9px !important">
                                     Oui: <input type="radio" class="flat" name="art" value="1">
-                                    Non: <input type="radio" class="flat" name="art" value="0">
+                                    Non: <input type="radio" class="flat" name="art" value="0" checked="" required>
                                 </p>
                             </div>
                         </div>
 
-                        <div class="item form-group">
+                        <div class="item form-group" id="div_nom_artisan" style="display: none; height: 40px !important;">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12"
                                    for="name">Nom de l'artisan
                             </label>
 
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <select id="name" name="name" class="form-control">
+                                <select id="nameArt" name="nameArt" class="form-control">
                                     <option value="Paul">Paul</option>
                                     <option value="Tony">Tony</option>
                                     <option value="Eric">Eric</option>
@@ -203,21 +204,30 @@
                     </div>
                 </div>
 
-			</div>
-						
-		</div>
-		<div class="ln_solid"></div>
-		<div class="form-group">
-			<center>
-				<div class="col-md-6 col-md-offset-3">
-					<button type="reset" class="btn btn-primary">Effacer</button>
-					<button id="send" type="submit" class="btn btn-success">Enregistrer</button>
-				</div>
-		
-		</div>
-		</center>
-	</form>
+            </div>
+                        
+        </div>
+        <div class="ln_solid"></div>
+        <div class="form-group">
+            <center>
+                <div class="col-md-6 col-md-offset-3">
+                    <button type="reset" class="btn btn-primary">Effacer</button>
+                    <button id="send" type="submit" class="btn btn-success">Enregistrer</button>
+                </div>
+        
+        </div>
+        </center>
+    </form>
+    </div>
+
+
 	<br />
 
 </div>
+
 <script src="<?php echo base_url() ?>assets/backend/js/sites/clients/clients.js"></script>
+<script src="<?php echo base_url() ?>assets/backend/js/sites/demande/demande.js"></script>
+
+
+
+
