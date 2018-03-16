@@ -223,12 +223,14 @@ modal confirmation
 }
 .ak
 {
-    border: 2px solid cadetblue;
+    border: 2px solid red;
     padding: 5px;
-    width: 40%;
+    width: 30%;
     font-family: arial;
-    border-radius: 10px;
-    font-size: 15px
+    border-radius: 22px;
+    font-size: 15px;
+    /* background: border-box; */
+    background: white;
 }
 .put{
 
