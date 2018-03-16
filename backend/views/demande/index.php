@@ -34,6 +34,7 @@
 								<th>Date d'arrivée</th>
 								<th>Montant du devis</th>
 								<th>Montant de l'aide</th>
+                                <th>Statut</th>
                                 <th>Action</th>
 
 							</tr>
@@ -60,6 +61,31 @@
                                         ?>
 
                                     </td>
+                                    <td>
+                                        <!--affichage en cours-->
+                                        <?php
+                                        $value = $val['statut'];
+                                        $validee = "Validée";
+                                        $refusee = "Refusée";
+                                        if($value==$validee)
+                                        {
+                                            ?>
+                                            <button class="badge bg-green ">
+                                                <?php echo $validee;?>
+                                            </button>
+                                            <?php
+                                        }
+                                        else if($value==$refusee)
+                                        {
+                                            ?>
+                                            <button class="badge bg-red">
+                                                <?php echo $refusee;?>
+                                            </button>
+                                            <?php
+                                        }
+                                            ?>
+
+                                    </td>
                                     <td><a href="<?php  echo base_url('admin.php/demande/details/'.$val['demandeid']) ?>" id="modifier" title="Voir les détails"
                                     class="btn btn-round btn-default"><span class="gly fa fa-eye"></span></a></td>
 
@@ -82,28 +108,37 @@
 
                 <div class="x_panel">
                     <div class="x_title">
-                        <h5>Informations sur le propriétaire</h5>
-                        <div class="clearfix"></div>
+                        <h5>Propriétaire</h5>
                     </div>
-                    <div class="x_content">
 
+                    <div class="x_content">
                         <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                             <label class="control-label col-md-3 col-sm-3 col-xs-12"
                                    for="name">Nom<span class="required">*</span>
-                            </label>
+                               </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
 
-                                <select class="form-control col-md-7 col-xs-12" name="nom" id="nom">
+                               <select class="form-control col-md-7 col-xs-12" name="nom" id="nomProp" data-placeholder="Le Nom du Propriétaire" >
                                     <option></option>
                                     <?php foreach ($data_client['client'] as $val){ ?>
                                         <option value="<?php echo $val['firstname1'] ?>" ><?php echo $val['firstname1']; ?></option>
                                     <?php } ?>
-                                </select>
 
+                               </select>
 
                             </div>
                         </div>
+                    </div>
 
+                </div>
+
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h5>Informations du dossier</h5>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="x_content">
 
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12"
@@ -113,6 +148,20 @@
                                 <input id="date_arrivee" class="form-control col-md-7 col-xs-12"
                                        name="date_arrivee" placeholder="" required="required"
                                        type="date">
+                            </div>
+                        </div>
+
+                        <div class="item form-group" id="div_nom_artisan">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                   for="name">Statut
+                            </label>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <select id="statut" name="statut" class="form-control">
+                                    <option value="Validée">Validée</option>
+                                    <option value="Refusée">Refusée</option>
+
+                                </select>
                             </div>
                         </div>
 
@@ -139,6 +188,38 @@
                     </div>
                     <div class="x_content">
 
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                   for="name">Artisan
+                            </label>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <p style="margin-top: 9px !important">
+                                    Oui: <input type="radio" class="flat" name="art" value="1">
+                                    Non: <input type="radio" class="flat" name="art" value="0" checked="" required>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                   for="name">Nom de l'artisan
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input class="form-control col-md-7 col-xs-12" id="nomArt" class="flat" name="nomArt" type="text" >
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                   for="name">Type des travaux
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <select id="nameArt" name="nameArt" class="form-control">
+                                    <option value="">Travaux 1</option>
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12"
@@ -163,7 +244,7 @@
 
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12"
-                                   for="name">Montant du devis du propriétaire <span class="required">*</span>
+                                   for="name">Montant du devis <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input id="montant_devis" class="form-control col-md-7 col-xs-12"
@@ -174,18 +255,18 @@
 
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12"
-                                   for="name">Artisan
+                                   for="type_trav">Type des travaux
                             </label>
-
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <p style="margin-top: 9px !important">
-                                    Oui: <input type="radio" class="flat" name="art" value="1">
-                                    Non: <input type="radio" class="flat" name="art" value="0" checked="" required>
-                                </p> 
+                                <input id="type_trav" class="form-control col-md-7 col-xs-12"
+                                       name="type_trav" placeholder="" required="required"
+                                       type="text">
                             </div>
                         </div>
 
-                        <div class="item form-group" id="div_nom_artisan" style="display: none; height: 40px !important;">
+
+
+                        <div class="item form-group" id="div_nom_artisan">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12"
                                    for="name">Nom de l'artisan
                             </label>
@@ -214,9 +295,9 @@
                     <button type="reset" class="btn btn-primary">Effacer</button>
                     <button id="send" type="submit" class="btn btn-success">Enregistrer</button>
                 </div>
-        
+            </center>
         </div>
-        </center>
+
     </form>
     </div>
 
@@ -225,8 +306,17 @@
 
 </div>
 
-<script src="<?php echo base_url() ?>assets/backend/js/sites/clients/clients.js"></script>
-<script src="<?php echo base_url() ?>assets/backend/js/sites/demande/demande.js"></script>
+
+<link href="<?php echo base_url('assets/backend/css/demande/chosen.css')?>" rel="stylesheet"/>
+<link href="<?php echo base_url('assets/backend/css/demande/prism.css')?>" rel="stylesheet"/>
+
+<script src="<?php echo base_url('assets/backend/js/demande/chosen.proto.min.js')?>"></script>
+<script src="<?php echo base_url('assets/backend/js/demande/chosen.jquery.min.js')?>"></script>
+<script src="<?php echo base_url('assets/backend/js/demande/site.js')?>"></script>
+<script src="<?php echo base_url('assets/backend/js/sites/demande/demande.js')?>"></script>
+
+
+
 
 
 

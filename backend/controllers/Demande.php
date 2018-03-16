@@ -7,6 +7,7 @@ class Demande extends CI_Controller{
 		$this->load->model('Demande_model', 'demande');
 		$this->load->model('Clients_model', 'client');
 		$this->load->model('Owneradresse_model', 'owneradresse');
+		$this->load->model('Devis_model', 'devismodel');
 	}
 
 	public function index(){
@@ -14,8 +15,6 @@ class Demande extends CI_Controller{
 		$data['demande'] = $this->demande->get_all();
 		$data_client['client'] = $this->client->get_all();
 		$this->template->title ( 'Gestions des demandes' )->build ( 'demande/index', array ('data' =>$data, 'data_client' => $data_client));
-
-
 	}
 
 	public function save(){
@@ -26,26 +25,30 @@ class Demande extends CI_Controller{
 		$aide = ($posts['montant_devis'] > 10500) ? 10500 : ($posts['montant_devis']); 
 
 		foreach ($ownerId as $row) {
-
 			$dataDemande = array (
 				'num_dossier_valide' => $posts['num_dossier_valide'],
 				'date_arrivee' => $posts['date_arrivee'],
 				'montant_devis' => $posts['montant_devis'],
 				'owner_id' => $row->id,
-				'montant_aide_dept' => $aide
-                //'housing_id' => $row->housing.id
-			
+				'montant_aide_dept' => $aide,
+                'statut' => $posts['statut']
 			);
 		}
-		$this->demande->add($dataDemande);
-		//$this->demande->addOwnerId($iddemande);
+
+        $iddemande = $this->demande->add($dataDemande);
+
+		$dataDevis = array(
+		    'montant' => $posts['montant_devis'],
+            'demande_id' => $iddemande
+        );
+
+
+        $this->devismodel->add($dataDevis);
+
 	}
 
 
-	//Details
-	public function details($id){
-		$this->template->title ( 'Gestions des Demandes' )->build ( 'demande/details');
-	}
+
 
 
 }
