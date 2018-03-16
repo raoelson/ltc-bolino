@@ -21,7 +21,7 @@ class Demande_model extends CI_Model{
 		
 	}
 
-	/*public function getHousingId($id){
+	 /*public function getHousingId($id){
 	    $this->db->select('id')->from('housing')->where('owner_id', $id);
 	    $query = $this->db->get();
     }*/

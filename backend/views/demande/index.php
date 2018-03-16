@@ -307,7 +307,7 @@
 </div>
 
 
-<link href="<?php echo base_url('assets/backend/css/demande/chosen.css')?>" rel="stylesheet"/>
+ <link href="<?php echo base_url('assets/backend/css/demande/chosen.css')?>" rel="stylesheet"/>
 <link href="<?php echo base_url('assets/backend/css/demande/prism.css')?>" rel="stylesheet"/>
 
 <script src="<?php echo base_url('assets/backend/js/demande/chosen.proto.min.js')?>"></script>
