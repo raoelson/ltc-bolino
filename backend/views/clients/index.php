@@ -24,32 +24,34 @@
 						class="table table-striped table-bordered">
 						<thead>
 							<tr>
-								<th>Identité</th>								
-								<th>Nom</th>
+								<th>Civilité</th>								
+								<th>Nom de naissance</th>
+								<th>Nom marital</th>
 								<th>Prénom</th>
-								<th>Nom Organisme</th>
-								<th>Montant de l'aide</th>
-								<th>Type des travaux</th>
+								<th>Adresse1</th>
+								<th>Adresse2</th>
+								<th>Ville</th>
 								<th>Etat</th>
-								<th>Logement</th>
+								<th>Logement du propriétaire<br/>(Maison à rénover)</th>
 								<th>Actions</th>
 							</tr>
 						</thead>
 						<tbody>
 						<?php foreach ($data['clients'] as $val){ ?>
-						<tr id="<?php echo ($val['id']) ;?>">
-								<td><?php echo ($val['title']) ;?></td>
-								<td><?php echo ($val['firstname1']) ;?></td>
-								<td><?php echo ($val['firstname2']) ;?></td>
-								<td><?php if($val['nom_organisme'] != "") echo ($val['nom_organisme']); else echo "-" ;?></td>
-								<td><?php echo ($val['montant_aide']) ;?></td>
-								<td><?php if($val['type_travaux_finan'] != "") echo ($val['type_travaux_finan']) ; else echo "-";?></td>								
+						<tr id="<?php echo ($val['clientid']) ;?>">
+								<td><?php echo ($val['indentite']) ;?></td>
+								<td><?php echo ($val['clientNom']) ;?></td>
+								<td><?php echo ($val['nommarie']) ;?></td>
+								<td><?php echo ($val['clientPrenom']) ;?></td>
+								<td><?php echo ($val['adresseAdresse1']) ;?></td>
+								<td><?php if($val['adresseAdresse2'] != "") echo ($val['adresseAdresse2']); else echo "-" ;?></td>									
+								<td><?php echo ($val['adresseVille']) ;?></td>							
 								<td><?php
 									$titre  = 'title="Assigner à un logement"';
 									$disabled_ = "";
 									$etat = "badge bg-green";
 									$textEtat = "Activé";
-								 if($val['etat'] == 0) {
+								 if($val['clientEtat'] == 0) {
 								 	$etat = "badge bg-orange";
 								 	$textEtat = "désactivé";
 								 	$titre  = 'title="Veuillez activez ce propriétaire après vous assignerez à un logement"';
@@ -59,11 +61,11 @@
 								</td>
 								
 								<td>
-									<a href="<?php  echo base_url('admin.php/logements/index/'.$val['id']) ?>" <?php echo $disabled_; echo $titre;?>
+									<a href="<?php  echo base_url('admin.php/logements/index/'.$val['clientid']) ?>" <?php echo $disabled_; echo $titre;?>
 									class="btn btn-round btn-default"><span class="gly fa fa-plus"></span></a>
 								</td>
 								<td>
-									<a href="<?php  echo base_url('admin.php/clients/details/'.$val['id']) ?>" id="modifier" title="Voir les détails"
+									<a href="<?php  echo base_url('admin.php/clients/details/'.$val['clientid']) ?>" id="modifier" title="Voir les détails"
 									class="btn btn-round btn-default"><span class="gly fa fa-eye"></span></a>
 								</td>
 							</tr>
@@ -88,7 +90,7 @@
 					<div class="x_content">
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Identité <span class="required">*</span>
+								for="name">Civilité<span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<p style="margin-top: 9px !important">
@@ -102,10 +104,10 @@
 						</div>
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Nom martial </label>
+								for="name">Nom marital </label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input id="marriedname" class="form-control col-md-7 col-xs-12"
-									type="text" name="marriedname" placeholder="Nom martial...">
+									type="text" name="marriedname" placeholder="Nom marital...">
 							</div>
 						</div>
 						<div class="item form-group">
@@ -205,7 +207,7 @@
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input id="montant_aide" class="form-control col-md-7 col-xs-12"
-									name="montant_aide" placeholder="Montant à aider ..."
+									name="montant_aide" placeholder="Montant de l'aide ..."
 									type="text">
 							</div>
 						</div>
@@ -250,11 +252,11 @@
 						</div>
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Lieudit 
+								for="name">Lieu-dit 
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input id="lieu_dit" class="form-control col-md-7 col-xs-12"
-									name="lieu_dit" placeholder="Lieudit..." 
+									name="lieu_dit" placeholder="Lieu-dit..." 
 									type="text">
 							</div>
 						</div>
@@ -274,6 +276,14 @@
 									<?php }
 									 ?>
 								
+								</select>
+							</div>
+						</div>
+						<div class="item form-group" >
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">Région<span class="required" id="addclass">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<select id="region" name="region" class="form-control col-md-7 col-xs-12" required="required">
 								</select>
 							</div>
 						</div>

@@ -35,7 +35,7 @@
 					<div class="x_content">
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Indentité <span class="required">*</span>
+								for="name">Civilité <span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<p style="margin-top: 9px !important" >
@@ -61,10 +61,10 @@
 						</div>
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Nom martial </label>
+								for="name">Nom marital </label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input id="marriedname" class="form-control col-md-7 col-xs-12"
-									type="text" name="marriedname" value="<?php echo $data[0]['nommarie'];?>" placeholder="Nom martial..." <?php  echo $disabled_;?> >
+									type="text" name="marriedname" value="<?php echo $data[0]['nommarie'];?>" placeholder="Nom marital..." <?php  echo $disabled_;?> >
 							</div>
 						</div>
 						<div class="item form-group">
@@ -165,11 +165,11 @@
 						<div class="item form-group" id="div_montant_aide"
 							style="<?php echo $testAide;?>; height: 40px !important;">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Montant à aider<span class="required" id="addclass">*</span>
+								for="name">Montant de l'aide<span class="required" id="addclass">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input id="montant_aide" class="form-control col-md-7 col-xs-12" <?php  echo $disabled_;?> 
-									name="montant_aide" placeholder="Montant à aider ..."
+									name="montant_aide" placeholder="Montant de l'aide ..."
 									type="text" value="<?php echo $data[0]['clientMontant'];?>">
 							</div>
 						</div>
@@ -214,11 +214,11 @@
 						</div>
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="name">Lieudit 
+								for="name">Lieu-dit 
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input id="lieu_dit" class="form-control col-md-7 col-xs-12"
-									name="lieu_dit" placeholder="Lieudit..." 
+									name="lieu_dit" placeholder="Lieu-dit..." 
 									type="text" value="<?php echo $data[0]['adresseLieu'];?>" <?php  echo $disabled_;?> />
 							</div>
 						</div>
@@ -240,7 +240,15 @@
 								</select>
 							</div>
 						</div>
-
+						<div class="item form-group" >
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">Région<span class="required" id="addclass">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<select id="region" name="region" class="form-control col-md-7 col-xs-12" required="required"
+								<?php  echo $disabled_;?> >>
+								</select>
+							</div>
+						</div>
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Ville  <span class="required" id="addclass" >*</span>
@@ -641,6 +649,7 @@
 <script type="text/javascript">
         var dataTotal = "<?php echo count($data);?>";
         var dataVille = "<?php echo $data[0]['adresseVille'];?>";
+        var dataRegion = "<?php echo $data[0]['adresseRegion'];?>";
         var urlRedirect = "<?php echo  base_url () . "admin.php/clients" ;?>";
         var urlDetails = "<?php echo  base_url () . "admin.php/clients/details/".$data[0]['clientid']."" ;?>";
     </script>
