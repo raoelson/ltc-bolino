@@ -15,9 +15,24 @@ var validator = (function($){
     /* general text messages
     */
     message = {
-        invalid         : 'invalid input',
+       /* invalid         : 'invalid input',
         checked         : 'must be checked',
         empty           : 'please put something here',
+        min             : 'input is too short',
+        max             : 'input is too long',
+        number_min      : 'too low',
+        number_max      : 'too high',
+        url             : 'invalid URL',
+        number          : 'not a number',
+        email           : 'email address is invalid',
+        email_repeat    : 'emails do not match',
+        password_repeat : 'passwords do not match',
+        repeat          : 'no match',
+        complete        : 'input is not complete',
+        select          : 'Please select an option'*/
+        invalid         : 'entrée invalide',
+        checked         : 'doit être vérifié',
+        empty           : 'veuillez remplir le champs vide',
         min             : 'input is too short',
         max             : 'input is too long',
         number_min      : 'too low',

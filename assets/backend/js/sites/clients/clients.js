@@ -273,26 +273,50 @@ $(document)
 						 $('#totalFoyer').text(sommeGeneral + " € ");
 				}
 				if($('#pays').val() != ""){
-					$('#ville').html("");
-					$.postJSON(BASE_URL + "villes/getWhere/",{
+					$('#region').html("");					
+					$.postJSON(BASE_URL + "regions/getWhere/",{
 							"id": $('#pays').val()
 						},ChargementCallback);
 				}
-				$('#pays').change(function(){					
+				$('#pays').change(function(){	
+					$('#ville').html("");				
 					var id = $(this).val();
-					$('#ville').html("");
-					$.postJSON(BASE_URL + "villes/getWhere/",{
+					$('#region').html("");
+					$.postJSON(BASE_URL + "regions/getWhere/",{
 							"id": id
 						},ChargementCallback);
 				});
+				$('#region').change(function(){
+					$('#ville').html("");
+					$.postJSON(BASE_URL + "villes/getWhere/",{
+						"id": $('#region').val()
+					},ChargementVilleCallback);
+				})
 
 				
 		});
-ChargementCallback = function(json){
-	
+
+ChargementCallback = function(json){	
 	var tbody ="";
 	$.each(json['data'],function(i,elt){
-		tbody+="<option value='"+elt.nom_region_fr+"'>"+elt.nom_region_fr+"</option>"						
+		tbody+="<option value='"+elt.id+"'>"+elt.nom_region_fr+"</option>"						
+	});
+	$('#region').append(tbody);
+
+	if($('#region').val() != ""){
+		$('#ville').html("");
+		$.postJSON(BASE_URL + "villes/getWhere/",{
+			"id": $('#region').val()
+		},ChargementVilleCallback);
+	}
+
+	
+}
+
+ChargementVilleCallback = function(json){
+	var tbody ="";
+	$.each(json['data'],function(i,elt){
+		tbody+="<option value='"+elt.id+"'>"+elt.nom_ville_fr+"</option>"						
 	});
 	$('#ville').append(tbody);
 }

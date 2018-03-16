@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>LTC-BOLINO | <?php echo $template['title'] ;?></title>
+    <title>L.T.C Assistance Group | <?php echo $template['title'] ;?></title>
       <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -76,7 +76,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title">LTC-BOLINO</span></a>
+              <a href="index.html" class="site_title">L.T.C Assistance Group</span></a>
             </div>
 
             <div class="clearfix"></div>

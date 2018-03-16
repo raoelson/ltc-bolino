@@ -194,34 +194,61 @@ $(document)
 
 
 				if($('#pays').val() != ""){
-					$('#ville').html("");
-					$.postJSON(BASE_URL + "villes/getWhere/",{
+					$('#region').html("");
+					$.postJSON(BASE_URL + "regions/getWhere/",{
 							"id": $('#pays').val()
 						},ChargementCallback);
 				}
 				$('#pays').change(function(){					
 					var id = $(this).val();							
-					$('#ville').html("");
-					$.postJSON(BASE_URL + "villes/getWhere/",{
+					$('#region').html("");
+					$.postJSON(BASE_URL + "regions/getWhere/",{
 							"id": id
 						},ChargementCallback);
 				});
+
+				$('#region').change(function(){
+					$('#ville').html("");
+					$.postJSON(BASE_URL + "villes/getWhere/",{
+						"id": $('#region').val()
+					},ChargementVilleCallback);
+				})
 				
 		});
 
 ChargementCallback = function(json){
-	
+	console.log(dataRegion);
 	var tbody ="";
 	$.each(json['data'],function(i,elt){
 		var active = "";
-		if(elt.nom_region_fr == dataVille){
+		if(elt.id == dataRegion){
 			active = "selected=''true";
 		}
-		tbody+="<option value='"+elt.nom_region_fr+"' "+active+" >"+elt.nom_region_fr+"</option>"						
+		tbody+="<option value='"+elt.id+"' "+active+" >"+elt.nom_region_fr+"</option>"						
+	});
+	$('#region').append(tbody);	
+	if($('#region').val() != ""){
+		$('#ville').html("");
+		$.postJSON(BASE_URL + "villes/getWhere/",{
+			"id": $('#region').val()
+		},ChargementVilleCallback);
+	}
+}
+ChargementVilleCallback = function(json){
+	var tbody ="";
+	
+	
+	$.each(json['data'],function(i,elt){
+		var active = "";
+		if(elt.id == dataVille){
+			active = "selected=''true";
+		}
+		tbody+="<option value='"+elt.id+"' "+active+">"+elt.nom_ville_fr+"</option>"						
 	});
 	$('#ville').append(tbody);
+}
 
-	ActiveDesactive = function(id,action){
+ActiveDesactive = function(id,action){
 		$.getJSON(BASE_URL + "clients/getUpdatetat/",{
 			'id' : id,
 			'action' : action
@@ -238,5 +265,5 @@ ChargementCallback = function(json){
 		setTimeout(function(){
 				 window.location = urlDetails;
 			}, 500);
-	}
 }
+
