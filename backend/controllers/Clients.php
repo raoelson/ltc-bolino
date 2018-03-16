@@ -21,7 +21,7 @@ class Clients extends CI_Controller {
 
 	//Affichages des propriétaires
 	public function index() {
-		$data['clients'] = $this->client->get_all();		
+		$data['clients'] = $this->owneradresse->getWhere("");	
 		$data['pays'] = $this->pays->getAllPays();
 		$this->template->title ( 'Gestions des Propriétaires' )->build ( 'clients/index',array('data'=>$data) );
 	}
@@ -54,6 +54,7 @@ class Clients extends CI_Controller {
 				'adress2' => ucwords($posts ['adresse2']),
 				'lieu_dit' => $posts ['lieu_dit'],
 				'cp' => $posts ['cp'],
+				'region' => $posts ['region'],
 				'ville' => $posts ['ville'],
 				'pays' => $posts ['pays'],
 				'phone' => $posts ['phone'],
@@ -61,7 +62,7 @@ class Clients extends CI_Controller {
 				'fax' => $posts ['fax'],
 				'mail' => $posts ['mail']
 		);
-
+		
 		//Modification table Client et Adresse
 		if((isset($posts['idInfoPerso'])) && (isset($posts['idInfoAdresse']))){
 			$idclient = $this->client->modificationclient($dataclient,$posts['idInfoPerso']);

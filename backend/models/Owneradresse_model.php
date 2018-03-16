@@ -11,7 +11,7 @@ class Owneradresse_model extends CI_Model {
 					,adress.adress1 as adresseAdresse1,adress.adress2 as adresseAdresse2,
 					,adress.id as adresseId,adress.lieu_dit as adresseLieu,
 					adress.cp as adresseCp,adress.ville as adresseVille,
-					adress.pays as adressePays,adress.phone as adressePhone,
+					adress.pays as adressePays,adress.phone as adressePhone,adress.region as adresseRegion,
 					adress.cellphone1 as adresseCellphone,adress.mail as adresseMail,adress.fax as adresseFax,
 					parents.id as parentsId,parents.name as parentsNom,parents.firstname as parentsPrenom,DATE_FORMAT(parents.birthdate, "%d/%m/%Y") as parentsBirthdate,
 					link_parents.name as linkparentsNom,link_parents.id as linkparentsId,
@@ -23,9 +23,14 @@ class Owneradresse_model extends CI_Model {
 		$this->db->join ( "link_parents", "link_parents.id = parents.link_parent_id" );
 		//$this->db->join ( "resources", "resources.owner_id = owners.id" );
 		$this->db->join ( "resources", "resources.parent_id = parents.id" );
-		
-		$query = $this->db->get_where ( $this->table, $array );
-		return $query->result_array ();
+		if(is_array ($array)){
+			$query = $this->db->get_where ( $this->table, $array );
+			return $query->result_array ();
+		}else{
+			$this->db->group_by('owners.id');
+			$query = $this->db->get( $this->table, $array );
+			return $query->result_array ();
+		}
 	}
 		
 	public function save($idClient,$id){
