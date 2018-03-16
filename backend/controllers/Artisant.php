@@ -5,13 +5,12 @@ class Artisan extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        if (! $this->cic_auth->is_logged_in ()) {
+        if (!$this->cic_auth->is_logged_in ()) {
             redirect ( base_url () . "admin.php/user_login" );
         }
         $this->load->helper('url');
-
         //$this->load->model('book_model');
-       // $this->load->model('Artisan_model','Artisan_model',TRUE);
+        // $this->load->model('Artisan_model','Artisan_model',TRUE);
         $this->load->model('Artisan_model','Artisan_model');
         $this->load->model('Adress_model','Adress_model');
         $this->load->model('Artisan_Adress_model','Artisan_Adress_model');
@@ -19,10 +18,9 @@ class Artisan extends CI_Controller
         $this->load->model('Type_artisan','Type_artisan');
         //$this->load->model('Artisan_type_model','Artisan_type_model');
         //assurance
-         $this->load->model('Assurance_model','Assurance_model');
+        $this->load->model('Assurance_model','Assurance_model');
         $this->load->model('Type_assurance_model','Type_assurance_model');
         $this->load->model('Type_travaux_artisan','Type_travaux_artisan');
-        $this->load->model ('Pays_model','pays');
 
         //affichage tableau
         $this->load->model('Affichage_artisan','Affichage_artisan');
@@ -34,21 +32,20 @@ class Artisan extends CI_Controller
     public function index()
     {
         //commentaire
+
         $data['data'] = $this->art->get_news();
-        $data['pays'] = $this->pays->getAllPays();
-		$this->template->title ( 'Gestions des artisans' )->build ( 'artisan/index',array('data'=>$data));
+       // $data['sitraka'] = $this->Type_artisan->art_query();
+
+        $this->template->title ( 'Gestions des artisans' )->build ( 'artisan/index',$data);
         //var_dump($data['data']);
         //commentaire
     }
     public function create_artisan()
     {
-       // ajout type travaux
+        // ajout type travaux
         $posts = $this->input->post ();
-
-        //var_dump($posts);
-
         //type artisan
-      $datatype = array (
+        $datatype = array (
             //'id'=>$posts['id'],
             'namee'=>$posts['name'],
         );
@@ -113,13 +110,12 @@ class Artisan extends CI_Controller
             'site_web'=>$posts['site_web'],
         );
         $adresse = $this->Adress_model->create_artisan_query($dataadress);
-
         //artisan
         $dataartisan = array (
 
             'denomination'=>$posts['denomination'],
             'nom_gerant'=>$posts['nom_gerant'],
-            'nombre'=>$posts['nombree'],
+
             'prenom_gerant'=>$posts['prenom_gerant'],
             'statut'=>$posts['statut'],
             'siren'=>$posts['siren'],
@@ -130,11 +126,11 @@ class Artisan extends CI_Controller
             'date_derniere_rcs'=>$posts['date_derniere_rcs'],
             'categorie'=>$posts['categorie'],
             'montant_actif_passif'=>$posts['montant_actif_passif'],
-            'chiffres_affaires'=>$posts['chiffres_affaires'],
+
             'tranche_effectif'=>$posts['tranche_effectif'],
             'type_artisan_id'=>$type_artisan,
             'artisan_adress_id'=>$adresse,
-          // 'assurance_id'=>$assurance,
+            // 'assurance_id'=>$assurance,
             //case à cocher
             'pres_attestation_immat'=>$pres_attestation_immat,
             'pres_kbis'=>$pres_kbis,
@@ -155,60 +151,40 @@ class Artisan extends CI_Controller
                 $datatype_travaux = array (
                     //'id'=>$posts['id'],
                     'name'=>$c,
-                    'artisant_id'=>$artisan,
+                    'artisan_id'=>$artisan,
 
                 );
                 $this->Type_travaux_artisan->create_artisan_query($datatype_travaux);
 
             }
         }
-
         //assurance
-        $nombre  = $posts['nombree'];
+        $nombre  = $posts['nombre'];
         if($nombre != 0) {
             for ($i = 1; $i <= $nombre; $i++) {
                 $j = $i + 1;
-                //recupe donne boucle
                 $nom = ($posts["noms" . $j]);
                 $date_deb = ($posts["date_debs" . $j]);
                 $date_fin = $posts["date_fins" . $j];
                 $assureur = $posts["assureurs" . $j];
                 $telephone = $posts["telephones" . $j];
-                $name=($posts["name_travaux" .$j]);
 
-                //base
-                //type travaux
-                $datatype_travaux = array (
-                    //'id'=>$posts['id'],
-                    'name'=>$name,
-                    'artisant_id'=>$artisan,
-                );
-                $this->Type_travaux_artisan->create_artisan_query($datatype_travaux);
-                //type assurance
-                $datatype_assurance = array (
-                    //'id'=>$posts['id'],
-                    'nom'=>$nom,
-                    'artisan_assurance_id'=>$artisan,
-                );
-                $this->Type_assurance_model->create_artisan_query($datatype_assurance);
-
-                // assurance
                 $dataassurance = array(
-                    'artisans_id' => $artisan,
-                    //'nom' => $nom,
+                    'artisan_id' => $artisan,
+                    'nom' => $nom,
                     'date_deb' => $date_deb,
                     'date_fin' => $date_fin,
                     'assureur' => $assureur,
                     'telephone' => $telephone,
                 );
-                 $this->Assurance_model->create_artisan_query($dataassurance);
+                $this->Assurance_model->create_artisan_query($dataassurance);
             }
         }
         $this->session->set_flashdata ( "success", "Votre donnée  a été bien enregistrée !");
         redirect ( base_url () . "admin.php/artisan" );
 
     }
-    /*public function create_type()
+    public function create_type()
     {
         $posts = $this->input->post ();
 
@@ -222,7 +198,7 @@ class Artisan extends CI_Controller
             echo json_encode(array('status'=>true));
         else
             echo json_encode(array('status'=>false));
-    }*/
+    }
 
     public function edit_artisan()
     {
@@ -259,99 +235,22 @@ class Artisan extends CI_Controller
             //type artisan
             $output['namee']=$row->namee;
             //adress
+            $output['ville']=$row->ville;
+            $output['adress1']=$row->adress1;
+            $output['adress2']=$row->adress2;
+            $output['lieu_dit']=$row->lieu_dit;
+            $output['cp']=$row->cp;
+            $output['pays']=$row->pays;
+            $output['cellphone1']=$row->cellphone1;
+            $output['cellphone2']=$row->cellphone2;
+            $output['fax']=$row->fax;
+            $output['site_web']=$row->site_web;
 
-            //type assurance
-            $output['nom']=$row->nom;
-            $output['date_deb']=$row->date_deb;
-            $output['date_fin']=$row->date_fin;
-            $output['assureur']=$row->assureur;
-            $output['telephone']=$row->telephone;
 
         }
-       // $output['nom_gerant']="test";
+        // $output['nom_gerant']="test";
 
         echo json_encode($output);
 
     }
-    public function details_artisan($id){
-
-        $data = $this->Affichage_artisan->getWhere(array('artisan_id'=>$id));
-        $pays = $this->pays->getAllPays();
-        //print_r((($pays)));die;
-        $this->template->title ( 'Gestions des artisans' )->build ( 'artisan/details_artisan',array('data'=>$data,
-            'pays'=>$pays) );
-        //var_dump($data);die;
-
-
-        //$id_artisan->$this->input->get('id');
-        //$data = $this->Affichage_artisan->affiche_query($id);
-        //print_r((($data)));die;
-        //$this->template->title ( 'Gestions des Propriétaires' )->build ( 'artisan/details_artisan',array('data'=>$data) );
-    }
-
-  /*  public function update()
-    {
-        $id = $this->input->post('id');
-        $posts = $this->input->post ();
-        $data = array(
-            'denomination'=>$posts['denomination'],
-            'nom_gerant'=>$posts['nom_gerant'],
-            'nombre'=>$posts['nombree'],
-            'prenom_gerant'=>$posts['prenom_gerant'],
-            'statut'=>$posts['statut'],
-            'siren'=>$posts['siren'],
-            'code_activite'=>$posts['code_activite'],
-            'libelle_activite'=>$posts['libelle_activite'],
-            'forme_juridique'=>$posts['forme_juridique'],
-            'date_immatriculation'=>$posts['date_immatriculation'],
-            'date_derniere_rcs'=>$posts['date_derniere_rcs'],
-            'categorie'=>$posts['categorie'],
-            'montant_actif_passif'=>$posts['montant_actif_passif'],
-
-        );
-        $this->Affichage_artisan->update_student_id1($id, $data);
-        $this->template->title ( 'Gestions des artisans' )->build ( 'artisan/details_artisan',$data);
-        $this->output->set_content_type ( 'application/json' )
-            ->set_output (json_encode($reponse) );
-        //$this->details_artisan();
-    }*/
-    public function update()
-    {
-        $result=$this->Affichage_artisan->update();
-        if($result)
-        {
-            $this->session->set_flashdata ( "success", "Votre donnée  a été bien modifier !");
-        }
-        else
-        {
-            $this->session->set_flashdata ( "success", " Votre donnée n'été pas enregistrer !");
-        }
-        redirect ( base_url () . "admin.php/artisan/" );
-
-    }
-
-
-
-
-
-    //function de teste
-   /* public function detailsf_artisan(){
-       // $data = $this->Affichage_artisan->getWhere(4);
-        $id=6;
-        $data = $this->Affichage_artisan->getWhere(array('artisan_id'=>$id));
-        echo "<pre>";
-        print_r($data);
-        echo "</pre>";
-        // $id = $this->uri->segment(3);
-
-        //print_r((($data)));die;
-        //$this->template->title ( 'Gestions des artisans' )->build ( 'artisan/details_artisan',array('data'=>$data) );
-        //$id_artisan->$this->input->get('id');
-        //$data = $this->Affichage_artisan->affiche_query($id);
-        //print_r((($data)));die;
-        //$this->template->title ( 'Gestions des Propriétaires' )->build ( 'artisan/details_artisan',array('data'=>$data) );
-
-
-
-    }*/
 }
