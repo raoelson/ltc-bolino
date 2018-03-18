@@ -8,13 +8,21 @@ class Demande extends CI_Controller{
 		$this->load->model('Clients_model', 'client');
 		$this->load->model('Owneradresse_model', 'owneradresse');
 		$this->load->model('Devis_model', 'devismodel');
+		$this->load->model('Type_artisan', 'typeartisan');
+		$this->load->model('Affichage_artisan', 'artisan');
+        $this->load->model('Type_artisan', 'typeartisan');
+
+
 	}
 
 	public function index(){
-
 		$data['demande'] = $this->demande->get_all();
 		$data_client['client'] = $this->client->get_all();
-		$this->template->title ( 'Gestions des demandes' )->build ( 'demande/index', array ('data' =>$data, 'data_client' => $data_client));
+        $type_art = $this->typeartisan->art_query();
+        $arti = $this->artisan->get_news();
+        $typeart = $this->typeartisan->art_query();
+		$this->template->title ( 'Gestions des demandes' )->build ( 'demande/index', array ('data' =>$data, 'data_client' => $data_client,
+            'type_art' => $type_art, 'arti' => $arti, 'typeart' => $typeart));
 	}
 
 	public function save(){
@@ -31,7 +39,8 @@ class Demande extends CI_Controller{
 				'montant_devis' => $posts['montant_devis'],
 				'owner_id' => $row->id,
 				'montant_aide_dept' => $aide,
-                'statut' => $posts['statut']
+                'statut' => $posts['statut'],
+
 			);
 		}
 

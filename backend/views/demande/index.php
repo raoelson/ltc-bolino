@@ -151,7 +151,7 @@
                             </div>
                         </div>
 
-                        <div class="item form-group" id="div_nom_artisan">
+                        <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12"
                                    for="name">Statut
                             </label>
@@ -195,92 +195,172 @@
 
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <p style="margin-top: 9px !important">
-                                    Oui: <input type="radio" class="flat" name="art" value="1">
-                                    Non: <input type="radio" class="flat" name="art" value="0" checked="" required>
+                                    Oui: <input type="radio" class="flat" name="art" value="1"  checked="" required>
+                                    Non: <input type="radio" class="flat" name="art" value="0">
                                 </p>
                             </div>
                         </div>
 
-                        <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
-                                   for="name">Nom de l'artisan
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input class="form-control col-md-7 col-xs-12" id="nomArt" class="flat" name="nomArt" type="text" >
-                            </div>
-                        </div>
+                        <div id="div_oui_artisan">
 
-                        <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
-                                   for="name">Type des travaux
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <select id="nameArt" name="nameArt" class="form-control">
-                                    <option value="">Travaux 1</option>
-                                </select>
-                            </div>
-                        </div>
+                            <div id="div_devis">
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                           for="name">Nom de l'artisan
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="nomArt" class="flat" name="nomArt" type="text" >
+                                    </div>
+                                </div>
 
-                        <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
-                                   for="name">Détail de devis du propriétaire
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                               <p style="margin-top: 9px !important"><input id="detail_devis" class="flat" name="detail_devis" type="checkbox" ></p>
-                            </div>
-                        </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                           for="name">Type de l'artisan
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <select id="nameArt" name="nameArt" class="form-control">
+                                            <?php foreach ($type_art as $trav ){ ?>
+                                                <option value=""><?php echo $trav->name; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
 
-                        <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
-                                   for="name">Devis du propriétaire
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="btn_activ btn btn-info">
-                                    <input id="file" name="fileTest" type="file" multiple disabled="">
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                           for="name">Montant du devis <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input id="montant_devis" class="form-control col-md-7 col-xs-12"
+                                               name="montant_devis" placeholder="" required="required"
+                                               type="text">
+                                    </div>
+                                </div>
+
+                                <div id="a">
+                                    <div class="ln_solid"></div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <center>
+                                    <div class="col-md-6 col-md-offset-3">
+                                        <button id="AfficheArti" type="button" class="btn btn-round btn-success"><span class="fa fa-plus-square-o"></span>&nbsp; AJOUTER UN AUTRE DEVIS</button>
+
+                                    </div>
+                                </center>
+                            </div>
+                            <div class="ln_solid"></div>
+
+                           
+
+                            <!-- <div class="item form-group">
+                                 <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                        for="name">Détail de devis du propriétaire
+                                 </label>
+                                 <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <p style="margin-top: 9px !important"><input id="detail_devis" class="flat" name="detail_devis" type="checkbox" ></p>
+                                 </div>
+                             </div>-->
+
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Détail de devis du propriétaire
+                                </label>
+
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <p style="margin-top: 9px !important">
+                                        <label for="oui">Oui:</label> <input type="radio" class="flat" name="detail_devis" id="oui" value="oui" >
+                                        <label for="non">Non:</label> <input type="radio" class="flat" name="detail_devis" id="non" value="non" checked="">
+                                    </p>
                                 </div>
                             </div>
-                        </div>
 
-
-                        <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
-                                   for="name">Montant du devis <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input id="montant_devis" class="form-control col-md-7 col-xs-12"
-                                       name="montant_devis" placeholder="" required="required"
-                                       type="text">
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="name">Devis du propriétaire
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="btn_activ btn btn-info">
+                                        <input id="file" name="fileTest" type="file" multiple disabled="">
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
 
-                        <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
-                                   for="type_trav">Type des travaux
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input id="type_trav" class="form-control col-md-7 col-xs-12"
-                                       name="type_trav" placeholder="" required="required"
-                                       type="text">
+
+                        <div id="div_non_artisan" style="display: none; height: 40px !important;">
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="typeArt">Type de l'artisan
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <select id="typeArt" name="typeArt" class="form-control">
+                                        <?php foreach ($typeart as $type){?>
+                                            <option> <?php echo $type->name; ?> </option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
 
 
 
-                        <div class="item form-group" id="div_nom_artisan">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
-                                   for="name">Nom de l'artisan
-                            </label>
+                            <div class="item form-group" id="div_nom_artisan">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="name">Nom de l'artisan
+                                </label>
 
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <select id="nameArt" name="nameArt" class="form-control">
-                                    <option value="Paul">Paul</option>
-                                    <option value="Tony">Tony</option>
-                                    <option value="Eric">Eric</option>
-                                    <option value="Ga">Ga</option>
-                                    <option value="Gold">Gold</option>
-                                </select>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <select id="nameArt" name="nameArt" class="form-control">
+                                      <?php foreach ($arti as $art){?>
+                                        <option> <?php echo $art->nom_gerant; ?> </option>
+                                      <?php } ?>
+                                    </select>
+                                </div>
                             </div>
+
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="name">Montant du devis <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="montant_devis_art" class="form-control col-md-7 col-xs-12"
+                                           name="montant_devis_art" placeholder="" required="required"
+                                           type="text">
+                                </div>
+                            </div>
+
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Détail de devis de l'artisan
+                                </label>
+
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <p style="margin-top: 9px !important">
+                                        <label for="oui">Oui:</label> <input type="radio" class="flat" name="detail_devis_art" id="oui" value="oui" >
+                                        <label for="non">Non:</label> <input type="radio" class="flat" name="detail_devis_art" id="non" value="non" checked="">
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="name">Devis de l'artisan
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="btn_activ btn btn-info">
+                                        <input id="file_art" name="fileTest" type="file" multiple disabled="">
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
+
+
 
                     </div>
                 </div>
@@ -314,6 +394,54 @@
 <script src="<?php echo base_url('assets/backend/js/demande/chosen.jquery.min.js')?>"></script>
 <script src="<?php echo base_url('assets/backend/js/demande/site.js')?>"></script>
 <script src="<?php echo base_url('assets/backend/js/sites/demande/demande.js')?>"></script>
+<script>
+    $(document).ready(function(){
+        var max_fields = 10; // maximum input boxes allowed
+        var wrapper = $("#div_devis"); // Fields wrapper
+        var x = 1;
+
+        $('#AfficheArti').click(function(e){
+            e.preventDefault();
+            $('#div_devis').show();
+            var data = "";
+            if(x < max_fields) { //max input box allowed
+                tailleTable = x++;
+                data += '<div class="ln_solid"></div> '
+                data += '<div class="item form-group">';
+                data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nom de l\'artisan </label>';
+                data += '<div class="col-md-6 col-sm-6 col-xs-12">';
+                data += '<input class="form-control col-md-7 col-xs-12" id="nomArt" class="flat" name="nomArt" type="text">';
+                data += '</div>';
+                data += '</div>';
+                data += '<div class="item form-group">';
+                data += '<label class="control-label col-md-3 col-sm-3 col-xs-12"  for="name">Type de l\'artisan</label>';
+                data += '<div class="col-md-6 col-sm-6 col-xs-12">';
+                data += '<select id="nameArt" name="nameArt" class="form-control">';
+                data += '<?php foreach ($type_art as $trav ){ ?>';
+                data += '<option value=""><?php echo $trav->name; ?></option>';
+                data += '<?php } ?>';
+                data += '</select>';
+                data += '</div>';
+                data += '</div>';
+                data += ' <div class="item form-group">';
+                data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Montant du devis <span class="required">*</span>';
+                data += '</label>';
+                data += '<div class="col-md-6 col-sm-6 col-xs-12">';
+                data += '<input id="montant_devis" class="form-control col-md-7 col-xs-12" name="montant_devis" placeholder="" required="required" type="text">';
+                data += '</div>';
+                data += '</div>';
+                $(wrapper).append(data);
+
+               /* $('#EffaceArti').click(function(){
+                    $(wrapper).remove(data),
+                });*/
+            }
+
+
+        });
+
+    });
+</script>
 
 
 

@@ -40,7 +40,6 @@ class Demande_model extends CI_Model{
 	}
 
 
-
 	//Details
 	public function modificationclient($posts,$id){
 		$this->db->update ( $this->table, $posts, array (
