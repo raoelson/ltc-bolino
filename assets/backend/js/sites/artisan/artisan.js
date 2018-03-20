@@ -1,6 +1,15 @@
 
 /*ajout type assurance */
 $('document').ready(function(){
+    $(".single_cal").daterangepicker({
+        singleDatePicker: true,
+        singleClasses: "picker_4",
+        locale: {
+            format: 'DD/MM/YYYY'
+        }
+    }, function(start, end, label) {
+        //console.log(start.toISOString(), end.toISOString(), label);
+    })
     var max_fields = 10; // maximum input boxes allowed
     var wrapper = $("#typeassurancediv").find('#assurancediv'); // Fields wrapper
     var x = 1;
@@ -28,8 +37,6 @@ $('document').ready(function(){
             data += '</div>';
 
 
-
-
             //type assurance
             data += '<div class="item form-group">';
             data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Type assurance<span class="required" id="addclass">*</span></label>';
@@ -46,14 +53,14 @@ $('document').ready(function(){
             data += '<div class="item form-group">';
             data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date début assurance<span class="required" id="addclass">*</span></label>';
             data += '<div class="col-md-6 col-sm-6 col-xs-12">';
-            data += '<input   required="required"  class="form-control col-md-7 col-xs-12" name="date_debs' + (x) + '"  type="date">';
+            data += '<input   required="required"  class="single_cal form-control col-md-7 col-xs-12" name="date_debs' + (x) + '"  type="text">';
             data += '</div>';
             data += '</div>';
 
             data += '<div class="item form-group">';
             data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date fin assurance<span class="required" id="addclass">*</span></label>';
             data += '<div class="col-md-6 col-sm-6 col-xs-12">';
-            data += '<input  required="required"  class="form-control col-md-7 col-xs-12" name="date_fins' + (x) + '"  type="date">';
+            data += '<input required="required"  class="single_cal form-control col-md-7 col-xs-12" name="date_fins' + (x) + '"  type="text">';
             data += '</div>';
             data += '</div>';
 
@@ -82,6 +89,16 @@ $('document').ready(function(){
             assChargementSelect();
             travauxChargementSelect();
 
+            $(".single_cal").daterangepicker({
+                singleDatePicker: true,
+                singleClasses: "picker_4",
+                locale: {
+                    format: 'DD/MM/YYYY'
+                }
+            }, function(start, end, label) {
+                //console.log(start.toISOString(), end.toISOString(), label);
+            })
+
         }
         $('input[name="nombree"]').val(tailleTable);
 
@@ -99,14 +116,8 @@ $('document').ready(function(){
 
     });
 
-    //type categorie
-    pChargementSelect();
-    $(".ajout_categorie").click(function(){
-        $.postJSON(BASE_URL+'/typeartisan/saves_categorie/',{
-            'name_cat' : $("#namecategorie").val()
-        },saveCallbacka);
 
-    });
+
 
     //type assurance
     $(".ajout_assurance").click(function(){
@@ -124,18 +135,25 @@ $('document').ready(function(){
     });
     //pays et ville
     if($('#pays').val() != ""){
-        $('#ville').html("");
-        $.postJSON(BASE_URL + "villes/getWhere/",{
+        $('#region').html("");
+        $.postJSON(BASE_URL + "regions/getWhere/",{
             "id": $('#pays').val()
         },ChargementCallback);
     }
     $('#pays').change(function(){
-        var id = $(this).val();
         $('#ville').html("");
-        $.postJSON(BASE_URL + "villes/getWhere/",{
+        var id = $(this).val();
+        $('#region').html("");
+        $.postJSON(BASE_URL + "regions/getWhere/",{
             "id": id
         },ChargementCallback);
     });
+    $('#region').change(function(){
+        $('#ville').html("");
+        $.postJSON(BASE_URL + "villes/getWhere/",{
+            "id": $('#region').val()
+        },ChargementVilleCallback);
+    })
 
 });
 
@@ -164,28 +182,8 @@ saveCallback = function(json){
 }
 /****************categorie******************/
 
-pChargementSelect = function(){
-    $.getJSON(BASE_URL+'/typeartisan/inde/',
-        {},
-        SelectoCallback
-    )};
 
-SelectoCallback = function(json){
-     $("#typecategorie").html("");
-    var body = "";
-    $.each(json.data,function(i,elt){
-        body+="<option value='"+elt.name_cat+"'>"+elt.name_cat+"</option>";
-    });
-    $("#typecategorie").append(body);
-    //consol.log($('#typecategorie').val())
 
-};
-saveCallbacka = function(json){
-    if(json != 0){
-        pChargementSelect();
-        $('#modal_artisan').modal('toggle');
-    }
-}
 /****************type assurance******************/
 assChargementSelect = function(){
     $.getJSON(BASE_URL+'/typeartisan/home/',
@@ -235,13 +233,66 @@ saveCallbacktravaux = function(json){
 /****************pays et ville******************/
 
 ChargementCallback = function(json){
-
     var tbody ="";
     $.each(json['data'],function(i,elt){
-        tbody+="<option value='"+elt.nom_region_fr+"'>"+elt.nom_region_fr+"</option>"
+        tbody+="<option value='"+elt.id+"'>"+elt.nom_region_fr+"</option>"
+    });
+    $('#region').append(tbody);
+
+    if($('#region').val() != ""){
+        $('#ville').html("");
+        $.postJSON(BASE_URL + "villes/getWhere/",{
+            "id": $('#region').val()
+        },ChargementVilleCallback);
+    }
+
+
+}
+
+ChargementVilleCallback = function(json){
+    var tbody ="";
+    $.each(json['data'],function(i,elt){
+        tbody+="<option value='"+elt.id+"'>"+elt.nom_ville_fr+"</option>"
     });
     $('#ville').append(tbody);
 }
 
+
+
+
+/****************categorie******************/
+$('document').ready(function(){
+    pChargementSelectaa();
+    $(".ajout_categorie").click(function(){
+        $.postJSON(BASE_URL+'/typeartisan/saves_categorie/',{
+            'name_cat' : $("#namecategorie").val()
+        },saveCallbacka);
+
+    });
+});
+
+
+pChargementSelectaa = function(){
+    $.getJSON(BASE_URL+'/typeartisan/inde/',
+        {},
+        SelectoCallback
+
+    )};
+
+SelectoCallback = function(json){
+    $(".typecategorie").html("");
+    var body = "";
+    $.each(json.data,function(i,elt){
+        body+="<option value='"+elt.name_cat+"'>"+elt.name_cat+"</option>";
+    });
+    $(".typecategorie").append(body);
+
+};
+saveCallbacka = function(json){
+    if(json != 0){
+        pChargementSelectaa();
+        $('#modal_artisan').modal('toggle');
+    }
+}
 
 

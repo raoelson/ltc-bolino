@@ -104,6 +104,7 @@ class Artisan extends CI_Controller
             'lieu_dit'=>$posts['lieu_dit'],
             'cp'=>$posts['cp'],
             'ville'=>$posts['ville'],
+            'region' => $posts['region'],
             'pays'=>$posts['pays'],
             'phone'=>$posts['phone'],
             'cellphone1'=>$posts['cellphone1'],
@@ -116,7 +117,6 @@ class Artisan extends CI_Controller
 
         //artisan
         $dataartisan = array (
-
             'denomination'=>$posts['denomination'],
             'nom_gerant'=>$posts['nom_gerant'],
             'nombre'=>$posts['nombree'],
@@ -147,7 +147,7 @@ class Artisan extends CI_Controller
         $artisan = $this->Artisan_model->create_artisan_query($dataartisan);
         $this->Artisan_Adress_model->create($artisan,$adresse);
         //type travaux
-        $travaux=$posts['name_travaux'];
+       /* $travaux=$posts['name_travaux'];
         if($travaux)
         {
             foreach ($travaux as $c)
@@ -161,7 +161,7 @@ class Artisan extends CI_Controller
                 $this->Type_travaux_artisan->create_artisan_query($datatype_travaux);
 
             }
-        }
+        }*/
 
         //assurance
         $nombre  = $posts['nombree'];
@@ -320,11 +320,11 @@ class Artisan extends CI_Controller
         $result=$this->Affichage_artisan->update();
         if($result)
         {
-            $this->session->set_flashdata ( "success", "Votre donnée  a été bien modifier !");
+            $this->session->set_flashdata ( "success", "Vos données  sont modifiées !");
         }
         else
         {
-            $this->session->set_flashdata ( "success", " Votre donnée n'été pas enregistrer !");
+            $this->session->set_flashdata ( "success", " Vos données  sont modifiées !");
         }
         redirect ( base_url () . "admin.php/artisan/" );
 
@@ -335,13 +335,14 @@ class Artisan extends CI_Controller
 
 
     //function de teste
-   /* public function detailsf_artisan(){
+    public function detailsf_artisan(){
        // $data = $this->Affichage_artisan->getWhere(4);
-        $id=6;
+        $id=43;
         $data = $this->Affichage_artisan->getWhere(array('artisan_id'=>$id));
-        echo "<pre>";
+        var_dump($data);
+        /*echo "<pre>";
         print_r($data);
-        echo "</pre>";
+        echo "</pre>";*/
         // $id = $this->uri->segment(3);
 
         //print_r((($data)));die;
@@ -353,5 +354,5 @@ class Artisan extends CI_Controller
 
 
 
-    }*/
+    }
 }

@@ -223,9 +223,10 @@
                             ?>
                             <form class="form-horizontal form-label-left" id="frm-create" action="<?php echo base_url('admin.php/artisan/update');?>"
                                   method="post">
-                                <input type="text"  name="idartisan" value="<?php echo $data[0]['idartisan'];?>"  class="form-control">
-                                <input type="text"  name="idadress" value="<?php echo $data[0]['idadress'];?>"  class="form-control">
-                                <input type="text"  name="idtype_art" value="<?php echo $data[0]['idtype_art'];?>"  class="form-control">
+                                <input type="hidden"  name="idartisan" value="<?php echo $data[0]['idartisan'];?>"  class="form-control">
+                                <input type="hidden"  name="idadress" value="<?php echo $data[0]['idadress'];?>"  class="form-control">
+                                <input type="hidden"  name="idtype_art" value="<?php echo $data[0]['idtype_art'];?>"  class="form-control">
+                                <input type="hidden"  name="nombre_repeat" value="<?php echo $data[0]['nombre'];?>"  class="form-control">
 
 
 
@@ -233,7 +234,7 @@
                                 <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                                     <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Etat civil</a>
                                     </li>
-                                    <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Adress</a>
+                                    <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Adresse</a>
                                     </li>
                                     <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Activité</a>
                                     </li>
@@ -253,7 +254,7 @@
                                                     <label for="concept" class="col-sm-3 control-label">Nom de l'entreprise</label>
                                                     <div class="col-sm-6">
                                                         <input type="text"  <?php  echo $disabled_;?> name="denomination" value="<?php echo $data[0]['denomination'];?>"  class="form-control">
-                                                        <input type="text"  name="nombree" value="<?php echo $data[0]['nombre'];?>"  class="form-control">
+                                                        <input type="hidden"  name="nombree" value="<?php echo $data[0]['nombre'];?>"  class="form-control">
 
                                                     </div>
 
@@ -434,6 +435,15 @@
                                                         </select>
 
 
+                                                    </div>
+                                                </div>
+                                                <div class="item form-group" >
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Région<span class="required" id="addclass">*</span>
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <select id="region" name="region" class="form-control col-md-7 col-xs-12" required="required"
+                                                            <?php  echo $disabled_;?> >>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -647,9 +657,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="profile-tab">
+                                    <div-- role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="profile-tab">
                                         <div class="panel panel-default">
-                                            <div class="panel-body form-horizontal payment-form">
+                                            <!--div class="panel-body form-horizontal payment-form">
                                                 <div class="x_title">
                                                     <h5>Type travaux</h5>
                                                     <div class="clearfix"></div>
@@ -659,7 +669,7 @@
                                                     <!--div class="col-sm-6">
                                                         <input  placeholder="Type Travaux....." type="text" class="form-control" id="name" name="name">
                                                     </div-->
-                                                    <div class="col-sm-6">
+                                                    <!--div class="col-sm-6">
                                                         <div class="show_ajout">
 
                                                             <select style="width:500px" multiple="multiple" id="travaux" name="name_travaux[]"   class="form-control"  tabindex="50">
@@ -673,7 +683,7 @@
                                                     </div>
                                                 </div>
 
-                                            </div>
+                                            </div-->
                                         </div>
                                         <!--*****************************type artisan********************************************-->
                                         <?php
@@ -682,7 +692,7 @@
                                         <div class="panel panel-default">
                                             <div class="panel-body form-horizontal payment-form">
                                                 <div class="x_title">
-                                                    <h5>Assurance</h5>
+                                                    <h5>Assurance de l'Artisan</h5>
                                                     <div class="clearfix"></div>
                                                     <input type="hidden" value="<?php echo $data[0]['nombre'];?>" class="form-control" id="">
                                                 </div>
@@ -691,8 +701,13 @@
                                                 <?php
                                                 $po=$data[0]['nombre'];
                                                 for($i=0 ; $i<$po;$i++) {
+
                                                     ?>
-                                                        <div class="form-group">
+                                                    <input type="hidden"  name="idassurance<?php echo $i+1;?>" value="<?php echo $data[0]['idassurance'];?>"  class="form-control">
+                                                    <input type="hidden"  name="idtypeassurance<?php echo $i+1;?>" value="<?php echo $data[0]['idtypeassurance'];?>"  class="form-control">
+                                                    <input type="hidden"  name="idtypetravaux<?php echo $i+1;?>" value="<?php echo $data[0]['idtypetravaux'];?>"  class="form-control">
+
+                                                    <div class="form-group">
                                                             <label for="date" class="col-sm-3 control-label">Type Travaux</label>
                                                             <div class="col-sm-6">
                                                                 <select  name="nom<?php echo $i+1;?>" id="nom1" class="travaux form-control" tabindex="50"><br/>
@@ -771,7 +786,9 @@
 <script type="text/javascript">
 
    var dataVille = "<?php echo $data[0]['adresseVille'];?>";
-   var datacategorie = "<?php echo $data[0]['artcategorie'];?>";
+   var dataVille = "<?php echo $data[0]['adresseVille'];?>";
+   var dataRegion = "<?php echo $data[0]['adresseRegion'];?>";
+  // var datacategorie = "<!--?php echo $data[0]['artcategorie'];?>";
 
 </script>
 <script src="<?php echo base_url() ?>assets/backend/js/sites/artisan/artisan_detail.js"></script>
