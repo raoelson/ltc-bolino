@@ -7,15 +7,22 @@ class Demande extends CI_Controller{
 		$this->load->model('Demande_model', 'demande');
 		$this->load->model('Clients_model', 'client');
 		$this->load->model('Owneradresse_model', 'owneradresse');
+		$this->load->model('Devis_model', 'devismodel');
+		$this->load->model('Type_artisan', 'typeartisan');
+		$this->load->model('Affichage_artisan', 'artisan');
+        $this->load->model('Type_artisan', 'typeartisan');
+
+
 	}
 
 	public function index(){
-
 		$data['demande'] = $this->demande->get_all();
 		$data_client['client'] = $this->client->get_all();
-		$this->template->title ( 'Gestions des demandes' )->build ( 'demande/index', array ('data' =>$data, 'data_client' => $data_client));
-
-
+        $type_art = $this->typeartisan->art_query();
+        $arti = $this->artisan->get_news();
+        $typeart = $this->typeartisan->art_query();
+		$this->template->title ( 'Gestions des demandes' )->build ( 'demande/index', array ('data' =>$data, 'data_client' => $data_client,
+            'type_art' => $type_art, 'arti' => $arti, 'typeart' => $typeart));
 	}
 
 	public function save(){
@@ -23,29 +30,39 @@ class Demande extends CI_Controller{
 
 		$ownerId = $this->demande->getOwnerId($posts['nom']);
 
-		$aide = ($posts['montant_devis'] > 10500) ? 10500 : ($posts['montant_devis']); 
+		$aide = ($posts['valeurDevis'] > 10700) ? 10700 : ($posts['valeurDevis']); 
+
+		//$a = ($posts['num_dossier_valide'] == null) ? 0 : ($posts['num_dossier_valide']);
 
 		foreach ($ownerId as $row) {
-
 			$dataDemande = array (
 				'num_dossier_valide' => $posts['num_dossier_valide'],
-				'date_arrivee' => $posts['date_arrivee'],
-				'montant_devis' => $posts['montant_devis'],
+				'date_arrivee' => $this->cic_auth->FormatDate($posts ['date_arrivee']), 
+				'montant_devis' => $posts['valeurDevis'],
 				'owner_id' => $row->id,
-				'montant_aide_dept' => $aide
-                //'housing_id' => $row->housing.id
-			
+				'montant_aide_dept' => $aide,
+                'statut' => $posts['statut'],
+
 			);
 		}
-		$this->demande->add($dataDemande);
-		//$this->demande->addOwnerId($iddemande);
+		//var_dump($dataDemande); die;
+        $iddemande = $this->demande->add($dataDemande);
+
+		$dataDevis = array(
+		    'montant' => $posts['valeurDevis'],
+            'demande_id' => $iddemande
+        );
+
+
+        $this->devismodel->add($dataDevis);
+
+        $this->session->set_flashdata ( "success", "Votre donnée  a été bien enregistrée !");
+        redirect ( base_url () . "admin.php/demande" );
+
 	}
 
 
-	//Details
-	public function details($id){
-		$this->template->title ( 'Gestions des Demandes' )->build ( 'demande/details');
-	}
+
 
 
 }

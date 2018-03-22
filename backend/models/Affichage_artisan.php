@@ -14,7 +14,7 @@ class Affichage_artisan extends CI_Model
 					artisan.categorie,artisan.montant_actif_passif,artisan.chiffres_affaires,artisan.tranche_effectif,
 					artisan.pres_attestation_immat,artisan.pres_kbis,artisan.pres_services_fiscaux,artisan.pers_attestation_clandestin,
 					artisan.pres_attestation_decl_social,artisan.pres_attestation_assurance,artisan.pres_rib
-					,adress.id as id_adress_alias,adress.adress1,adress.adress2,adress.lieu_dit,adress.cp,adress.ville,adress.pays,
+					,adress.id as id_adress_alias,adress.adress1,adress.adress2,adress.lieu_dit,adress.cp,adress.ville,adress.region as adresseRegion,adress.pays,
 					adress.phone,adress.cellphone1,adress.cellphone2,adress.fax,adress.mail,adress.mail,adress.site_web
 					,type_artisan.id,type_artisan.namee'
 
@@ -35,10 +35,12 @@ class Affichage_artisan extends CI_Model
 					artisan.categorie as artcategorie,artisan.montant_actif_passif,artisan.chiffres_affaires,artisan.tranche_effectif,
 					artisan.pres_attestation_immat,artisan.pres_kbis,artisan.pres_services_fiscaux,artisan.pers_attestation_clandestin,
 					artisan.pres_attestation_decl_social,artisan.pres_attestation_assurance,artisan.pres_rib
-					,adress.id as idadress ,adress.adress1,adress.adress2,adress.lieu_dit,adress.cp,adress.ville as adresseVille,adress.pays,
+					,adress.id as idadress ,adress.adress1,adress.adress2,adress.lieu_dit,adress.cp,adress.ville as adresseVille,adress.region as adresseRegion,adress.pays,
 					adress.phone,adress.cellphone1,adress.cellphone2,adress.fax,adress.mail,adress.mail,adress.site_web,
-					,type_artisan.id as idtype_art,type_artisan.namee,type_travaux.id,type_travaux.name,type_travaux.artisant_id,
-					type_assurance.id,type_assurance.nom,assurance.id,assurance.artisans_id,assurance.nom,assurance.date_deb,
+					,type_artisan.id as idtype_art,type_artisan.namee,
+					type_travaux.id as idtypetravaux,type_travaux.name,
+					type_assurance.id as idtypeassurance,type_assurance.nom,
+					assurance.id as idassurance,assurance.date_deb,
 					assurance.date_fin,assurance.telephone,assurance.assureur');
 
         $this->db->join ( 'adress', 'adress.id = adress_id' );
@@ -54,6 +56,8 @@ class Affichage_artisan extends CI_Model
 
         $query = $this->db->get_where ( $this->table, $array );
         return $query->result_array ();
+
+
     }
     public function affiche_query($id_artisan)
     {
@@ -81,8 +85,57 @@ class Affichage_artisan extends CI_Model
         $id = $this->input->post('idartisan');
         $idadress = $this->input->post('idadress');
         $idtype_art = $this->input->post('idtype_art');
-        $posts = $this->input->post ();
 
+
+        $nomber = $this->input->post('nombre_repeat');
+
+        $posts = $this->input->post ();
+        //assurance
+        /*if($nomber != 0) {
+            for ($i = 1; $i < $nomber; $i++) {
+                $j = $i + 1;
+                //recupe donne boucle
+                $idtypeassurance = ($posts["idtypeassurance" . $j]);
+                $idtypetravaux = ($posts["idtypetravaux" . $j]);
+                $idassurance = ($posts["idassurance" . $j]);
+                $nom = ($posts["noms" . $j]);
+                $date_deb = ($posts["date_debs" . $j]);
+                $date_fin = $posts["date_fins" . $j];
+                $assureur = $posts["assureurs" . $j];
+                $telephone = $posts["telephones" . $j];
+                $name=($posts["name_travaux" .$j]);
+                //base
+                //type travaux
+                $datatype_travaux = array (
+                    //'id'=>$posts['id'],
+                    'name'=>$name,
+                    'artisant_id'=>$idtypetravaux,
+                );
+                $this->db->where('id', $idtypetravaux);
+                $this->db->update('type_travaux', $datatype_travaux);
+
+                //type assurance
+                $datatype_assurance = array (
+                    //'id'=>$posts['id'],
+                    'nom'=>$nom,
+                    'artisan_assurance_id'=>$idtypeassurance,
+                );
+
+                $this->db->where('id', $idtypeassurance);
+                $this->db->update('type_assurance', $datatype_assurance);
+
+                // assurance
+                $dataassurance = array(
+                    'artisans_id' => $idassurance,
+                    'date_deb' => $date_deb,
+                    'date_fin' => $date_fin,
+                    'assureur' => $assureur,
+                    'telephone' => $telephone,
+                );
+                $this->db->where('id', $idassurance);
+                $this->db->update('assurance', $dataassurance);
+            }
+        }*/
         //type artisan
         $datatype = array (
             //'id'=>$posts['id'],
@@ -136,6 +189,7 @@ class Affichage_artisan extends CI_Model
         );
         $this->db->where('id', $id);
         $this->db->update('artisan', $data);
+
         if($this->db->affected_rows()>0)
         {
             return true;

@@ -94,11 +94,14 @@ $route['clients/details/(:id)'] = 'clients/details/$1';
 $route['clients/exports/(:id)'] = 'clients/exports/$1';
 
 
-// 	Routage Ressources
-$route['artisan'] = 'artisan';
-$route['artisan/create_artisan'] = 'artisan/create_artisan';
-$route['artisan/edit_artisan'] = 'artisan/edit_artisan';
+// 	Routage artisan
 
+
+$route['artisan'] = 'artisan';
+$route['create_artisan'] = 'artisan/create_artisan';
+//$route['artisan/ind'] = 'artisan/ind';
+//$route['artisan/edit_artisan'] = 'artisan/edit_artisan';
+$route['artisan/details_artisan/(:id)'] = 'artisan/details_artisan/$1';
 
 //Routage Housing
 $route['logements/index/(:id)'] = 'logements/index/$1';
