@@ -26,7 +26,7 @@
     <link href="<?php echo base_url() ?>assets/backend/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="<?php echo base_url() ?>assets/backend/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-    
+    <link href="<?php echo base_url() ?>assets/backend/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/backend/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/backend/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/backend/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
@@ -62,7 +62,6 @@
     <script src="<?php echo base_url() ?>assets/backend/vendors/moment/min/moment.min.js"></script>
     <script src="<?php echo base_url() ?>assets/backend/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
     <script src="<?php echo base_url() ?>assets/backend/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-    
     <script type="text/javascript">
     var SITE_URL = "<?php echo base_url()?>";
     var BASE_URL = "<?php echo base_url()?>admin.php/";

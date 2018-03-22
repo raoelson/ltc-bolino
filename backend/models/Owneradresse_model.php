@@ -10,7 +10,7 @@ class Owneradresse_model extends CI_Model {
 					,owners.montant_aide as clientMontant,owners.type_travaux_finan as clienttp,owners.etat as clientEtat,
 					,adress.adress1 as adresseAdresse1,adress.adress2 as adresseAdresse2,
 					,adress.id as adresseId,adress.lieu_dit as adresseLieu,
-					adress.cp as adresseCp,adress.ville as adresseVille,
+					adress.cp as adresseCp,villes.nom_ville_fr as adresseVille,
 					adress.pays as adressePays,adress.phone as adressePhone,adress.region as adresseRegion,
 					adress.cellphone1 as adresseCellphone,adress.mail as adresseMail,adress.fax as adresseFax,
 					parents.id as parentsId,parents.name as parentsNom,parents.firstname as parentsPrenom,DATE_FORMAT(parents.birthdate, "%d/%m/%Y") as parentsBirthdate,
@@ -23,6 +23,7 @@ class Owneradresse_model extends CI_Model {
 		$this->db->join ( "link_parents", "link_parents.id = parents.link_parent_id" );
 		//$this->db->join ( "resources", "resources.owner_id = owners.id" );
 		$this->db->join ( "resources", "resources.parent_id = parents.id" );
+		$this->db->join ( "villes", "villes.id = adress.ville" );
 		if(is_array ($array)){
 			$query = $this->db->get_where ( $this->table, $array );
 			return $query->result_array ();
