@@ -37,7 +37,7 @@ class Demande extends CI_Controller{
 		foreach ($ownerId as $row) {
 			$dataDemande = array (
 				'num_dossier_valide' => $posts['num_dossier_valide'],
-				'date_arrivee' => $this->cic_auth->FormatDate($posts ['date_arrivee']),
+				'date_arrivee' => $this->cic_auth->FormatDate($posts ['date_arrivee']), 
 				'montant_devis' => $posts['valeurDevis'],
 				'owner_id' => $row->id,
 				'montant_aide_dept' => $aide,

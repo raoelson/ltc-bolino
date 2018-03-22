@@ -389,8 +389,8 @@
 
                 <div class="form-group" >
                     <div class="col-md-11 col-sm-12 col-xs-12 " style="margin-left: 16px;">
-                        <a href="#" id="nouveau" 
-                             type="button" style="float: right;">MONTANT TOTAL DES DEVIS <b><span id="totalDevis"> 0.0 € </span></b> </a>
+                        <a href="#" id="montantTotal" 
+                             type="button" style="float: right;">MONTANT TOTAL DES DEVIS:  <b><span id="totalDevis"> 0.0 € </span></b> </a>
                     </div>
                     <input type="hidden" name="valeurDevis" id="valeurDevis">
                 </div>
@@ -445,7 +445,7 @@
 <script src="<?php echo base_url('assets/backend/js/demande/chosen.proto.min.js')?>"></script>
 <script src="<?php echo base_url('assets/backend/js/demande/chosen.jquery.min.js')?>"></script>
 <script src="<?php echo base_url('assets/backend/js/demande/site.js')?>"></script>
-<script src="<?php echo base_url('assets/backend/js/sites/demande/demande.js')?>"></script>
+<script src="<?php echo base_url('assets/backend/js/sites/demande/demande.js')?>"></script> 
 <script>
     function testDate (){
             var date = new Date();

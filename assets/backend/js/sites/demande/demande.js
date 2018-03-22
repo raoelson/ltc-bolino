@@ -173,7 +173,17 @@ $(document).ready(function() {
             }
             var sommeGeneral = SommeTableDevis+parseFloat($('input[name="montantTotalDevisPrincipal"]').val());
             $('#totalDevis').text(sommeGeneral + " € ");
-            $('#valeurDevis').val(sommeGeneral);
+            $('#valeurDevis').val(sommeGeneral); 
+
+            if(sommeGeneral > 10700){
+                $('#totalDevis').text(sommeGeneral + " € ").css('color', 'red');
+                alert('LE MONTANT TOTAL DES DEVIS: '+sommeGeneral+'€ EST AU DESSUS DE LA LIMITE QUI EST A 10700€');
+                
+            }
+            else{
+                $('#totalDevis').text(sommeGeneral + " € ").css('color', 'grey');
+
+            }
         }
       
 
