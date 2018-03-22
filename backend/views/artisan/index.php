@@ -37,6 +37,8 @@
                                 <td>
                                     Adress:&nbsp;<?php echo $item->adress1; ?><?php echo $item->adress2; ?><br/>
                                     Ville:&nbsp;<?php echo $item->ville; ?><br/>
+                                    Pays:<?php echo $item->pays; ?><br/>
+
 
 
 
@@ -91,8 +93,7 @@
                                 <td class="wx">
                                     <div class="action">
 
-                                        <button class="bt btn btn-primary btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" >
-                                            <span class="gly glyphicon glyphicon-trash"></span>&nbsp;&nbsp;</button>
+
                                         <!--button class="bt btn  btn-success btn-xs voir_artisan"
                                                 id="<!?php echo $item->id_artisan_alias; ?>">
                                             <span class="gly fa fa-eye"></span>&nbsp;&nbsp;</button-->
@@ -309,9 +310,7 @@
                             <input type="text" class="form-control"  id="denomination2"  required="required"  placeholder="Nom entreprise..." name="denomination" required
                                    data-fv-notempty-message="The password is required">
                         </div>
-                        <div class="error-message col-sm-3">
-                            <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
-                        </div>
+
                     </div>
                     <div class="form-group">
                         <label for="description" class="col-sm-3 control-label">Nom du gerant<span class="required" id="addclass">*</span> </label>
@@ -319,10 +318,6 @@
                             <input type="text" class="form-control" id="nom_gerant2" required="required"
                                    placeholder="Nom du gerant..."  name="nom_gerant">
                         </div>
-                        <div class="error-message1 col-sm-3">
-                            <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
-                        </div>
-
                     </div>
                     <div class="form-group">
                         <label for="description" class="col-sm-3 control-label">Prénom du gerant </label>
@@ -330,10 +325,6 @@
                             <input type="text" class="form-control" id="prenom_gerant2" required name="prenom_gerant"
                                    placeholder="Prenom du gerant...">
                         </div>
-                        <div class="error-message2 col-sm-3">
-                            <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
-                        </div>
-
                     </div>
                     <div class="form-group">
                         <label for="amount" class="col-sm-3 control-label">Statut</label>
@@ -353,9 +344,7 @@
                             <input type="text" class="form-control" id="siren2"
                                    required="required" placeholder="SIREN..." name="siren">
                         </div>
-                        <div class="error-message-siren col-sm-3">
-                            <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
-                        </div>
+
 
 
                     </div>
@@ -365,9 +354,7 @@
                             <input type="text" class="form-control" id="code_activite2"
                                    required="required" placeholder="NAF...." name="code_activite">
                         </div>
-                        <div class="error-message-naf col-sm-3">
-                            <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
-                        </div>
+
 
                     </div>
                     <div class="form-group">
@@ -375,9 +362,7 @@
                         <div class="col-sm-6">
                             <input type="text" placeholder=Libellé activité... class="form-control" id="libelle_activite2" name="libelle_activite">
                         </div>
-                        <div class="error-message-la col-sm-3">
-                            <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
-                        </div>
+
 
                     </div>
                     <div class="form-group">
@@ -397,26 +382,26 @@
                     <div class="form-group">
                         <label for="date" class="col-sm-3 control-label">Date immatriculation RCS</label>
                         <div class="col-sm-6">
-                            <input type="date" class="form-control" id="date_immatriculation" name="date_immatriculation" >
+                            <input type="text" class="single_cal form-control" id="date_immatriculation" name="date_immatriculation" >
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="date" class="col-sm-3 control-label">Date dernière maj RCS</label>
                         <div class="col-sm-6">
-                            <input type="date" class="form-control" id="date_derniere_rcs" name="date_derniere_rcs">
+                            <input type="text" class="single_cal form-control" id="date_derniere_rcs" name="date_derniere_rcs">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="date" class="col-sm-3 control-label">Catégorie</label>
-                        <!--div class="col-sm-6">
-                            <input type="text" class="form-control" id="categorie" name="categorie">
-                        </div-->
                         <div class="col-sm-6">
+                            <input type="text" class="form-control" id="categorie" name="categorie">
+                        </div>
+                        <!--div class="col-sm-6">
                             <div class="show_ajout">
-                                <select id="typecategorie" name="categorie"  required="required" class="form-control"  tabindex="50">
+                                <select id="typecategorie" name="categorie"  required="required" class="typecategorie form-control"  tabindex="50">
                                 </select>
                             </div>
-                        </div>
+                        </div-->
                         <div class="col-sm-3">
                             <button   data-toggle="modal" data-target="#modal_artisan" class="ak"><span class="fa fa-plus"></span>&nbsp;Ajout</button>
                         </div>
@@ -426,9 +411,7 @@
                         <div class="col-sm-6">
                             <input type="text" placeholder="Bilan (actif/passif) en Euro..." class="form-control" id="montant_actif_passif2" name="montant_actif_passif">
                         </div>
-                        <div class="error-message-bl col-sm-3">
-                            <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
-                        </div>
+
                     </div>
 
                     <div class="form-group">
@@ -436,9 +419,7 @@
                         <div class="col-sm-6">
                             <input type="text" placeholder="Chiffres d’affaires en Euro..." class="form-control" id="chiffres_affaires2" name="chiffres_affaires">
                         </div>
-                        <div class="error-message-chiffre col-sm-3">
-                            <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
-                        </div>
+
                     </div>
 
                     <div class="form-group">
@@ -603,18 +584,14 @@
                         <div class="col-sm-6">
                             <input placeholder="Adresse..." type="text" class="form-control" id="adress12" name="adress1">
                         </div>
-                        <div class="error-message-ad2 col-sm-3">
-                            <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
-                        </div>
+
                     </div>
                     <div class="form-group">
                         <label for="date" class="col-sm-3 control-label"> Suite Adresse</label>
                         <div class="col-sm-6">
                             <input placeholder="Suite Adresse....." type="text" class="form-control" id="adress13" name="adress2">
                         </div>
-                        <div class="error-message-ad3 col-sm-3">
-                            <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
-                        </div>
+
                     </div>
                     <div class="form-group">
                         <label for="date" class="col-sm-3 control-label"> lieu_dit</label>
@@ -639,13 +616,21 @@
 
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="date" class="col-sm-3 control-label"> Ville</label>
-                        <div class="col-sm-6">
+                    <div class="item form-group" >
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Région<span class="required" id="addclass">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select id="region" name="region" class="form-control col-md-7 col-xs-12" required="required">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="item form-group" >
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Ville<span class="required" id="addclass">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
                             <select id="ville" name="ville" class="form-control col-md-7 col-xs-12" required="required">
                             </select>
                         </div>
-
                     </div>
                     <div class="form-group">
                         <label for="date" class="col-sm-3 control-label"> Code Postal</label>
