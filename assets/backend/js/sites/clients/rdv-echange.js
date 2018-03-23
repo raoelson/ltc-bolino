@@ -24,6 +24,9 @@ $('document').ready(function(){
           required:'required',
           source: substringMatcher(dataClients)
     });
+    $('input[name="nomprop"]').change(function(){
+        
+     });
    
    $('input[name="nomprop"]').change(function(){
         var textNom = $(this).val().toLowerCase();
