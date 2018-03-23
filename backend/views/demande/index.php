@@ -285,9 +285,9 @@
                                            for="name">Devis de l'artisan
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <div class="btn_activ btn btn-info">
-                                            <input id="file" name="fileTest" type="file" multiple disabled="">
-                                        </div>
+                                        <!--<div class="btn_activ btn btn-info">-->
+                                            <input id="file" name="fileTest" type="file" disabled="">
+                                        <!--</div>-->
                                     </div>
                                 </div>
 
@@ -387,10 +387,31 @@
 
                 </div>
 
+                 <div class="x_panel" id="div_garantie" style="display: none; height: 40px !important;">
+                    <div class="x_title">
+                        <h5>Garantie du propriétaire</h5>
+                    </div>
+
+                    <div class="x_content" >
+                        <div class="item form-group">
+                             <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                   for="name">Fichier de la garantie<span class="required">*</span>
+                               </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+
+                               <input type="file" name="file">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
                 <div class="form-group" >
                     <div class="col-md-11 col-sm-12 col-xs-12 " style="margin-left: 16px;">
-                        <a href="#" id="montantTotal" 
-                             type="button" style="float: right;">MONTANT TOTAL DES DEVIS:  <b><span id="totalDevis"> 0.0 € </span></b> </a>
+                        <a href="#" id="montantTotal" type="button" style="float: right;">MONTANT TOTAL DES DEVIS:  
+                            <b><span id="totalDevis"> 0.0 € </span></b> 
+                        </a>  
                     </div>
                     <input type="hidden" name="valeurDevis" id="valeurDevis">
                 </div>
@@ -427,10 +448,9 @@
 </div>
 
 
- <link href="<?php echo base_url('assets/backend/css/demande/chosen.css')?>" rel="stylesheet"/>
+<link href="<?php echo base_url('assets/backend/css/demande/chosen.css')?>" rel="stylesheet"/>
 <link href="<?php echo base_url('assets/backend/css/demande/prism.css')?>" rel="stylesheet"/>
- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+<link href="<?php echo base_url('assets/backend/css/demande/jquery.inputfile.css')?>" rel="stylesheet"/>
 <script >
     var data__ = [];
     var data2__ = [];
@@ -445,6 +465,8 @@
 <script src="<?php echo base_url('assets/backend/js/demande/chosen.proto.min.js')?>"></script>
 <script src="<?php echo base_url('assets/backend/js/demande/chosen.jquery.min.js')?>"></script>
 <script src="<?php echo base_url('assets/backend/js/demande/site.js')?>"></script>
+<script src="<?php echo base_url('assets/backend/js/demande/notify.js')?>"></script>
+<script src="<?php echo base_url('assets/backend/js/demande/jquery.inputfile.js')?>"></script>
 <script src="<?php echo base_url('assets/backend/js/sites/demande/demande.js')?>"></script> 
 <script>
     function testDate (){
@@ -470,6 +492,7 @@
 
         
     });
+
 </script>
 
 

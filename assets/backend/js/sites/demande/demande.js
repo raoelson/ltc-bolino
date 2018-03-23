@@ -128,9 +128,9 @@ $(document).ready(function() {
                 data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Devis de l\'artisan';
                 data += '</label>';
                 data += '<div class="col-md-6 col-sm-6 col-xs-12">';
-                data += '<div class="btn_activ btn btn-info">';
-                data += '<input id="file_art'+(x)+'" name="fileTest'+(x)+'" type="file" multiple disabled="">';
-                data += '</div>';
+               
+                data += '<input id="file_art'+(x)+'" name="fileTest'+(x)+'" type="file"  disabled="">';
+                
                 data += '</div>';
                 data += '</div>';
                 data += '<input type="hidden" name="montantTotalDevis'+(x)+'">';
@@ -177,14 +177,34 @@ $(document).ready(function() {
 
             if(sommeGeneral > 10700){
                 $('#totalDevis').text(sommeGeneral + " € ").css('color', 'red');
-                alert('LE MONTANT TOTAL DES DEVIS: '+sommeGeneral+'€ EST AU DESSUS DE LA LIMITE QUI EST A 10700€');
-                
+                //alert('LE MONTANT TOTAL DES DEVIS: '+sommeGeneral+'€ EST AU DESSUS DE LA LIMITE QUI EST A 10700€');
+                $('#montantTotal').notify("Le montat total des devis excède la limite prévue qui est à 10700€. Veuillez insérer ci-dessus, le fichier qui garantisse que vous allez payer la somme excédant, sinon veuillez diminiuer le montant des devis",
+                    {position:"left"},
+                    
+                );
+                $('#div_garantie').toggle();
+                $('#div_garantie').removeAttr("style");
+                //$.notify("Le montat total des devis excède la limite prévue qui est à 10700€.\n Veuillez insérer ci-dessous, \n le fichier qui garantisse que vous allez payer la somme excédant, sinon veuillez diminiuer le montant des devis");
+    
             }
             else{
                 $('#totalDevis').text(sommeGeneral + " € ").css('color', 'grey');
+                $('#montantTotal').notify("Montant acceptable", "success");
+                $('#div_garantie').hide();
 
             }
         }
+
+        $('input[type="file"]').inputfile({
+            uploadeText:'<span class="glyphicon glyphicon-upload"></span> ',
+            removeText: '<span class="glyphicon glyphicon-trash"></span>',
+            restoreText: '<span class="glyphicon glyphicon-remove"></span>',
+            uploadButtonClass: 'btn btn-primary',
+            removeButtonClass: 'btn btn-default'
+
+        });
+
+
       
 
   /* $('#statut').change(function(){
