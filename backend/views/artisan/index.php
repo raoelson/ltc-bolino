@@ -304,30 +304,38 @@
                         <h5>Information sur l'artisan</h5>
                         <div class="clearfix"></div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nom entreprise<span class="required" id="addclass">*</span></label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control"  id="denomination2"  required="required"  placeholder="Nom entreprise..." name="denomination" required
-                                   data-fv-notempty-message="The password is required">
+
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                               id="addclass" for="name">Nom entreprise<span class="required">*</span></label>
+                        <div class="col-sm-6 col-sm-6 col-xs-12">
+                            <input type="text"  id="denomination2"  class="form-control col-md-7 col-xs-12"
+                                   required="required"  placeholder="Nom entreprise..." name="denomination"
+                                  >
                         </div>
 
                     </div>
-                    <div class="form-group">
-                        <label for="description" class="col-sm-3 control-label">Nom du gerant<span class="required" id="addclass">*</span> </label>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                               id="addclass" for="name">Nom du gerant<span class="required">*</span> </label>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" id="nom_gerant2" required="required"
                                    placeholder="Nom du gerant..."  name="nom_gerant">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="description" class="col-sm-3 control-label">Prénom du gerant </label>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                id="addclass" for="name">Prénom du gerant<span class="required">*</span> </label>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" id="prenom_gerant2" required name="prenom_gerant"
                                    placeholder="Prenom du gerant...">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="amount" class="col-sm-3 control-label">Statut</label>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                               id="addclass" for="name">Statut<span class="required">*</span></label>
                         <div class="col-sm-6">
                             <select name="statut" id="statut" class="form-control"  tabindex="50" ><br />
                                 <option value="En cours">En cours </option>
@@ -338,18 +346,17 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="status" class="col-sm-3 control-label">SIREN</label>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                               id="addclass" for="name">SIREN<span class="required">*</span></label>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" id="siren2"
                                    required="required" placeholder="SIREN..." name="siren">
                         </div>
-
-
-
                     </div>
-                    <div class="form-group">
-                        <label for="date" class="col-sm-3 control-label">NAF</label>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                               id="addclass" for="name">NAF<span class="required">*</span></label>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" id="code_activite2"
                                    required="required" placeholder="NAF...." name="code_activite">
@@ -357,10 +364,11 @@
 
 
                     </div>
-                    <div class="form-group">
-                        <label for="date" class="col-sm-3 control-label">Libellé activité</label>
+                    <div class="item item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                               id="addclass" for="name">Libellé activité<span class="required">*</span></label>
                         <div class="col-sm-6">
-                            <input type="text" placeholder=Libellé activité... class="form-control" id="libelle_activite2" name="libelle_activite">
+                            <input type="text" required="required" placeholder="Libellé activité..." class="form-control" id="libelle_activite2" name="libelle_activite">
                         </div>
 
 
@@ -379,45 +387,49 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="date" class="col-sm-3 control-label">Date immatriculation RCS</label>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                               id="addclass" for="name">Date immatriculation RCS<span class="required">*</span></label>
                         <div class="col-sm-6">
                             <input type="text" class="single_cal form-control" id="date_immatriculation" name="date_immatriculation" >
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="date" class="col-sm-3 control-label">Date dernière maj RCS</label>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                               id="addclass" for="name">Date dernière maj RCS<span class="required">*</span></label>
                         <div class="col-sm-6">
-                            <input type="text" class="single_cal form-control" id="date_derniere_rcs" name="date_derniere_rcs">
+                            <input type="text" class="single_calb form-control" id="date_derniere_rcs" name="date_derniere_rcs">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="item form-group">
                         <label for="date" class="col-sm-3 control-label">Catégorie</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="categorie" name="categorie">
-                        </div>
                         <!--div class="col-sm-6">
+                            <input type="text" class="form-control" id="categorie" name="categorie">
+                        </div-->
+                        <div class="col-sm-6">
                             <div class="show_ajout">
                                 <select id="typecategorie" name="categorie"  required="required" class="typecategorie form-control"  tabindex="50">
                                 </select>
                             </div>
-                        </div-->
+                        </div>
                         <div class="col-sm-3">
                             <button   data-toggle="modal" data-target="#modal_artisan" class="ak"><span class="fa fa-plus"></span>&nbsp;Ajout</button>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="date" class="col-sm-3 control-label">Bilan (actif/passif) en Euro</label>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                               id="addclass" for="name">Bilan (actif/passif) en Euro<span class="required">*</span></label>
                         <div class="col-sm-6">
-                            <input type="text" placeholder="Bilan (actif/passif) en Euro..." class="form-control" id="montant_actif_passif2" name="montant_actif_passif">
+                            <input required="required" type="text" placeholder="Bilan (actif/passif) en Euro..." class="form-control" id="montant_actif_passif2" name="montant_actif_passif">
                         </div>
 
                     </div>
 
-                    <div class="form-group">
-                        <label for="date" class="col-sm-3 control-label"> Chiffres d’affaires en Euro</label>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                               id="addclass" for="name"> Chiffres d’affaires en Euro<span class="required">*</span><</label>
                         <div class="col-sm-6">
-                            <input type="text" placeholder="Chiffres d’affaires en Euro..." class="form-control" id="chiffres_affaires2" name="chiffres_affaires">
+                            <input required="required" type="text" placeholder="Chiffres d’affaires en Euro..." class="form-control" id="chiffres_affaires2" name="chiffres_affaires">
                         </div>
 
                     </div>
@@ -579,24 +591,28 @@
                         <h5>Adresse artisan</h5>
                         <div class="clearfix"></div>
                     </div>
-                    <div class="form-group">
-                        <label for="date" class="col-sm-3 control-label"> Adresse</label>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                               id="addclass" for="name"> Adresse<span class="required">*</span></label>
                         <div class="col-sm-6">
-                            <input placeholder="Adresse..." type="text" class="form-control" id="adress12" name="adress1">
+                            <input required="required" placeholder="Adresse..." type="text" class="form-control" id="adress12" name="adress1">
                         </div>
 
                     </div>
                     <div class="form-group">
-                        <label for="date" class="col-sm-3 control-label"> Suite Adresse</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                               id="addclass" for="name"> Suite Adresse<span class="required">*</span></label>
                         <div class="col-sm-6">
-                            <input placeholder="Suite Adresse....." type="text" class="form-control" id="adress13" name="adress2">
+                            <input required="required" placeholder="Suite Adresse....." type="text" class="form-control" id="adress13" name="adress2">
                         </div>
 
                     </div>
                     <div class="form-group">
-                        <label for="date" class="col-sm-3 control-label"> lieu_dit</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                               id="addclass" for="name"> lieu_dit</label>
                         <div class="col-sm-6">
-                            <input placeholder="Lieu_dit....." type="text" class="form-control" id="lieu_dit" name="lieu_dit">
+                            <input required="required" placeholder="Lieu_dit....." type="text" class="form-control" id="lieu_dit" name="lieu_dit">
                         </div>
                     </div>
                     <div class="form-group">
@@ -632,28 +648,27 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="date" class="col-sm-3 control-label"> Code Postal</label>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                               id="addclass" for="name"> Code Postal<span class="required">*</span></label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="cp2" name="cp">
-                        </div>
-                        <div class="error-message-cp col-sm-3">
-                            <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
+                            <input required="required" placeholder="Code Postal" type="text" class="form-control" id="cp2" name="cp">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="date" class="col-sm-3 control-label"> Téléphone</label>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                               id="addclass" for="name"> Téléphone<span class="required">*</span></label>
                         <div class="col-sm-6">
-                            <input placeholder="Téléphone....." type="text" class="form-control" id="phone2" name="phone">
-                        </div>
-                        <div class="error-message-phone col-sm-3">
-                            <div class="error"> <span class="fa fa-close" style="font-size:24px;color:white;">&nbsp;</span>Veillez compléter votre texte</div>
+                            <input required="required" placeholder="Téléphone....." type="text" class="form-control" id="phone2" name="phone">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="date" class="col-sm-3 control-label"> Téléphone Portable 1</label>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                               id="addclass" for="name"> Téléphone Portable 1<span class="required">*</span></label>
                         <div class="col-sm-6">
-                            <input placeholder="Téléphone Portable 1....." type="text" class="form-control" id="cellphone1" name="cellphone1">
+                            <input required="required" placeholder="Téléphone Portable 1....." type="text" class="form-control" id="cellphone1" name="cellphone1">
                         </div>
                     </div>
                     <div class="form-group">
@@ -668,10 +683,11 @@
                             <input type="text" placeholder="Fax....." class="form-control" id="fax" name="fax">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="date" class="col-sm-3 control-label"> Mail</label>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                               id="addclass" for="name"> Mail<span class="required">*</span></label>
                         <div class="col-sm-6">
-                            <input type="text" placeholder="Mail....." class="form-control" id="mail" name="mail">
+                            <input required="required" type="text" placeholder="Mail....." class="form-control" id="mail" name="mail">
                         </div>
                     </div>
                     <div class="form-group">
@@ -881,7 +897,7 @@
              })
      });*/
     $(document).ready(function(){
-        $("[data-toggle=tooltip]").tooltip();
+        /*$("[data-toggle=tooltip]").tooltip();
         $(".error-message").hide();
         $(".error-message1").hide();
         $(".error-message2").hide();
@@ -1304,7 +1320,7 @@
 <script src="<?php echo base_url() ?>assets/backend/js/sites/artisan/artisan.js"></script>
 <script src="<?php echo base_url() ?>assets/backend/js/sites/artisan/select2.js"></script>
 <link href="<?php echo base_url() ?>assets/backend/css/art/select2.css" rel="stylesheet"/>
-
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <!--script type="text/javascript">
     $(function(){

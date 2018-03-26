@@ -343,10 +343,12 @@
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="show_ajout">
-                                                            <select id="typecategorie" name="categorie"   class="form-control"  tabindex="50">
+                                                            <select id="typecategorie" name="categorie"   class="typecategorie form-control"  tabindex="50">
                                                             </select>
+                                                            <input type="hidden" value="<?php echo $data[0]['artcategorie'];?>" class="form-control" >
+
                                                         </div>
-                                                        <?php echo $data[0]['artcategorie'];?>
+
                                                     </div>
                                                     <div class="col-sm-3">
                                                         <button   data-toggle="modal" data-target="#modal_artisan" class="ak"><span class="fa fa-plus"></span>&nbsp;Ajout</button>
@@ -452,7 +454,7 @@
                                                         <select id="ville" name="ville" class="form-control col-md-7 col-xs-12" required="required" <?php  echo $disabled_;?> >
                                                         </select>
                                                     </div>
-                                                    <?php echo $data[0]['adresseVille'];?>
+                                                    <!--?php echo $data[0]['adresseVille'];?-->
 
                                                 </div>
                                                 <div class="form-group">
@@ -516,11 +518,15 @@
                                                     <label for="date" class="col-sm-3 control-label"> Type Artisan</label>
                                                     <div class="col-sm-6">
                                                         <div class="show_ajout">
-                                                            <select style="width:500px;"id="typeartisan_edit" name="name"  required="required" class="form-control"  tabindex="50">
+                                                            <select style="width:500px;"id="typeartisan" name="name"  required="required" class="form-control"  tabindex="50">
 
                                                             </select>
                                                         </div>
+                                                        <input type="hidden"  value="<?php echo $data[0]['nametype'];?>"  class="form-control">
+
                                                     </div>
+
+
                                                 </div>
                                                 <div class="x_title">
                                                     <h5>Document nécessaire sur l'artisan</h5>
@@ -532,13 +538,13 @@
                                                         du répertoire des métiers  </label>
                                                     <div class="matricu col-sm-6">
                                                         <?php
-                                                        $check= "";
+                                                        $checka= "";
                                                         if($data[0]['pres_attestation_immat'] == 1){
-                                                            $check = "checked='true'";
+                                                            $checka = "checked='true'";
                                                         }
                                                         ?>
 
-                                                        <input type="checkbox" <?php  echo $disabled_;?> <?php echo $check;?>   value="pres_attestation_immat" name="pres_attestation_immat" class="check filled-in" id="pres_attestation_immat" >
+                                                        <input type="checkbox" <?php  echo $disabled_;?> <?php echo $checka;?>   value="1" name="pres_attestation_immat" class="check filled-in" id="pres_attestation_immat" >
 
                                                         <div class="btn_activ btn btn-primary btn-sm">
                                                             <input id="file_id" type="file" multiple>
@@ -698,20 +704,33 @@
                                                 </div>
                                                 <!--***********************************
                                                 *******************************type_assurance-->
+                                                <input type="hidden"  name="nomp" value="<?php echo count($data);?>"  class="form-control">
+
                                                 <?php
-                                                $po=$data[0]['nombre'];
-                                                for($i=0 ; $i<$po;$i++) {
+                                               // $po=$data[0]['nombre'];
+                                                //echo '<pre>';
+                                               // echo count($data);
+                                               // echo print_r($data);
+                                                //echo '</pre>';
+
+                                                for($i=0 ; $i<count($data);$i++) {
 
                                                     ?>
-                                                    <input type="hidden"  name="idassurance<?php echo $i+1;?>" value="<?php echo $data[0]['idassurance'];?>"  class="form-control">
-                                                    <input type="hidden"  name="idtypeassurance<?php echo $i+1;?>" value="<?php echo $data[0]['idtypeassurance'];?>"  class="form-control">
-                                                    <input type="hidden"  name="idtypetravaux<?php echo $i+1;?>" value="<?php echo $data[0]['idtypetravaux'];?>"  class="form-control">
+                                                    <input type="hidden"  name="idassurance<?php echo $i+1;?>" value="<?php echo $data[$i]['idassurance'];?>"  class="form-control">
+                                                    <input type="hidden"  name="idtypeassurance<?php echo $i+1;?>" value="<?php echo $data[$i]['idtypeassurance'];?>"  class="form-control">
+                                                    <input type="hidden"  name="idtypetravaux<?php echo $i+1;?>" value="<?php echo $data[$i]['idtypetravaux'];?>"  class="form-control">
+                                                    <input type="hidden"  name="idtable<?php echo $i+1;?>" value="<?php echo $data[$i]['idtable'];?>"  class="form-control">
+
 
                                                     <div class="form-group">
                                                             <label for="date" class="col-sm-3 control-label">Type Travaux</label>
                                                             <div class="col-sm-6">
-                                                                <select  name="nom<?php echo $i+1;?>" id="nom1" class="travaux form-control" tabindex="50"><br/>
+                                                                <select  name="name_travaux<?php echo $i+1;?>" id="nom<?php echo $i+1;?>" class="travaux form-control" tabindex="50"><br/>
+
                                                                 </select>
+
+                                                                <input type="hidden" value="<?php echo $data[$i]['namtravaux'];?>" class="form-control" id="" name="nom<?php echo $i+1;?>">
+
                                                             </div>
                                                         </div>
 
@@ -721,19 +740,22 @@
                                                             <div class="col-sm-6">
                                                                 <select  name="nom<?php echo $i+1;?>" id="nom1" class="assurance form-control" tabindex="50"><br/>
                                                                 </select>
+                                                                <input type="hidden" value="<?php echo $data[$i]['nomtype_assurance'];?>" class="form-control" id="" name="nom<?php echo $i+1;?>">
+
+
                                                             </div>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="date" class="col-sm-3 control-label">Date début assurance</label>
                                                             <div class="col-sm-6">
-                                                                <input type="date" value="<?php echo $data[$i]['date_deb'];?>" class="form-control" id="date_deb1" name="date_deb<?php echo $i+1;?>">
-                                                            </div>
+                                                               <input type="text" value="<?php echo $data[$i]['date_deb'];?>" class="single_cal form-control" id="date_deb1" name="date_deb<?php echo $i+1;?>">
+                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="date" class="col-sm-3 control-label">Date fin assurance</label>
                                                             <div class="col-sm-6">
-                                                                <input type="date" value="<?php echo $data[$i]['date_fin'];?>" class="form-control" id="date_fin1" name="date_fin<?php echo $i+1;?>">
+                                                                <input type="text" value="<?php echo $data[$i]['date_fin'];?>" class="single_cal form-control" id="date_fin1" name="date_fin<?php echo $i+1;?>">
                                                             </div>
                                                         </div>
 
@@ -756,6 +778,16 @@
                                                 }
                                                 ?>
                                             </div>
+                                            <?php
+                                            $tab=array();
+                                            for($i=0 ; $i<count($data);$i++) {
+                                                array_push($tab,$data[$i]['namtravaux']);
+                                               /* echo $data[$i]['namtravaux'];*/
+                                            }
+                                            /*echo '<pre>';
+                                            print_r($tab);
+                                            echo '</pre>';*/
+                                            ?>
 
                                         </div>
 
@@ -783,10 +815,83 @@
         </div>
     </div>
 </div>
+
 <script type="text/javascript">
 
    var dataVille = "<?php echo $data[0]['adresseVille'];?>";
-   var dataVille = "<?php echo $data[0]['adresseVille'];?>";
+   var datatype = "<?php echo $data[0]['nametype'];?>";
+   var datatype_travau = "<?php echo $data[0]['namtravaux'];?>";
+   console.log(datatype_travau);
+   //transforme tableau array en json type travaux
+   //var datatype_travaux = <!?php  echo json_encode($tab);?>;
+   //console.log(datatype_travaux);
+  // var count="<!?php echo count($data);?>"
+
+
+       // var datatype_travaux = "<!--?php  echo $data[$i]['namtravaux'];?>";
+       // var array = JSON.parse("[" + datatype_travaux + "]");
+       //console.log(array[]);
+
+       /**/
+       $('document').ready(function () {
+           //type travaux
+           travauxChargementSelect();
+           $(".ajout_travaux").click(function () {
+               $.postJSON(BASE_URL + '/typeartisan/saves_travaux/', {
+                   'name_travaux': $("#nametravaux").val()
+               }, saveCallbacktravaux);
+           });
+       });
+
+       travauxChargementSelect = function () {
+           $.getJSON(BASE_URL + '/typeartisan/home_travaux/',
+               {},
+               travauxSelectCallbackass
+           )
+       };
+
+       travauxSelectCallbackass = function (json) {
+           var body = "";
+         // var datatype_travaux = <!--?php  echo json_encode($tab);?>;
+           //console.log(datatype_travaux);
+          // var table= datatype_travaux.length;
+           /*for ($i = 0; $i <table; $i++) {
+               var dataa=datatype_travaux+$i;
+               console.log(datatype_travaux+$i);
+           }*/
+              // var nom= <!?php echo $i + 1;?>;
+            /*$i=2;
+               var j=$i+1;
+               var nomconcat="nom"+j;
+               console.log(nomconcat);*/
+               //console.log(table);
+               $.each(json['data'], function (i, elt) {
+                   var active = "";
+                   //for ($i = 0; $i <table; $i++) {
+                       if (elt.name_travaux == datatype_travau) {
+                           active = "selected=''true";
+                       }
+                   //}
+                       body += "<option value='" + elt.name_travaux + "' " + active + ">" + elt.name_travaux + "</option>"
+
+               });
+               $(".travaux").append(body);
+           //$("#"+nomconcat).append(body);
+
+          // }
+           ;
+       }
+       saveCallbacktravaux = function (json) {
+           if (json != 0) {
+               travauxChargementSelect();
+               $('#modal_travaux').modal('toggle');
+           }
+       }
+
+   var datatype_assurance = "<?php echo $data[0]['nomtype_assurance'];?>";
+   var data_categorie = "<?php echo $data[0]['artcategorie'];?>";
+   //console.log(data_categorie);
+
    var dataRegion = "<?php echo $data[0]['adresseRegion'];?>";
   // var datacategorie = "<!--?php echo $data[0]['artcategorie'];?>";
 
@@ -796,4 +901,3 @@
 <script src="<?php echo base_url() ?>assets/backend/js/sites/artisan/select2.js"></script>
 <link href="<?php echo base_url() ?>assets/backend/css/art/select2.css" rel="stylesheet"/>
 <link href="<?php echo base_url() ?>assets/backend/css/art/artisan.css" rel="stylesheet">
-
