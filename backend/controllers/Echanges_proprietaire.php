@@ -53,11 +53,12 @@ class Echanges_proprietaire extends CI_Controller {
 			
 
 			$confirmation = 0;
-			if($posts['confirmation'] == 'on'){
+			if(isset($posts['confirmation'])){
+				if($posts['confirmation'] == 'on'){
 				$confirmation = 1;
 			}
-
-			
+			}
+						
 			if($posts['idechange'] == 0){
 				$dataTypes = array('nom'=>'appel');
 				$types = $this->types_echanges->add($dataTypes);
