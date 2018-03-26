@@ -178,30 +178,40 @@ class Artisan extends CI_Controller
 
                 //base
                 //type travaux
-                $datatype_travaux = array (
+               $datatype_travaux = array (
                     //'id'=>$posts['id'],
                     'name'=>$name,
-                    'artisant_id'=>$artisan,
+
                 );
-                $this->Type_travaux_artisan->create_artisan_query($datatype_travaux);
+                $travaux=$this->Type_travaux_artisan->create_artisan_query($datatype_travaux);
                 //type assurance
                 $datatype_assurance = array (
                     //'id'=>$posts['id'],
                     'nom'=>$nom,
-                    'artisan_assurance_id'=>$artisan,
                 );
-                $this->Type_assurance_model->create_artisan_query($datatype_assurance);
+                $type=$this->Type_assurance_model->create_artisan_query($datatype_assurance);
 
                 // assurance
                 $dataassurance = array(
-                    'artisans_id' => $artisan,
+                    //'artisans_id' => $artisan,
                     //'nom' => $nom,
                     'date_deb' => $date_deb,
                     'date_fin' => $date_fin,
                     'assureur' => $assureur,
                     'telephone' => $telephone,
                 );
-                 $this->Assurance_model->create_artisan_query($dataassurance);
+                 $assu=$this->Assurance_model->create_artisan_query($dataassurance);
+
+                 //table recombinaison 3 table
+                $table = array(
+                    //'artisans_id' => $artisan,
+                    'type_travaux_id' =>$travaux,
+                    'assurance_id' => $assu,
+                    'type_assurance_id' => $type,
+                    'artisaans_id' => $artisan,
+
+                );
+                $this->Artisan_Adress_model->create_type_assurance($table);
             }
         }
         $this->session->set_flashdata ( "success", "Votre donnée  a été bien enregistrée !");
@@ -337,12 +347,13 @@ class Artisan extends CI_Controller
     //function de teste
     public function detailsf_artisan(){
        // $data = $this->Affichage_artisan->getWhere(4);
-        $id=43;
-        $data = $this->Affichage_artisan->getWhere(array('artisan_id'=>$id));
-        var_dump($data);
-        /*echo "<pre>";
+        $data=$this->Affichage_artisan->update();
+       // $id=48;
+        //$data = $this->Affichage_artisan->getWhere(array('artisan_id'=>$id));
+       // var_dump($data);
+        echo "<pre>";
         print_r($data);
-        echo "</pre>";*/
+        echo "</pre>";
         // $id = $this->uri->segment(3);
 
         //print_r((($data)));die;

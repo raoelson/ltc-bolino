@@ -32,7 +32,7 @@ class Type_artisan extends CI_Model
     //type categorie
     public function cat_query()
     {
-        $this->db->select('*')->where;
+        $this->db->select('*');
         $query=$this->db->get('categorie');
         return $query->result();
     }

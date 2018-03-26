@@ -22,4 +22,6 @@ class Artisan_type_model extends CI_Model
         //$query = $this->db->get("artisan");
         //return $query->result();
     }
+
+
 }

@@ -38,4 +38,14 @@ class Artisan_Adress_model extends CI_Model
         //$query = $this->db->get("artisan");
         //return $query->result();
     }
+    //assurance +type assurance
+    public function create_type_assurance($data)
+    {
+
+        $this->db->insert('assurance_type_assurnce',$data);
+        return $insert_id=$this->db->insert_id();
+        //$query = $this->db->get("artisan");
+        //return $query->result();
+    }
+
 }

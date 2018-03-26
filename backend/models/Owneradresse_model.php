@@ -3,7 +3,7 @@ class Owneradresse_model extends CI_Model {
 	private $table = "owner-adress";
 	
 	public function getWhere($array) {
-		
+
 		$this->db->select ( 'owners.title as indentite,owners.marriedname as nommarie,owners.id as clientid, owners.firstname1 as clientNom,owners.firstname2 as clientPrenom
 					,owners.firstname3 as clientUsagenom,DATE_FORMAT(owners.birthdate, "%d/%m/%Y") as clientDate,owners.birthplace as clientPlace
 					,owners.familysituation as clientSituation,owners.aide_organisme as clientAide,owners.nom_organisme as clientOrganisme
@@ -16,7 +16,7 @@ class Owneradresse_model extends CI_Model {
 					parents.id as parentsId,parents.name as parentsNom,parents.firstname as parentsPrenom,DATE_FORMAT(parents.birthdate, "%d/%m/%Y") as parentsBirthdate,
 					link_parents.name as linkparentsNom,link_parents.id as linkparentsId,
 					resources.id as ressourcesId,resources.montant as ressourcesMontant');
-		
+
 		$this->db->join ( "owners", "owners.id =owners_id" );
 		$this->db->join ( "adress", "adress.id = adress_id" );
 		$this->db->join ( "parents", "parents.owner_id = owners.id" );
@@ -32,18 +32,21 @@ class Owneradresse_model extends CI_Model {
 			return $query->result_array ();
 		}
 	}
-		
+
 	public function save($idClient,$id){
 		$data = array('owners_id'=>$idClient,'adress_id'=>$id);
 		$this->db->insert ( $this->table, $data);
 		return $this->db->insert_id ();
 	}
-	
+
 	public function remove($id,$adress) {
 		$this->db->delete ( $this->table, array (
 				'owners_id' => $id,
 				'adress_id' => $adress
 		) );
 	}
+
+
+
 
 }

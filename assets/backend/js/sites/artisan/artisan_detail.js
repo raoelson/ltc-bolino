@@ -1,6 +1,7 @@
 
 $('document').ready(function(){
 
+    //pays
     if($('#pays').val() != ""){
         $('#region').html("");
         $.postJSON(BASE_URL + "regions/getWhere/",{
@@ -21,10 +22,31 @@ $('document').ready(function(){
             "id": $('#region').val()
         },ChargementVilleCallback);
     })
+
+    //addclass
+    $(".single_cal").daterangepicker({
+        singleDatePicker: true,
+        singleClasses: "picker_4",
+        locale: {
+            format: 'DD/MM/YYYY'
+        }
+    }, function(start, end, label) {
+        //console.log(start.toISOString(), end.toISOString(), label);
+    })
+    //type artisan
+    ChargementSelect();
+
+    $(".ajout_type").click(function(){
+        $.postJSON(BASE_URL+'/typeartisan/saves/',{
+            'name' : $("#nameType").val()
+        },saveCallback);
+
+    });
+
 })
 
 ChargementCallback = function(json){
-    console.log(dataRegion);
+    //console.log(dataRegion);
     var tbody ="";
     $.each(json['data'],function(i,elt){
         var active = "";
@@ -44,7 +66,6 @@ ChargementCallback = function(json){
 ChargementVilleCallback = function(json){
     var tbody ="";
 
-
     $.each(json['data'],function(i,elt){
         var active = "";
         if(elt.id == dataVille){
@@ -55,35 +76,39 @@ ChargementVilleCallback = function(json){
     $('#ville').append(tbody);
 }
 
-/**********************************/
-$('document').ready(function(){
-    /*$("#e1").select2();*/
-    ChargementSelect();
-
-    $(".ajout_type").click(function(){
-        $.postJSON(BASE_URL+'/typeartisan/saves/',{
-            'name' : $("#nameType").val()
-        },saveCallback);
-
-    });
-
-});
-
+/***************type artisan*******************/
 ChargementSelect = function(){
     $.getJSON(BASE_URL+'/typeartisan/index/',
-        {},
+        {
+
+        },
         SelectCallback
     )};
-
 SelectCallback = function(json){
     $("#typeartisan").html("");
-    $("#typeartisan_edit").html("");
+
     var body = "";
-    $.each(json.data,function(i,elt){
-        body+="<option value='"+elt.name+"'>"+elt.name+"</option>";
+    $.each(json['data'],function(i,elt){
+        var active = "";
+        if(elt.name == datatype){
+            active = "selected=''true";
+        }
+        body+="<option value='"+elt.name+"' "+active+">"+elt.name+"</option>"
     });
+    /*$.each(json.data,function(i,elt){
+        var active = "";
+        body+="<option value='"+elt.name+"'>"+elt.name+"</option>";
+        /* if(i==1){
+
+            body+="<option value='"+elt.name+"' disabled selected value>"+elt.name+"</option>";
+        }
+        else{
+
+            body+="<option value='"+elt.name+"'>"+elt.name+"</option>";
+        }
+        * */
+    /*});*/
     $("#typeartisan").append(body);
-    $("#typeartisan_edit").append(body);
 };
 saveCallback = function(json){
     if(json != 0){
@@ -91,6 +116,7 @@ saveCallback = function(json){
         $('#delete').modal('toggle');
     }
 }
+
 /****************categorie******************/
 $('document').ready(function(){
     pChargementSelect();
@@ -109,13 +135,20 @@ pChargementSelect = function(){
     )};
 
 SelectoCallback = function(json){
-    $("#typecategorie").html("");
+    //$("#typecategorie").html("");
     // $("#typecategorie_edit").html("");
     var body = "";
-    $.each(json.data,function(i,elt){
-        body+="<option value='"+elt.name_cat+"'>"+elt.name_cat+"</option>";
+    $.each(json['data'],function(i,elt){
+        var active = "";
+        if(elt.name_cat == data_categorie){
+            active = "selected=''true";
+        }
+        body+="<option value='"+elt.name_cat+"' "+active+">"+elt.name_cat+"</option>"
     });
-    $("#typecategorie").append(body);
+   /*$.each(json.data,function(i,elt){
+        body+="<option value='"+elt.name_cat+"'>"+elt.name_cat+"</option>";
+    });*/
+    $(".typecategorie").append(body);
 
 };
 saveCallbacka = function(json){
@@ -144,9 +177,17 @@ assChargementSelect = function(){
 SelectCallbackass = function(json){
     $(".assurance").html("");
     var body = "";
+    $.each(json['data'],function(i,elt){
+        var active = "";
+        if(elt.name_assur == datatype_assurance){
+            active = "selected=''true";
+        }
+        body+="<option value='"+elt.name_assur+"' "+active+">"+elt.name_assur+"</option>"
+    });
+   /* var body = "";
     $.each(json.data,function(i,elt){
         body+="<option value='"+elt.name_assur+"'>"+elt.name_assur+"</option>";
-    });
+    });*/
     $(".assurance").append(body);
 };
 
@@ -156,32 +197,7 @@ saveCallbackassur = function(json){
         $('#modal_assurance').modal('toggle');
     }
 }
-/****************type travaux******************/
-$('document').ready(function(){
-    travauxChargementSelect();
-    $("#travaux").select2();
-    $(".ajout_travaux").click(function(){
-        $.postJSON(BASE_URL+'/typeartisan/saves_travaux/',{
-            'name_travaux' : $("#nametravaux").val()
-        },saveCallbacktravaux);
-    });
-    //pays et ville
-    if($('#pays').val() != ""){
-        $('#ville').html("");
-        $.postJSON(BASE_URL + "villes/getWhere/",{
-            "id": $('#pays').val()
-        },ChargementCallback);
-    }
-    $('#pays').change(function(){
-        var id = $(this).val();
-        $('#ville').html("");
-        $.postJSON(BASE_URL + "villes/getWhere/",{
-            "id": id
-        },ChargementCallback);
-    });
-
-});
-
+/****************type travaux******************
 travauxChargementSelect = function(){
     $.getJSON(BASE_URL+'/typeartisan/home_travaux/',
         {},
@@ -189,10 +205,14 @@ travauxChargementSelect = function(){
     )};
 
 travauxSelectCallbackass = function(json){
-    $(".travaux").html("");
     var body = "";
-    $.each(json.data,function(i,elt){
-        body+="<option value='"+elt.name_travaux+"'>"+elt.name_travaux+"</option>";
+    console.log(datatype_travaux);
+    $.each(json['data'],function(i,elt){
+        var active = "";
+        if(elt.name_travaux == datatype_travaux){
+            active = "selected=''true";
+        }
+        body+="<option value='"+elt.name_travaux+"' "+active+">"+elt.name_travaux+"</option>"
     });
     $(".travaux").append(body);
 };
@@ -201,4 +221,4 @@ saveCallbacktravaux = function(json){
         travauxChargementSelect();
         $('#modal_travaux').modal('toggle');
     }
-}
+}*/

@@ -1,15 +1,34 @@
-
+/*$( function() {
+    $( ".single_calb" ).datepicker({ changeMonth: true, changeYear: true, minDate: 1, maxDate: new Date(3020, 1 - 1, 1) });
+} );*/
 /*ajout type assurance */
 $('document').ready(function(){
     $(".single_cal").daterangepicker({
         singleDatePicker: true,
         singleClasses: "picker_4",
+        startDate: testDate(),
+        maxDate: testDate() ,
         locale: {
             format: 'DD/MM/YYYY'
         }
     }, function(start, end, label) {
         //console.log(start.toISOString(), end.toISOString(), label);
     })
+
+    $(".single_calb").daterangepicker({
+        singleDatePicker: true,
+        singleClasses: "picker_4",
+        //maxDate: testDate() ,
+
+        locale: {
+            format: 'DD/MM/YYYY'
+        }
+    }, function(start, end, label) {
+        //console.log(start.toISOString(), end.toISOString(), label);
+    })
+
+
+    //ajout type assurance
     var max_fields = 10; // maximum input boxes allowed
     var wrapper = $("#typeassurancediv").find('#assurancediv'); // Fields wrapper
     var x = 1;
@@ -60,7 +79,7 @@ $('document').ready(function(){
             data += '<div class="item form-group">';
             data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date fin assurance<span class="required" id="addclass">*</span></label>';
             data += '<div class="col-md-6 col-sm-6 col-xs-12">';
-            data += '<input required="required"  class="single_cal form-control col-md-7 col-xs-12" name="date_fins' + (x) + '"  type="text">';
+            data += '<input required="required"  class="single_cal5 form-control col-md-7 col-xs-12" name="date_fins' + (x) + '"  type="text">';
             data += '</div>';
             data += '</div>';
 
@@ -92,12 +111,28 @@ $('document').ready(function(){
             $(".single_cal").daterangepicker({
                 singleDatePicker: true,
                 singleClasses: "picker_4",
+                startDate: testDate(),
+                maxDate: testDate() ,
                 locale: {
                     format: 'DD/MM/YYYY'
                 }
             }, function(start, end, label) {
                 //console.log(start.toISOString(), end.toISOString(), label);
             })
+
+            $(".single_cal5").daterangepicker({
+                singleDatePicker: true,
+                singleClasses: "picker_4",
+                locale: {
+                    format: 'DD/MM/YYYY'
+                }
+            }, function(start, end, label) {
+                //console.log(start.toISOString(), end.toISOString(), label);
+            })
+
+            /*$( function() {
+                $( ".single_cal" ).datepicker({ changeMonth: true, changeYear: true, minDate: 1, maxDate: new Date(2020, 1 - 1, 1) });
+            } );*/
 
         }
         $('input[name="nombree"]').val(tailleTable);
@@ -156,6 +191,7 @@ $('document').ready(function(){
     })
 
 });
+
 
 /****************type artisan******************/
 ChargementSelect = function(){

@@ -94,7 +94,7 @@ class Cic_auth {
 								],
 								[
 										"nomMenu" => "Gestion des rdv des Propriétaires",
-										"url" => "#"
+										"url" => "rendez_vous"
 								] ,
 								[
 										"nomMenu" => "Gestion des rdv des Artisans",
