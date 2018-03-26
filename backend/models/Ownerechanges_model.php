@@ -2,29 +2,32 @@
 class Ownerechanges_model extends CI_Model {
 	private $table = "owner_echanges";
 	
-	public function getWhere($array) {
+	public function getWhere($array,$id) {
 		
 		$this->db->select ( 'owners.id as clientid, owners.firstname1 as clientNom,owners.firstname2 as clientPrenom,
 							echanges.motif as motifEchanges,echanges.date as dateEchanges
 							,echanges.telephones as phonesEchanges,echanges.mails as mailsEchanges
-							,echanges.messages as messagesEchanges');
+							,echanges.messages as messagesEchanges,echanges.code_confirmation as codeEchanges
+							,echanges.commentaires as commentaireEchanges,echanges.daterappel as rappelEchanges
+							,echanges.id as idEchanges');
 		
 		$this->db->join ( "owners", "owners.id =owner_echanges.owner_id" );
 		$this->db->join ( "echanges", "echanges.id = owner_echanges.echange_id" );
 		$this->db->join ( "type_echange","type_echange.id = echanges.type_echange_id");
-		/*$this->db->join ( "adress", "adress.id = adress_id" );
-		$this->db->join ( "parents", "parents.owner_id = owners.id" );
-		$this->db->join ( "link_parents", "link_parents.id = parents.link_parent_id" );
-		//$this->db->join ( "resources", "resources.owner_id = owners.id" );
-		$this->db->join ( "resources", "resources.parent_id = parents.id" );
-		$this->db->join ( "villes", "villes.id = adress.ville" );*/
+
 		if(is_array ($array)){
 			$query = $this->db->get_where ( $this->table, $array );
 			return $query->result_array ();
 		}else{
 			$this->db->group_by('owners.id');
-			$query = $this->db->get( $this->table, $array );
-			return $query->result_array ();
+			if($id == ""){
+				$query = $this->db->get( $this->table);
+				return $query->result_array ();
+			}else{
+				$this->db->like($id);
+				$query = $this->db->get( $this->table);
+				return $query->result_array ();
+			}
 		}
 	}
 		
@@ -42,14 +45,3 @@ class Ownerechanges_model extends CI_Model {
 	}
 
 }
-/*,DATE_FORMAT(owners.birthdate, "%d/%m/%Y") as clientDate,owners.birthplace as clientPlace
-					,owners.familysituation as clientSituation,owners.aide_organisme as clientAide,owners.nom_organisme as clientOrganisme
-					,owners.montant_aide as clientMontant,owners.type_travaux_finan as clienttp,owners.etat as clientEtat,
-					,adress.adress1 as adresseAdresse1,adress.adress2 as adresseAdresse2,
-					,adress.id as adresseId,adress.lieu_dit as adresseLieu,
-					adress.cp as adresseCp,villes.nom_ville_fr as adresseVille,
-					adress.pays as adressePays,adress.phone as adressePhone,adress.region as adresseRegion,
-					adress.cellphone1 as adresseCellphone,adress.mail as adresseMail,adress.fax as adresseFax,
-					parents.id as parentsId,parents.name as parentsNom,parents.firstname as parentsPrenom,DATE_FORMAT(parents.birthdate, "%d/%m/%Y") as parentsBirthdate,
-					link_parents.name as linkparentsNom,link_parents.id as linkparentsId,
-					resources.id as ressourcesId,resources.montant as ressourcesMontant*/

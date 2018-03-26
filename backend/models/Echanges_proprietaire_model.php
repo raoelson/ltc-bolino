@@ -8,4 +8,9 @@ class Echanges_proprietaire_model extends CI_Model {
 		return $this->db->insert_id ();
 	}
 	
+	public function modification($posts,$id){
+		$this->db->update ( $this->table, $posts, array (
+				$this->id => $id 
+		) );
+	}
 }

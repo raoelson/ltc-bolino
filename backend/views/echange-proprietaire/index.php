@@ -28,24 +28,15 @@
 				 <div class="x_content">
 				 	<?php if(count($data['clients-echange'])>0) {?>
 					 			 	
-				    <div class="col-xs-3">
+				    <div class="col-xs-3" >
 				    	
                       <!-- required for floating -->
                       <!-- Nav tabs -->
-	                      <ul class="nav nav-tabs tabs-left">
-	                      	 <?php
-		                   		$i = 0;
-		                   		foreach ($data['clients-echange'] as $value) {
-			                   			//print_r($key);
-		                   	  ?> 
-	                        <li id="li_<?php echo($i);?>" <?php if($i==0) echo 'class="active"';?> ><a href="#home-<?php echo($i);?> " data-toggle="tab" data-client="<?php echo($value['clientid']);?>" onclick="show('<?php echo($value['clientid']);?>')"><?php echo($value['clientNom'].' '.$value['clientPrenom']); ?></a>
-	                        </li>	                        
-	                        <?php
-		                   		$i++;
-		                   		}
-		                   	?>
+	                      <ul class="nav nav-tabs tabs-left" id="tableClients">	                      	
 	                      </ul>
-
+	                     <div class="well_ well-large_ well-transparent lead" id="loading-table" >
+								<i class="fa fa-spinner fa-spin pull-left"></i> loading content...
+						</div> 
                     </div>  
                     <div class="col-xs-9">
                       <!-- Tab panes -->
@@ -65,13 +56,18 @@
 										<th>N° phone</th>							
 										<th>Date&Heure</th>
 										<th>Motif</th>
+										<th>Commentaires</th>
+										<th>Date de rappel</th>
 										<th colspan="2">Actions</th>
 									</tr>
 								</thead>
 								<tbody>
-								
-								</tbody>
+									
+								</tbody>								
 							</table>
+							<div class="well well-large well-transparent lead"  >
+								<i class="fa fa-spinner fa-spin pull-left"></i> loading content...
+							</div>
 							<br/><br/>
 							<p class="lead">Listes des messages effectués</p>
                          	<table id="datatable-buttons1"
@@ -90,6 +86,9 @@
 								
 								</tbody>
 							</table>
+							<div class="well well-large well-transparent lead"  id="tets">
+								<i class="fa fa-spinner fa-spin pull-left"></i> loading content...
+							</div>
                         </div>
                         <?php
 	                   		$i++;
@@ -136,6 +135,7 @@
 								action="<?php echo base_url('admin.php/echanges-proprietaires-saves');?>"
 								method="post">
 								<input  type="hidden" name="types" value="0" />
+								<input  type="hidden" name="idechange" id="idechange" value="0" />
 								<select id="selectClient" name="selectClient" style="display: none;">
 									<option value="0"></option>
 									<?php
@@ -167,16 +167,43 @@
 										for="name">Motif</label>
 
 									<div class="col-md-6 col-sm-6 col-xs-12">
-										<input id="motifi" class="form-control col-md-7 col-xs-12"
-											type="text" name="motifi" placeholder="Motif d'appel..." required="" />
-										<!-- <select  class="form-control col-md-7 col-xs-12"
-											 name="etatappel">
-											 <option value="1">Appel confirmé</option>
-											 <option value="2">Appel rejeté</option>
-											 <option value="3">Toujours injoinable</option>
-										</select> -->
+										<!-- <input id="motifi" class="form-control col-md-7 col-xs-12"
+											type="text" name="motifi" placeholder="Motif d'appel..." required="" /> -->
+										<select  class="form-control col-md-7 col-xs-12"
+											 name="motifi" id="motifi">
+											 <option value="Appel confirmé">Appel confirmé</option>
+											 <option value="Appel rejeté">Appel rejeté</option>
+											 <option value="Toujours injoinable">Toujours injoinable</option>
+										</select>
 									</div>											
                         		</div>
+                        		<div class="item form-group">
+									<label class="control-label col-md-3 col-sm-3 col-xs-12"
+										for="name">Validation</label>
+
+									<div class="col-md-6 col-sm-6 col-xs-12" style="margin-top: 7px;">
+										 <input type="checkbox" class="flat" name="confirmation" id="confirmation" checked="" />
+									</div>											
+                        		</div>
+                        		<div id="confirmationDiv" style="display: none">
+                        			<div class="item form-group">
+									<label class="control-label col-md-3 col-sm-3 col-xs-12"
+										for="name">Commentaires<span class="required">*</span></label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<input id="commentaires" class="form-control col-md-7 col-xs-12"
+											type="text" name="commentaires" placeholder="Commentaires..." required="" />
+									</div>
+									</div>
+										<div class="item form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12"
+												for="name">Date de rappel</label>
+											<div class="col-md-6 col-sm-6 col-xs-12">
+												<input id="daterappel" class="form-control col-md-7 col-xs-12"
+													type="text" name="daterappel" placeholder="Date de rappel..." />
+										</div>
+									</div>
+                        		</div>
+                        		
                         		<div class="ln_solid"></div>
 								<div class="form-group">
 									<center>
@@ -194,6 +221,7 @@
 								action="<?php echo base_url('admin.php/echanges-proprietaires-saves');?>"
 								method="post">
 								<input  type="hidden" name="types" value="1" />
+								<input  type="hidden" name="idmessageechange" id="idmessageechange" value="0" />
 								<select id="selectClient_" name="selectClient" style="display: none;">
 									<option value="0"></option>
 									<?php
@@ -217,7 +245,7 @@
 										for="name">Motif<span class="required">*</span></label>
 
 									<div class="col-md-6 col-sm-6 col-xs-12">
-										<input id="motifi" class="form-control col-md-7 col-xs-12"
+										<input id="motific" class="form-control col-md-7 col-xs-12"
 											type="text" name="motifi" placeholder="Motif du message..." required="" />
 									</div>											
                         		</div>
@@ -225,7 +253,7 @@
 									<label class="control-label col-md-3 col-sm-3 col-xs-12"
 										for="name">Message à envoyer <span class="required">*</span></label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
-										<textarea name="messageenvoyer" required="" class="form-control col-md-7 col-xs-12" cols="20" rows="5" placeholder="Ecrire ici votre message" >
+										<textarea name="messageenvoyer" id="messageenvoyer" required="" class="form-control col-md-7 col-xs-12" cols="20" rows="5" placeholder="Ecrire ici votre message" >
 											
 										</textarea> 
 									</div>						
@@ -247,6 +275,16 @@
 			</div>
 		</div>
 	</div>
+<select id="rechercheClient_" name="rechercheClient_" style="display: none;">
+	<option value="0"></option>
+	<?php
+		foreach ($data['clients']  as  $value) {
+	 ?>
+	   <option value="<?php echo $value['clientid']; ?>" data-phone ="<?php echo $value['adressePhone']; ?>"
+	   	data-email ="<?php echo $value['adresseMail']; ?>"><?php echo $value['clientNom'].' '.$value['clientPrenom'];?></option>
+	    
+	<?php } ?>
+</select>
 <select id="selectClient" style="display: none;">
 	<?php
 		foreach ($data['clients']  as  $value) {
