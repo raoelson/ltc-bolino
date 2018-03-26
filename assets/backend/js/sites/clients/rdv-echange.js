@@ -184,7 +184,7 @@ tableAppel = function(json){
             tbody += '<td>'+ commentaires +'</td>';
             tbody += '<td>'+ daterappel_ +'</td>';
             tbody += '<td><a href="#ancre" onclick="showAppel('+elt.idEchanges+')" class="btn btn-round btn-warning">&nbsp;&nbsp;<span class="gly fa fa-edit"></span></a></td>';
-            tbody += '<td><a href="#" class="btn btn-round btn-danger">&nbsp;&nbsp;<span class="gly fa fa-remove"></span></a></td>';
+            tbody += '<td><a href="#" class="btn btn-round btn-danger" onclick="deleteEchange('+elt.idEchanges+','+elt.clientid+')">&nbsp;&nbsp;<span class="gly fa fa-remove"></span></a></td>';
             tbody += '</tr>';
         });  
       }else{
@@ -207,7 +207,7 @@ tableMessage = function(json){
             tbody += '<td>'+ elt.motifEchanges +'</td>';
             tbody += '<td>'+ elt.messagesEchanges +'</td>';
             tbody += '<td><a href="#ancre"  onclick="showMessage('+elt.idEchanges+')"  class="btn btn-round btn-warning">&nbsp;&nbsp;<span class="gly fa fa-edit"></span></a></td>';
-            tbody += '<td><a href="#" class="btn btn-round btn-danger">&nbsp;&nbsp;<span class="gly fa fa-remove"></span></a></td>';
+            tbody += '<td><a href="#" class="btn btn-round btn-danger" onclick="deleteEchange('+elt.idEchanges+','+elt.clientid+')">&nbsp;&nbsp;<span class="gly fa fa-remove"></span></a></td>';
             tbody += '</tr>';
         });
     }else{
@@ -260,4 +260,21 @@ showMessageBack = function (json){
     $('#messageenvoyer').text(json[0].messagesEchanges);
     $('#motific').val(json[0].motifEchanges);
     
+}
+
+deleteEchange = function(ide,idc){
+    if (!confirm(" Êtes-vous certain de vouloir supprimer ceci ? "))
+        return;
+   $.getJSON(BASE_URL+'echanges_proprietaire/removeEchanges/',{
+        'ide' : ide,
+        'idc' : idc
+    },MessageBack) 
+}
+MessageBack = function(json){
+    id = json;
+    console.log(json);
+    if (id != "") {
+      notification("","Votre donnée a été bien supprimée","success");
+      $("#tr_" +id).remove();
+    }
 }

@@ -124,4 +124,12 @@ class Echanges_proprietaire extends CI_Controller {
 		$this->output->set_content_type ( 'application/json' )
 			->set_output (json_encode($data) );
 	}
+
+	public function removeEchanges(){
+		$posts= $this->input->get();
+		$this->ownerechanges->remove($posts['idc'],$posts['ide']);
+		$this->echanges->remove($posts['ide']);
+		$this->output->set_content_type ( 'application/json' )
+			->set_output (json_encode($posts['ide']) );
+	}
 }

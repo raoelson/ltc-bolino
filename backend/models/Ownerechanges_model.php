@@ -36,11 +36,11 @@ class Ownerechanges_model extends CI_Model {
 		$this->db->insert ( $this->table, $data);
 		return $this->db->insert_id ();
 	}
-	
-	public function remove($id,$adress) {
+
+	public function remove($id,$echange) {
 		$this->db->delete ( $this->table, array (
-				'owners_id' => $id,
-				'adress_id' => $adress
+				'owner_id' => $id,
+				'echange_id' => $echange
 		) );
 	}
 

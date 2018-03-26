@@ -13,4 +13,10 @@ class Echanges_proprietaire_model extends CI_Model {
 				$this->id => $id 
 		) );
 	}
+
+	public function remove($id){
+		$this->db->delete ( $this->table, array (
+				$this->id => $id 
+		) );
+	}
 }
