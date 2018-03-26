@@ -1,4 +1,3 @@
-
 <?php
 class Type_travaux_housing_model extends CI_Model {
 

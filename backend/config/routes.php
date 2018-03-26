@@ -117,3 +117,7 @@ $route['demande'] = 'demande';
 $route['demande_saves'] = 'demande/save';
 $route['demande/details/(:id)'] = 'demande/details/$1';
 
+//Routage echange rdv
+$route['echanges-rendez-vous-proprietaires'] = 'echanges_proprietaire';
+
+$route['echanges-proprietaires-saves'] = 'echanges_proprietaire/saves';

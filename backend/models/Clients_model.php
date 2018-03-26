@@ -4,7 +4,6 @@ class Clients_model extends CI_Model {
 	private $id = "id";
 	
 	public function get_all() {
-		
 		$query = $this->db->get ( $this->table );
 		return $query->result_array ();
 	}

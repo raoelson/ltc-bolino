@@ -30,34 +30,36 @@ class Demande extends CI_Controller{
 
 		$ownerId = $this->demande->getOwnerId($posts['nom']);
 
-		$aide = ($posts['montant_devis'] > 10500) ? 10500 : ($posts['montant_devis']); 
+		$aide = ($posts['valeurDevis'] > 10700) ? 10700 : ($posts['valeurDevis']); 
+
+		//$a = ($posts['num_dossier_valide'] == null) ? 0 : ($posts['num_dossier_valide']);
 
 		foreach ($ownerId as $row) {
 			$dataDemande = array (
 				'num_dossier_valide' => $posts['num_dossier_valide'],
-				'date_arrivee' => $posts['date_arrivee'],
-				'montant_devis' => $posts['montant_devis'],
+				'date_arrivee' => $this->cic_auth->FormatDate($posts ['date_arrivee']), 
+				'montant_devis' => $posts['valeurDevis'],
 				'owner_id' => $row->id,
 				'montant_aide_dept' => $aide,
                 'statut' => $posts['statut'],
 
 			);
 		}
-
+		//var_dump($dataDemande); die;
         $iddemande = $this->demande->add($dataDemande);
 
 		$dataDevis = array(
-		    'montant' => $posts['montant_devis'],
+		    'montant' => $posts['valeurDevis'],
             'demande_id' => $iddemande
         );
 
 
         $this->devismodel->add($dataDevis);
 
+        $this->session->set_flashdata ( "success", "Votre donnée  a été bien enregistrée !");
+        redirect ( base_url () . "admin.php/demande" );
+
 	}
-
-
-
 
 
 }
