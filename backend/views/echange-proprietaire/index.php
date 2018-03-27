@@ -19,11 +19,13 @@
 					<h2>Liste des échanges avec les propriétaires</h2>					
 					<div class="clearfix"></div>
 				</div>
-					<div class="col-xs-6">
-					 	<div class="col-md-6 col-sm-6 col-xs-12">
-							<input id="nomrecherche" class="form-control col-md-7 col-xs-12"
-								type="text" name="nomrecherche" placeholder="Recherche..." data-provide="typeahead" />
-						</div>
+					<div class="col-xs-3">
+						<div class="input-group">
+		                    <input type="text" id="nomrecherche" name="nomrecherche" data-provide="typeahead" class="form-control" placeholder="Recherche...">
+		                    <span class="input-group-btn">
+		                      <button class="btn btn-success" type="button" id="btnRecherche">OK</button>
+		                    </span>
+		                  </div>
 				 	</div>	<br/>
 				 <div class="x_content">
 				 	<?php if(count($data['clients-echange'])>0) {?>
@@ -34,6 +36,9 @@
                       <!-- Nav tabs -->
 	                      <ul class="nav nav-tabs tabs-left" id="tableClients">	                      	
 	                      </ul>
+	                      <nav aria-label id="pagination">
+						
+						 </nav>
 	                     <div class="well_ well-large_ well-transparent lead" id="loading-table" >
 								<i class="fa fa-spinner fa-spin pull-left"></i> loading content...
 						</div> 

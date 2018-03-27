@@ -32,16 +32,21 @@ $('document').ready(function(){
           source: substringMatcher(dataClients)
     });
 
-   $('input[name="nomrecherche"]').keypress(function(){
+   $('#btnRecherche').click(function(){
         $('#tableClients').html("");   
-        var textNom = $(this).val().toLowerCase();
-         $('#rechercheClient_').find('option').each(function(i,e){
-            if($(e).text().toLowerCase() === textNom){
-                 $('#rechercheClient_').val($(e).val());
-                 init(($('#rechercheClient_').val()));
-                 return;
-            }
-        });
+        var textNom = $('input[name="nomrecherche"]').val().toLowerCase();        
+        if(textNom != ""){
+            $('#rechercheClient_').find('option').each(function(i,e){
+              if($(e).text().toLowerCase() === textNom){
+                   $('#rechercheClient_').val($(e).val());
+                   init(($('#rechercheClient_').val()));
+                   return;
+              }
+            });
+        }else{
+          init("");
+          return;
+        }
     });
 
   
@@ -86,18 +91,20 @@ $('document').ready(function(){
    });
 
 });
-
+var current_id;
+var current_page = 1;
 init = function(id){
     $('#loading-table').show();
     $('#tableClients').html("");   
     $.postJSON(BASE_URL + "echanges_proprietaire/getWhere/",
     {
         "id" : id
-    },initBack);     
+    },initBack);   
+    $("#pagination_ul > li:eq(1)").addClass("disabled");  
 };
 initBack = function(json){
-
-    var droits = json;
+    var droits = json.data;
+    total_page = json.total_page;
     var tbody = "";
     i = 0;
 
@@ -120,6 +127,24 @@ initBack = function(json){
       }
 
     $('#tableClients').append(tbody);
+
+
+    /**PAGINATION **/
+    pagination = '<ul class="pagination" id="pagination_ul">';
+    pagination +='<li class="page-item disabled" id="li_0"><a class="page-link" href="javascript:page(current_page - 1 )">Prec.</a></li>';
+    for (i=1; i<=total_page;i++){
+      pagination+='<li class="page-item" id="li_'+i+'"><a class="page-link" href="javascript:page('+i+')">'+i+'</a></li>';
+    }
+    pagination +='<li class="page-item" id="li_'+(total_page+1)+'"><a class="page-link" href="javascript:page(current_page +1 )">Suiv.</a></li>';
+    pagination += '</ul>';
+    $("#pagination").html("").append(pagination);
+    $(".page-item").removeClass("disabled");
+    if (current_page == 1) $("#pagination_ul > li:eq(0)").addClass("disabled");
+    if (current_page == total_page) $("#pagination_ul > li:eq("+(current_page+1)+")").addClass("disabled");
+    $("#pagination_ul > li:eq("+current_page+")").addClass("disabled");
+
+  
+
     if($('#li_0').hasClass('active')){        
         chargmentTable($('#li_0 a').data('client'));
     }
@@ -277,4 +302,29 @@ MessageBack = function(json){
       notification("","Votre donnée a été bien supprimée","success");
       $("#tr_" +id).remove();
     }
+}
+
+page = function(num_page,exception){
+
+  if ($("#li_"+num_page).hasClass("disabled") && !exception ) return;
+    $('#loading-table').show();
+    $('#tableClients').html("");
+    var id = "";
+    /*if($('input[name="nomrecherche"]').val().toLowerCase !=""){
+      $('#rechercheClient_').find('option').each(function(i,e){
+          if($(e).text().toLowerCase() === $('input[name="nomrecherche"]').val().toLowerCase){
+               $('#rechercheClient_').val($(e).val());
+               id = ($('#rechercheClient_').val());               
+          }
+      });
+    }
+
+    console.log(id);return*/
+    current_page = num_page;   
+    $.postJSON(BASE_URL + "echanges_proprietaire/getWhere/",
+    {
+        "id" : id,
+        "key" : "limit",
+        "val": num_page,
+    },initBack);   
 }

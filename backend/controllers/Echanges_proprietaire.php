@@ -16,21 +16,39 @@ class Echanges_proprietaire extends CI_Controller {
 	}
 
 	public function index(){
+
 		$data['clients'] =$this->owneradresse->getWhere("");
-		$data['clients-echange'] =$this->ownerechanges->getWhere("","");
+		$data['clients-echange'] =$this->ownerechanges->getWhere("","");		
 		$this->template->title ( 'Gestions des échanges des rendez-vous avec propriétaires' )->build ( 'echange-proprietaire/index',array('data'=>$data));
 	}
 
 	public function getWhere(){
 		$gets = $this->input->post();
-		if($gets['id'] != ""){
-			$data =$this->ownerechanges->getWhere("",array('owner_id'=>$gets['id']));	
+		if(isset($gets['key']) && $gets['key'] == "limit"){
+			/*if($gets['id'] == ""){
+				$data = $this->ownerechanges->getLimit($gets['val']);
+			}else{
+				$data = $this->ownerechanges->getLimit($gets['val'],array('owner_id'=>$gets['id']));
+			}*/
+			$data = $this->ownerechanges->getLimit($gets['val']);
 		}else{
-			$data =$this->ownerechanges->getWhere("","");	
-		}	
+			if($gets['id'] != ""){
+				$data =$this->ownerechanges->getWhere("",array('owner_id'=>$gets['id']));	
+			}else{
+				$data =$this->ownerechanges->getWhere("","");	
+			}	
+		}
 		
+		if($gets['id'] != ""){
+			$count =  count(record_count('owner_echanges',array('owner_id'=>$gets['id'])));
+		}else{
+			$count =  count(record_count('owner_echanges'));
+		}
+		
+		$total_page = intval($count/NB_PAGES());
+		if ($total_page<$count/NB_PAGES()) $total_page++;
 		$this->output->set_content_type ( 'application/json' )
-				->set_output (json_encode($data) );
+				->set_output (json_encode(array('data'=>$data,'total_page'=>$total_page)) );
 	}
 
 	public function getAppelMessage(){
@@ -56,7 +74,7 @@ class Echanges_proprietaire extends CI_Controller {
 			if(isset($posts['confirmation'])){
 				if($posts['confirmation'] == 'on'){
 				$confirmation = 1;
-			}
+				}
 			}
 						
 			if($posts['idechange'] == 0){
