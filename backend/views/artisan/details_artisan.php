@@ -730,7 +730,7 @@
                                                                 </select>
 
 
-                                                                <input type="text" value="<?php echo $data[$i]['namtravaux'];?>" class="form-control" id="" name="nom<?php echo $i+1;?>">
+                                                                <input type="hidden" value="<?php echo $data[$i]['namtravaux'];?>" class="form-control" id="" name="nom<?php echo $i+1;?>">
 
                                                             </div>
                                                         </div>
@@ -741,7 +741,7 @@
                                                             <div class="col-sm-6">
                                                                 <select  name="nom<?php echo $i+1;?>" id="nom1" class="assurance form-control" tabindex="50"><br/>
                                                                 </select>
-                                                                <input type="text" value="<?php echo $data[$i]['nomtype_assurance'];?>" class="form-control" id="" name="nom<?php echo $i+1;?>">
+                                                                <input type="hidden" value="<?php echo $data[$i]['nomtype_assurance'];?>" class="form-control" id="" name="nom<?php echo $i+1;?>">
 
 
                                                             </div>
