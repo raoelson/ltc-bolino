@@ -1,4 +1,4 @@
-<?php
+<?php   
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
@@ -107,15 +107,12 @@ $route['artisan/details_artisan/(:id)'] = 'artisan/details_artisan/$1';
 $route['logements/index/(:id)'] = 'logements/index/$1';
 $route['logements_saves'] = 'logements/saves';
 
-//gestion rendez-vous propriétaire
-$route['rendez_vous'] = 'rendez_vous';
-$route['rendez_vous_edit'] = 'rendez_vous/edit';
-$route['rendez_vous_ajout'] = 'rendez_vous/ajout_rendez_vous';
 
 //Routage Demandes
 $route['demande'] = 'demande';
 $route['demande_saves'] = 'demande/save';
 $route['demande/details/(:id)'] = 'demande/details/$1';
+$route['demande/devis/(:id)'] = 'demande/devis/$1'; 
 
 //Routage echange rdv
 $route['echanges-rendez-vous-proprietaires'] = 'echanges_proprietaire';

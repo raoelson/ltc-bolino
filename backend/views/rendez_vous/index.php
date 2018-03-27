@@ -9,7 +9,7 @@
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-6">
                         <select id="mySelect_list" onchange="myFunction_select()" name="statut"  class="form-control"  tabindex="50" ><br />
-                            <option  value="2018-03-27">Semaine Passée</option>
+                            <option  value="2018-03-20">Semaine Passée</option>
                             <option  value="2018-03-27">Semaine Dernière</option>
                             <option value="sur cette Semaine">Cette Semaine </option>
                             <option value="Semaine Prochaine ">Semaine Prochaine </option>
@@ -17,7 +17,7 @@
                             <option value="Tous">Tous </option>
                             </optgroup>
                         </select>
-                        <input type="text" id="myInput" onkeyup="myFunction_input()" placeholder="Search for names.." value="" title="Type in a name">
+                        <input type="text" id="myInput" onmouseover="myFunction_input()" placeholder="Search for names.." value="" title="Type in a name">
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -191,8 +191,12 @@
 
 
 <script>
+
+
     var id_user="";//porter variable (azo ampiasaina fona)
     function select_userFunction() {
+        //date
+
         var id_select = document.getElementById("select_user").value;
         id_user =id_select
         //console.log(id_select);
@@ -201,6 +205,7 @@
     }
 
     $(document).ready(function() {
+
         //date
         // var x = document.getElementById("mySelect").value;
        // document.getElementById("demo").innerHTML = "" + x;
@@ -233,8 +238,7 @@
                     }
             });
         });
-        $(document).on('change', '#select_user', function() {
-        });
+
 
     });
 

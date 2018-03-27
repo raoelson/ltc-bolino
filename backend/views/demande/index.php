@@ -1,5 +1,5 @@
 <!-- top tiles -->
-<div class="row tile_count"></div>
+<div class="row tile_count"></div> 
 <!-- /top tiles -->
 <div class="row">
 	<div class="page-title">
@@ -25,19 +25,18 @@
 							<tr>
                                 <th>N°</th>
                                 <th>N° Dossier</th>
+                                <th>Date d'arrivée</th>
                                 <th>Titre</th>
                                 <th>Propriétaire</th>
                                 <th>Adresse Postale</th>
-                                <th>Artisan</th>
-                                <th>Type de l'artisan</th>
                                 <th>Type des travaux</th>
-								<th>Date d'arrivée</th>
+                                <th>Devis</th>
 								<th>Montant total des devis</th>
 								<th>Montant de l'aide</th>
                                 <th>Statut</th>
                                 <th>Action</th>
 
-							</tr>
+							</tr> 
 						</thead>
 						<tbody>
 							<?php foreach ($data['demande'] as $val ) { ?>
@@ -45,21 +44,18 @@
 
                                     <td><?php echo $val['demandeid']; ?></td>
                                     <td><?php echo $val['num_dossier_valide']; ?></td>
+                                    <td><?php echo $val['date_arrivee']; ?></td>
                                     <td><?php echo $val['title']; ?></td>
                                     <td><?php echo $val['firstname1']; ?></td>
                                     <td><?php echo $val['adress1']; ?></td>
-                                    <td></td>
-                                    <td></td>
                                     <td><?php if ($val['type_travaux_finan'] != "") echo $val['type_travaux_finan']; else echo '-'; ?></td>
-                                    <td><?php echo $val['date_arrivee']; ?></td>
+                                    <td><a href="<?php  echo base_url('admin.php/demande/devis/'.$val['demandeid']) ?>" class="btn btn-round btn-default"><span class="gly fa fa-plus"></span></a></td>
                                     <td><?php echo $val['montant_devis']; ?></td>
                                     <td>
-
                                         <?php 
                                             $aide = $val['montant_devis'];
-                                            echo ($aide > 10700 ? 10700 : $aide); 
+                                            echo ($aide > 10500 ? 10500 : $aide); 
                                         ?>
-
                                     </td>
                                     <td>
                                         <!--affichage en cours-->
@@ -112,7 +108,7 @@
             <form class="form-horizontal form-label-left" novalidate
         action="<?php echo base_url('admin.php/demande_saves');?>"
         method="post">
-        <input type="hidden" name="nombreDevis" value="0" />
+        <input type="hidden" name="nombreDevis" value="1"/>
         <div class="row" id="ancre">
             <div class="col-md-12 col-sm-12 col-xs-12">
 
@@ -155,7 +151,7 @@
                                    for="name">Date d'arrivée <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input id="date_arrivee" class="form-control col-md-7 col-xs-12"
+                                <input id="date_arrivee" class="form-control col-md-7 col-xs-12 dateCalendrier"
                                        name="date_arrivee" placeholder="" required="required"
                                        type="text">
                             </div>
@@ -178,12 +174,10 @@
 
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12"
-                                   for="name">N° Dossier
+                                   for="name">N° Dossier<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input id="num_dossier_valide" class="form-control col-md-7 col-xs-12"
-                                       name="num_dossier_valide" placeholder="Seulement si la demande est validée"
-                                        type="text">
+                                <input id="num_dossier_valide" class="form-control col-md-7 col-xs-12" name="num_dossier_valide"  type="text" required="">
                             </div>
                         </div>
 
@@ -220,7 +214,7 @@
                                            for="name">Nom de l'artisan
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <select id="nameArt" name="nameArt" class="form-control">
+                                        <select id="nomArt1" name="nomArt1" class="form-control">
                                           <?php foreach ($arti as $art){?>
                                             <option> <?php echo $art->nom_gerant; ?> </option>
                                           <?php } ?>
@@ -233,7 +227,7 @@
                                            for="name">Type de l'artisan
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <select id="nameArt" name="nameArt" class="form-control">
+                                        <select id="nameArt1" name="nameArt1" class="form-control">
                                             <?php foreach ($type_art as $trav ){ ?>
                                                 <option value=""><?php echo $trav->name; ?></option>
                                             <?php } ?>
@@ -243,11 +237,30 @@
 
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                           for="name">N° du Devis<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input id="num_devis1" class="form-control col-md-7 col-xs-12" name="num_devis1" type="text" required="">
+                                    </div>
+                                </div>
+
+                                 <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                           for="name">Date du Devis <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input id="date_devis1" class="form-control col-md-7 col-xs-12 dateCalendrier" name="date_devis1" required="required"
+                                               type="text">
+                                    </div>
+                                </div>
+
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"
                                            for="montantDevisPrincipal">Montant du devis <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input id="montantDevisPrincipal" class="form-control col-md-7 col-xs-12"
-                                               name="montantDevisPrincipal" placeholder="" required="required"
+                                        <input id="montantDevis1" class="form-control col-md-7 col-xs-12"
+                                               name="montantDevis1" placeholder="" required="required"
                                                type="text">
                                     </div>
                                 </div>
@@ -259,8 +272,8 @@
                                        for="name">Statut du devis <span class="required">*</span>
                                 </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <select class="form-control">
-                                            <option value="Encours">En cours</option>
+                                        <select class="form-control" name="statutDevis1">
+                                            <option value="En cours" selected="">En cours</option>
                                             <option value="Validé">Validé</option>
                                             <option value="Refusé">Refusé</option>
                                         </select>
@@ -468,6 +481,7 @@
 <script src="<?php echo base_url('assets/backend/js/demande/notify.js')?>"></script>
 <script src="<?php echo base_url('assets/backend/js/demande/jquery.inputfile.js')?>"></script>
 <script src="<?php echo base_url('assets/backend/js/sites/demande/demande.js')?>"></script> 
+
 <script>
     function testDate (){
             var date = new Date();
@@ -477,7 +491,7 @@
         }
 
     $(function() {
-        $('#date_arrivee').daterangepicker({
+        $('.dateCalendrier').daterangepicker({
             singleDatePicker: true,
             singleClasses: "picker_4",
             startDate: testDate(),

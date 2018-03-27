@@ -1,6 +1,7 @@
 
 $('document').ready(function(){
 
+
     //pays
     if($('#pays').val() != ""){
         $('#region').html("");
@@ -28,7 +29,8 @@ $('document').ready(function(){
         singleDatePicker: true,
         singleClasses: "picker_4",
         locale: {
-            format: 'DD/MM/YYYY'
+            format: 'YYYY/MM/DD'
+
         }
     }, function(start, end, label) {
         //console.log(start.toISOString(), end.toISOString(), label);

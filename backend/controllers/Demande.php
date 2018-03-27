@@ -10,8 +10,7 @@ class Demande extends CI_Controller{
 		$this->load->model('Devis_model', 'devismodel');
 		$this->load->model('Type_artisan', 'typeartisan');
 		$this->load->model('Affichage_artisan', 'artisan');
-        $this->load->model('Type_artisan', 'typeartisan');
-
+        $this->load->model('ComposeDevis_model', 'composedevis');
 
 	}
 
@@ -42,23 +41,42 @@ class Demande extends CI_Controller{
 				'owner_id' => $row->id,
 				'montant_aide_dept' => $aide,
                 'statut' => $posts['statut'],
-
 			);
 		}
 		//var_dump($dataDemande); die;
         $iddemande = $this->demande->add($dataDemande);
+		
+        $taille = $posts['nombreDevis'];
 
-		$dataDevis = array(
-		    'montant' => $posts['valeurDevis'],
-            'demande_id' => $iddemande
-        );
+        for($i=0; $i < $taille; $i++){
 
+        	$dataDevis = array(
+        		'demande_id' => $iddemande,
+	            'num_devis' => $posts['num_devis'.($i+1)],
+	            'date_devis' => $this->cic_auth->FormatDate($posts['date_devis'.($i+1)]), 
+	            'montant' => $posts['montantDevis'.($i+1)],
+	           	'statut_devis' => $posts['statutDevis'.($i+1)]
+        	);
 
-        $this->devismodel->add($dataDevis);
+        	$iddevis = $this->devismodel->add($dataDevis);
 
+        	$dataComposeDevis = array(
+	        	'devis_id' => $iddevis,
+	        	'demande_id' => $iddemande 
+        	);
+
+        	$this->composedevis->add($dataComposeDevis);
+        }
+        //$iddevis = $this->devismodel->add($dataDevis);
+      
         $this->session->set_flashdata ( "success", "Votre donnée  a été bien enregistrée !");
         redirect ( base_url () . "admin.php/demande" );
 
+	}
+
+	public function devis($var){
+		$data_devis['devis'] = $this->devismodel->get_all($var);
+		$this->template->title ( 'Gestions des demandes' )->build ( 'devis/index', array('data_devis' => $data_devis));
 	}
 
 

@@ -327,13 +327,13 @@
                                                 <div class="form-group">
                                                     <label for="date" class="col-sm-3 control-label">Date immatriculation RCS</label>
                                                     <div class="col-sm-6">
-                                                        <input type="date" <?php  echo $disabled_;?> value="<?php echo $data[0]['date_immatriculation'];?>" class="form-control" id="date_immatriculation" name="date_immatriculation" >
+                                                        <input type="text" <?php  echo $disabled_;?> value="<?php echo $data[0]['date_immatriculation'];?>" class="single_cal form-control" id="date_immatriculation" name="date_immatriculation" >
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="date" class="col-sm-3 control-label">Date dernière maj RCS</label>
                                                     <div class="col-sm-6">
-                                                        <input type="date" <?php  echo $disabled_;?> value="<?php echo $data[0]['date_derniere_rcs'];?>"  class="form-control" id="date_derniere_rcs" name="date_derniere_rcs">
+                                                        <input type="text" <?php  echo $disabled_;?> value="<?php echo $data[0]['date_derniere_rcs'];?>"  class="single_cal form-control" id="date_derniere_rcs" name="date_derniere_rcs">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -728,6 +728,7 @@
                                                                 <select  name="name_travaux<?php echo $i+1;?>" id="nom<?php echo $i+1;?>" class="travaux form-control" tabindex="50"><br/>
 
                                                                 </select>
+
 
                                                                 <input type="hidden" value="<?php echo $data[$i]['namtravaux'];?>" class="form-control" id="" name="nom<?php echo $i+1;?>">
 

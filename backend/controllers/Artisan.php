@@ -37,6 +37,7 @@ class Artisan extends CI_Controller
         $data['data'] = $this->art->get_news();
         $data['pays'] = $this->pays->getAllPays();
 		$this->template->title ( 'Gestions des artisans' )->build ( 'artisan/index',array('data'=>$data));
+
         //var_dump($data['data']);
         //commentaire
     }
@@ -146,6 +147,8 @@ class Artisan extends CI_Controller
         );
         $artisan = $this->Artisan_model->create_artisan_query($dataartisan);
         $this->Artisan_Adress_model->create($artisan,$adresse);
+
+
         //type travaux
        /* $travaux=$posts['name_travaux'];
         if($travaux)
@@ -287,10 +290,12 @@ class Artisan extends CI_Controller
 
         $data = $this->Affichage_artisan->getWhere(array('artisan_id'=>$id));
         $pays = $this->pays->getAllPays();
+        //$type_art = $this->Type_artisan->type_travaux_query();
+
         //print_r((($pays)));die;
         $this->template->title ( 'Gestions des artisans' )->build ( 'artisan/details_artisan',array('data'=>$data,
             'pays'=>$pays) );
-        //var_dump($data);die;
+        //var_dump($type_art);die;
 
 
         //$id_artisan->$this->input->get('id');
