@@ -41,7 +41,40 @@
 									<!--<td>-</td>
 									<td>-</td>-->
 									<td><?php echo $dev['montant']; ?></td>
-									<td><?php echo $dev['statut_devis']; ?></td>
+									<td>
+                                        <!--affichage en cours-->
+                                        <?php
+                                        $value = $dev['statut_devis'];
+                                        $valide = "Validé";
+                                        $refuse = "Refusé";
+                                        $encours = "En cours";
+                                        if($value==$valide)
+                                        {
+                                            ?>
+                                            <button class="badge bg-green ">
+                                                <?php echo $valide;?>
+                                            </button>
+                                            <?php
+                                        }
+                                        else if($value==$refuse)
+                                        {
+                                            ?>
+                                            <button class="badge bg-red">
+                                                <?php echo $refuse;?>
+                                            </button>
+                                            <?php
+                                        }
+                                        else if($value==$encours)
+                                        {
+                                            ?>
+                                            <button class="badge bg-blue">
+                                                <?php echo $encours ?>
+                                            </button>
+                                            <?php  
+                                        }
+                                            ?>
+
+                                    </td>
 								</tr>
 							<?php } ?>
 							
