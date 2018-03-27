@@ -51,31 +51,23 @@ class Demande extends CI_Controller{
         for($i=0; $i < $taille; $i++){
 
         	$dataDevis = array(
-            'num_devis' => $posts['num_devis'.($i+1)],
-            'date_devis' => $this->cic_auth->FormatDate($posts['date_devis'.($i+1)]), 
-            //'montant' => $posts['montantTotalDevisPrincipal'],
-           	'statut_devis' => $posts['statutDevis'.($i+1)]
+	            'num_devis' => $posts['num_devis'.($i+1)],
+	            'date_devis' => $this->cic_auth->FormatDate($posts['date_devis'.($i+1)]), 
+	            //'montant' => $posts['montantTotalDevisPrincipal'],
+	           	'statut_devis' => $posts['statutDevis'.($i+1)]
         	);
 
         	$iddevis = $this->devismodel->add($dataDevis);
-        	
+
         	$dataComposeDevis = array(
-        	'devis_id' => $iddevis,
-        	'demande_id' => $iddemande
-        );
-        $this->composedevis->add($dataComposeDevis);
+	        	'devis_id' => $iddevis,
+	        	'demande_id' => $iddemande 
+        	);
+
+        	$this->composedevis->add($dataComposeDevis);
         }
         //$iddevis = $this->devismodel->add($dataDevis);
-
-        $dataComposeDevis = array(
-        	'devis_id' => $iddevis,
-        	'demande_id' => $iddemande
-        );
-        $this->composedevis->add($dataComposeDevis); 
-
-
-        
-
+      
         $this->session->set_flashdata ( "success", "Votre donnée  a été bien enregistrée !");
         redirect ( base_url () . "admin.php/demande" );
 
