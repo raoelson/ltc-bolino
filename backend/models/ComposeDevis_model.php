@@ -6,5 +6,5 @@ class ComposeDevis_model extends CI_Model{
 		$this->db->insert($this->table, $posts);
 		return $insert_id = $this->db->insert_id();
 	}  
-} 
+}  
 	

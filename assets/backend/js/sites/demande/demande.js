@@ -167,6 +167,16 @@ $(document).ready(function() {
                 data += '</div>';
                 data += '</div>';
                 data += '<div class="item form-group">';
+                data += '<label class="control-label col-md-3 col-sm-3 col-xs-12"  for="name">Type de l\'artisan</label>';
+                data += '<div class="col-md-6 col-sm-6 col-xs-12">';
+                data += '<select id="nameArt'+(x)+'" name="nameArt'+(x)+'" class="form-control">';
+                $.each(data__, function( index, value ) {
+                  data += '<option value="">'+value+'</option>'; 
+                });
+                data += '</select>';
+                data += '</div>';
+                data += '</div>';
+                data += '<div class="item form-group">';
                 data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">N° du Devis<span class="required">*</span></label>';
                 data += '<div class="col-md-6 col-sm-6 col-xs-12">';
                 data += '<input id="num_devis'+(x)+'" class="form-control col-md-7 col-xs-12" name="num_devis'+(x)+'" type="text" required="">';
@@ -178,16 +188,6 @@ $(document).ready(function() {
                 data += ' <input id="date_devis'+(x)+'" class="form-control col-md-7 col-xs-12 dateCalendrier" name="date_devis'+(x)+'" required="required" type="text">';
                 data +='</div>';
                 data+= '</div>';
-                data += '<div class="item form-group">';
-                data += '<label class="control-label col-md-3 col-sm-3 col-xs-12"  for="name">Type de l\'artisan</label>';
-                data += '<div class="col-md-6 col-sm-6 col-xs-12">';
-                data += '<select id="nameArt'+(x)+'" name="nameArt'+(x)+'" class="form-control">';
-                $.each(data__, function( index, value ) {
-                  data += '<option value="">'+value+'</option>'; 
-                });
-                data += '</select>';
-                data += '</div>';
-                data += '</div>';
                 data += ' <div class="item form-group">';
                 data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Montant du devis <span class="required">*</span>';
                 data += '</label>';
@@ -219,9 +219,8 @@ $(document).ready(function() {
                 data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Devis de l\'artisan';
                 data += '</label>';
                 data += '<div class="col-md-6 col-sm-6 col-xs-12">';
-               
                 data += '<input id="file_art'+(x)+'" name="fileTest'+(x)+'" type="file"  disabled="">';
-                
+                data += '<input typ="text" name="montantDev'+(x)+'">'
                 data += '</div>';
                 data += '</div>';
                 data += '<input type="hidden" name="montantTotalDevis'+(x)+'">';
@@ -230,27 +229,62 @@ $(document).ready(function() {
                 $('input[name^="montantDevis'+(x)+'"]').keyup(function(e) {
                     e.preventDefault();
                     var sommeDevis = 0;
+                    //var valeur = 0;
 
                     $('input[name^="montantDevis'+(x)+'"]').each(function() {
                         if($(this).val() == "")
                             return;
+                        //valeur = $(this).val();
+                        //$('input[name="montantDev'+(x)+'"]').val(valeur);
                         sommeDevis += parseFloat(($(this).val()));
                     });
 
                     $('input[name="montantTotalDevis'+(x)+'"]').val(sommeDevis);
                        SommeDevisFunct();
-                    }); 
+                }); 
 
-                $('input[name="nombreDevis"]').val(tailleTable+1);
 
+                $('input[name="fileTest'+(x)+'"]').inputfile({
+                    uploadeText:'<span class="glyphicon glyphicon-upload"></span> ',
+                    removeText: '<span class="glyphicon glyphicon-trash"></span>',
+                    restoreText: '<span class="glyphicon glyphicon-remove"></span>',
+                    uploadButtonClass: 'btn btn-primary',
+                    removeButtonClass: 'btn btn-default'
+
+                });
+
+                function testDate (){
+                    var date = new Date();
+                    date.setDate(date.getDate() - 1);
+                    var datereturn = date.getDate()  + '/' + (date.getMonth() + 1) + '/' +  date.getFullYear()
+                    return (datereturn);
+                }
+
+                $(function() {
+                    $('.dateCalendrier').daterangepicker({
+                        singleDatePicker: true,
+                        singleClasses: "picker_4",
+                        startDate: testDate(),
+                        maxDate:  testDate() ,
+                        locale: {
+                            format: 'DD/MM/YYYY'
+                        }  
+                    }, 
+                    function(start, end, label) {
+                        
+                    });
+
+                    
+                });
             }
+            $('input[name="nombreDevis"]').val(tailleTable+1);
 
         });
      
            
-        $('input[name^="montantDevisPrincipal"]').keyup(function() {
+        $('input[name^="montantDevis1"]').keyup(function() {
             var sommeDevisPrincipal = 0;
-            $('input[name^="montantDevisPrincipal"]').each(function() {
+            $('input[name^="montantDevis1"]').each(function() {
                 if($(this).val() == "")
                     return;
                 sommeDevisPrincipal += parseFloat(($(this).val()));

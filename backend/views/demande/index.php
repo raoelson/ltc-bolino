@@ -108,7 +108,7 @@
             <form class="form-horizontal form-label-left" novalidate
         action="<?php echo base_url('admin.php/demande_saves');?>"
         method="post">
-        <input type="text" name="nombreDevis" value="1"/>
+        <input type="hidden" name="nombreDevis" value="1"/>
         <div class="row" id="ancre">
             <div class="col-md-12 col-sm-12 col-xs-12">
 
@@ -259,13 +259,13 @@
                                            for="montantDevisPrincipal">Montant du devis <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input id="montantDevisPrincipal" class="form-control col-md-7 col-xs-12"
-                                               name="montantDevisPrincipal" placeholder="" required="required"
+                                        <input id="montantDevis1" class="form-control col-md-7 col-xs-12"
+                                               name="montantDevis1" placeholder="" required="required"
                                                type="text">
                                     </div>
                                 </div>
 
-                                <input type="text" name="montantTotalDevisPrincipal">
+                                <input type="hidden" name="montantTotalDevisPrincipal">
 
                                 <div class="item form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12"
@@ -426,7 +426,7 @@
                             <b><span id="totalDevis"> 0.0 € </span></b> 
                         </a>  
                     </div>
-                    <input type="text" name="valeurDevis" id="valeurDevis">
+                    <input type="hidden" name="valeurDevis" id="valeurDevis">
                 </div>
 
                     <div class="ln_solid"></div>

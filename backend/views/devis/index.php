@@ -26,16 +26,20 @@
 							<tr>
 								<th>Numéro</th>
 								<th>Date</th>
+								<!--<th>Nom de l'artisan</th>
+								<th>Type de l'artisan</th>-->
 								<th>Montants</th>
 								<th>Statut</th>
 							</tr>
 
-						</thead>
+						</thead> 
 						<tbody>
 							<?php foreach ($data_devis['devis'] as $dev) { ?>
 								<tr>
 									<td><?php echo $dev['num_devis']; ?></td>
 									<td><?php echo $dev['date_devis']; ?></td>
+									<!--<td>-</td>
+									<td>-</td>-->
 									<td><?php echo $dev['montant']; ?></td>
 									<td><?php echo $dev['statut_devis']; ?></td>
 								</tr>
