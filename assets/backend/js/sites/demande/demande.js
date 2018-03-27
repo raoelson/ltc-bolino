@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function() { 
 
     //ANIMATION DU FORMULAIRE LORSQU'ON CLIQUE SUR LE BOUTON NOUVEAU
     $('#ajout').hide();

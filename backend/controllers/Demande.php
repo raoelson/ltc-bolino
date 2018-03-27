@@ -45,24 +45,33 @@ class Demande extends CI_Controller{
 		}
 		//var_dump($dataDemande); die;
         $iddemande = $this->demande->add($dataDemande);
-        $i = 1;
-		$dataDevis = array(
-            'num_devis' => $posts['num_devis'.$i],
-            'date_devis' => $this->cic_auth->FormatDate($posts['date_devis'.$i]) 
-            /*'montant' => $posts['montantTotalDevisPrincipal'.$i],*/
-           // 'statut_devis' => $posts['statutDevis'.$i]
-        );
+		
         $taille = $posts['nombreDevis'];
-        for($i=1; $i <= $taille; $i++){
+
+        for($i=0; $i < $taille; $i++){
+
+        	$dataDevis = array(
+            'num_devis' => $posts['num_devis'.($i+1)],
+            'date_devis' => $this->cic_auth->FormatDate($posts['date_devis'.($i+1)]), 
+            //'montant' => $posts['montantTotalDevisPrincipal'],
+           	'statut_devis' => $posts['statutDevis'.($i+1)]
+        	);
+
         	$iddevis = $this->devismodel->add($dataDevis);
+        	
+        	$dataComposeDevis = array(
+        	'devis_id' => $iddevis,
+        	'demande_id' => $iddemande
+        );
+        $this->composedevis->add($dataComposeDevis);
         }
-        $iddevis = $this->devismodel->add($dataDevis);
+        //$iddevis = $this->devismodel->add($dataDevis);
 
         $dataComposeDevis = array(
         	'devis_id' => $iddevis,
         	'demande_id' => $iddemande
         );
-        $this->composedevis->add($dataComposeDevis);
+        $this->composedevis->add($dataComposeDevis); 
 
 
         

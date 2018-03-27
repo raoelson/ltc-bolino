@@ -1,5 +1,5 @@
 <!-- top tiles -->
-<div class="row tile_count"></div>
+<div class="row tile_count"></div> 
 <!-- /top tiles -->
 <div class="row">
 	<div class="page-title">

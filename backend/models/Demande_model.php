@@ -1,7 +1,7 @@
 <?php 
 class Demande_model extends CI_Model{
 	private $table = "demande";
-	private $id = 'id';
+	private $id = 'id'; 
 	
 
 	public function add($posts){

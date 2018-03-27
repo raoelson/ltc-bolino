@@ -1,6 +1,6 @@
 <?php
 class Devis_model extends CI_Model{
-    private $table = 'devis';
+    private $table = 'devis'; 
 
     public function add($posts){
         $this->db->insert($this->table, $posts);

@@ -1,5 +1,5 @@
 <!-- top tiles -->
-<div class="row tile_count"></div>
+<div class="row tile_count"></div> 
 <!-- /top tiles -->
 <div class="row">
 	<div class="page-title">
@@ -426,7 +426,7 @@
                             <b><span id="totalDevis"> 0.0 € </span></b> 
                         </a>  
                     </div>
-                    <input type="hidden" name="valeurDevis" id="valeurDevis">
+                    <input type="text" name="valeurDevis" id="valeurDevis">
                 </div>
 
                     <div class="ln_solid"></div>
