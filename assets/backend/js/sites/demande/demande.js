@@ -64,6 +64,85 @@ $(document).ready(function() {
         }
 
     });
+    var handleDataTableButtons = function() {
+                        if ($("#datatable-buttons").length) {
+                            var table = $("#datatable-buttons").DataTable({
+                                dom : "Blfrtip",
+                                buttons : [ {
+                                    extend : "excel",
+                                    className : "btn-sm"
+                                } ]
+                            });
+                            var tableBody = $('#datatable-buttons tbody');
+                            tableBody
+                                    .on(
+                                            'click',
+                                            '#supprimer',
+                                            function() {
+                                                if (!confirm(" Êtes-vous certain de vouloir supprimer ceci ? "))
+                                                    return;
+                                                id = $(this).closest('tr')
+                                                        .attr('id');
+                                                usrgrp = $(this).closest('tr')
+                                                        .attr('data');
+                                                var idtr = $(this)
+                                                        .parents('tr');
+                                                $
+                                                        .postJSON(
+                                                                BASE_URL
+                                                                        + "user/delete/",
+                                                                {
+                                                                    "id" : id,
+                                                                    "usrgrp" : usrgrp
+                                                                },
+                                                                function(json) {
+                                                                    id = json.data;
+                                                                    if (id != "") {
+                                                                        table
+                                                                                .row(
+                                                                                        idtr)
+                                                                                .remove()
+                                                                                .draw();
+                                                                        notification(
+                                                                                "",
+                                                                                "Votre donnée a été bien supprimée",
+                                                                                "success");
+                                                                    }
+                                                                });
+                                            });
+                            tableBody.on('click', '#modifier', function() {
+                                id = $(this).closest('tr').attr('id');
+                                $.postJSON(BASE_URL + "user/show/", {
+                                    "id" : id
+                                }, modifierCallBack);
+                            });
+                        }
+                    };
+
+    TableManageButtons = function() {
+                        "use strict";
+                        return {
+                            init : function() {
+                                handleDataTableButtons();
+                            }
+                        };
+                    }();
+
+                    $('#datatable-keytable').DataTable({
+                        keys : true
+                    });
+
+                    $('#datatable-responsive').DataTable();
+
+                    $('#datatable-fixed-header').DataTable({
+                        fixedHeader : true
+                    });
+
+                    TableManageButtons.init();
+
+                    $("#nouveau").click(function() {
+                        $('#ancre').show();
+                    });
 
         var tailleTable = 0;
         var max_fields = 10; // maximum input boxes allowed
@@ -88,11 +167,23 @@ $(document).ready(function() {
                 data += '</div>';
                 data += '</div>';
                 data += '<div class="item form-group">';
+                data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">N° du Devis<span class="required">*</span></label>';
+                data += '<div class="col-md-6 col-sm-6 col-xs-12">';
+                data += '<input id="num_devis'+(x)+'" class="form-control col-md-7 col-xs-12" name="num_devis'+(x)+'" type="text" required="">';
+                data += '</div>';
+                data += '</div>';
+                data += '<div class="item form-group">';
+                data += ' <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date du Devis <span class="required">*</span> </label>';
+                data += '<div class="col-md-6 col-sm-6 col-xs-12">';
+                data += ' <input id="date_devis'+(x)+'" class="form-control col-md-7 col-xs-12 dateCalendrier" name="date_devis'+(x)+'" required="required" type="text">';
+                data +='</div>';
+                data+= '</div>';
+                data += '<div class="item form-group">';
                 data += '<label class="control-label col-md-3 col-sm-3 col-xs-12"  for="name">Type de l\'artisan</label>';
                 data += '<div class="col-md-6 col-sm-6 col-xs-12">';
                 data += '<select id="nameArt'+(x)+'" name="nameArt'+(x)+'" class="form-control">';
                 $.each(data__, function( index, value ) {
-                  data += '<option value="">'+value+'</option>';
+                  data += '<option value="">'+value+'</option>'; 
                 });
                 data += '</select>';
                 data += '</div>';
@@ -150,6 +241,8 @@ $(document).ready(function() {
                        SommeDevisFunct();
                     }); 
 
+                $('input[name="nombreDevis"]').val(tailleTable+1);
+
             }
 
         });
@@ -175,7 +268,7 @@ $(document).ready(function() {
             $('#totalDevis').text(sommeGeneral + " € ");
             $('#valeurDevis').val(sommeGeneral); 
 
-            if(sommeGeneral > 10700){
+            if(sommeGeneral > 10500){
                 $('#totalDevis').text(sommeGeneral + " € ").css('color', 'red');
                 //alert('LE MONTANT TOTAL DES DEVIS: '+sommeGeneral+'€ EST AU DESSUS DE LA LIMITE QUI EST A 10700€');
                 $('#montantTotal').notify("Le montat total des devis excède la limite prévue qui est à 10700€. Veuillez insérer ci-dessus, le fichier qui garantisse que vous allez payer la somme excédant, sinon veuillez diminiuer le montant des devis",
@@ -184,7 +277,7 @@ $(document).ready(function() {
                 );
                 $('#div_garantie').toggle();
                 $('#div_garantie').removeAttr("style");
-                //$.notify("Le montat total des devis excède la limite prévue qui est à 10700€.\n Veuillez insérer ci-dessous, \n le fichier qui garantisse que vous allez payer la somme excédant, sinon veuillez diminiuer le montant des devis");
+                //$.notify("Le montat total des devis excède la limite prévue qui est à 10500€.\n Veuillez insérer ci-dessous, \n le fichier qui garantisse que vous allez payer la somme excédant, sinon veuillez diminiuer le montant des devis");
     
             }
             else{

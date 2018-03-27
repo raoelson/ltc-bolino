@@ -13,18 +13,11 @@ class Demande_model extends CI_Model{
 	public function getOwnerId($nom){
 		$this->db->select('id')
             ->from('owners')
-            ->where('firstname1', $nom);
-            //->where('housing.owner_id', 'owners.id');
-		//$this->db->join('housing', 'housing.owner_id = owners.id');
+            ->where('firstname1', $nom); 
 		$query = $this->db->get();
 		return $query->result();
 		
 	}
-
-	 /*public function getHousingId($id){
-	    $this->db->select('id')->from('housing')->where('owner_id', $id);
-	    $query = $this->db->get();
-    }*/
 
 
 	public function get_all(){
