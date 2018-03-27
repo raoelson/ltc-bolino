@@ -220,10 +220,10 @@ $(document).ready(function() {
                 data += '</label>';
                 data += '<div class="col-md-6 col-sm-6 col-xs-12">';
                 data += '<input id="file_art'+(x)+'" name="fileTest'+(x)+'" type="file"  disabled="">';
-                data += '<input typ="text" name="montantDev'+(x)+'">'
+                data += '<input typ="hidden" name="montantDev'+(x)+'">'
                 data += '</div>';
                 data += '</div>';
-                data += '<input type="text" name="montantTotalDevis'+(x)+'">';
+                data += '<input type="hidden" name="montantTotalDevis'+(x)+'">';
                 $(wrapper).append(data);
 
                 $('input[name^="montantDevis'+(x)+'"]').keyup(function(e) {

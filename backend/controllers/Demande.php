@@ -51,6 +51,7 @@ class Demande extends CI_Controller{
         for($i=0; $i < $taille; $i++){
 
         	$dataDevis = array(
+        		'demande_id' => $iddemande,
 	            'num_devis' => $posts['num_devis'.($i+1)],
 	            'date_devis' => $this->cic_auth->FormatDate($posts['date_devis'.($i+1)]), 
 	            'montant' => $posts['montantDevis'.($i+1)],
