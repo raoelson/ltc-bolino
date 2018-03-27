@@ -223,7 +223,7 @@ $(document).ready(function() {
                 data += '<input typ="text" name="montantDev'+(x)+'">'
                 data += '</div>';
                 data += '</div>';
-                data += '<input type="hidden" name="montantTotalDevis'+(x)+'">';
+                data += '<input type="text" name="montantTotalDevis'+(x)+'">';
                 $(wrapper).append(data);
 
                 $('input[name^="montantDevis'+(x)+'"]').keyup(function(e) {
