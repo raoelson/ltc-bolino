@@ -32,6 +32,15 @@ class Demande_model extends CI_Model{
 		return $query->result_array();
 	}
 
+	public function getWhere($var){
+		$this->db->select('demande.id, owners.id, owners.firstname1')
+		->from('demande')
+		->join('owners', 'owners.id = demande.owner_id')
+		->where(array("demande.id"=>$var));
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
 
 	//Details
 	public function modificationclient($posts,$id){

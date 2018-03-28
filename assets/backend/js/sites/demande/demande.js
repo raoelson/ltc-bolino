@@ -160,8 +160,8 @@ $(document).ready(function() {
                 data += '<div class="col-md-6 col-sm-6 col-xs-12">';
                // data += '<input class="form-control col-md-7 col-xs-12" id="nomArt'+(x)+'" class="flat" name="nomArt'+(x)+'" type="text">';
                 data += '<select id="nomArt'+(x)+'" name="nomArt'+(x)+'" class="form-control">';
-                 $.each(data2__, function( index, value ) {
-                  data += '<option value="">'+value+'</option>';
+                 $.each(data2__, function(key, value ) {
+                  data += '<option value="'+key+'">'+value+'</option>';
                 });
                 data += '</select>'
                 data += '</div>';

@@ -111,10 +111,13 @@ $route['logements_saves'] = 'logements/saves';
 //Routage Demandes
 $route['demande'] = 'demande';
 $route['demande_saves'] = 'demande/save';
-$route['demande/details/(:id)'] = 'demande/details/$1';
+$route['demande/modification/(:id)'] = 'demande/modification/$1';
 $route['demande/devis/(:id)'] = 'demande/devis/$1'; 
 
 //Routage echange rdv
 $route['echanges-rendez-vous-proprietaires'] = 'echanges_proprietaire';
 
 $route['echanges-proprietaires-saves'] = 'echanges_proprietaire/saves';
+$route['rendez_vous'] = 'rendez_vous';
+$route['rendez_vous_edit'] = 'rendez_vous/edit';
+$route['rendez_vous_ajout'] = 'rendez_vous/ajout_rendez_vous';

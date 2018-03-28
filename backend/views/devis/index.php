@@ -24,10 +24,10 @@
 						class="table table-striped table-bordered">
 						<thead>
 							<tr>
-								<th>Numéro</th>
+								<th>N°</th>
 								<th>Date</th>
-								<!--<th>Nom de l'artisan</th>
-								<th>Type de l'artisan</th>-->
+								<th>Nom de l'artisan</th>
+								<th>Type de l'artisan</th>
 								<th>Montants</th>
 								<th>Statut</th>
 							</tr>
@@ -38,8 +38,8 @@
 								<tr>
 									<td><?php echo $dev['num_devis']; ?></td>
 									<td><?php echo $dev['date_devis']; ?></td>
-									<!--<td>-</td>
-									<td>-</td>-->
+									<td><?php echo $dev['nom_gerant'] ?></td>
+									<td><?php echo $dev['namee'] ?></td>
 									<td><?php echo $dev['montant']; ?></td>
 									<td>
                                         <!--affichage en cours-->

@@ -23,7 +23,6 @@
 						class="table table-striped table-bordered">
 						<thead>
 							<tr>
-                                <th>N°</th>
                                 <th>N° Dossier</th>
                                 <th>Date d'arrivée</th>
                                 <th>Titre</th>
@@ -42,14 +41,13 @@
 							<?php foreach ($data['demande'] as $val ) { ?>
 								<tr>
 
-                                    <td><?php echo $val['demandeid']; ?></td>
                                     <td><?php echo $val['num_dossier_valide']; ?></td>
                                     <td><?php echo $val['date_arrivee']; ?></td>
                                     <td><?php echo $val['title']; ?></td>
                                     <td><?php echo $val['firstname1']; ?></td>
                                     <td><?php echo $val['adress1']; ?></td>
                                     <td><?php if ($val['type_travaux_finan'] != "") echo $val['type_travaux_finan']; else echo '-'; ?></td>
-                                    <td><a href="<?php  echo base_url('admin.php/demande/devis/'.$val['demandeid']) ?>" class="btn btn-round btn-default"><span class="gly fa fa-plus"></span></a></td>
+                                    <td><a href="<?php  echo base_url('admin.php/demande/devis/'.$val['demandeid']) ?>" class="btn btn-round btn-default"><span class="gly fa fa-eye"></span></a></td>
                                     <td><?php echo $val['montant_devis']; ?></td>
                                     <td>
                                         <?php 
@@ -91,8 +89,8 @@
                                             ?>
 
                                     </td>
-                                    <td><a href="<?php  echo base_url('admin.php/demande/details/'.$val['demandeid']) ?>" id="modifier" title="Voir les détails"
-                                    class="btn btn-round btn-default"><span class="gly fa fa-eye"></span></a></td>
+                                    <td><a href="<?php  echo base_url('admin.php/demande/modification/'.$val['demandeid']) ?>" id="modifier" title="Voir les détails"
+                                    class="btn btn-round btn-default"><span class="gly fa fa-edit"></span></a></td>
 
 									
 								</tr>
@@ -216,7 +214,7 @@
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <select id="nomArt1" name="nomArt1" class="form-control">
                                           <?php foreach ($arti as $art){?>
-                                            <option> <?php echo $art->nom_gerant; ?> </option>
+                                            <option value="<?php echo $art->id_artisan_alias ?>"> <?php echo $art->nom_gerant; ?> </option>
                                           <?php } ?>
                                         </select>
                                     </div>
@@ -466,14 +464,18 @@
 <link href="<?php echo base_url('assets/backend/css/demande/jquery.inputfile.css')?>" rel="stylesheet"/>
 <script >
     var data__ = [];
-    var data2__ = [];
+    var data2__ = {};
+
+    
+    <?php foreach ($arti as $art ){ ?>
+         data2__[<?php echo $art->id_artisan_alias; ?>] = "<?php echo $art->nom_gerant; ?>" ;
+    <?php } ?>
+        
+
     <?php foreach ($type_art as $trav ){ ?>
          data__.push("<?php echo $trav->name?>");
     <?php } ?>
 
-    <?php foreach ($arti as $art) { ?>
-        data2__.push("<?php echo $art->nom_gerant ?>");
-    <?php } ?>
 </script>
 <script src="<?php echo base_url('assets/backend/js/demande/chosen.proto.min.js')?>"></script>
 <script src="<?php echo base_url('assets/backend/js/demande/chosen.jquery.min.js')?>"></script>
