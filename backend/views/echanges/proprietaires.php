@@ -2,7 +2,7 @@
 <div class="row tile_count"></div>
 <!-- /top tiles -->
 <div class="row">
-	<div class="page-title">
+	<div class="page-title">		
 		<div class="title_right" style="float: right;">
 			<div
 				class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
@@ -16,9 +16,9 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Liste des échanges avec les propriétaires</h2>					
-					<div class="clearfix"></div>
-				</div>
+					 <h4>Gestion des échanges avec <client >Propriétaires</client></h4>		
+				<div class="clearfix"></div>
+				</div><br/>
 					<div class="col-xs-3">
 						<div class="input-group">
 		                    <input type="text" id="nomrecherche" name="nomrecherche" data-provide="typeahead" class="form-control" placeholder="Recherche...">
@@ -57,7 +57,7 @@
 								class="table table-striped table-bordered">
 								<thead>
 									<tr>
-										<th>Nom propriétaire</th>	
+										<th>Nom <client >Propriétaires</client></th>	
 										<th>N° phone</th>							
 										<th>Date&Heure</th>
 										<th>Motif</th>
@@ -79,7 +79,7 @@
 								class="table table-striped table-bordered">
 								<thead>
 									<tr>
-										<th>Nom propriétaire</th>								
+										<th>Nom <client >Propriétaires</client></th>								
 										<th>Email</th>
 										<th>Date&Heure</th>
 										<th>Motif</th>
@@ -120,7 +120,7 @@
 				<div class="x_content">
 					<div class="item form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12"
-							for="name">Nom proprietaire </label>
+							for="name">Nom <client >Propriétaire</client> </label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
 							<input id="nomprop" class="form-control col-md-7 col-xs-12"
 								type="text" name="nomprop" placeholder="Nom proprietaire..." data-provide="typeahead" />
@@ -172,8 +172,6 @@
 										for="name">Motif</label>
 
 									<div class="col-md-6 col-sm-6 col-xs-12">
-										<!-- <input id="motifi" class="form-control col-md-7 col-xs-12"
-											type="text" name="motifi" placeholder="Motif d'appel..." required="" /> -->
 										<select  class="form-control col-md-7 col-xs-12"
 											 name="motifi" id="motifi">
 											 <option value="Appel confirmé">Appel confirmé</option>

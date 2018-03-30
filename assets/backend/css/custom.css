@@ -4306,3 +4306,29 @@ td {
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
     box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
 }
+
+/* tab color */
+#myTab>li>a {
+  background-color: #337ab7 !important; 
+  border-color: #337ab7 !important;
+  color:#fff !important;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+  color: #fff !important;
+  background-color: #26b99a !important;
+  border: 1px solid #26b99a !important;
+}
+
+/* active tab color */
+#myTab>li.active>a, #myTab>li.active>a:hover, #myTab>li.active>a:focus {
+  color: #fff !important;
+  background-color: #337ab785 !important;
+  border: 1px solid #337ab785 !important;
+}
+
+/* hover tab color */
+#myTab>li>a:hover {
+  border-color: #26b99a !important;
+  background-color: #26b99a !important;
+}

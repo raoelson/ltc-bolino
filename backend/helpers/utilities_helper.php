@@ -14,7 +14,17 @@
 		return $r;
 	}
 
+	function record_countArtisan($table,$array=null) {
+		$ci = &get_instance();
+		$ci->db->select("artisan.id as nb");	
+		$ci->db->join ( "artisan", "artisan.id =artisans_echanges.artisans_id" );			
+		$ci->db->group_by('artisan.id');
+		if ($array) $ci->db->where($array);
+		$r = $ci->db->get($table)->result_array();
+		return $r;
+	}
+
 	function NB_PAGES(){
-		return 2;
+		return 10;
 	}
 ?>

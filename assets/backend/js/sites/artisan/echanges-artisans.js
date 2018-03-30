@@ -1,26 +1,4 @@
 $('document').ready(function(){
-     init('');
-    $("#nouveau").click(function() {
-        $('#ancre').show();
-        $('#idechange').val('0');
-        $('#idmessageechange').val('0');
-        
-    });
-	$("#dateappel").datetimepicker({
-        format: 'DD/MM/YYYY  HH:mm:ss'
-    });	
-    $("#daterappel").datetimepicker({
-        format: 'DD/MM/YYYY  HH:mm:ss'
-    }); 
-	$('#nomprop').typeahead({
-		  hint: true,
-		  highlight: true,
-		  minLength: 1
-		},{
-          name: 'nomprop',
-          required:'required',
-          source: substringMatcher(dataClients)
-    });
 
     $('#nomrecherche').typeahead({
           hint: true,
@@ -31,26 +9,32 @@ $('document').ready(function(){
           required:'required',
           source: substringMatcher(dataClients)
     });
-
-   $('#btnRecherche').click(function(){
-        $('#tableClients').html("");   
-        var textNom = $('input[name="nomrecherche"]').val().toLowerCase();        
-        if(textNom != ""){
-            $('#rechercheClient_').find('option').each(function(i,e){
-              if($(e).text().toLowerCase() === textNom){
-                   $('#rechercheClient_').val($(e).val());
-                   init(($('#rechercheClient_').val()));
-                   return;
-              }
-            });
-        }else{
-          init("");
-          return;
-        }
+    init("");
+    $("#nouveau").click(function() {
+        $('#ancre').show();
+        $('#idechange').val('0');
+        $('#idmessageechange').val('0');
+        
     });
 
-  
-   $('input[name="nomprop"]').change(function(){
+    $("#dateappel").datetimepicker({
+        format: 'DD/MM/YYYY  HH:mm:ss'
+    }); 
+    $("#daterappel").datetimepicker({
+        format: 'DD/MM/YYYY  HH:mm:ss'
+    }); 
+
+    $('#nomprop').typeahead({
+      hint: true,
+      highlight: true,
+      minLength: 1
+    },{
+          name: 'nomprop',
+          required:'required',
+          source: substringMatcher(dataClients)
+    });
+
+     $('input[name="nomprop"]').change(function(){
         var textNom = $(this).val().toLowerCase();
         $('#selectClient').find('option').each(function(i,e){
             if($(e).text().toLowerCase() === textNom){
@@ -71,9 +55,9 @@ $('document').ready(function(){
                  return;
             }
         });
-   })
+   });
 
-   $('input.flat').iCheck({
+    $('input.flat').iCheck({
         checkboxClass : 'icheckbox_flat-green',
         radioClass : 'iradio_flat-green'
     });
@@ -90,21 +74,58 @@ $('document').ready(function(){
 
    });
 
+   $('#btnRecherche').click(function(){
+        $('#tableClients').html("");   
+        var textNom = $('input[name="nomrecherche"]').val().toLowerCase();        
+        if(textNom != ""){
+            $('#rechercheClient_').find('option').each(function(i,e){
+              if($(e).text().toLowerCase() === textNom){
+                   $('#rechercheClient_').val($(e).val());
+                   init(($('#rechercheClient_').val()));
+                   return;
+              }
+            });
+        }else{
+          init("");
+          return;
+        }
+    });
+
 });
+
+var substringMatcher = function(strs) {
+  return function findMatches(q, cb) {
+    var matches, substringRegex;
+    matches = [];
+    substrRegex = new RegExp(q, 'i');
+    $.each(strs, function(i, str) {
+      if (substrRegex.test(str)) {
+        matches.push(str);
+      }
+    });
+
+    cb(matches);
+  };
+};
+
+show = function(id){
+  chargmentTable(id);
+}
 var current_id;
 var current_page = 1;
 init = function(id){
     $('#loading-table').show();
     $('#tableClients').html("");   
-    $.postJSON(BASE_URL + "echanges_proprietaire/getWhere/",
+    $.postJSON(BASE_URL + "echanges_artisans/getWhere/",
     {
         "id" : id
     },initBack);   
     $("#pagination_ul > li:eq(1)").addClass("disabled");  
 };
+
 initBack = function(json){
     var droits = json.data;
-    total_page = json.total_page;
+    total_page = json.total_page;    
     var tbody = "";
     i = 0;
 
@@ -117,8 +138,8 @@ initBack = function(json){
             }
            
             tbody += '<li id="li_'+i+'" '+onglet+'>';
-            tbody += '<a href="#home-'+i+'" data-toggle="tab" data-client="'+elt.clientid+'" onclick="show('+elt.clientid+')">';
-            tbody += ''+elt.clientNom+' '+elt.clientPrenom;
+            tbody += '<a href="#home-'+i+'" data-toggle="tab" data-client="'+elt.idArtisan+'" onclick="show('+elt.idArtisan+')">';
+            tbody += ''+elt.nomArtisan+' '+elt.prenomArtisan;
             tbody += '</a>';
             tbody += '</li> ';
           
@@ -151,31 +172,12 @@ initBack = function(json){
     $('#loading-table').hide(); 
 };
 
-var substringMatcher = function(strs) {
-  return function findMatches(q, cb) {
-    var matches, substringRegex;
-    matches = [];
-    substrRegex = new RegExp(q, 'i');
-    $.each(strs, function(i, str) {
-      if (substrRegex.test(str)) {
-        matches.push(str);
-      }
-    });
-
-    cb(matches);
-  };
-};
-
-show = function(id){
-    chargmentTable(id);
-}
-
 chargmentTable = function(id){
     $('.well').show();
 
     $("#datatable-buttons tbody").html("");
     $("#datatable-buttons1 tbody").html("");   
-    $.postJSON(BASE_URL + "echanges_proprietaire/getAppelMessage/",
+    $.postJSON(BASE_URL + "echanges_artisans/getAppelMessage/",
         {
             "id" : id
         },chargmentBack)
@@ -202,14 +204,14 @@ tableAppel = function(json){
             }
 
             tbody += "<tr id='tr_" + elt.idEchanges + "'>";
-            tbody += '<td>'+ elt.clientNom +' '+ elt.clientPrenom+'</td>';
+            tbody += '<td>'+ elt.nomArtisan +' '+ elt.prenomArtisan+'</td>';
             tbody += '<td>'+ elt.phonesEchanges +'</td>';
             tbody += '<td>'+ elt.dateEchanges +'</td>';
             tbody += '<td>'+ elt.motifEchanges +'</td>';
             tbody += '<td>'+ commentaires +'</td>';
             tbody += '<td>'+ daterappel_ +'</td>';
             tbody += '<td><a href="#ancre" onclick="showAppel('+elt.idEchanges+')" class="btn btn-round btn-warning">&nbsp;&nbsp;<span class="gly fa fa-edit"></span></a></td>';
-            tbody += '<td><a href="#" class="btn btn-round btn-danger" onclick="deleteEchange('+elt.idEchanges+','+elt.clientid+')">&nbsp;&nbsp;<span class="gly fa fa-remove"></span></a></td>';
+            tbody += '<td><a href="#" class="btn btn-round btn-danger" onclick="deleteEchange('+elt.idEchanges+','+elt.idArtisan+')">&nbsp;&nbsp;<span class="gly fa fa-remove"></span></a></td>';
             tbody += '</tr>';
         });  
       }else{
@@ -219,6 +221,7 @@ tableAppel = function(json){
     $("#datatable-buttons tbody ").append(tbody);
    
 }
+
 tableMessage = function(json){
     var droits = json;
     var tbody = "";
@@ -226,13 +229,13 @@ tableMessage = function(json){
     if((droits.length)>0){
         $.each(droits,function(i, elt) {
             tbody += "<tr id='tr_" + elt.idEchanges + "'>";
-            tbody += '<td>'+ elt.clientNom +' '+ elt.clientPrenom+'</td>';
+            tbody += '<td>'+ elt.nomArtisan +' '+ elt.prenomArtisan+'</td>';
             tbody += '<td>'+ elt.mailsEchanges +'</td>';
             tbody += '<td>'+ elt.dateEchanges +'</td>';
             tbody += '<td>'+ elt.motifEchanges +'</td>';
             tbody += '<td>'+ elt.messagesEchanges +'</td>';
             tbody += '<td><a href="#ancre"  onclick="showMessage('+elt.idEchanges+')"  class="btn btn-round btn-warning">&nbsp;&nbsp;<span class="gly fa fa-edit"></span></a></td>';
-            tbody += '<td><a href="#" class="btn btn-round btn-danger" onclick="deleteEchange('+elt.idEchanges+','+elt.clientid+')">&nbsp;&nbsp;<span class="gly fa fa-remove"></span></a></td>';
+            tbody += '<td><a href="#" class="btn btn-round btn-danger" onclick="deleteEchange('+elt.idEchanges+','+elt.idArtisan+')">&nbsp;&nbsp;<span class="gly fa fa-remove"></span></a></td>';
             tbody += '</tr>';
         });
     }else{
@@ -240,17 +243,33 @@ tableMessage = function(json){
       }
     $("#datatable-buttons1 tbody ").append(tbody);
 }
+
+page = function(num_page,exception){
+
+  if ($("#li_"+num_page).hasClass("disabled") && !exception ) return;
+    $('#loading-table').show();
+    $('#tableClients').html("");
+    var id = "";
+    current_page = num_page;   
+    $.postJSON(BASE_URL + "echanges_artisans/getWhere/",
+    {
+        "id" : id,
+        "key" : "limit",
+        "val": num_page,
+    },initBack);   
+}
+
 showAppel = function(id){
     $('#ancre').show();
     $('#home-tab').tab('show'); 
-    $.getJSON(BASE_URL+'echanges_proprietaire/getEchanges/',{
+    $.getJSON(BASE_URL+'echanges_artisans/getEchanges/',{
         'id' : id
     },showAppelBack)
 }
 showAppelBack = function (json){  
     $('#idechange').val(json[0].idEchanges);
-    $('#nomprop').val(json[0].clientNom +' '+json[0].clientPrenom);
-    $('#selectClient').val(json[0].clientid);
+    $('#nomprop').val(json[0].nomArtisan +' '+json[0].prenomArtisan);
+    $('#selectClient').val(json[0].idArtisan);
     $('#numphone').val(json[0].phonesEchanges);
     $('#dateappel').val(json[0].dateEchanges);
     $('#motifi').val(json[0].motifEchanges);
@@ -273,14 +292,14 @@ showAppelBack = function (json){
 showMessage = function(id){
     $('#ancre').show(); 
     $('#profile-tab').tab('show');
-    $.getJSON(BASE_URL+'echanges_proprietaire/getEchanges/',{
+    $.getJSON(BASE_URL+'echanges_artisans/getEchanges/',{
         'id' : id
     },showMessageBack)
 }
 showMessageBack = function (json){ 
     $('#idmessageechange').val(json[0].idEchanges);
-    $('#nomprop').val(json[0].clientNom +' '+json[0].clientPrenom);
-    $('#selectClient_').val(json[0].clientid);
+    $('#nomprop').val(json[0].nomArtisan +' '+json[0].nomArtisan);
+    $('#selectClient_').val(json[0].idArtisan);
     $('#emailpro').val(json[0].mailsEchanges);
     $('#messageenvoyer').text(json[0].messagesEchanges);
     $('#motific').val(json[0].motifEchanges);
@@ -290,7 +309,7 @@ showMessageBack = function (json){
 deleteEchange = function(ide,idc){
     if (!confirm(" Êtes-vous certain de vouloir supprimer ceci ? "))
         return;
-   $.getJSON(BASE_URL+'echanges_proprietaire/removeEchanges/',{
+   $.getJSON(BASE_URL+'echanges_artisans/removeEchanges/',{
         'ide' : ide,
         'idc' : idc
     },MessageBack) 
@@ -302,20 +321,4 @@ MessageBack = function(json){
       notification("","Votre donnée a été bien supprimée","success");
       $("#tr_" +id).remove();
     }
-}
-
-page = function(num_page,exception){
-
-  if ($("#li_"+num_page).hasClass("disabled") && !exception ) return;
-    $('#loading-table').show();
-    $('#tableClients').html("");
-    var id = "";
-    
-    current_page = num_page;   
-    $.postJSON(BASE_URL + "echanges_proprietaire/getWhere/",
-    {
-        "id" : id,
-        "key" : "limit",
-        "val": num_page,
-    },initBack);   
 }

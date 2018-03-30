@@ -116,8 +116,11 @@ $route['demande/devis/(:id)'] = 'demande/devis/$1';
 
 //Routage echange rdv
 $route['echanges-rendez-vous-proprietaires'] = 'echanges_proprietaire';
-
 $route['echanges-proprietaires-saves'] = 'echanges_proprietaire/saves';
 $route['rendez_vous'] = 'rendez_vous';
 $route['rendez_vous_edit'] = 'rendez_vous/edit';
 $route['rendez_vous_ajout'] = 'rendez_vous/ajout_rendez_vous';
+$route['echanges-proprietaires'] = 'echanges_proprietaire';
+$route['echanges-proprietaires-saves'] = 'echanges_proprietaire/saves';
+$route['echanges-artisans'] = 'echanges_artisans';
+$route['echanges-artisans-saves'] = 'echanges_artisans/saves';

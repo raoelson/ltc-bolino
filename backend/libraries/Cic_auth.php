@@ -86,11 +86,11 @@ class Cic_auth {
 						'sous_menu' => [ 
 								[ 
 										"nomMenu" => "Gestions des échanges des Propriétaires",
-										"url" => "echanges-rendez-vous-proprietaires" 
+										"url" => "echanges-proprietaires" 
 								],
 								[
 										"nomMenu" => "Gestion des échanges des Artisans",
-										"url" => "#"
+										"url" => "echanges-artisans"
 								],
 								[
 										"nomMenu" => "Gestion des rdv des Propriétaires",
