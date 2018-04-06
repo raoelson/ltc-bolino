@@ -112,6 +112,7 @@ $route['logements_saves'] = 'logements/saves';
 $route['demande'] = 'demande';
 $route['demande_saves'] = 'demande/save';
 $route['demande/modification/(:id)'] = 'demande/modification/$1';
+$route['demande/modification']='demande/modif';
 $route['demande/devis/(:id)'] = 'demande/devis/$1'; 
 
 //Routage echange rdv

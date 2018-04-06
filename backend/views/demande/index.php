@@ -6,7 +6,7 @@
 		<div class="title_right" style="float: right;">
 			<div
 				class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
-				<button  id="nouveau" class="btn btn-success" style="width: 100%" type="button">Nouveau</button>
+				<button  id="nouveau" class="btn btn-success" style="width: 100%" type="button">Ajouter</button>
 			</div>
 		</div>
 	</div>
@@ -26,9 +26,11 @@
                                 <th>N° Dossier</th>
                                 <th>Date d'arrivée</th>
                                 <th>Titre</th>
-                                <th>Propriétaire</th>
+                                <th>Nom de naissance</th>
+                                <th>Nom marital</th>
+                                <th>Prénom</th>
                                 <th>Adresse Postale</th>
-                                <th>Type des travaux</th>
+                                <!-- <th>Type des travaux</th> -->
                                 <th>Devis</th>
 								<th>Montant total des devis</th>
 								<th>Montant de l'aide</th>
@@ -44,9 +46,11 @@
                                     <td><?php echo $val['num_dossier_valide']; ?></td>
                                     <td><?php echo $val['date_arrivee']; ?></td>
                                     <td><?php echo $val['title']; ?></td>
-                                    <td><?php echo $val['firstname1']; ?></td>
+                                    <td><?php echo $val['firstname1'] ?></td>
+                                    <td><?php echo $val['marriedname']; ?></td>
+                                    <td><?php echo $val['firstname2']; ?></td>
                                     <td><?php echo $val['adress1']; ?></td>
-                                    <td><?php if ($val['type_travaux_finan'] != "") echo $val['type_travaux_finan']; else echo '-'; ?></td>
+                                    <!-- <td><?php if ($val['type_travaux_finan'] != "") echo $val['type_travaux_finan']; else echo '-'; ?></td> -->
                                     <td><a href="<?php  echo base_url('admin.php/demande/devis/'.$val['demandeid']) ?>" class="btn btn-round btn-default"><span class="gly fa fa-eye"></span></a></td>
                                     <td><?php echo $val['montant_devis']; ?></td>
                                     <td>
@@ -118,14 +122,35 @@
                     <div class="x_content">
                         <div class="item form-group">
                              <label class="control-label col-md-3 col-sm-3 col-xs-12"
-                                   for="name">Nom<span class="required">*</span>
+                                   for="name">Nom de naissance<span class="required">*</span>
                                </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
 
                                <select class="form-control col-md-7 col-xs-12" name="nom" id="nomProp" data-placeholder="Le Nom du Propriétaire" >
-                                    <option></option>
+                                    
                                     <?php foreach ($data_client['client'] as $val){ ?>
                                         <option value="<?php echo $val['firstname1'] ?>" ><?php echo $val['firstname1']; ?></option>
+                                    <?php } ?>
+
+                               </select>
+
+                            </div>
+                            <div
+                                class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                                <button id="nouveau" class="btn btn-success" style="width: 100%" type="button"><a href="http://localhost/ltc-botino/admin.php/clients" style="color: white;">Ajouter un nouveau propriétaire</a></button>
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+                             <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                   for="name">Prénom<span class="required">*</span>
+                               </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+
+                               <select class="form-control col-md-7 col-xs-12" name="prenom" id="prenomProp" data-placeholder="Le Nom du Propriétaire" >
+                                   
+                                    <?php foreach ($data_client['client'] as $val){ ?>
+                                        <option value="<?php echo $val['firstname2'] ?>" class="<?php echo $val['firstname1']; ?>"><?php echo $val['firstname2']; ?></option>
                                     <?php } ?>
 
                                </select>
@@ -138,7 +163,7 @@
 
                 <div class="x_panel">
                     <div class="x_title">
-                        <h5>Informations du dossier</h5>
+                        <h5>Informations de la demande</h5>
                         <div class="clearfix"></div>
                     </div>
 
@@ -186,7 +211,7 @@
 
                 <div class="x_panel">
                     <div class="x_title">
-                        <h5>Informations sur la demande de devis</h5>
+                        <h5>Informations des devis</h5>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
@@ -206,6 +231,19 @@
 
                         <div id="div_oui_artisan">
 
+                             <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                           for="name">Type de l'artisan
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <select id="nameArt1" name="nameArt1" class="form-control">
+                                            <?php foreach ($type_art as $trav ){ ?>
+                                                <option value="<?php echo $trav->id ?>"><?php echo $trav->namee; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+
                             <div id="div_devis">
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12"
@@ -214,24 +252,13 @@
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <select id="nomArt1" name="nomArt1" class="form-control">
                                           <?php foreach ($arti as $art){?>
-                                            <option value="<?php echo $art->id_artisan_alias ?>"> <?php echo $art->nom_gerant; ?> </option>
+                                            <option value="<?php echo $art->id_artisan_alias; ?>" class="<?php echo  $art->type_artisan_id ;?>"> <?php echo $art->nom_gerant; ?> </option>
                                           <?php } ?>
                                         </select>
                                     </div>
                                 </div>
 
-                                <div class="item form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"
-                                           for="name">Type de l'artisan
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <select id="nameArt1" name="nameArt1" class="form-control">
-                                            <?php foreach ($type_art as $trav ){ ?>
-                                                <option value=""><?php echo $trav->name; ?></option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                </div>
+                               
 
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12"
@@ -462,29 +489,208 @@
 <link href="<?php echo base_url('assets/backend/css/demande/chosen.css')?>" rel="stylesheet"/>
 <link href="<?php echo base_url('assets/backend/css/demande/prism.css')?>" rel="stylesheet"/>
 <link href="<?php echo base_url('assets/backend/css/demande/jquery.inputfile.css')?>" rel="stylesheet"/>
-<script >
-    var data__ = [];
-    var data2__ = {};
-
-    
-    <?php foreach ($arti as $art ){ ?>
-         data2__[<?php echo $art->id_artisan_alias; ?>] = "<?php echo $art->nom_gerant; ?>" ;
-    <?php } ?>
-        
-
-    <?php foreach ($type_art as $trav ){ ?>
-         data__.push("<?php echo $trav->name?>");
-    <?php } ?>
-
-</script>
+<script src="<?php echo base_url('assets/backend/js/sites/demande/demande.js')?>"></script>
 <script src="<?php echo base_url('assets/backend/js/demande/chosen.proto.min.js')?>"></script>
 <script src="<?php echo base_url('assets/backend/js/demande/chosen.jquery.min.js')?>"></script>
 <script src="<?php echo base_url('assets/backend/js/demande/site.js')?>"></script>
 <script src="<?php echo base_url('assets/backend/js/demande/notify.js')?>"></script>
 <script src="<?php echo base_url('assets/backend/js/demande/jquery.inputfile.js')?>"></script>
-<script src="<?php echo base_url('assets/backend/js/sites/demande/demande.js')?>"></script> 
-
+<script src="<?php echo base_url('assets/backend/js/demande/jquery.chained.js')?>"></script>
 <script>
+
+
+var tailleTable = 0;
+var max_fields = 10; // maximum input boxes allowed
+var wrapper = $("#div_devis"); // Fields wrapper
+var x = 1;        
+$('#AfficheArti').click(function(e){
+    e.preventDefault();
+    $('#div_devis').show();
+    
+    var data = "";
+    if(x < max_fields) { //max input box allowed
+        tailleTable = x++;
+        data += '<div class="ln_solid"></div> ';
+        
+        data += '<div class="item form-group">';
+        data += '<label class="control-label col-md-3 col-sm-3 col-xs-12"  for="name">Type de l\'artisan</label>';
+        data += '<div class="col-md-6 col-sm-6 col-xs-12">';
+        data += '<select id="nameArt'+(x)+'" name="nameArt'+(x)+'" class="form-control">';
+        //$.each(data__, function( index, value ) {
+          data += '<?php foreach($type_art as $trav){?><option value="<?php echo $trav->id ?>"><?php echo $trav->namee;  ?></option> <?php } ?>'; 
+        //});
+        data += '</select>';
+        data += '</div>';
+        data += '</div>';
+        data += '<div class="item form-group">';
+        data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nom de l\'artisan </label>';
+        data += '<div class="col-md-6 col-sm-6 col-xs-12">';
+       // data += '<input class="form-control col-md-7 col-xs-12" id="nomArt'+(x)+'" class="flat" name="nomArt'+(x)+'" type="text">';
+        data += '<select id="nomArt'+(x)+'" name="nomArt'+(x)+'" class="form-control">';
+         //$.each(data2__, function(key, value ) {
+          data += '<?php foreach($arti as $art){?><option value="<?php echo $art->id_artisan_alias ; ?>" class="<?php echo $art->type_artisan_id ; ?>"><?php echo $art->nom_gerant; ?></option><?php } ?>';
+        //});
+        data += '</select>'
+        data += '</div>';
+        data += '</div>';
+        data += '<div class="item form-group">';
+        data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">N° du Devis<span class="required">*</span></label>';
+        data += '<div class="col-md-6 col-sm-6 col-xs-12">';
+        data += '<input id="num_devis'+(x)+'" class="form-control col-md-7 col-xs-12" name="num_devis'+(x)+'" type="text" required="">';
+        data += '</div>';
+        data += '</div>';
+        data += '<div class="item form-group">';
+        data += ' <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date du Devis <span class="required">*</span> </label>';
+        data += '<div class="col-md-6 col-sm-6 col-xs-12">';
+        data += ' <input id="date_devis'+(x)+'" class="form-control col-md-7 col-xs-12 dateCalendrier" name="date_devis'+(x)+'" required="required" type="text">';
+        data +='</div>';
+        data+= '</div>';
+        data += ' <div class="item form-group">';
+        data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Montant du devis <span class="required">*</span>';
+        data += '</label>';
+        data += '<div class="col-md-6 col-sm-6 col-xs-12">';
+        data += '<input id="montantDevis'+(x)+'" class="form-control col-md-7 col-xs-12" name="montantDevis'+(x)+'" placeholder="" required="required" type="text">';
+        data += '</div>';
+        data += '</div>';
+        data += '<div class="item form-group">';
+        data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" >Statut du devis</label>';
+        data += '<div class="col-md-6 col-sm-6 col-xs-12">';
+        data += '<select id="statutDevis'+(x)+'" name="statutDevis'+(x)+'" class="form-control">';
+        data += '<option value="En cours">En cours</option>';
+        data += '<option value="Validé">Validé</option>';
+        data += '<option value="Refusé">Refusé</option>';
+        data += '</select>';
+        data += '</div>';
+        data += '</div>';
+        data += '<div class="item form-group">';
+        data += ' <label class="control-label col-md-3 col-sm-3 col-xs-12">Détail du devis';
+        data += '</label>';
+        data += '<div class="col-md-6 col-sm-6 col-xs-12">';
+        data += ' <p style="margin-top: 9px !important">';
+        data += '<label for="oui">Oui:</label> <input type="radio" class="flat" name="detail_devis_art'+(x)+'" id="oui" value="oui" >';
+        data += '<label for="non">Non:</label> <input type="radio" class="flat" name="detail_devis_art'+(x)+'" id="non" value="non" checked="">';
+        data += '</p>';
+        data += '</div>';
+        data += '</div>';
+        data += '<div class="item form-group">';
+        data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Devis de l\'artisan';
+        data += '</label>';
+        data += '<div class="col-md-6 col-sm-6 col-xs-12">';
+        data += '<input id="file_art'+(x)+'" name="fileTest'+(x)+'" type="file"  disabled="">';
+        data += '<input type="hidden" name="montantDev'+(x)+'">'
+        data += '</div>';
+        data += '</div>';
+        data += '<input type="hidden" name="montantTotalDevis'+(x)+'">';
+        $(wrapper).append(data);
+
+        $('input[name^="montantDevis'+(x)+'"]').keyup(function(e) {
+            e.preventDefault();
+            var sommeDevis = 0;
+            //var valeur = 0;
+
+            $('input[name^="montantDevis'+(x)+'"]').each(function() {
+                if($(this).val() == "")
+                    return;
+                //valeur = $(this).val();
+                //$('input[name="montantDev'+(x)+'"]').val(valeur);
+                sommeDevis += parseFloat(($(this).val()));
+            });
+
+            $('input[name="montantTotalDevis'+(x)+'"]').val(sommeDevis);
+               SommeDevisFunct();
+        }); 
+
+
+        $('input[name="fileTest'+(x)+'"]').inputfile({
+            uploadeText:'<span class="glyphicon glyphicon-upload"></span> ',
+            removeText: '<span class="glyphicon glyphicon-trash"></span>',
+            restoreText: '<span class="glyphicon glyphicon-remove"></span>',
+            uploadButtonClass: 'btn btn-primary',
+            removeButtonClass: 'btn btn-default'
+
+        });
+
+         $(function(){    
+            $('#nomArt'+(x)+'').chained('#nameArt'+(x)+'');   
+        });
+
+        
+        function testDate (){
+            var date = new Date();
+            date.setDate(date.getDate() - 1);
+            var datereturn = date.getDate()  + '/' + (date.getMonth() + 1) + '/' +  date.getFullYear()
+            return (datereturn);
+        }
+
+        $(function() {
+            $('.dateCalendrier').daterangepicker({
+                singleDatePicker: true,
+                singleClasses: "picker_4",
+                startDate: testDate(),
+                maxDate:  testDate() ,
+                locale: {
+                    format: 'DD/MM/YYYY'
+                }  
+            }, 
+            function(start, end, label) {
+                
+            });
+
+            
+        });
+    }
+    $('input[name="nombreDevis"]').val(tailleTable+1);
+
+});
+ 
+       
+$('input[name^="montantDevis"]').keyup(function() {
+    var sommeDevisPrincipal = 0;
+    $('input[name^="montantDevis1"]').each(function() {
+        if($(this).val() == "")
+            return;
+        sommeDevisPrincipal += parseFloat(($(this).val()));
+    });
+    $('input[name="montantTotalDevisPrincipal"]').val(sommeDevisPrincipal);
+     SommeDevisFunct();
+});
+
+SommeDevisFunct = function(){
+    var SommeTableDevis = 0;
+    for(i=1;i<=tailleTable;i++){
+        SommeTableDevis += (parseFloat( $('input[name="montantTotalDevis'+(i+1)+'"]').val()));
+    }
+    var sommeGeneral = SommeTableDevis+parseFloat($('input[name="montantTotalDevisPrincipal"]').val());
+    $('#totalDevis').text(sommeGeneral + " € ");
+    $('#valeurDevis').val(sommeGeneral); 
+
+    if(sommeGeneral > 10500){
+        $('#totalDevis').text(sommeGeneral + " € ").css('color', 'red');
+        //alert('LE MONTANT TOTAL DES DEVIS: '+sommeGeneral+'€ EST AU DESSUS DE LA LIMITE QUI EST A 10700€');
+        $('#montantTotal').notify("Le montat total des devis excède la limite prévue qui est à 10700€. Veuillez insérer ci-dessus, le fichier qui garantisse que vous allez payer la somme excédant, sinon veuillez diminiuer le montant des devis",
+            {position:"left"},
+            
+        );
+        $('#div_garantie').toggle();
+        $('#div_garantie').removeAttr("style");
+        //$.notify("Le montat total des devis excède la limite prévue qui est à 10500€.\n Veuillez insérer ci-dessous, \n le fichier qui garantisse que vous allez payer la somme excédant, sinon veuillez diminiuer le montant des devis");
+
+    }
+    else{
+        $('#totalDevis').text(sommeGeneral + " € ").css('color', 'grey');
+        $('#montantTotal').notify("Montant acceptable", "success");
+        $('#div_garantie').hide();
+
+    }
+}
+
+</script>
+<script>
+
+    $(function(){
+        $("#prenomProp").chained("#nomProp");    
+        $("#nomArt1").chained("#nameArt1");   
+    });
     function testDate (){
             var date = new Date();
             date.setDate(date.getDate() - 1);
@@ -508,6 +714,8 @@
 
         
     });
+
+
 
 </script>
 

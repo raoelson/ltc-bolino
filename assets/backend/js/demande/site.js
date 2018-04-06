@@ -1,4 +1,5 @@
 $(document).ready(function(){
-    $("#nomProp").chosen();
+   // $("#nomProp").chosen();
+    
 
 });

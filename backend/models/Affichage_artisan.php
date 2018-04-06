@@ -13,8 +13,7 @@ class Affichage_artisan extends CI_Model
 					artisan.forme_juridique,artisan.date_immatriculation,artisan.date_derniere_rcs,
 					artisan.categorie,artisan.montant_actif_passif,artisan.chiffres_affaires,artisan.tranche_effectif,
 					artisan.pres_attestation_immat,artisan.pres_kbis,artisan.pres_services_fiscaux,artisan.pers_attestation_clandestin,
-					artisan.pres_attestation_decl_social,artisan.pres_attestation_assurance,artisan.pres_rib
-					,adress.id as id_adress_alias,adress.adress1,adress.adress2,adress.lieu_dit,adress.cp,adress.ville,adress.region as adresseRegion,adress.pays,
+					artisan.pres_attestation_decl_social,artisan.pres_attestation_assurance,artisan.pres_rib,adress.id as id_adress_alias,adress.adress1,adress.adress2,adress.lieu_dit,adress.cp,adress.ville,adress.region as adresseRegion,adress.pays,
 					adress.phone,adress.cellphone1,adress.cellphone2,adress.fax,adress.mail,adress.mail,adress.site_web
 					,type_artisan.id,type_artisan.namee'
 

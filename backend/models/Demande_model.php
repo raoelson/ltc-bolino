@@ -19,6 +19,16 @@ class Demande_model extends CI_Model{
 		
 	}
 
+	 public function getTypeArt()
+    {
+
+        $this->db->select('type_artisan.id, type_artisan.namee, artisan.type_artisan_id')
+        ->from('type_artisan')
+        ->join('artisan', 'artisan.type_artisan_id = type_artisan.id');
+        $query=$this->db->get();
+        return $query->result();
+    }
+
 
 	public function get_all(){
 		$this->db->select('demande.id as demandeid, demande.owner_id, demande.housing_id, demande.num_dossier_arrivee, demande.date_arrivee, 
@@ -32,18 +42,18 @@ class Demande_model extends CI_Model{
 		return $query->result_array();
 	}
 
-	public function getWhere($var){
-		$this->db->select('demande.id, owners.id, owners.firstname1')
-		->from('demande')
-		->join('owners', 'owners.id = demande.owner_id')
-		->where(array("demande.id"=>$var));
+	/*public function getInfoClient(){
+		$this->db->group_by('marriedname');
+		$this->db->distinct();
+		$this->db->select('*');
+		$this->db->from('owners');
 		$query = $this->db->get();
 		return $query->result_array();
-	}
+	}*/
 
 
 	//Details
-	public function modificationclient($posts,$id){
+	public function modificationdemande($posts,$id){
 		$this->db->update ( $this->table, $posts, array (
 				$this->id => $id 
 		) );

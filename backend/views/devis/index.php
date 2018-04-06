@@ -68,7 +68,7 @@
                                         {
                                             ?>
                                             <button class="badge bg-blue">
-                                                <?php echo $encours ?>
+                                                <?php echo $encours; ?>
                                             </button>
                                             <?php  
                                         }
