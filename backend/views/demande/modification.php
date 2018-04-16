@@ -1,28 +1,31 @@
 <?php foreach ($modif as $mod ) { ?>
-    <input type="hidden" value="<?php echo $mod['num_devis']; ?>" name="">
+    <input type="text" value="<?php echo $mod['num_devis']; ?>" name="">
 <?php } ?>
 
 
-<div class="row tile_count"></div> 
+<div class="row tile_count"></div>
 
 <div class="row">
 	<div class="page-title">
 		<div  >
             <div class="col-md-12 ">
-                <a href="<?php echo base_url('admin.php/demande/modification')?>" id="nouveau" class="btn btn-success"
+                <a href="<?php echo base_url('admin.php/demande')?>" id="nouveau" class="btn btn-success"
                     style="width: 15%" type="button"><span class="gly fa fa-angle-left"></span>&nbsp; Retour</a>
-            </div>      
+            </div>
         </div>
 	</div>
-	
-   
+
+
         <form class="form-horizontal form-label-left" novalidate
         action="<?php echo base_url('admin.php/demande/modif');?>"
         method="post">
 
-        <input type="hidden" name="idInfoDemande" value="<?php echo $data[0]['demandeid']; ?>" />
+        <input type="text" name="idInfoDemande" value="<?php echo $data[0]['demandeid']; ?>" />
         <input type="hidden" name="nombreDevis" value="1"/>
-        
+        <?php
+            $k =  $modif[0]['nombreDevis'];
+            echo $k;
+        ?>
         <div class="row" id="ancre">
             <div class="col-md-12 col-sm-12 col-xs-12">
 
@@ -37,11 +40,11 @@
                                    for="name">Nom de naissance<span class="required">*</span>
                                </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                
+
                                <select class="form-control col-md-7 col-xs-12" name="nom" id="nomProp" data-placeholder="Le Nom du Propriétaire" >
-                                        
+
                                             <option value="<?php echo $modif[0]['firstname1'] ?>" selected ><?php echo $modif[0]['firstname1']; ?></option>
-                                        
+
 
                                         <?php foreach ($reste as $re) { ?>
                                             <option><?php echo $re->firstname1; ?></option>
@@ -73,7 +76,7 @@
                                    for="name">Date d'arrivée <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input id="date_arrivee" class="form-control col-md-7 col-xs-12  single_cal" 
+                                <input id="date_arrivee" class="form-control col-md-7 col-xs-12  single_cal"
                                        name="date_arrivee" placeholder="" required="required"
                                        type="date" value="<?php echo $modif[0]['date_arrivee']; ?>">
                             </div>
@@ -106,7 +109,7 @@
                     </div>
                 </div>
 
-               
+
 
                 <div class="x_panel">
                     <div class="x_title">
@@ -131,7 +134,7 @@
                         <div id="div_oui_artisan">
 
                             <div id="div_devis">
-                                
+
 
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12"
@@ -165,7 +168,7 @@
                                            for="name">N° du Devis<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input id="num_devis1" class="form-control col-md-7 col-xs-12" name="num_devis1" type="text" required="" value="<?php echo $modif[0]['num_devis']; ?>">
+                                        <input id="num_devis1" class="form-control col-md-7 col-xs-12" name="num_devis1" type="text" required="" value="<?php  echo $modif[$k-1]['num_devis']; ?>">
                                     </div>
                                 </div>
 
@@ -231,12 +234,12 @@
 
                             </div>
 
-            
 
 
 
 
-                      
+
+
 
                             <!-- <div class="item form-group">
                                  <label class="control-label col-md-3 col-sm-3 col-xs-12"
@@ -247,7 +250,7 @@
                                  </div>
                              </div>-->
 
-                           
+
 
                         </div>
 
@@ -347,9 +350,9 @@
 
                 <div class="form-group" >
                     <div class="col-md-11 col-sm-12 col-xs-12 " style="margin-left: 16px;">
-                        <a href="#" id="montantTotal" type="button" style="float: right;">MONTANT TOTAL DES DEVIS:  
-                            <b><span id="totalDevis"> 0.0 € </span></b> 
-                        </a>  
+                        <a href="#" id="montantTotal" type="button" style="float: right;">MONTANT TOTAL DES DEVIS:
+                            <b><span id="totalDevis"> 0.0 € </span></b>
+                        </a>
                     </div>
                     <input type="hidden" name="valeurDevis" id="valeurDevis">
                 </div>
@@ -365,7 +368,7 @@
                         </div> -->
 
             </div>
-                        
+
         </div>
         <div class="ln_solid"></div>
         <div class="form-group">
@@ -376,7 +379,7 @@
                 </div>
             </center>
         </div>
-   
+
     </form>
     </div>
 
@@ -394,22 +397,24 @@
 <script src="<?php echo base_url('assets/backend/js/demande/site.js')?>"></script>
 <script src="<?php echo base_url('assets/backend/js/demande/notify.js')?>"></script>
 <script src="<?php echo base_url('assets/backend/js/demande/jquery.inputfile.js')?>"></script>
-<script src="<?php echo base_url('assets/backend/js/sites/demande/demande.js')?>"></script> 
+<script src="<?php echo base_url('assets/backend/js/sites/demande/demande.js')?>"></script>
 <script>
     var wrapper = $("#div_devis");
     var a = <?php echo $modif[0]['nombreDevis']; ?>;
     var w;
     //alert(a);
     data="";
-    
-    
+
+
     for (w=1; w<a; w++){
+      <?php $ww = "echo " ?>
+
         data += '<div class="ln_solid"></div> ';
         data += '<div class="item form-group">';
         data += '<label class="control-label col-md-3 col-sm-3 col-xs-12"  for="name">Type de l\'artisan</label>';
         data += '<div class="col-md-6 col-sm-6 col-xs-12">';
         data += '<select id="nameArt'+(w+1)+'" name="nameArt'+(w+1)+'" class="form-control">';
-        data += '<?php foreach($modif as $mod){?><option value=""><?php echo $mod['namee']; ?></option> <?php } ?>'; 
+        data += '<?php foreach($modif as $mod){?><option value=""><?php echo $mod['namee']; ?></option> <?php } ?>';
         data += '</select>';
         data += '</div>';
         data += '</div>';
@@ -424,7 +429,7 @@
         data += '<div class="item form-group">';
         data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">N° du Devis<span class="required">*</span></label>';
         data += '<div class="col-md-6 col-sm-6 col-xs-12">';
-        data += '<input id="num_devis'+(w+1)+'" class="form-control col-md-7 col-xs-12" name="num_devis'+(w+1)+'" type="text" required="" value="<?php echo $modif[0]['num_devis']; ?>">';
+        data += '<input id="num_devis'+(w+1)+'" class="form-control col-md-7 col-xs-12" name="num_devis'+(w+1)+'" type="text" required="" value="">';
         data += '</div>';
         data += '</div>';
         data += '<div class="item form-group">';
@@ -437,7 +442,7 @@
         data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Montant du devis <span class="required">*</span>';
         data += '</label>';
         data += '<div class="col-md-6 col-sm-6 col-xs-12">';
-        data += '<input id="montantDevis'+(w+1)+'" class="form-control col-md-7 col-xs-12" name="montantDevis'+(w+1)+'" placeholder="" required="required" type="text">';
+        data += '<input id="montantDevis'+(w+1)+'" class="form-control col-md-7 col-xs-12" name="montantDevis'+(w+1)+'" placeholder="" required="required" type="text" value="<?php echo $modif[1]['montant']; ?>">';
         data += '</div>';
         data += '</div>';
         data += '<div class="item form-group">';
@@ -468,10 +473,25 @@
         data += '<input type="hidden" name="montantDev'+(w+1)+'">'
         data += '</div>';
         data += '</div>';
-        data += '<input type="hidden" name="montantTotalDevis'+(w+1)+'">'; 
+        data += '<input type="hidden" name="montantTotalDevis'+(w+1)+'">';
+
+
+        $("ins.iCheck-helper").click(function() {
+
+            //SI RADIO --DETAIL DEVIS ARTISAN--
+            var etatCheck = $(this).prev('input[name = "detail_devis_art'+(w+1)+'"]').val();
+            if(etatCheck == "oui"){
+                $('#file_art'+(w+1)+'').removeAttr("disabled");
+            }else if(etatCheck == "non"){
+                $('#file_art'+(w+1)+'').attr('disabled', 'disabled');
+            }
+        });
     }
+
     $(wrapper).append(data);
-    
+
+
+
 </script>
 <script>
     function testDate (){
@@ -489,22 +509,14 @@
             maxDate:  testDate() ,
             locale: {
                 format: 'DD/MM/YYYY'
-            }  
-        }, 
+            }
+        },
         function(start, end, label) {
-            
+
         });
 
 
-        
+
     });
 
 </script>
-
-
-
-
-
-
-
-

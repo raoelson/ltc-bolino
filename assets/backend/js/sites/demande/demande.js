@@ -1,4 +1,4 @@
-$(document).ready(function() { 
+$(document).ready(function() {
 
     //ANIMATION DU FORMULAIRE LORSQU'ON CLIQUE SUR LE BOUTON NOUVEAU
     $('#ajout').hide();
@@ -64,6 +64,8 @@ $(document).ready(function() {
         }
 
     });
+
+
     var handleDataTableButtons = function() {
                         if ($("#datatable-buttons").length) {
                             var table = $("#datatable-buttons").DataTable({
@@ -147,7 +149,7 @@ $(document).ready(function() {
         // var tailleTable = 0;
         // var max_fields = 10; // maximum input boxes allowed
         // var wrapper = $("#div_devis"); // Fields wrapper
-        // var x = 1;        
+        // var x = 1;
         // $('#AfficheArti').click(function(e){
         //     e.preventDefault();
         //     $('#div_devis').show();
@@ -156,13 +158,13 @@ $(document).ready(function() {
         //     if(x < max_fields) { //max input box allowed
         //         tailleTable = x++;
         //         data += '<div class="ln_solid"></div> '
-                
+
         //         data += '<div class="item form-group">';
         //         data += '<label class="control-label col-md-3 col-sm-3 col-xs-12"  for="name">Type de l\'artisan</label>';
         //         data += '<div class="col-md-6 col-sm-6 col-xs-12">';
         //         data += '<select id="nameArt'+(x)+'" name="nameArt'+(x)+'" class="form-control">';
         //         $.each(data__, function( index, value ) {
-        //           data += '<option value="">'+value+'</option>'; 
+        //           data += '<option value="">'+value+'</option>';
         //         });
         //         data += '</select>';
         //         data += '</div>';
@@ -243,7 +245,7 @@ $(document).ready(function() {
 
         //             $('input[name="montantTotalDevis'+(x)+'"]').val(sommeDevis);
         //                SommeDevisFunct();
-        //         }); 
+        //         });
 
 
         //         $('input[name="fileTest'+(x)+'"]').inputfile({
@@ -256,8 +258,8 @@ $(document).ready(function() {
         //         });
 
         //          $(function(){
-                        
-        //             $("#nomArt2").chained("#nameArt2");   
+
+        //             $("#nomArt2").chained("#nameArt2");
         //         });
 
         //         function testDate (){
@@ -275,20 +277,20 @@ $(document).ready(function() {
         //                 maxDate:  testDate() ,
         //                 locale: {
         //                     format: 'DD/MM/YYYY'
-        //                 }  
-        //             }, 
+        //                 }
+        //             },
         //             function(start, end, label) {
-                        
+
         //             });
 
-                    
+
         //         });
         //     }
         //     $('input[name="nombreDevis"]').val(tailleTable+1);
 
         // });
-     
-           
+
+
         // $('input[name^="montantDevis"]').keyup(function() {
         //     var sommeDevisPrincipal = 0;
         //     $('input[name^="montantDevis1"]').each(function() {
@@ -307,19 +309,19 @@ $(document).ready(function() {
         //     }
         //     var sommeGeneral = SommeTableDevis+parseFloat($('input[name="montantTotalDevisPrincipal"]').val());
         //     $('#totalDevis').text(sommeGeneral + " € ");
-        //     $('#valeurDevis').val(sommeGeneral); 
+        //     $('#valeurDevis').val(sommeGeneral);
 
         //     if(sommeGeneral > 10500){
         //         $('#totalDevis').text(sommeGeneral + " € ").css('color', 'red');
         //         //alert('LE MONTANT TOTAL DES DEVIS: '+sommeGeneral+'€ EST AU DESSUS DE LA LIMITE QUI EST A 10700€');
         //         $('#montantTotal').notify("Le montat total des devis excède la limite prévue qui est à 10700€. Veuillez insérer ci-dessus, le fichier qui garantisse que vous allez payer la somme excédant, sinon veuillez diminiuer le montant des devis",
         //             {position:"left"},
-                    
+
         //         );
         //         $('#div_garantie').toggle();
         //         $('#div_garantie').removeAttr("style");
         //         //$.notify("Le montat total des devis excède la limite prévue qui est à 10500€.\n Veuillez insérer ci-dessous, \n le fichier qui garantisse que vous allez payer la somme excédant, sinon veuillez diminiuer le montant des devis");
-    
+
         //     }
         //     else{
         //         $('#totalDevis').text(sommeGeneral + " € ").css('color', 'grey');
@@ -330,13 +332,25 @@ $(document).ready(function() {
         // }
 
         $('input[type="file"]').inputfile({
-            uploadeText:'<span class="glyphicon glyphicon-upload"></span> ',
-            removeText: '<span class="glyphicon glyphicon-trash"></span>',
-            restoreText: '<span class="glyphicon glyphicon-remove"></span>',
-            uploadButtonClass: 'btn btn-primary',
-            removeButtonClass: 'btn btn-default'
+          uploadText: '<span class="glyphicon glyphicon-upload"></span> Choisir un fichier',
+          removeText: '<span class="glyphicon glyphicon-trash"></span>',
+          restoreText: '<span class="glyphicon glyphicon-remove"></span>',
+
+          uploadButtonClass: 'btn btn-primary',
+          removeButtonClass: 'btn btn-default',
+
+          removeName: '',
+          removeValue: 1,
+
+          dontRemove: false,
+
+          fileNameOnly: true
 
         });
+
+
+      
+
 
 
       /*-----------------------------------------------*/
@@ -348,7 +362,7 @@ $(document).ready(function() {
             $('#num_dossier_valide').removeAttr("disabled");
             $('#num_dossier_valide').prop('required', 'true');
 
-            
+
         }
         else if(stat == "Refusée"){
             $('#num_dossier_valide').attr('disabled', 'disabled');
@@ -357,9 +371,8 @@ $(document).ready(function() {
 
         }
     });*/
-    
+
    // $( "#date_arrivee" ).datepicker({ changeMonth: true, changeYear: true, minDate: new Date(2010, 1 - 1, 1), maxDate: 0 });
-   
+
 
 });
-  

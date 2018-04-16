@@ -1,8 +1,8 @@
-<?php 
+<?php
 class Demande_model extends CI_Model{
 	private $table = "demande";
-	private $id = 'id';  
-	
+	private $id = 'id';
+
 
 	public function add($posts){
 
@@ -13,10 +13,10 @@ class Demande_model extends CI_Model{
 	public function getOwnerId($nom){
 		$this->db->select('id')
             ->from('owners')
-            ->where('firstname1', $nom); 
+            ->where('firstname1', $nom);
 		$query = $this->db->get();
 		return $query->result();
-		
+
 	}
 
 	 public function getTypeArt()
@@ -32,7 +32,7 @@ class Demande_model extends CI_Model{
 
 	public function get_all(){
 		$this->db->select('demande.id as demandeid, demande.owner_id, demande.housing_id, demande.num_dossier_arrivee, demande.date_arrivee, 
-		                    demande.montant_aide_dept, demande.montant_devis, demande.num_dossier_valide, owners.id,owners.title, owners.marriedname, 
+		                    demande.montant_aide_dept, demande.montant_devis, demande.num_dossier_valide, owners.id,owners.title, owners.marriedname,
 		                    owners.firstname1, owners.firstname2, owners.type_travaux_finan, adress.adress1, demande.statut');
 		$this->db->from('demande');
 		$this->db->join('owners', 'owners.id = owner_id');
@@ -55,7 +55,7 @@ class Demande_model extends CI_Model{
 	//Details
 	public function modificationdemande($posts,$id){
 		$this->db->update ( $this->table, $posts, array (
-				$this->id => $id 
+				$this->id => $id
 		) );
 	}
 

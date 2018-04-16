@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
+	'hostname' => '146.88.232.198',
+	'username' => 'ltcbotino_user',
+	'password' => 'K=}9fRiNslS6',
 	'database' => 'ltcbotino_db',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

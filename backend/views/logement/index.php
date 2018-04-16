@@ -7,10 +7,10 @@
 			<div class="col-md-12 ">
 				<a href="<?php echo base_url('admin.php/clients')?>" id="nouveau" class="btn btn-success"
 					style="width: 15%" type="button"><span class="gly fa fa-angle-left"></span>&nbsp; Retour vers liste</a>
-										
-			</div>		
+
+			</div>
 		</div>
-		
+
 	</div>
 	<div class="clearfix"></div>
 	<form class="form-horizontal form-label-left" novalidate
@@ -25,14 +25,14 @@
 				<div class="x_panel">
 					<div class="x_title">
 						<h5>Informations sur logement à rénover</h5>
-						<div class="clearfix"></div> 
+						<div class="clearfix"></div>
 					</div>
 					<div class="">
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Type du logement <span class="required">*</span>
 							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">								
+							<div class="col-md-6 col-sm-6 col-xs-12">
 								<select id="nameType" name="nameType" class="form-control col-md-7 col-xs-12" >
 									<option value="F2" <?php if ($data["typeLog"] == "F2" ) echo 'selected' ; ?> >Appartement F2</option>
 									<option value="F3" <?php if ($data["typeLog"] == "F3" ) echo 'selected' ; ?> >Appartement F3</option>
@@ -40,14 +40,14 @@
 
 									<option value="maison_ind" <?php if ($data["typeLog"] == "maison_ind" ) echo 'selected' ; ?>>Maison individuelle</option>
 									<option value="duplex" <?php if ($data["typeLog"] == "duplex" ) echo 'selected' ; ?>>Duplex</option>
-								
+
 								</select>
 							</div>
 						</div>
 						<div class="item form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
 								for="name">Adresse du logement à rénover<br>(à compléter si différente de l'adresse où vous habitez) </label>
-								<?php 
+								<?php
 								   $testAide = "display: block;";
 								   if($data['adresseetat'] == 1){
 										$testAide = "display: none;";
@@ -61,7 +61,7 @@
 								</p>
 							</div>
 						</div>
-						
+
 						<div id="NonAdresse" style="<?php echo $testAide;?>">
 							<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12"
@@ -75,11 +75,11 @@
 							</div>
 							<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12"
-									for="name">Nom de la voie 
+									for="name">Nom de la voie
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input  class="form-control col-md-7 col-xs-12"
-										name="nomvoie" placeholder="Nom de la voie..." 
+										name="nomvoie" placeholder="Nom de la voie..."
 										type="text"  value="<?php echo $data["adress2_sec"];?>" />
 								</div>
 							</div>
@@ -107,7 +107,7 @@
 						<h5>Type d'occupation</h5>
 						<div class="clearfix"></div>
 						</div>
-						<div class="x_content">	
+						<div class="x_content">
 							<table class="table table-striped table-bordered">
 								<thead>
 								<tr>
@@ -119,8 +119,8 @@
 								</thead>
 								<tbody>
 									<tr>
-										<th>	
-											Propriétaire 								
+										<th>
+											Propriétaire
 										</th>
 										<td>
 											<?php
@@ -128,10 +128,10 @@
 												if($data["proprieteLog"] == 0)
 													$proprietaire = "";
 											?>
-											 <input type="checkbox" class="flat" name="proprietaire" <?php echo $proprietaire ;?> />									
+											 <input type="checkbox" class="flat" name="proprietaire" <?php echo $proprietaire ;?> />
 										</td>
-										<th>	
-											Propriétaire 								
+										<th>
+											Propriétaire
 										</th>
 										<td>
 											<?php
@@ -139,12 +139,12 @@
 												if($data["profoncierLog"] == 0)
 													$proprietaire1 = "";
 											?>
-											<input type="checkbox" class="flat" name="proprietaire1" <?php echo $proprietaire1 ;?>/>								
+											<input type="checkbox" class="flat" name="proprietaire1" <?php echo $proprietaire1 ;?>/>
 										</td>
 									</tr>
 									<tr>
 										<th>
-											Locataire 								
+											Locataire
 										</th>
 										<td>
 											<?php
@@ -152,10 +152,10 @@
 												if($data["locataireLog"] == 0)
 													$locataire = "";
 											?>
-											<input type="checkbox" class="flat" name="locataire" <?php echo $locataire; ?> />								
+											<input type="checkbox" class="flat" name="locataire" <?php echo $locataire; ?> />
 										</td>
 										<th>
-											Locataire(²) 									
+											Locataire(²)
 										</th>
 										<td>
 											<?php
@@ -163,12 +163,12 @@
 												if($data["foncierlocataireLog"] == 0)
 													$locataire1 = "";
 											?>
-											<input type="checkbox" class="flat" name="locataire1" <?php echo $locataire1; ?> />									
+											<input type="checkbox" class="flat" name="locataire1" <?php echo $locataire1; ?> />
 										</td>
 									</tr>
 									<tr>
 										<th>
-											Occupant à titre gratuit						
+											Occupant à titre gratuit
 										</th>
 										<td>
 											<?php
@@ -176,10 +176,10 @@
 												if($data["occupantLog"] == 0)
 													$occupant = "";
 											?>
-											<input type="checkbox" class="flat" name="occupant" <?php echo $occupant; ?> />									
+											<input type="checkbox" class="flat" name="occupant" <?php echo $occupant; ?> />
 										</td>
 										<th>
-											Occupant à titre gratuit(²)  					
+											Occupant à titre gratuit(²)
 										</th>
 										<td>
 											<?php
@@ -187,9 +187,9 @@
 												if($data["foncieroccupantLog"] == 0)
 													$occupant1 = "";
 											?>
-											<input type="checkbox" class="flat" name="occupant1" <?php echo $occupant1; ?> />								
+											<input type="checkbox" class="flat" name="occupant1" <?php echo $occupant1; ?> />
 										</td>
-									</tr>															
+									</tr>
 								</tbody>
 							</table>
 						</div>
@@ -210,7 +210,7 @@
 							</div>
 							<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12"
-									for="name">Nombre de pièces habitable 
+									for="name">Nombre de pièces habitable
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<?php
@@ -224,7 +224,7 @@
 							</div>
 							<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12"
-									for="name">Nombre de personnes occupant le logement 
+									for="name">Nombre de personnes occupant le logement
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<?php
@@ -245,19 +245,19 @@
 								?>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input  class="form-control col-md-7 col-xs-12"
-										type="text" name="dateconstruction" id="single_cal001" required="true" 
+										type="text" name="dateconstruction" id="single_cal001" required="true"
 										value=" <?php echo $data["dateLog"]; ?>">
 								</div>
 								<?php } else{?>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input  class="form-control col-md-7 col-xs-12"
-										type="text" name="dateconstruction" id="single_cal002" required="true" 
+										type="text" name="dateconstruction" id="single_cal002" required="true"
 										value="">
 								</div>
 								<?php }?>
 							</div>
 							<br/>
-							<div class="x_content">	
+							<div class="x_content">
 							<table class="table table-striped table-bordered">
 								<thead>
 								<tr>
@@ -271,8 +271,8 @@
 								</thead>
 								<tbody>
 									<tr>
-										<th>	
-											Béton 								
+										<th>
+											Béton
 										</th>
 										<td>
 											<?php
@@ -280,10 +280,10 @@
 												if($data["beton"] == 0)
 													$beton = "";
 											?>
-											 <input type="checkbox" class="flat" name="beton" <?php echo $beton; ?> />									
+											 <input type="checkbox" class="flat" name="beton" <?php echo $beton; ?> />
 										</td>
-										<th>	
-											Cuisine 								
+										<th>
+											Cuisine
 										</th>
 										<td>
 											<?php
@@ -291,10 +291,10 @@
 												if($data["cuisine"] == 0)
 													$cuisine = "";
 											?>
-											<input type="checkbox" class="flat" name="cuisine" <?php echo $cuisine; ?> />								
+											<input type="checkbox" class="flat" name="cuisine" <?php echo $cuisine; ?> />
 										</td>
-										<th>	
-											Eau potable 								
+										<th>
+											Eau potable
 										</th>
 										<td>
 											<?php
@@ -302,12 +302,12 @@
 												if($data["eau_potable"] == 0)
 													$eau_potable = "";
 											?>
-											<input type="checkbox" class="flat"  name="eaupotable" <?php echo $eau_potable; ?> />								
+											<input type="checkbox" class="flat"  name="eaupotable" <?php echo $eau_potable; ?> />
 										</td>
 									</tr>
 									<tr>
 										<th>
-											Bois dulcifié  								
+											Bois dulcifié
 										</th>
 										<td>
 											<?php
@@ -315,10 +315,10 @@
 												if($data["bois_dulcifie"] == 0)
 													$bois_dulcifie = "";
 											?>
-											<input type="checkbox" class="flat"  name="boisdulcifie"  <?php echo $bois_dulcifie; ?> />								
+											<input type="checkbox" class="flat"  name="boisdulcifie"  <?php echo $bois_dulcifie; ?> />
 										</td>
 										<th>
-											Salle d'Eau									
+											Salle d'Eau
 										</th>
 										<td>
 											<?php
@@ -326,11 +326,11 @@
 												if($data["salle_eau"] == 0)
 													$salle_eau = "";
 											?>
-											<input type="checkbox" class="flat"  name="salleeau" <?php echo $salle_eau; ?>  />									
+											<input type="checkbox" class="flat"  name="salleeau" <?php echo $salle_eau; ?>  />
 										</td>
 										<th>
-											
-										 	Electricté									
+
+										 	Electricté
 										</th>
 										<td>
 											<?php
@@ -338,12 +338,12 @@
 												if($data["electricite"] == 0)
 													$electricite = "";
 											?>
-											<input type="checkbox" class="flat"  name="electricite" <?php echo $electricite; ?> />									
+											<input type="checkbox" class="flat"  name="electricite" <?php echo $electricite; ?> />
 										</td>
 									</tr>
 									<tr>
 										<th>
-											Bois						
+											Bois
 										</th>
 										<td>
 											<?php
@@ -351,10 +351,10 @@
 												if($data["bois"] == 0)
 													$bois = "";
 											?>
-											<input type="checkbox" class="flat"  name="bois" <?php echo $bois; ?> />									
+											<input type="checkbox" class="flat"  name="bois" <?php echo $bois; ?> />
 										</td>
 										<th>
-											W.C  					
+											W.C
 										</th>
 										<td>
 											<?php
@@ -362,10 +362,10 @@
 												if($data["wc"] == 0)
 													$wc = "";
 											?>
-											<input type="checkbox" class="flat"  name="wc" <?php echo $wc; ?> />								
+											<input type="checkbox" class="flat"  name="wc" <?php echo $wc; ?> />
 										</td>
 										<th>
-											Tout-à-l'égout					
+											Tout-à-l'égout
 										</th>
 										<td>
 											<?php
@@ -373,12 +373,12 @@
 												if($data["tout_a_egout"] == 0)
 													$tout_a_egout = "";
 											?>
-											<input type="checkbox" class="flat"  name="toutegout" <?php echo $tout_a_egout; ?> />								
+											<input type="checkbox" class="flat"  name="toutegout" <?php echo $tout_a_egout; ?> />
 										</td>
 									</tr>
 										<tr>
 										<th>
-											Tôles						
+											Tôles
 										</th>
 										<td>
 											<?php
@@ -386,24 +386,24 @@
 												if($data["tole"] == 0)
 													$tole = "";
 											?>
-											<input type="checkbox" class="flat"  name="tole" <?php echo $tole; ?>;  />									
+											<input type="checkbox" class="flat"  name="tole" <?php echo $tole; ?>;  />
 										</td>
 										<th>
-											-						
+											-
 										</th>
 										<td>
-											-									
+											-
 										</td>
 										<th>
-											-						
+											-
 										</th>
 										<td>
-											-									
+											-
 										</td>
-									</tr>	
+									</tr>
 									<tr>
 										<th>
-											autres															
+											autres
 										</th>
 										<td>
 											<?php
@@ -411,16 +411,16 @@
 												if($data["autres_mat"] == 0)
 													$autres_mat = "";
 											?>
-											<input type="checkbox" class="flat"  name="autre"  <?php echo $autres_mat; ?>;  />									
+											<input type="checkbox" class="flat"  name="autre"  <?php echo $autres_mat; ?>;  />
 										</td>
 										<th>
-											-					
+											-
 										</th>
 										<td>
-											-							
+											-
 										</td>
 										<th>
-											Fosse septique						
+											Fosse septique
 										</th>
 										<td>
 											<?php
@@ -428,9 +428,9 @@
 												if($data["fosse_septique"] == 0)
 													$fosse_septique = "";
 											?>
-											<input type="checkbox" class="flat"  name="fosseeptique" <?php echo $fosse_septique; ?>>									
+											<input type="checkbox" class="flat"  name="fosseeptique" <?php echo $fosse_septique; ?>>
 										</td>
-									</tr>															
+									</tr>
 								</tbody>
 							</table>
 							<div class="item form-group">
@@ -448,7 +448,7 @@
 										<br/><br/><input
 									type="checkbox" class="flat" name="nature_travaux_4" <?php if (unserialize($data['typetravaux'])[4] == 1 ) echo 'checked' ; ?> /> &nbsp;&nbsp;Les travaux d'étanchéité et de réfection de la charpente couverte
 										<br/><br/><input
-									type="checkbox" class="flat" name="nature_travaux_5" <?php if (unserialize($data['typetravaux'])[5] == 1 ) echo 'checked' ; ?>/> &nbsp;&nbsp;La pose de portes et fenêtre et la mise en sécurité de l'habitat	
+									type="checkbox" class="flat" name="nature_travaux_5" <?php if (unserialize($data['typetravaux'])[5] == 1 ) echo 'checked' ; ?>/> &nbsp;&nbsp;La pose de portes et fenêtre et la mise en sécurité de l'habitat
 									<br/><br/><input
 									type="checkbox" class="flat" name="nature_travaux_6" <?php if (unserialize($data['typetravaux'])[6] == 1 ) echo 'checked' ; ?> /> &nbsp;&nbsp;Les revêtements du sol et de murs(carrelage, peinture extérieure, enduisage&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intérieur) justifiés par la rfection du bâti
 									<br/><br/><input
@@ -458,7 +458,7 @@
 							</div>
 						</div>
 				</div>
-			</div> 
+			</div>
 			<div class="ln_solid"></div>
 			<div class="form-group">
 				<center>
