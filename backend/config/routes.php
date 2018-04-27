@@ -1,4 +1,4 @@
-<?php   
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
@@ -53,7 +53,7 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-// 	Routage User 
+// 	Routage User
 
 $route['user_login'] = 'user';
 $route['user_verify']['post']= 'user/login';
@@ -61,7 +61,7 @@ $route['user_logout'] = 'user/logout';
 
 $route['user_listes'] = 'user/listes';
 $route['user_save'] = 'user/save';
-/* 
+/*
 $route['user_auth'] = 'user';
 $route['user_auth'] = 'user'; */
 
@@ -109,11 +109,14 @@ $route['logements_saves'] = 'logements/saves';
 
 
 //Routage Demandes
-$route['demande'] = 'demande';
+$route['demande/index'] = 'demande/index';
 $route['demande_saves'] = 'demande/save';
 $route['demande/modification/(:id)'] = 'demande/modification/$1';
 $route['demande/modification']='demande/modif';
-$route['demande/devis/(:id)'] = 'demande/devis/$1'; 
+$route['demande/devis/(:id)'] = 'demande/devis/$1';
+$route['demande/travaux/(:id)'] = 'demande/travaux/$1';
+
+
 
 //Routage echange rdv
 $route['echanges-rendez-vous-proprietaires'] = 'echanges_proprietaire';

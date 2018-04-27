@@ -11,22 +11,24 @@ class Logements extends CI_Controller {
 		$this->load->model ( "Owneradresse_model", "client" );
 		$this->load->model ( "Type_travaux_housing_model", "typetravaux" );
 		$this->load->model ( "Travaux_housing_model", "travaux" );
+
 	}
 	public function index($id) {
 		$data = $this->logements->getWhere (array('owner_id'=>$id));
 		$this->template->title ( 'Gestions des Logements' )->build ( 'logement/index',array('data' => $data ,'idClient'=>$id));
 	}
 
-	public function saves(){		
+	public function saves(){
 		$posts = $this->input->post();
 		$typetravauxArray = array();
 		for($i=0;$i<8;$i++){
 			if(isset($posts['nature_travaux_'.$i])){
-				array_push($typetravauxArray, 1);				
+				array_push($typetravauxArray, 1);
 			}else{
 				array_push($typetravauxArray, 0);
 			}
-		}	
+		}
+
 		$typeLogement = $posts['nameType'];
 		$numero = $posts['numerovoie'];
 		$nomvoie = $posts['nomvoie'];
@@ -36,18 +38,18 @@ class Logements extends CI_Controller {
 		$nombrepiece = $posts['nombrepiece'];
 		$nombrepersonne = $posts['nombrepersonne'];
 		$dateconstruction = $this->cic_auth->FormatDate($posts['dateconstruction']);
-        $typetravaux =  serialize($typetravauxArray);       
+    $typetravaux =  serialize($typetravauxArray);
 		$proprietaire = 0;
-		if(isset($posts['proprietaire'])){			
+		if(isset($posts['proprietaire'])){
 			$proprietaire = 1;
 		}
 
 		$proprietaire1 = 0;
-		if(isset($posts['proprietaire1'])){			
+		if(isset($posts['proprietaire1'])){
 			$proprietaire1 = 1;
 		}
 		$locataire = 0;
-		if(isset($posts['locataire'])){			
+		if(isset($posts['locataire'])){
 			$locataire = 1;
 		}
 
@@ -57,7 +59,7 @@ class Logements extends CI_Controller {
 		}
 
 		$occupant = 0;
-		if(isset($posts['occupant'])){			
+		if(isset($posts['occupant'])){
 			$occupant = 1;
 		}
 
@@ -138,7 +140,7 @@ class Logements extends CI_Controller {
 			$ville = $client[0]['adresseVille'];
 		}
 
-		if($posts['idlogement'] != ""){	
+		if($posts['idlogement'] != ""){
 			$data = array('type_housing'=>$typeLogement,
 					  'adress1_sec'=>$numero,
 					  'adress2_sec'=>$nomvoie,
@@ -168,10 +170,11 @@ class Logements extends CI_Controller {
 					  'electricite'=>$electricite,
 					  'adresseetat'=>$posts['adresse']);
 
-						  		
+
 			$this->types->updates($dataHousing,$posts['idtype']);
 			$this->logements->updates($data,$posts['idlogement']);
-			$this->typetravaux->updates($dataTypetravaux,$posts['idTypeTravaux']);		
+			$this->typetravaux->updates($dataTypetravaux,$posts['idTypeTravaux']);
+
 			$this->session->set_flashdata ("success","Votre donnée a été bien modifiée");
 			redirect ( base_url () . "admin.php/logements/index/".$posts['idClient']);
 		}else{
@@ -209,7 +212,7 @@ class Logements extends CI_Controller {
 					  'adresseetat'=>$posts['adresse']);
 
 			$idLogment= $this->logements->add($data);
-			$idTypetravaux = $this->typetravaux->add($dataTypetravaux);	
+			$idTypetravaux = $this->typetravaux->add($dataTypetravaux);
 			$dataTravaux = array('type_travaux_id'=>$idTypetravaux,
 									'housing_id'=>$idLogment,
 									'housing_id1'=>$idLogment);
@@ -219,5 +222,5 @@ class Logements extends CI_Controller {
 
 		}
 	}
-		
+
 }

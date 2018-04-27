@@ -35,7 +35,7 @@
 								<th>Montant total des devis</th>
 								<th>Montant de l'aide</th>
 	              <th>Statut</th>
-	              <th>Action</th>
+	              <!-- <th>Action</th> -->
 
 						</tr>
 					</thead>
@@ -52,11 +52,11 @@
 	                <td><?php echo $val['adress1']; ?></td>
 	                <!-- <td><?php if ($val['type_travaux_finan'] != "") echo $val['type_travaux_finan']; else echo '-'; ?></td> -->
 	                <td><a href="<?php  echo base_url('admin.php/demande/devis/'.$val['demandeid']) ?>" class="btn btn-round btn-default"><span class="gly fa fa-eye"></span></a></td>
-	                <td><?php echo $val['montant_devis']; ?></td>
+	                <td><?php echo $val['montant_devis'].' €'; ?></td>
 	                <td>
 	                    <?php
 	                        $aide = $val['montant_devis'];
-	                        echo ($aide > 10500 ? 10500 : $aide);
+	                        echo ($aide > 10500 ? 10500 : $aide.' €');
 	                    ?>
 	                </td>
 	                <td>
@@ -93,8 +93,8 @@
 	                        ?>
 
 	                </td>
-	                <td><a href="<?php  echo base_url('admin.php/demande/modification/'.$val['demandeid']) ?>" id="modifier" title="Voir les détails"
-	                class="btn btn-round btn-default"><span class="gly fa fa-edit"></span></a></td>
+	                <!-- <td><a href="<?php  echo base_url('admin.php/demande/modification/'.$val['demandeid']) ?>" id="modifier" title="Voir les détails"
+	                class="btn btn-round btn-default"><span class="gly fa fa-edit"></span></a></td> -->
 
 
 							</tr>
@@ -112,22 +112,26 @@ action="<?php echo base_url('admin.php/demande_saves');?>"
 enctype="multipart/form-data"
 method="post" >
 
-<select class="" name="">
-	<option value="[object Object]"></option>
-	<option value="" hidden>test</option>
-	<option value="" id="test2" >test2</option>
-</select>
 
-<select  name="clientid" id="clientid"  >
+<!-- <select onchange="select_userFunction()" name="clientid" id="clientid"  >
 
 		 <?php foreach ($data_client['client'] as $val){ ?>
-				 <option value="<?php echo $val['id'] ?>" class="<?php echo $val['firstname1']; ?>"><?php echo $val['id']; ?></option>
+				 <option value="<?php echo $val['id']; ?>" class="<?php echo $val['firstname1']; ?>"><?php echo $val['id']; ?></option>
+
 		 <?php } ?>
 
+
 </select>
+
+<input type="text" name="testtest"  id="testid" size="50"> -->
+
+
+
 
 
 <input type="hidden" name="nombreDevis" value="1"/>
+<input type="hidden" name="nombreTravaux" value="1">
+
 <div class="row" id="ancre">
   <div class="col-md-12 col-sm-12 col-xs-12">
 
@@ -143,10 +147,10 @@ method="post" >
                      </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
 
-                     <select class="form-control col-md-7 col-xs-12" name="nom" id="nomProp" data-placeholder="Le Nom du Propriétaire" >
+                     <select class="form-control col-md-7 col-xs-12" name="nom" id="nomProp" placeholder="Le Nom du Propriétaire" >
 
                           <?php foreach ($data_client['client'] as $val){ ?>
-                              <option value="<?php echo $val['firstname1'] ?>" ><?php echo $val['firstname1']; ?></option>
+                              <option value="<?php echo $val['firstname1']; ?>" ><?php echo $val['firstname1']; ?></option>
                           <?php } ?>
 
                      </select>
@@ -154,20 +158,20 @@ method="post" >
                   </div>
                   <div
                       class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
-                      <button id="nouveau" class="btn btn-success" style="width: 100%" type="button"><a href="http://localhost/ltc-botino/admin.php/clients" style="color: white;">Ajouter un nouveau propriétaire</a></button>
+                      <button id="nouveau" class="btn btn-success" style="width: 100%" type="button"><a href="http://localhost/www/ltc/admin.php/clients" style="color: white;">Ajouter un nouveau propriétaire</a></button>
                   </div>
               </div>
 
               <div class="item form-group">
                    <label class="control-label col-md-3 col-sm-3 col-xs-12"
-                         for="name">Nom marital<span class="required">*</span>
+                         for="nommariProp">Nom marital<span class="required">*</span>
                      </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
 
-                     <select class="form-control col-md-7 col-xs-12" name="nommari" id="nommariProp" data-placeholder="Le Nom du Propriétaire" >
+                     <select class="form-control col-md-7 col-xs-12" name="nommari" id="nommariProp"  >
 
                           <?php foreach ($data_client['client'] as $val){ ?>
-                              <option value="<?php echo $val['marriedname'] ?>" class="<?php echo $val['firstname1']; ?>"><?php echo $val['marriedname']; ?></option>
+                              <option value="<?php echo $val['marriedname']; ?>" class="<?php echo $val['firstname1']; ?>"><?php echo $val['marriedname']; ?></option>
                           <?php } ?>
 
                      </select>
@@ -177,14 +181,14 @@ method="post" >
 
               <div class="item form-group">
                    <label class="control-label col-md-3 col-sm-3 col-xs-12"
-                         for="name">Prénom<span class="required">*</span>
+                         for="prenomProp">Prénom<span class="required">*</span>
                      </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
 
-                     <select class="form-control col-md-7 col-xs-12" name="prenom" id="prenomProp" data-placeholder="Le Nom du Propriétaire" >
+                     <select class="form-control col-md-7 col-xs-12" name="prenom" id="prenomProp" >
 
                           <?php foreach ($data_client['client'] as $val){ ?>
-                              <option value="<?php echo $val['firstname2'] ?>" class="<?php echo $val['firstname1']; ?>"><?php echo $val['firstname2']; ?></option>
+                              <option value="<?php echo $val['firstname2']; ?>" class="<?php echo $val['firstname1']; ?>"><?php echo $val['firstname2']; ?></option>
                           <?php } ?>
 
                      </select>
@@ -242,30 +246,6 @@ method="post" >
           </div>
       </div>
 
-			<div class="x_panel">
-				<div class="x_title">
-					<h5>Types de travaux</h5>
-				</div>
-				<div class="x_content">
-					<div class="item form-group">
-						<label class="control-label col-md-3 col-sm-3 col-xs-12"
-							for="name" style="margin-top: 122px! important;">Nature des travaux à effectuer <span class="required">*</span></label>
-						<div class="col-md-6 col-sm-6 col-xs-12">
-							<p style="margin-top: 9px !important">
-							<span  name="nature_travaux_0" <?php if (unserialize($data_log['typetravaux'])[0] == 0 ) echo 'hidden' ; ?>>-Pose ou réfection des sanitaires(WC,lavabo,douche)</span><br>
-							<span name="nature_travaux_1" <?php if (unserialize($data_log['typetravaux'])[1] == 0 ) echo 'hidden' ; ?>>-L'aménagement et l'équipement des bases d'une cuisine pour les logements qui en sont dépouvus(évier,menuisier sous évier)</span><br>
-							<span name="nature_travaux_2" <?php if (unserialize($data_log['typetravaux'])[2] == 0 ) echo 'hidden' ; ?> >-L'installation de fosse septique(dans le cas ou le raccordement aux réseaux publics ne serait pas envisageable) Les raccordements aux réseaux d'adduction d'eau potable(AEP),d'eaux usées(EU) et électrique</span><br>
-							<span name="nature_travaux_3" <?php if (unserialize($data_log['typetravaux'])[3] == 0 ) echo 'hidden' ; ?>>-Les travaux de réalisation et de réfection de l'installation électrique</span><br>
-							<span name="nature_travaux_4" <?php if (unserialize($data_log['typetravaux'])[4] == 0 ) echo 'hidden' ; ?> >-Les travaux d'étanchéité et de réfection de la charpente couverte</span><br>
-							<span name="nature_travaux_5" <?php if (unserialize($data_log['typetravaux'])[5] == 0 ) echo 'hidden' ; ?>>-La pose de portes et fenêtre et la mise en sécurité de l'habitat</span><br>
-							<span name="nature_travaux_6" <?php if (unserialize($data_log['typetravaux'])[6] == 0 ) echo 'hidden' ; ?> >-Les revêtements du sol et de murs(carrelage, peinture extérieure, enduisage intérieur) justifiés par la rfection du bâti</span><br>
-							<span name="nature_travaux_7" <?php if (unserialize($data_log['typetravaux'])[7] == 0 ) echo 'hidden' ; ?>>-Les travaux d'accesssibilité et d'adaption du logment au profit des personnes âgées, handicapées ou à mobilité réduite, si ces travaux ne peuvent être pris en compte au titre des dispositifs dédiés</span>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
 
       <div class="x_panel">
           <div class="x_title">
@@ -273,6 +253,7 @@ method="post" >
               <div class="clearfix"></div>
           </div>
           <div class="x_content">
+
 
 							<!--radio bouton oui ou non artisan-->
               <!-- <div class="item form-group">
@@ -290,12 +271,133 @@ method="post" >
 
               <div id="div_oui_artisan">
 
+								<div id="div_travaux">
+
+									<div class="item form-group">
+										<h3 class="control-label col-md-6 col-sm-6 col-xs-12">Devis 1</h3>
+									</div>
+
+									<div class="item form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12"
+														 for="name">Travaux<span class="required">*</span>
+											</label>
+											<div class="col-md-6 col-sm-6 col-xs-12">
+													<select id="typetrav1" name ="travaux_name1[]" class="travaux_select1 form-control" multiple style="width: 100%;">
+														<?php
+															if (unserialize($data_log['typetravaux'])[0] == 1)
+																echo '
+																	<optgroup label="Pose ou réfection des sanitaires">
+																		<option value="1">Sanitaires non adaptés</option>
+																		<option value="2">Équipements obsolètes</option>
+																		<option value="3">Équipements cassés</option>
+																	</optgroup>';
+														?>
+														<?php
+															if (unserialize($data_log['typetravaux'])[1] == 1)
+																echo '
+																	<optgroup label="Aménagement et équipement de base d\'une cuisine">
+																		<option value="4">Évier cassé ou détérioré</option>
+																		<option value="5">Absence de placard ou placards cassés sous évier</option>
+																		<option value="6">Cuisine non adaptée</option>
+																	</optgroup>';
+														?>
+														<?php
+															if (unserialize($data_log['typetravaux'])[2] == 1)
+																echo '
+																<optgroup label="Installation de fosse septique">
+																	<option value="7">Absence de fosse septique ou fosse septique obsolète</option>
+																	<option value="8">Absence de raccordement au réseau AEP</option>
+																	<option value="9">Absence de raccordement au réseau EU</option>
+																	<option value="10">Absence de raccordement au réseau électrique</option>
+																</optgroup>';
+														?>
+														<?php
+															if (unserialize($data_log['typetravaux'])[3] == 1)
+																echo '
+																	<optgroup label="Travaux de réalisation et de réfection de l\'installation électrique">
+																		<option value="11">Installation électrique obsolète et non conforme</option>
+																		<option value="12">Absence d\'installation électrique</option>
+																		<option value="13">Absence de raccordement au réseau électrique</option>
+																	</optgroup>';
+														?>
+														<?php
+															if (unserialize($data_log['typetravaux'])[4] == 1)
+																echo '
+																	<optgroup label="Travaux d\'étanchéité et de réfection de la charpente couverture">
+																		<option value="14">Tôles percées et/ou corrodées</option>
+																		<option value="15">Infiltration en toiture</option>
+																		<option value="16">Présence de nuisibles sous toiture</option>
+																		<option value="17">Bois de charpente abîmé ou pourri</option>
+																		<option value="18">Bois de charpente attaqué par les termites</option>
+																		<option value="19">Présence de termites </option>
+																		<option value="20">Toiture dalle béton non protégée</option>
+																		<option value="21">Système de récupération des eaux de toiture défectueux</option>
+																		<option value="22">Éclatement béton et fissures en sous face de  dalle</option>
+																		<option value="23">Foisonnement d\'acier et acier apparent en sous face de dalle</option>
+																		<option value="24">Présence de traces d\'humidité sur murs et plafond</option>
+																		<option value="25">Absence de faux plafond et d\'isolant sous tôle</option>
+																	</optgroup>';
+														?>
+														<?php
+															if (unserialize($data_log['typetravaux'])[5] == 1)
+																echo '
+																	<optgroup label="Pose de menuiseries et cloisonnement intérieur">
+																		<option value="26">Portes intérieures et extérieures abîmées ou absentes ou défectueuses</option>
+																		<option value="27">Portes bois intérieures et extérieures attaquées par les termites</option>
+																		<option value="28">Menuiseries extérieures abîmées</option>
+																		<option value="29">Menuiseries bois attaquées par les termites</option>
+																		<option value="30">Absence de menuiseries ou menuiseries non sécurisées</option>
+																		<option value="31">Cloisons séparatives entre pièces insuffisantes et/ou déterriorées</option>
+																	</optgroup>';
+														?>
+														<?php
+															if (unserialize($data_log['typetravaux'])[6] == 1) echo '
+																<optgroup label="Revêtement de sol et mur">
+																	<option value="32">Revêtement de sol  détériore</option>
+																	<option value="33">Déformation du sol et/ou présence de seuil et/ou mauvaise planéité</option>
+																	<option value="34">Façades extérieures non enduites et non protégées par les intempéries</option>
+																	<option value="35">Éclatement béton et fissures en façades </option>
+																	<option value="36">Présence de sol brut absence de revêtement de sol</option>
+																	<option value="37">Murs intérieurs bruts non peints</option>
+																	<option value="38">Murs intérieures des pièces humides sans protection </option>
+																</optgroup>';
+														?>
+														<?php
+															if (unserialize($data_log['typetravaux'])[7] == 1)
+																echo '
+																	<optgroup label="Travaux d\'accessibilité PMR et de sécurité">
+																		<option value="39">Présence de seuils et de marches dans les maisons (intérieurs et extérieurs)</option>
+																		<option value="40">Absence de garde-corps ou garde-corps détériorés</option>
+																		<option value="41">Garde corps abîmés</option>
+																	</optgroup>';
+														?>
+													</select>
+											</div>
+
+									</div>
+
+										<div class="item form-group">
+												<label class="control-label col-md-3 col-sm-3 col-xs-12"
+															 for="montantDevisPrincipal">Montant du travaux<span class="required">*</span>
+												</label>
+												<div class="col-md-6 col-sm-6 col-xs-12">
+														<!-- <input id="montantTravaux1" class="form-control col-md-7 col-xs-12"
+																	 name="montantTravaux1" placeholder="" required="required"
+																	 type="text"> -->
+															<select id="montantTravaux1" name ="montantTravaux1[]" class="montant_select1 form-control" multiple style="width: 100%;">
+															</select>
+												</div>
+										</div>
+
+								</div>
+
+
                    <div class="item form-group">
                           <label class="control-label col-md-3 col-sm-3 col-xs-12"
                                  for="name">Type de l'artisan
                           </label>
                           <div class="col-md-6 col-sm-6 col-xs-12">
-                              <select id="nameArt1" name="nameArt1" class="form-control">
+                              <select id="nameArt1" name="nameArt1" class=" form-control" style="width: 100%">
                                   <?php foreach ($type_art as $trav ){ ?>
                                       <option value="<?php echo $trav->id ?>"><?php echo $trav->namee; ?></option>
                                   <?php } ?>
@@ -309,33 +411,18 @@ method="post" >
                                  for="name">Nom de l'artisan
                           </label>
                           <div class="col-md-6 col-sm-6 col-xs-12">
-                              <select id="nomArt1" name="nomArt1" class="form-control">
+                              <select id="nomArt1" name="nomArt1" class="form-control" style="width: 100%">
                                 <?php foreach ($arti as $art){?>
                                   <option value="<?php echo $art->id_artisan_alias; ?>" class="<?php echo  $art->type_artisan_id ;?>"> <?php echo $art->nom_gerant; ?> </option>
                                 <?php } ?>
                               </select>
                           </div>
+
+													<div
+															class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+															<button id="nouveau" class="btn btn-success" style="width: 100%" type="button"><a href="http://localhost/www/ltc/admin.php/artisan" style="color: white;">Ajouter un nouvel artisan</a></button>
+													</div>
                       </div>
-
-											<div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12"
-                                 for="name">Type de travaux
-                          </label>
-                          <div class="col-md-6 col-sm-6 col-xs-12">
-                              <select id="TT1" name="TT1" class=" js-example-basic-multiple " multiple="multiple" style="width: 100%">
-																<option value="" <?php if (unserialize($data_log['typetravaux'])[0] == 0 ) echo 'hidden' ; ?>>Pose ou réfection des sanitaires(WC,lavabo,douche)</option>
-																<option value="" <?php if (unserialize($data_log['typetravaux'])[1] == 0 ) echo 'hidden' ; ?>>L'aménagement et l'équipement des bases d'une cuisine pour les logements qui en sont dépouvus(évier,menuisier sous évier)</option>
-																<option value="" <?php if (unserialize($data_log['typetravaux'])[2] == 0 ) echo 'hidden' ; ?>>L'installation de fosse septique(dans le cas ou le raccordement aux réseaux publics ne serait pas envisageable) Les raccordements aux réseaux d'adduction d'eau potable(AEP),d'eaux usées(EU) et électrique</option>
-																<option value="" <?php if (unserialize($data_log['typetravaux'])[3] == 0 ) echo 'hidden' ; ?>>Les travaux de réalisation et de réfection de l'installation électrique</option>
-																<option value="" <?php if (unserialize($data_log['typetravaux'])[4] == 0 ) echo 'hidden' ; ?>>Les travaux d'étanchéité et de réfection de la charpente couverte</option>
-																<option value="" <?php if (unserialize($data_log['typetravaux'])[5] == 0 ) echo 'hidden' ; ?>>La pose de portes et fenêtre et la mise en sécurité de l'habitat</option>
-																<option value="" <?php if (unserialize($data_log['typetravaux'])[6] == 0 ) echo 'hidden' ; ?> >Les revêtements du sol et de murs(carrelage, peinture extérieure, enduisage intérieur) justifiés par la rfection du bâti</option>
-																<option value="" <?php if (unserialize($data_log['typetravaux'])[7] == 0 ) echo 'hidden' ; ?>>Les travaux d'accesssibilité et d'adaption du logment au profit des personnes âgées, handicapées ou à mobilité réduite, si ces travaux ne peuvent être pris en compte au titre des dispositifs dédiés</option>
-                              </select>
-                          </div>
-                      </div>
-
-
 
 
                       <div class="item form-group">
@@ -388,7 +475,7 @@ method="post" >
                               Détail du devis
                           </label>
 
-                          <div class="col-md-6 col-sm-6 col-xs-12">
+                           <div class="col-md-6 col-sm-6 col-xs-12">
                               <p style="margin-top: 9px !important">
                                   <label for="oui">Oui:</label> <input type="radio" class="flat" name="detail_devis" id="oui" value="oui" >
                                   <label for="non">Non:</label> <input type="radio" class="flat" name="detail_devis" id="non" value="non" checked="">
@@ -401,85 +488,13 @@ method="post" >
                                  for="name">Devis de l'artisan
                           </label>
                           <div class="col-md-6 col-sm-6 col-xs-12">
-                              <!--<div class="btn_activ btn btn-info">-->
                                   <input id="file" name="fileTest1" type="file" disabled="">
-                              <!--</div>-->
                           </div>
                       </div>
 
                   </div>
 
               </div>
-
-
-
-              <!-- <div id="div_non_artisan" style="display: none; height: 40px !important;">
-                  <div class="item form-group">
-                      <label class="control-label col-md-3 col-sm-3 col-xs-12"
-                             for="typeArt">Type de l'artisan
-                      </label>
-                      <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select id="typeArt" name="typeArt" class="form-control">
-                              <?php foreach ($typeart as $type){?>
-                                  <option> <?php echo $type->name; ?> </option>
-                              <?php } ?>
-                          </select>
-                      </div>
-                  </div>
-
-
-
-                  <div class="item form-group" id="div_nom_artisan">
-                      <label class="control-label col-md-3 col-sm-3 col-xs-12"
-                             for="name">Nom de l'artisan
-                      </label>
-
-                      <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select id="nameArt" name="nameArt" class="form-control">
-                            <?php foreach ($arti as $art){?>
-                              <option> <?php echo $art->nom_gerant; ?> </option>
-                            <?php } ?>
-                          </select>
-                      </div>
-                  </div>
-
-                  <div class="item form-group">
-                      <label class="control-label col-md-3 col-sm-3 col-xs-12"
-                             for="name">Montant du devis <span class="required">*</span>
-                      </label>
-                      <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="montant_devis_art" class="form-control col-md-7 col-xs-12"
-                                 name="montant_devis_art" placeholder="" required="required"
-                                 type="text">
-                      </div>
-                  </div>
-
-
-                  <div class="item form-group">
-                      <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                          Détail de devis de l'artisan
-                      </label>
-
-                      <div class="col-md-6 col-sm-6 col-xs-12">
-                          <p style="margin-top: 9px !important">
-                              <label for="oui">Oui:</label> <input type="radio" class="flat" name="detail_devis_art" id="oui" value="oui" >
-                              <label for="non">Non:</label> <input type="radio" class="flat" name="detail_devis_art" id="non" value="non" checked="">
-                          </p>
-                      </div>
-                  </div>
-
-                  <div class="item form-group">
-                      <label class="control-label col-md-3 col-sm-3 col-xs-12"
-                             for="name">Devis de l'artisan
-                      </label>
-                      <div class="col-md-6 col-sm-6 col-xs-12">
-                          <div class="btn_activ btn btn-info">
-                              <input id="file_art" name="fileTest" type="file" multiple disabled="">
-                          </div>
-                      </div>
-                  </div>
-
-              </div> -->
 
           </div>
 
@@ -546,28 +561,136 @@ method="post" >
 </div>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-<link href="<?php echo base_url('assets/backend/css/demande/chosen.css')?>" rel="stylesheet"/>
-<link href="<?php echo base_url('assets/backend/css/demande/prism.css')?>" rel="stylesheet"/>
-<link href="<?php echo base_url('assets/backend/css/demande/jquery.inputfile.css')?>" rel="stylesheet"/>
-
+<!-- <link href="<?php echo base_url('assets/backend/css/demande/bootstrap-select.min.css');?>" rel="stylesheet" > -->
+<link href="<?php echo base_url('assets/backend/css/demande/chosen.css');?>" rel="stylesheet"/>
+<link href="<?php echo base_url('assets/backend/css/demande/prism.css');?>" rel="stylesheet"/>
+<link href="<?php echo base_url('assets/backend/css/demande/jquery.inputfile.css');?>" rel="stylesheet"/>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-<script src="<?php echo base_url('assets/backend/js/sites/demande/demande.js')?>"></script>
-<script src="<?php echo base_url('assets/backend/js/demande/chosen.proto.min.js')?>"></script>
-<script src="<?php echo base_url('assets/backend/js/demande/chosen.jquery.min.js')?>"></script>
-<script src="<?php echo base_url('assets/backend/js/demande/site.js')?>"></script>
-<script src="<?php echo base_url('assets/backend/js/demande/notify.js')?>"></script>
-<script src="<?php echo base_url('assets/backend/js/demande/jquery.inputfile.js')?>"></script>
-<script src="<?php echo base_url('assets/backend/js/demande/jquery.chained.js')?>"></script>
+<!-- <script src="<?php echo base_url('assets/backend/js/demande/bootstrap-select.min.js');?>"></script> -->
+<script src="<?php echo base_url('assets/backend/js/sites/demande/demande.js');?>"></script>
+<script src="<?php echo base_url('assets/backend/js/demande/chosen.proto.min.js');?>"></script>
+<script src="<?php echo base_url('assets/backend/js/demande/chosen.jquery.min.js');?>"></script>
+<script src="<?php echo base_url('assets/backend/js/demande/site.js');?>"></script>
+<script src="<?php echo base_url('assets/backend/js/demande/notify.js');?>"></script>
+<script src="<?php echo base_url('assets/backend/js/demande/jquery.inputfile.js');?>"></script>
+<script src="<?php echo base_url('assets/backend/js/demande/jquery.chained.js');?>"></script>
 
 <script>
+
 	$(document).ready(function() {
-		$('.js-example-basic-multiple').select2();
+		$('.travaux_select1').select2();
+		$('.montant_select1').select2({
+			tags: true
+		});
+
+		//Seléctionne
+		$('#montantTravaux1').on("select2:select", function(e){
+			somme = 0;
+			valeur = $(this).val();
+			taille = $('#montantTravaux1 option').size();
+			for (var i = 0; i < taille; i++) {
+				somme += parseFloat(valeur[i]);
+			}
+
+			$('#montantDevis1').val(somme);
+			$('input[name^="montantDevis"]').trigger('change');
+
+		});
+
+
+		//Desélectionne
+		$('#montantTravaux1').on("select2:unselect", function(e){
+			somme2 = 0;
+			valeur2 = $(this).val();
+			taille2 = ($('#montantTravaux1 option').size()) - 1;
+			for (var j = 0; j < taille2; j++) {
+				somme2 += parseFloat(valeur2[j]);
+			}
+
+			$('#montantDevis1').val(somme2);
+			$('input[name^="montantDevis"]').trigger('change');
+		});
+
 	});
 </script>
+
+
 <script>
+var id_user="";//porter variable (azo ampiasaina fona)
+
+    function select_userFunction() {
+        var id_select = document.getElementById("clientid").value;
+				var val = document.getElementById("testid").value;
+        id_user =id_select
+
+        console.log(id_select);
+				console.log(val);
+				// alert(val);
+        //console.log(id_user);
+         //document.getElementById("id_user").innerHTML = "" + x;
+    }
+$(document).on('change', '#clientid', function() {
+
+					$.ajax({
+							url:"<?php echo base_url()?>admin.php/demande/edit_demande",
+							method: "POST",
+							data:{id_user: id_user},
+							dataType: "json",
+							success:function(data)
+							{
+
+									$('#testid').val(data.name);
 
 
+							},
+							error:function()
+							{
+									alert('errueroooooooooo');
+									window.location.reload();
+							}
+					});
+			});
+</script>
+
+<!-- <script>
+	var max = $('#typetrav option').size();
+	console.log(max);
+
+	var tailletrav = 0;
+	// var max = 2;
+	var z = 1;
+	var wrapper1 = $("#div_travaux");
+	$('#AfficheTrav').click(function(e){
+		e.preventDefault();
+
+		var data2 = "";
+		if (z < max){
+			tailletrav = z++;
+
+			data2 += '<div class="item form-group">';
+			data2 += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Travaux</label>';
+			data2 += '<div class="col-md-6 col-sm-6 col-xs-12">';
+			data2 += '<select id="typetrav'+(z)+'" name ="travaux_name'+(z)+'" class=" form-control"  >';
+			data2 += '<?php if (unserialize($data_log['typetravaux'])[0] == 1) echo '<optgroup label="Pose ou réfection des sanitaires"><option value="1">Sanitaires non adaptés</option> <option value="2">Équipements obsolètes</option> <option value="3">Équipements cassés</option> </optgroup>'; ?>';
+			data2 += '</select>';
+			data2 += '</div>';
+			data2 += '</div>';
+			data2 += '<div class="item form-group">';
+			data2 += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="montantDevisPrincipal">Montant du travaux<span class="required">*</span> </label>';
+			data2 += '<div class="col-md-6 col-sm-6 col-xs-12">';
+			data2 += '<input id="montantTravaux'+(z)+'" class="form-control col-md-7 col-xs-12" name="montantTravaux'+(z)+'" placeholder="" required="required" type="text">';
+			data2 += '</div>';
+			data2 += '</div>';
+			$(wrapper1).append(data2);
+		}
+		$('input[name="nombreTravaux"]').val(tailletrav+1);
+	});
+</script> -->
+
+
+
+<script>
 var tailleTable = 0;
 var max_fields = 10; // maximum input boxes allowed
 var wrapper = $("#div_devis"); // Fields wrapper
@@ -580,13 +703,84 @@ $('#AfficheArti').click(function(e){
   if(x < max_fields) { //max input box allowed
       tailleTable = x++;
       data += '<div class="ln_solid"></div> ';
-
+			data += '<div class="item form-group">';
+			data += '<h3 class="control-label col-md-6 col-sm-6 col-xs-12">Devis '+(x)+'</h3>';
+			data += '</div>';
+			data += '<div class="item form-group">';
+			data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Travaux<span class="required">*</span></label>';
+			data += '<div class="col-md-6 col-sm-6 col-xs-12">';
+			data += '<select id ="typetrav'+(x)+'" name="travaux_name'+(x)+'[]" class="travaux_select'+(x)+' form-control" multiple="multiple" style ="width:100%">';
+			data += '<?php if (unserialize($data_log['typetravaux'])[0] == 1) echo '<optgroup label="Pose ou réfection des sanitaires"><option value="1">Sanitaires non adaptés</option> <option value="2">Équipements obsolètes</option> <option value="3">Équipements cassés</option> </optgroup>'; ?>';
+			data += '<?php if (unserialize($data_log['typetravaux'])[1] == 1) echo '<optgroup label="Aménagement et équipement de base d\'une cuisine"><option value="4">Évier cassé ou détérioré</option><option value="5">Absence de placard ou placards cassés sous évier</option><option value="6">Cuisine non adaptée</option></optgroup>';?>';
+			data += '<?php if (unserialize($data_log['typetravaux'])[2] == 1) echo '<optgroup label="Installation de fosse septique"><option value="7">Absence de fosse septique ou fosse septique obsolète</option><option value="8">Absence de raccordement au réseau AEP</option><option value="9">Absence de raccordement au réseau EU</option><option value="10">Absence de raccordement au réseau électrique</option></optgroup>';?>';
+			data += '<?php if (unserialize($data_log['typetravaux'])[3] == 1) echo '<optgroup label="Travaux de réalisation et de réfection de linstallation électrique"><option value="11">Installation électrique obsolète et non conforme</option><option value="12">Absence dinstallation électrique</option><option value="13">Absence de raccordement au réseau électrique</option></optgroup>';?>';
+			// data += '<?php
+			// 	if (unserialize($data_log['typetravaux'])[4] == 1)
+			// 		echo '
+			// 			<optgroup label="Travaux d\'étanchéité et de réfection de la charpente couverture">
+			// 				<option value="14">Tôles percées et/ou corrodées</option>
+			// 				<option value="15">Infiltration en toiture</option>
+			// 				<option value="16">Présence de nuisibles sous toiture</option>
+			// 				<option value="17">Bois de charpente abîmé ou pourri</option>
+			// 				<option value="18">Bois de charpente attaqué par les termites</option>
+			// 				<option value="19">Présence de termites </option>
+			// 				<option value="20">Toiture dalle béton non protégée</option>
+			// 				<option value="21">Système de récupération des eaux de toiture défectueux</option>
+			// 				<option value="22">Éclatement béton et fissures en sous face de  dalle</option>
+			// 				<option value="23">Foisonnement d\'acier et acier apparent en sous face de dalle</option>
+			// 				<option value="24">Présence de traces d\'humidité sur murs et plafond</option>
+			// 				<option value="25">Absence de faux plafond et d\'isolant sous tôle</option>
+			// 			</optgroup>';
+			// ?>';
+			data += '<?php
+				if (unserialize($data_log['typetravaux'])[5] == 1)
+					echo '
+						<optgroup label="Pose de menuiseries et cloisonnement intérieur">
+							<option value="26">Portes intérieures et extérieures abîmées ou absentes ou défectueuses</option>
+							<option value="27">Portes bois intérieures et extérieures attaquées par les termites</option>
+							<option value="28">Menuiseries extérieures abîmées</option>
+							<option value="29">Menuiseries bois attaquées par les termites</option>
+							<option value="30">Absence de menuiseries ou menuiseries non sécurisées</option>
+							<option value="31">Cloisons séparatives entre pièces insuffisantes et/ou déterriorées</option>
+						</optgroup>';
+			?>';
+			data += '<?php
+				if (unserialize($data_log['typetravaux'])[6] == 1) echo '
+					<optgroup label="Revêtement de sol et mur">
+						<option value="32">Revêtement de sol  détériore</option>
+						<option value="33">Déformation du sol et/ou présence de seuil et/ou mauvaise planéité</option>
+						<option value="34">Façades extérieures non enduites et non protégées par les intempéries</option>
+						<option value="35">Éclatement béton et fissures en façades </option>
+						<option value="36">Présence de sol brut absence de revêtement de sol</option>
+						<option value="37">Murs intérieurs bruts non peints</option>
+						<option value="38">Murs intérieures des pièces humides sans protection </option>
+					</optgroup>';
+			?>';
+			data += '<?php
+				if (unserialize($data_log['typetravaux'])[7] == 1)
+					echo '
+						<optgroup label="Travaux d\'accessibilité PMR et de sécurité">
+							<option value="39">Présence de seuils et de marches dans les maisons (intérieurs et extérieurs)</option>
+							<option value="40">Absence de garde-corps ou garde-corps détériorés</option>
+							<option value="41">Garde corps abîmés</option>
+						</optgroup>';
+			?>';
+			data += '</select>';
+			data += '</div>';
+			data += '</div>';
+			data += '<div class="item form-group">';
+			data += '<label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Montant du travaux<span class="required">*</span></label>';
+			data += '<div class="col-md-6 col-sm-6 col-xs-12">';
+			data += '<select id="montantTravaux'+(x)+'" name ="montantTravaux'+(x)+'[]" class="montant_select'+(x)+' form-control" multiple style="width: 100%;">';
+			data += '</select>';
+			data += '</div>';
+			data += '</div>';
       data += '<div class="item form-group">';
       data += '<label class="control-label col-md-3 col-sm-3 col-xs-12"  for="name">Type de l\'artisan</label>';
       data += '<div class="col-md-6 col-sm-6 col-xs-12">';
       data += '<select id="nameArt'+(x)+'" name="nameArt'+(x)+'" class="form-control">';
       //$.each(data__, function( index, value ) {
-        data += '<?php foreach($type_art as $trav){?><option value="<?php echo $trav->id ?>"><?php echo $trav->namee;  ?></option> <?php } ?>';
+      data += '<?php foreach($type_art as $trav){?><option value="<?php echo $trav->id ?>"><?php echo $trav->namee;  ?></option> <?php } ?>';
       //});
       data += '</select>';
       data += '</div>';
@@ -597,7 +791,7 @@ $('#AfficheArti').click(function(e){
      // data += '<input class="form-control col-md-7 col-xs-12" id="nomArt'+(x)+'" class="flat" name="nomArt'+(x)+'" type="text">';
       data += '<select id="nomArt'+(x)+'" name="nomArt'+(x)+'" class="form-control">';
        //$.each(data2__, function(key, value ) {
-        data += '<?php foreach($arti as $art){?><option value="<?php echo $art->id_artisan_alias ; ?>" class="<?php echo $art->type_artisan_id ; ?>"><?php echo $art->nom_gerant; ?></option><?php } ?>';
+      data += '<?php foreach($arti as $art){?><option value="<?php echo $art->id_artisan_alias ; ?>" class="<?php echo $art->type_artisan_id ; ?>"><?php echo $art->nom_gerant; ?></option><?php } ?>';
       //});
       data += '</select>'
       data += '</div>';
@@ -652,7 +846,7 @@ $('#AfficheArti').click(function(e){
       data += '<input type="hidden" name="montantTotalDevis'+(x)+'">';
       $(wrapper).append(data);
 
-      $('input[name^="montantDevis'+(x)+'"]').keyup(function(e) {
+      $('input[name^="montantDevis'+(x)+'"]').change(function(e) {
           e.preventDefault();
           var sommeDevis = 0;
           //var valeur = 0;
@@ -686,6 +880,40 @@ $('#AfficheArti').click(function(e){
 				fileNameOnly: true
 
       });
+
+			$('.travaux_select'+(x)+'').select2();
+			$('.montant_select'+(x)+'').select2({
+				tags: true
+			});
+
+			$('#montantTravaux'+(x)+'').on("select2:select", function(e){
+				somme = 0;
+				valeur = $(this).val();
+				taille = $('#montantTravaux'+(x)+' option').size();
+				for (var i = 0; i < taille; i++) {
+					somme += parseFloat(valeur[i]);
+				}
+
+				$('#montantDevis'+(x)+'').val(somme);
+				$('input[name^="montantDevis"]').trigger('change');
+
+			});
+
+			$('#montantTravaux'+(x)+'').on("select2:unselect", function(e){
+				somme2 = 0;
+				valeur2 = $(this).val();
+				taille2 = ($('#montantTravaux'+(x)+' option').size()) - 1;
+				for (var j = 0; j < taille2; j++) {
+					somme2 += parseFloat(valeur2[j]);
+				}
+
+				$('#montantDevis'+(x)+'').val(somme2);
+				$('input[name^="montantDevis"]').trigger('change');
+
+			});
+
+
+
 
        $(function(){
           $('#nomArt'+(x)+'').chained('#nameArt'+(x)+'');
@@ -737,7 +965,7 @@ $('#AfficheArti').click(function(e){
 });
 
 
-$('input[name^="montantDevis"]').keyup(function() {
+$('input[name^="montantDevis"]').change(function() {
   var sommeDevisPrincipal = 0;
   $('input[name^="montantDevis1"]').each(function() {
       if($(this).val() == "")
@@ -781,10 +1009,13 @@ SommeDevisFunct = function(){
 <script>
 
   $(function(){
+
 			$("#clientid").chained("#nomProp");
       $("#prenomProp").chained("#nomProp");
+			// $("#prenomProp").chained('#nommariProp');
       $("#nommariProp").chained("#nomProp");
       $("#nomArt1").chained("#nameArt1");
+
   });
   function testDate (){
           var date = new Date();

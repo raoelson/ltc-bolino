@@ -17,18 +17,20 @@ class Demande extends CI_Controller{
     $this->load->model('ComposeDevis_model', 'composedevis');
     $this->load->model('Modif_model', 'modifmodel');
 		$this->load->model ( "Logements_model", "logements" );
+		$this->load->model('ligne_travaux_model', 'lignetravaux');
 
 	}
 
 	public function index(){
 		$data['demande'] = $this->demandemodel->get_all();
 		$data_client['client'] = $this->client->get_all();
-		$data_log = $this->logements->getWhere ($this->input->post('clientid'));
+		$data_log = $this->logements->getWhere(array('owner_id' => 20));
     $type_art = $this->demandemodel->getTypeArt();
     $arti = $this->artisan->get_news();
     $typeart = $this->typeartisan->art_query();
+		$test = $this->lignetravaux->test();
 		$this->template->title ( 'Gestions des demandes' )->build ( 'demande/index', array ('data' =>$data, 'data_client' => $data_client,
-            'type_art' => $type_art, 'arti' => $arti, 'typeart' => $typeart, 'data_log' => $data_log));
+            'type_art' => $type_art, 'arti' => $arti, 'typeart' => $typeart, 'data_log' => $data_log, 'test' => $test));
 	}
 
 	public function save(){
@@ -80,16 +82,16 @@ class Demande extends CI_Controller{
 					// 	}
 
 
-        		$dataDevis = array(
-	        		'demande_id' => $iddemande,
-		            'num_devis' => $posts['num_devis'.($i+1)],
-		            'date_devis' => $this->cic_auth->FormatDate($posts['date_devis'.($i+1)]),
-		            'montant' => $posts['montantDevis'.($i+1)],
-		           	'statut_devis' => $posts['statutDevis'.($i+1)],
-		           	'prestataire_id' => $posts['nomArt'.($i+1)]
-								// 'scan_devis' => $image.$j
+      		$dataDevis = array(
+        		'demande_id' => $iddemande,
+	            'num_devis' => $posts['num_devis'.($i+1)],
+	            'date_devis' => $this->cic_auth->FormatDate($posts['date_devis'.($i+1)]),
+	            'montant' => $posts['montantDevis'.($i+1)],
+	           	'statut_devis' => $posts['statutDevis'.($i+1)],
+	           	'prestataire_id' => $posts['nomArt'.($i+1)]
+							// 'scan_devis' => $image.$j
 
-        		);
+      		);
 
         	$iddevis = $this->devismodel->add($dataDevis);
 
@@ -100,6 +102,22 @@ class Demande extends CI_Controller{
 
         	$this->composedevis->add($dataComposeDevis);
 
+					$tailletravaux = $posts['nombreTravaux'];
+
+					$sataDevisTravaux = array();
+
+					$travaux = $posts['travaux_name'.($i+1)];
+					$montanttrav = $posts['montantTravaux'.($i+1)];
+					$flag = 0;
+					foreach ($travaux  as $key => $value) {
+						$dataDevistravaux[$key]['devis_id'] = $iddevis;
+						$dataDevistravaux[$key]['montant_travaux'] = $montanttrav[$flag];
+						$dataDevistravaux[$key]['ligne_travaux_id'] = $value;
+						$flag += 1;
+					}
+					$this->lignetravaux->add($dataDevistravaux);
+
+
         }
 
         $this->session->set_flashdata ( "success", "Vos données ont été bien enregistrées!");
@@ -108,7 +126,14 @@ class Demande extends CI_Controller{
 
 	public function devis($var){
 		$data_devis['devis'] = $this->devismodel->get_all($var);
+		// $t = $this->devismodel->getTravaux($var);
 		$this->template->title ( 'Gestions des demandes' )->build ( 'devis/index', array('data_devis' => $data_devis));
+	}
+
+	public function travaux($var){
+		$data_travaux['travaux'] = $this->lignetravaux->get_all($var);
+		$data = $this->demandemodel->get_all();
+		$this->template->title('Gestion des demandes | Travaux')->build('travaux/index', array('data_travaux' => $data_travaux, 'data' => $data));
 	}
 
 	public function modification($id){
@@ -124,6 +149,31 @@ class Demande extends CI_Controller{
 		$this->session->set_flashdata ( "success", "Vos données ont été bien modifiées!");
         redirect ( base_url () . "admin.php/demande" );
 	}
+
+	public function edit_demande()
+    {
+        $output=array();
+        //var_dump($_POST["id_user"]);die;
+        $data = $this->demandemodel->gettest($this->input->post("id_user"));
+        //var_dump($data);die;
+        foreach ($data as $row)
+        {
+            $output['name']=$row->name;
+        }
+        echo json_encode($output);
+    }
+
+		public function detailsf_artisan()
+    {
+        // $data = $this->Affichage_artisan->getWhere(4);
+        $data = $this->demandemodel->gettest(20);
+        // $id=48;
+        //$data = $this->Affichage_artisan->getWhere(array('artisan_id'=>$id));
+        // var_dump($data);
+        echo "<pre>";
+        print_r($data);
+        echo "</pre>";
+    }
 
 
 }

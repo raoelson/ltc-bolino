@@ -435,7 +435,8 @@
 							</table>
 							<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12"
-									for="name" style="margin-top: 122px! important;">Nature des travaux à effectuer <span class="required">*</span></label>
+									for="name" style="margin-top: 122px! important;">Nature des travaux à effectuer <span class="required">*</span>
+								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<p style="margin-top: 9px !important">
 									<input type="checkbox" class="flat" name="nature_travaux_0" <?php if (unserialize($data['typetravaux'])[0] == 1 ) echo 'checked' ; ?> />&nbsp;&nbsp; Pose ou réfection des sanitaires(WC,lavabo,douche)
@@ -455,6 +456,22 @@
 									type="checkbox" class="flat" name="nature_travaux_7" <?php if (unserialize($data['typetravaux'])[7] == 1 ) echo 'checked' ; ?>/> &nbsp;&nbsp;Les travaux d'accesssibilité et d'adaption du logment au profit des personnes&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;âgées, handicapées ou à mobilité réduite, si ces travaux ne peuvent être pris en&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;compte au titre des dispositifs dédiés
 									</p>
 								</div>
+
+								<!--Test by hasy
+<!--
+								<div class="">
+										<?php if (unserialize($data['typetravaux'])[0] == 1 ) echo '<input type="text" name="typetravaux0" value="Pose ou réfection des sanitaires(WC,lavabo,douche)"/>' ; ?>
+										<?php if (unserialize($data['typetravaux'])[1] == 1 ) echo '<input type="text" name="typetravaux1" value="L\'aménagement et l\'équipement des bases d\'une cuisine pour les logements qui en sont dépouvus(évier,menuisier sous évier)"/>' ; ?>
+										<?php if (unserialize($data['typetravaux'])[2] == 1 ) echo '<input type="text" name="typetravaux2" value="L\'installation de fosse septique(dans le cas ou le raccordement aux réseaux publics ne serait pas envisageable) Les raccordements aux réseaux d\'adduction d\'eau potable(AEP),d\'eaux usées(EU) et électrique"/>' ; ?>
+										<?php if (unserialize($data['typetravaux'])[3] == 1 ) echo '<input type="text" name="typetravaux3" value="Les travaux de réalisation et de réfection de l\'installation électrique"/>' ; ?>
+										<?php if (unserialize($data['typetravaux'])[4] == 1 ) echo '<input type="text" name="typetravaux4" value="Les travaux d\'étanchéité et de réfection de la charpente couverte"/>' ; ?>
+										<?php if (unserialize($data['typetravaux'])[5] == 1 ) echo '<input type="text" name="typetravaux5" value="La pose de portes et fenêtre et la mise en sécurité de l\'habitat"/>' ; ?>
+										<?php if (unserialize($data['typetravaux'])[6] == 1 ) echo '<input type="text" name="typetravaux6" value="Les revêtements du sol et de murs(carrelage, peinture extérieure, enduisage intérieur) justifiés par la rfection du bâti"/>' ; ?>
+										<?php if (unserialize($data['typetravaux'])[7] == 1 ) echo '<input type="text" name="typetravaux7" value="Les travaux d\'accesssibilité et d\'adaption du logment au profit des personnes âgées, handicapées ou à mobilité réduite, si ces travaux ne peuvent être pris en compte au titre des dispositifs dédiés"/>' ; ?>
+								</div> -->
+
+								<!--Fin test by hasy-->
+
 							</div>
 						</div>
 				</div>

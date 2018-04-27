@@ -28,6 +28,7 @@
 								<th>Date</th>
 								<th>Nom de l'artisan</th>
 								<th>Type de l'artisan</th>
+								<th>Travaux</th>
 								<th>Montants</th>
 								<th>Statut</th>
 							</tr>
@@ -39,8 +40,9 @@
 									<td><?php echo $dev['num_devis']; ?></td>
 									<td><?php echo $dev['date_devis']; ?></td>
 									<td><?php echo $dev['nom_gerant'] ?></td>
-									<td><?php echo $dev['namee'] ?></td>
-									<td><?php echo $dev['montant']; ?></td>
+									<td><?php echo $dev['namee']; ?></td>
+									<td><a href="<?php  echo base_url('admin.php/demande/travaux/'.$dev['devisid']) ?>" class="btn btn-round btn-default"><span class="gly fa fa-eye"></span></a></td>
+									<td><?php echo $dev['montant'].' €'; ?></td>
 									<td>
 	                  <!--affichage en cours-->
 	                  <?php
